@@ -1,15 +1,16 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 namespace app\index\Controller;
-use app\BaseController;
 use think\facade\Session;
 use workflow\workflow;
 use think\facade\View;
 use think\facade\Db;
 
-class Index  extends BaseController{
+
+class Index {
+	use \liliuwei\think\Jump; 
     public function index(){
-		
+		//dump(Session::all());
 	 View::assign('user',Db::name('user')->field('id,username,role')->select());
      return View::fetch();
     }
@@ -26,6 +27,6 @@ class Index  extends BaseController{
         Session::set('uid', $info['id']);
 		Session::set('uname', $info['username']);
 		Session::set('role', $info['role']);
-		echo 'success';
+		return $this->success('登录成功');
 	}
 }

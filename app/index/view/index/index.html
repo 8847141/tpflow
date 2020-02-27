@@ -10,8 +10,8 @@
 		</nav>
 		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 			<ul class="cl">
-				<li>{if condition='$Think.session.uid'}
-欢迎您：{$Think.session.uname} 
+				<li>{if condition='session("uid")'}
+欢迎您：{:session('uname')} 
 {else/}
 	请先模拟登入！
 {/if}</li>
@@ -53,7 +53,7 @@
 				<li><a data-href="{:url('doc')}" data-title="在线开发文档（精简）" href="javascript:void(0)">在线开发文档（精简）</a></li>
 				<li><a data-href="https://www.kancloud.cn/guowenbin/tpflow/" data-title="看云完整文档" href="javascript:void(0)">看云完整文档</a></li>
 				<li><a data-href="https://gitee.com/ntdgg/tpflow/" data-title="源码下载" href="javascript:void(0)">源码下载
-				{:app\\index\\controller\\wf::status()}
+				
 				
 				</a></li>
 				</dd>
@@ -82,7 +82,7 @@
 </div>
 </section>
 <script>
-var session ='{$Think.session.uid}';
+var session ="{:session('uid')}";
 if(session =='' ){
 layer.open({
       type: 2,

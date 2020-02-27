@@ -112,7 +112,7 @@
 			</td>
 			<td valign="top" >
 				<div style='width:98%;overflow-y:scroll; height:200px'>
-					{:action('wf/wflogs',['id'=>$info.wf_fid,'wf_type'=>$info.wf_type])}
+					{:app\\index\\controller\\wf::wflogs($info.wf_fid,$info.wf_type)}
 				
 				</div>
 			</td>

@@ -7,10 +7,11 @@ use think\App;
 use think\exception\ValidateException;
 use think\Validate;
 
+
 /**
  * 控制器基础类
  */
-abstract class BaseController
+abstract class Basec
 {
     /**
      * Request实例
@@ -51,8 +52,15 @@ abstract class BaseController
     }
 
     // 初始化
+		use \liliuwei\think\Jump;
     protected function initialize()
-    {}
+    {
+		defined('uid') or define('uid', session('uid'));
+		if (null === uid) {
+			echo '<h2>请先登入！</h2>';
+			exit;
+        }
+	}
 
     /**
      * 验证数据

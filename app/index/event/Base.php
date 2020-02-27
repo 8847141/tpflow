@@ -7,7 +7,7 @@
  */
 namespace app\index\event;
 
-use think\Db;
+use think\facade\Db;
 use think\facade\Request;
 
 class Base  
@@ -24,7 +24,6 @@ class Base
                 ->field($field)
                 ->where($map)
                 ->order($order_by)
-				->limit($limit)
 				->paginate('10');
         return $list;
 	}

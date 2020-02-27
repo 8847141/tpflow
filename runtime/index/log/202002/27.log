@@ -1,79 +1,1453 @@
-[2020-02-27T16:59:02+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
-[2020-02-27T16:59:03+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
-[2020-02-27T16:59:03+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
-[2020-02-27T16:59:12+08:00][sql] CONNECT:[ UseTime:0.000955s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T16:59:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012769s ]
-[2020-02-27T16:59:12+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000488s ]
-[2020-02-27T16:59:12+08:00][sql] CONNECT:[ UseTime:0.000974s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T16:59:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.010476s ]
-[2020-02-27T16:59:12+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000474s ]
-[2020-02-27T16:59:47+08:00][sql] CONNECT:[ UseTime:0.001977s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T16:59:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012998s ]
-[2020-02-27T16:59:47+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000440s ]
-[2020-02-27T16:59:47+08:00][sql] CONNECT:[ UseTime:0.010387s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T16:59:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012762s ]
-[2020-02-27T16:59:47+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000353s ]
-[2020-02-27T16:59:56+08:00][sql] CONNECT:[ UseTime:0.009997s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T16:59:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.009855s ]
-[2020-02-27T16:59:56+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000343s ]
-[2020-02-27T16:59:56+08:00][error] [0]Class 'status' not found
-[2020-02-27T17:00:09+08:00][sql] CONNECT:[ UseTime:0.010353s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:00:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012447s ]
-[2020-02-27T17:00:09+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000335s ]
-[2020-02-27T17:00:09+08:00][error] [0]Class 'status' not found
-[2020-02-27T17:00:23+08:00][sql] CONNECT:[ UseTime:0.010478s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:00:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.013634s ]
-[2020-02-27T17:00:23+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000350s ]
-[2020-02-27T17:00:23+08:00][error] [0]Class 'status' not found
-[2020-02-27T17:00:31+08:00][sql] CONNECT:[ UseTime:0.000887s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:00:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.010235s ]
-[2020-02-27T17:00:31+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000364s ]
-[2020-02-27T17:00:31+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:00:39+08:00][sql] CONNECT:[ UseTime:0.000920s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:00:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012729s ]
-[2020-02-27T17:00:39+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000311s ]
-[2020-02-27T17:00:39+08:00][error] [0]Class 'index' not found
-[2020-02-27T17:01:35+08:00][sql] CONNECT:[ UseTime:0.000944s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:01:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.013577s ]
-[2020-02-27T17:01:35+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000382s ]
-[2020-02-27T17:01:35+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:01:47+08:00][sql] CONNECT:[ UseTime:0.000836s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:01:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011685s ]
-[2020-02-27T17:01:47+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000363s ]
-[2020-02-27T17:01:47+08:00][error] [0]Class 'app\index\index' not found
-[2020-02-27T17:02:00+08:00][sql] CONNECT:[ UseTime:0.000938s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:02:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012467s ]
-[2020-02-27T17:02:00+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000531s ]
-[2020-02-27T17:02:00+08:00][error] [0]Class 'app\index\index' not found
-[2020-02-27T17:02:13+08:00][sql] CONNECT:[ UseTime:0.000963s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:02:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.013269s ]
-[2020-02-27T17:02:13+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000332s ]
-[2020-02-27T17:02:13+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:02:22+08:00][sql] CONNECT:[ UseTime:0.000819s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:02:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012966s ]
-[2020-02-27T17:02:22+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000339s ]
-[2020-02-27T17:02:22+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:02:56+08:00][sql] CONNECT:[ UseTime:0.010233s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:02:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011593s ]
-[2020-02-27T17:02:56+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000368s ]
-[2020-02-27T17:02:56+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:03:04+08:00][sql] CONNECT:[ UseTime:0.000871s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:03:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012083s ]
-[2020-02-27T17:03:04+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000449s ]
-[2020-02-27T17:03:04+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:03:06+08:00][sql] CONNECT:[ UseTime:0.000977s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:03:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011425s ]
-[2020-02-27T17:03:06+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000429s ]
-[2020-02-27T17:03:06+08:00][error] [0]Class 'app\index\Index' not found
-[2020-02-27T17:04:36+08:00][sql] CONNECT:[ UseTime:0.000863s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:04:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011095s ]
-[2020-02-27T17:04:36+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000315s ]
-[2020-02-27T17:04:36+08:00][error] [0]Call to undefined function app\indexwfstatus()
-[2020-02-27T17:05:05+08:00][sql] CONNECT:[ UseTime:0.000878s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:05:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012056s ]
-[2020-02-27T17:05:05+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000415s ]
-[2020-02-27T17:05:05+08:00][error] [0]Class 'app\index\wf' not found
-[2020-02-27T17:06:01+08:00][sql] CONNECT:[ UseTime:0.001939s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
-[2020-02-27T17:06:01+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011367s ]
-[2020-02-27T17:06:01+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000329s ]
-[2020-02-27T17:06:01+08:00][error] [8192]Non-static method app\index\Controller\wf::status() should not be called statically
+[2020-02-27T19:09:54+08:00][sql] CONNECT:[ UseTime:0.001899s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:09:54+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001149s ]
+[2020-02-27T19:09:54+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000448s ]
+[2020-02-27T19:09:54+08:00][sql] CONNECT:[ UseTime:0.001940s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:09:54+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002302s ]
+[2020-02-27T19:09:54+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000669s ]
+[2020-02-27T19:09:56+08:00][sql] CONNECT:[ UseTime:0.001366s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:09:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001282s ]
+[2020-02-27T19:09:56+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000797s ]
+[2020-02-27T19:09:59+08:00][sql] CONNECT:[ UseTime:0.001739s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:09:59+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001080s ]
+[2020-02-27T19:09:59+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000453s ]
+[2020-02-27T19:10:00+08:00][sql] CONNECT:[ UseTime:0.001312s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:10:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001108s ]
+[2020-02-27T19:10:00+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000448s ]
+[2020-02-27T19:10:17+08:00][sql] CONNECT:[ UseTime:0.010367s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:10:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001084s ]
+[2020-02-27T19:10:17+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000452s ]
+[2020-02-27T19:10:17+08:00][sql] CONNECT:[ UseTime:0.001592s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:10:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002045s ]
+[2020-02-27T19:10:17+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000727s ]
+[2020-02-27T19:10:41+08:00][sql] CONNECT:[ UseTime:0.001375s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:10:41+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001382s ]
+[2020-02-27T19:10:41+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000941s ]
+[2020-02-27T19:10:41+08:00][error] [8]未定义变量: think
+[2020-02-27T19:10:56+08:00][sql] CONNECT:[ UseTime:0.001362s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:10:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001081s ]
+[2020-02-27T19:10:56+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000446s ]
+[2020-02-27T19:10:56+08:00][error] [8]未定义变量: Think
+[2020-02-27T19:11:04+08:00][sql] CONNECT:[ UseTime:0.001346s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001246s ]
+[2020-02-27T19:11:04+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000467s ]
+[2020-02-27T19:11:04+08:00][sql] CONNECT:[ UseTime:0.001313s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001077s ]
+[2020-02-27T19:11:04+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000436s ]
+[2020-02-27T19:11:10+08:00][sql] CONNECT:[ UseTime:0.001341s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:10+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001466s ]
+[2020-02-27T19:11:10+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000460s ]
+[2020-02-27T19:11:10+08:00][error] [2]Use of undefined constant Think - assumed 'Think' (this will throw an Error in a future version of PHP)
+[2020-02-27T19:11:15+08:00][sql] CONNECT:[ UseTime:0.001377s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001127s ]
+[2020-02-27T19:11:15+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000460s ]
+[2020-02-27T19:11:15+08:00][error] [2]Use of undefined constant Think - assumed 'Think' (this will throw an Error in a future version of PHP)
+[2020-02-27T19:11:33+08:00][sql] CONNECT:[ UseTime:0.001383s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001151s ]
+[2020-02-27T19:11:33+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000468s ]
+[2020-02-27T19:11:33+08:00][error] [8]Array to string conversion
+[2020-02-27T19:11:40+08:00][sql] CONNECT:[ UseTime:0.001566s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001140s ]
+[2020-02-27T19:11:40+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000461s ]
+[2020-02-27T19:11:40+08:00][sql] CONNECT:[ UseTime:0.002520s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001518s ]
+[2020-02-27T19:11:40+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000637s ]
+[2020-02-27T19:11:51+08:00][sql] CONNECT:[ UseTime:0.003050s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001135s ]
+[2020-02-27T19:11:51+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000455s ]
+[2020-02-27T19:11:51+08:00][sql] CONNECT:[ UseTime:0.010560s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001081s ]
+[2020-02-27T19:11:51+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000694s ]
+[2020-02-27T19:11:58+08:00][sql] CONNECT:[ UseTime:0.001302s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:11:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001080s ]
+[2020-02-27T19:11:58+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000448s ]
+[2020-02-27T19:11:58+08:00][error] [8]未定义变量: session
+[2020-02-27T19:12:06+08:00][sql] CONNECT:[ UseTime:0.001347s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:12:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001078s ]
+[2020-02-27T19:12:06+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000442s ]
+[2020-02-27T19:12:06+08:00][error] [8]未定义变量: _session
+[2020-02-27T19:12:23+08:00][sql] CONNECT:[ UseTime:0.001368s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:12:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001124s ]
+[2020-02-27T19:12:23+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000457s ]
+[2020-02-27T19:12:23+08:00][error] [8]未定义变量: session
+[2020-02-27T19:12:42+08:00][sql] CONNECT:[ UseTime:0.003037s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:12:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001807s ]
+[2020-02-27T19:12:42+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000620s ]
+[2020-02-27T19:12:42+08:00][sql] CONNECT:[ UseTime:0.010738s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:12:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001206s ]
+[2020-02-27T19:12:42+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000572s ]
+[2020-02-27T19:12:52+08:00][sql] CONNECT:[ UseTime:0.002984s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:12:52+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001194s ]
+[2020-02-27T19:12:52+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000453s ]
+[2020-02-27T19:12:52+08:00][sql] CONNECT:[ UseTime:0.001808s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:12:52+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001751s ]
+[2020-02-27T19:12:52+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000808s ]
+[2020-02-27T19:13:03+08:00][sql] CONNECT:[ UseTime:0.001469s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:13:03+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001116s ]
+[2020-02-27T19:13:03+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000449s ]
+[2020-02-27T19:13:03+08:00][sql] CONNECT:[ UseTime:0.002356s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:13:03+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001310s ]
+[2020-02-27T19:13:03+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000431s ]
+[2020-02-27T19:13:13+08:00][sql] CONNECT:[ UseTime:0.001344s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:13:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001285s ]
+[2020-02-27T19:13:13+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000477s ]
+[2020-02-27T19:13:13+08:00][error] [0]syntax error, unexpected ':'
+[2020-02-27T19:13:25+08:00][sql] CONNECT:[ UseTime:0.003166s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:13:25+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002558s ]
+[2020-02-27T19:13:25+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000476s ]
+[2020-02-27T19:13:26+08:00][sql] CONNECT:[ UseTime:0.001346s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:13:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002023s ]
+[2020-02-27T19:13:26+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000795s ]
+[2020-02-27T19:14:05+08:00][sql] CONNECT:[ UseTime:0.001499s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001168s ]
+[2020-02-27T19:14:05+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000455s ]
+[2020-02-27T19:14:05+08:00][sql] CONNECT:[ UseTime:0.001361s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001117s ]
+[2020-02-27T19:14:05+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000445s ]
+[2020-02-27T19:14:07+08:00][sql] CONNECT:[ UseTime:0.001371s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:07+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001288s ]
+[2020-02-27T19:14:07+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000466s ]
+[2020-02-27T19:14:07+08:00][sql] CONNECT:[ UseTime:0.001933s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:07+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001345s ]
+[2020-02-27T19:14:07+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000479s ]
+[2020-02-27T19:14:08+08:00][sql] CONNECT:[ UseTime:0.001369s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:08+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001286s ]
+[2020-02-27T19:14:08+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000580s ]
+[2020-02-27T19:14:11+08:00][sql] CONNECT:[ UseTime:0.001371s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001115s ]
+[2020-02-27T19:14:11+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000452s ]
+[2020-02-27T19:14:11+08:00][sql] CONNECT:[ UseTime:0.001645s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001260s ]
+[2020-02-27T19:14:11+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000451s ]
+[2020-02-27T19:14:18+08:00][sql] CONNECT:[ UseTime:0.001490s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001122s ]
+[2020-02-27T19:14:18+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000455s ]
+[2020-02-27T19:14:18+08:00][sql] CONNECT:[ UseTime:0.001330s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001084s ]
+[2020-02-27T19:14:18+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000647s ]
+[2020-02-27T19:14:20+08:00][sql] CONNECT:[ UseTime:0.001369s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001178s ]
+[2020-02-27T19:14:20+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000552s ]
+[2020-02-27T19:14:22+08:00][sql] CONNECT:[ UseTime:0.001700s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001489s ]
+[2020-02-27T19:14:22+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000622s ]
+[2020-02-27T19:14:22+08:00][sql] CONNECT:[ UseTime:0.001304s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:14:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001072s ]
+[2020-02-27T19:14:22+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000438s ]
+[2020-02-27T19:14:23+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
+[2020-02-27T19:15:32+08:00][sql] CONNECT:[ UseTime:0.001502s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:15:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001456s ]
+[2020-02-27T19:15:32+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000496s ]
+[2020-02-27T19:15:32+08:00][sql] CONNECT:[ UseTime:0.001458s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:15:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001286s ]
+[2020-02-27T19:15:32+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000457s ]
+[2020-02-27T19:15:33+08:00][sql] CONNECT:[ UseTime:0.001503s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:15:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001131s ]
+[2020-02-27T19:15:33+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000461s ]
+[2020-02-27T19:15:33+08:00][sql] CONNECT:[ UseTime:0.001354s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:15:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001104s ]
+[2020-02-27T19:15:33+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000447s ]
+[2020-02-27T19:16:11+08:00][error] [8]未定义变量: list
+[2020-02-27T19:17:21+08:00][sql] CONNECT:[ UseTime:0.001424s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:17:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001136s ]
+[2020-02-27T19:17:21+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000461s ]
+[2020-02-27T19:17:21+08:00][sql] CONNECT:[ UseTime:0.001321s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:17:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001203s ]
+[2020-02-27T19:17:21+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000453s ]
+[2020-02-27T19:17:23+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T19:17:43+08:00][error] [0]Too few arguments to function app\index\Controller\Index::__construct(), 0 passed in D:\web\tpflow\app\common.php on line 4 and exactly 1 expected
+[2020-02-27T19:17:54+08:00][error] [0]Too few arguments to function app\common\controller\Admin::__construct(), 0 passed in D:\web\tpflow\app\common.php on line 4 and exactly 1 expected
+[2020-02-27T19:17:54+08:00][error] [0]Too few arguments to function app\common\controller\Admin::__construct(), 0 passed in D:\web\tpflow\app\common.php on line 4 and exactly 1 expected
+[2020-02-27T19:20:03+08:00][error] [0]Too few arguments to function app\common\controller\Admin::__construct(), 0 passed in D:\web\tpflow\app\common.php on line 4 and exactly 1 expected
+[2020-02-27T19:20:04+08:00][error] [0]Too few arguments to function app\common\controller\Admin::__construct(), 0 passed in D:\web\tpflow\app\common.php on line 4 and exactly 1 expected
+[2020-02-27T19:20:39+08:00][error] [8]Undefined property: app\index\controller\News::$request
+[2020-02-27T19:20:50+08:00][error] [0]Too few arguments to function app\common\controller\Admin::__construct(), 0 passed in D:\web\tpflow\app\common.php on line 4 and exactly 1 expected
+[2020-02-27T19:21:05+08:00][error] [0]Class 'app\index\controller\app\index\controller\Wf' not found
+[2020-02-27T19:21:07+08:00][error] [0]Class 'app\index\controller\app\index\controller\Wf' not found
+[2020-02-27T19:21:32+08:00][error] [0]Class 'app\index\controller\app\index\event\Base' not found
+[2020-02-27T19:21:33+08:00][error] [0]Class 'app\index\controller\app\index\event\Base' not found
+[2020-02-27T19:21:57+08:00][error] [8]未定义变量: list
+[2020-02-27T19:22:17+08:00][error] [0]Call to undefined method think\Db::name()
+[2020-02-27T19:22:42+08:00][error] [0]Argument 1 passed to think\db\BaseQuery::limit() must be of the type integer, string given, called in D:\web\tpflow\app\index\event\Base.php on line 27
+[2020-02-27T19:23:04+08:00][sql] CONNECT:[ UseTime:0.001711s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:23:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.096510s ]
+[2020-02-27T19:23:04+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.030705s ]
+[2020-02-27T19:23:04+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.024384s ]
+[2020-02-27T19:23:04+08:00][error] [0]Call to undefined function action()
+[2020-02-27T19:23:26+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
+[2020-02-27T19:24:32+08:00][sql] CONNECT:[ UseTime:0.001464s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:24:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001809s ]
+[2020-02-27T19:24:32+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000409s ]
+[2020-02-27T19:24:32+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000514s ]
+[2020-02-27T19:24:32+08:00][error] [0]Call to undefined function action()
+[2020-02-27T19:24:33+08:00][error] [8]未定义变量: type
+[2020-02-27T19:25:52+08:00][sql] CONNECT:[ UseTime:0.001430s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:25:52+08:00][sql] SHOW FULL COLUMNS FROM `wf_news_type` [ RunTime:0.082848s ]
+[2020-02-27T19:25:52+08:00][sql] SELECT * FROM `wf_news_type` [ RunTime:0.001092s ]
+[2020-02-27T19:25:57+08:00][sql] CONNECT:[ UseTime:0.002305s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:25:57+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001727s ]
+[2020-02-27T19:25:57+08:00][sql] INSERT INTO `wf_news` SET `new_title` = '123' , `new_top` = 1 , `new_type` = 1 , `new_con` = '123' , `uid` = 2 , `add_time` = 1582802757 [ RunTime:0.030497s ]
+[2020-02-27T19:25:57+08:00][error] [0]Call to undefined function app\index\controller\msg_return()
+[2020-02-27T19:26:05+08:00][sql] CONNECT:[ UseTime:0.001460s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:26:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.003000s ]
+[2020-02-27T19:26:05+08:00][sql] INSERT INTO `wf_news` SET `new_title` = '123' , `new_top` = 1 , `new_type` = 1 , `new_con` = '123' , `uid` = 2 , `add_time` = 1582802765 [ RunTime:0.000785s ]
+[2020-02-27T19:26:05+08:00][error] [0]Call to undefined function app\index\controller\msg_return()
+[2020-02-27T19:27:17+08:00][sql] CONNECT:[ UseTime:0.001420s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:27:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001981s ]
+[2020-02-27T19:27:17+08:00][sql] INSERT INTO `wf_news` SET `new_title` = '123' , `new_top` = 1 , `new_type` = 1 , `new_con` = '123' , `uid` = 2 , `add_time` = 1582802837 [ RunTime:0.000544s ]
+[2020-02-27T19:27:17+08:00][error] [0]Class 'Response' not found
+[2020-02-27T19:29:31+08:00][sql] CONNECT:[ UseTime:0.001426s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:29:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001616s ]
+[2020-02-27T19:29:31+08:00][sql] INSERT INTO `wf_news` SET `new_title` = '123' , `new_top` = 1 , `new_type` = 1 , `new_con` = '123' , `uid` = 2 , `add_time` = 1582802971 [ RunTime:0.000487s ]
+[2020-02-27T19:29:33+08:00][sql] CONNECT:[ UseTime:0.003132s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:29:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001639s ]
+[2020-02-27T19:29:33+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000408s ]
+[2020-02-27T19:29:33+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000536s ]
+[2020-02-27T19:29:33+08:00][error] [0]Call to undefined function action()
+[2020-02-27T19:29:46+08:00][sql] CONNECT:[ UseTime:0.001388s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:29:46+08:00][sql] SHOW FULL COLUMNS FROM `wf_news_type` [ RunTime:0.001603s ]
+[2020-02-27T19:29:46+08:00][sql] SELECT * FROM `wf_news_type` [ RunTime:0.000456s ]
+[2020-02-27T19:29:59+08:00][sql] CONNECT:[ UseTime:0.001388s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:29:59+08:00][sql] SHOW FULL COLUMNS FROM `wf_news_type` [ RunTime:0.004156s ]
+[2020-02-27T19:29:59+08:00][sql] SELECT * FROM `wf_news_type` [ RunTime:0.000506s ]
+[2020-02-27T19:30:13+08:00][sql] CONNECT:[ UseTime:0.001629s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:30:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002450s ]
+[2020-02-27T19:30:13+08:00][sql] INSERT INTO `wf_news` SET `new_title` = '123' , `new_top` = 1 , `new_type` = 1 , `new_con` = '3123' , `uid` = 2 , `add_time` = 1582803013 [ RunTime:0.001119s ]
+[2020-02-27T19:30:15+08:00][sql] CONNECT:[ UseTime:0.001945s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:30:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001872s ]
+[2020-02-27T19:30:15+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000404s ]
+[2020-02-27T19:30:15+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000554s ]
+[2020-02-27T19:30:15+08:00][error] [0]Call to undefined function action()
+[2020-02-27T19:30:25+08:00][sql] CONNECT:[ UseTime:0.001340s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:30:25+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001724s ]
+[2020-02-27T19:30:25+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000399s ]
+[2020-02-27T19:30:25+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000537s ]
+[2020-02-27T19:30:25+08:00][error] [0]Call to undefined function action()
+[2020-02-27T19:40:42+08:00][sql] CONNECT:[ UseTime:0.001712s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:40:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002120s ]
+[2020-02-27T19:40:42+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000451s ]
+[2020-02-27T19:40:42+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000554s ]
+[2020-02-27T19:40:42+08:00][error] [8192]Non-static method app\index\Controller\wf::status() should not be called statically
+[2020-02-27T19:41:40+08:00][sql] CONNECT:[ UseTime:0.001718s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:41:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001723s ]
+[2020-02-27T19:41:40+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000403s ]
+[2020-02-27T19:41:40+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000536s ]
+[2020-02-27T19:42:00+08:00][sql] CONNECT:[ UseTime:0.001548s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:42:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001761s ]
+[2020-02-27T19:42:00+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000417s ]
+[2020-02-27T19:42:00+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000543s ]
+[2020-02-27T19:42:26+08:00][sql] CONNECT:[ UseTime:0.003203s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:42:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001115s ]
+[2020-02-27T19:42:26+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000387s ]
+[2020-02-27T19:42:26+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000517s ]
+[2020-02-27T19:43:31+08:00][sql] CONNECT:[ UseTime:0.001511s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:43:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001313s ]
+[2020-02-27T19:43:31+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000426s ]
+[2020-02-27T19:43:31+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000539s ]
+[2020-02-27T19:43:31+08:00][error] [0]Call to undefined method app\index\Controller\wf::action()
+[2020-02-27T19:43:42+08:00][sql] CONNECT:[ UseTime:0.001405s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:43:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001683s ]
+[2020-02-27T19:43:42+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000409s ]
+[2020-02-27T19:43:42+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000543s ]
+[2020-02-27T19:43:42+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:45:22+08:00][sql] CONNECT:[ UseTime:0.001348s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:45:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001171s ]
+[2020-02-27T19:45:22+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000476s ]
+[2020-02-27T19:45:23+08:00][sql] CONNECT:[ UseTime:0.001435s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:45:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001135s ]
+[2020-02-27T19:45:23+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000457s ]
+[2020-02-27T19:45:24+08:00][sql] CONNECT:[ UseTime:0.002699s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:45:24+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001272s ]
+[2020-02-27T19:45:24+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000381s ]
+[2020-02-27T19:45:24+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000570s ]
+[2020-02-27T19:45:24+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:46:18+08:00][sql] CONNECT:[ UseTime:0.002705s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:46:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001875s ]
+[2020-02-27T19:46:18+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000679s ]
+[2020-02-27T19:46:18+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000676s ]
+[2020-02-27T19:46:18+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:46:46+08:00][sql] CONNECT:[ UseTime:0.001887s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:46:46+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002261s ]
+[2020-02-27T19:46:46+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000621s ]
+[2020-02-27T19:46:46+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000896s ]
+[2020-02-27T19:46:46+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:49:37+08:00][sql] CONNECT:[ UseTime:0.003413s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:49:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002195s ]
+[2020-02-27T19:49:37+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000475s ]
+[2020-02-27T19:49:37+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000627s ]
+[2020-02-27T19:49:37+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:49:45+08:00][sql] CONNECT:[ UseTime:0.001705s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:49:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001479s ]
+[2020-02-27T19:49:45+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000551s ]
+[2020-02-27T19:49:45+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000548s ]
+[2020-02-27T19:49:45+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:50:08+08:00][sql] CONNECT:[ UseTime:0.001724s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:50:08+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001343s ]
+[2020-02-27T19:50:08+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000441s ]
+[2020-02-27T19:50:08+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000634s ]
+[2020-02-27T19:50:08+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:52:15+08:00][sql] CONNECT:[ UseTime:0.002455s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:52:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001519s ]
+[2020-02-27T19:52:15+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000447s ]
+[2020-02-27T19:52:15+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000620s ]
+[2020-02-27T19:52:15+08:00][error] [8]未定义变量: schema
+[2020-02-27T19:52:30+08:00][sql] CONNECT:[ UseTime:0.001419s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:52:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001188s ]
+[2020-02-27T19:52:30+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000468s ]
+[2020-02-27T19:52:31+08:00][sql] CONNECT:[ UseTime:0.001818s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:52:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001844s ]
+[2020-02-27T19:52:31+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000766s ]
+[2020-02-27T19:52:31+08:00][sql] CONNECT:[ UseTime:0.001390s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:52:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001102s ]
+[2020-02-27T19:52:31+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000397s ]
+[2020-02-27T19:52:31+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000586s ]
+[2020-02-27T19:52:31+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:53:36+08:00][sql] CONNECT:[ UseTime:0.001494s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:53:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001163s ]
+[2020-02-27T19:53:36+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000406s ]
+[2020-02-27T19:53:36+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000537s ]
+[2020-02-27T19:53:36+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:53:44+08:00][sql] CONNECT:[ UseTime:0.001412s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:53:44+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001427s ]
+[2020-02-27T19:53:44+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000410s ]
+[2020-02-27T19:53:44+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000530s ]
+[2020-02-27T19:53:44+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:56:19+08:00][sql] CONNECT:[ UseTime:0.001531s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:56:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001223s ]
+[2020-02-27T19:56:19+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000857s ]
+[2020-02-27T19:56:19+08:00][sql] CONNECT:[ UseTime:0.001385s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:56:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001319s ]
+[2020-02-27T19:56:19+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000458s ]
+[2020-02-27T19:56:21+08:00][sql] CONNECT:[ UseTime:0.001412s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:56:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001125s ]
+[2020-02-27T19:56:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000421s ]
+[2020-02-27T19:56:21+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.001044s ]
+[2020-02-27T19:56:21+08:00][error] [0]Undefined class constant 'uid'
+[2020-02-27T19:57:20+08:00][sql] CONNECT:[ UseTime:0.001415s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:57:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001120s ]
+[2020-02-27T19:57:20+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000390s ]
+[2020-02-27T19:57:20+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000528s ]
+[2020-02-27T19:57:20+08:00][error] [0]Undefined class constant 'uid'
+[2020-02-27T19:58:57+08:00][sql] CONNECT:[ UseTime:0.001464s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:58:57+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001212s ]
+[2020-02-27T19:58:57+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000402s ]
+[2020-02-27T19:58:57+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000537s ]
+[2020-02-27T19:58:57+08:00][error] [0]Using $this when not in object context
+[2020-02-27T19:59:08+08:00][sql] CONNECT:[ UseTime:0.001353s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T19:59:08+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001070s ]
+[2020-02-27T19:59:08+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000389s ]
+[2020-02-27T19:59:08+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000515s ]
+[2020-02-27T19:59:08+08:00][error] [0]Call to undefined method think\Db::name()
+[2020-02-27T20:00:18+08:00][sql] CONNECT:[ UseTime:0.001406s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:00:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001074s ]
+[2020-02-27T20:00:18+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000383s ]
+[2020-02-27T20:00:18+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000526s ]
+[2020-02-27T20:00:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.073757s ]
+[2020-02-27T20:00:18+08:00][error] [10500]查询表达式错误:EQ
+[2020-02-27T20:03:27+08:00][error] [1045]SQLSTATE[HY000] [1045] Access denied for user 'username'@'localhost' (using password: YES)[D:\web\tpflow\vendor\topthink\think-orm\src\db\PDOConnection.php:554]
+[2020-02-27T20:03:48+08:00][sql] CONNECT:[ UseTime:0.001396s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:03:48+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001212s ]
+[2020-02-27T20:03:48+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000399s ]
+[2020-02-27T20:03:48+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000544s ]
+[2020-02-27T20:03:48+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002291s ]
+[2020-02-27T20:03:48+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:06:40+08:00][sql] CONNECT:[ UseTime:0.001530s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:06:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001173s ]
+[2020-02-27T20:06:40+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000409s ]
+[2020-02-27T20:06:40+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000533s ]
+[2020-02-27T20:06:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.005358s ]
+[2020-02-27T20:06:40+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.102234s ]
+[2020-02-27T20:06:40+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:07:15+08:00][sql] CONNECT:[ UseTime:0.001364s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:07:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001153s ]
+[2020-02-27T20:07:15+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000394s ]
+[2020-02-27T20:07:15+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000530s ]
+[2020-02-27T20:07:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002369s ]
+[2020-02-27T20:07:15+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.001089s ]
+[2020-02-27T20:07:15+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000604s ]
+[2020-02-27T20:07:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.067705s ]
+[2020-02-27T20:07:15+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:07:37+08:00][sql] CONNECT:[ UseTime:0.001410s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:07:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001109s ]
+[2020-02-27T20:07:37+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000398s ]
+[2020-02-27T20:07:37+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000528s ]
+[2020-02-27T20:07:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002185s ]
+[2020-02-27T20:07:37+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000585s ]
+[2020-02-27T20:07:37+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000578s ]
+[2020-02-27T20:07:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.002015s ]
+[2020-02-27T20:07:37+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:07:58+08:00][sql] CONNECT:[ UseTime:0.001964s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:07:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002222s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000690s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000550s ]
+[2020-02-27T20:07:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002242s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000592s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000725s ]
+[2020-02-27T20:07:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.003199s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.139517s ]
+[2020-02-27T20:07:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.028762s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000551s ]
+[2020-02-27T20:07:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.019303s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000956s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000598s ]
+[2020-02-27T20:07:58+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000550s ]
+[2020-02-27T20:07:58+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:09:38+08:00][sql] CONNECT:[ UseTime:0.010179s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:09:38+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001219s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000418s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000535s ]
+[2020-02-27T20:09:38+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002187s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000607s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000646s ]
+[2020-02-27T20:09:38+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.002063s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000703s ]
+[2020-02-27T20:09:38+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001869s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000516s ]
+[2020-02-27T20:09:38+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002000s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000589s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000635s ]
+[2020-02-27T20:09:38+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000572s ]
+[2020-02-27T20:09:38+08:00][error] [10500]查询表达式错误:LT[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:10:22+08:00][sql] CONNECT:[ UseTime:0.010482s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:10:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001145s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000387s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000542s ]
+[2020-02-27T20:10:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002321s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000589s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000569s ]
+[2020-02-27T20:10:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.002101s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000698s ]
+[2020-02-27T20:10:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001891s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000519s ]
+[2020-02-27T20:10:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002153s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000655s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000560s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000554s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000516s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000549s ]
+[2020-02-27T20:10:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001027s ]
+[2020-02-27T20:10:22+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000430s ]
+[2020-02-27T20:10:22+08:00][error] [0]Using $this when not in object context[D:\web\tpflow\app\index\controller\Wf.php:204]
+[2020-02-27T20:11:39+08:00][sql] CONNECT:[ UseTime:0.009877s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:11:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001213s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000410s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000522s ]
+[2020-02-27T20:11:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002131s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000858s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000606s ]
+[2020-02-27T20:11:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.002003s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000702s ]
+[2020-02-27T20:11:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.002358s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000804s ]
+[2020-02-27T20:11:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002129s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000597s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000569s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000540s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000510s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000546s ]
+[2020-02-27T20:11:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001038s ]
+[2020-02-27T20:11:39+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000426s ]
+[2020-02-27T20:14:00+08:00][error] [0]Call to undefined method app\index\Controller\wf::assign()[D:\web\tpflow\app\index\controller\Wf.php:25]
+[2020-02-27T20:17:44+08:00][error] [0]Class 'app\index\Controller\View' not found[D:\web\tpflow\app\index\controller\Wf.php:25]
+[2020-02-27T20:18:19+08:00][sql] CONNECT:[ UseTime:0.001679s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:18:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001475s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000434s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000556s ]
+[2020-02-27T20:18:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.004962s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.001061s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.001388s ]
+[2020-02-27T20:18:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.002430s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000722s ]
+[2020-02-27T20:18:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.002255s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000533s ]
+[2020-02-27T20:18:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002987s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001413s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000948s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.001489s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000563s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000566s ]
+[2020-02-27T20:18:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001041s ]
+[2020-02-27T20:18:19+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000433s ]
+[2020-02-27T20:18:20+08:00][sql] CONNECT:[ UseTime:0.001371s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:18:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001958s ]
+[2020-02-27T20:18:20+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000497s ]
+[2020-02-27T20:18:20+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000685s ]
+[2020-02-27T20:18:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002613s ]
+[2020-02-27T20:18:20+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000510s ]
+[2020-02-27T20:18:22+08:00][sql] CONNECT:[ UseTime:0.001344s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:18:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002283s ]
+[2020-02-27T20:18:22+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000591s ]
+[2020-02-27T20:18:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001910s ]
+[2020-02-27T20:18:22+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000474s ]
+[2020-02-27T20:18:22+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:296]
+[2020-02-27T20:22:41+08:00][sql] CONNECT:[ UseTime:0.010906s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:22:41+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.002142s ]
+[2020-02-27T20:22:41+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000517s ]
+[2020-02-27T20:22:41+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000490s ]
+[2020-02-27T20:22:41+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001139s ]
+[2020-02-27T20:22:41+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000746s ]
+[2020-02-27T20:22:43+08:00][sql] CONNECT:[ UseTime:0.001361s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:22:43+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002247s ]
+[2020-02-27T20:22:43+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000807s ]
+[2020-02-27T20:22:43+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:296]
+[2020-02-27T20:22:50+08:00][sql] CONNECT:[ UseTime:0.001367s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:22:50+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001177s ]
+[2020-02-27T20:22:50+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000574s ]
+[2020-02-27T20:22:50+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:296]
+[2020-02-27T20:22:51+08:00][sql] CONNECT:[ UseTime:0.010614s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:22:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001147s ]
+[2020-02-27T20:22:51+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000561s ]
+[2020-02-27T20:22:51+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:296]
+[2020-02-27T20:23:13+08:00][sql] CONNECT:[ UseTime:0.001707s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:23:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.002046s ]
+[2020-02-27T20:23:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000497s ]
+[2020-02-27T20:23:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000482s ]
+[2020-02-27T20:23:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001272s ]
+[2020-02-27T20:23:13+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000510s ]
+[2020-02-27T20:23:13+08:00][sql] CONNECT:[ UseTime:0.001376s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:23:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001167s ]
+[2020-02-27T20:23:13+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000577s ]
+[2020-02-27T20:23:13+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:297]
+[2020-02-27T20:24:01+08:00][sql] CONNECT:[ UseTime:0.001404s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:01+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001234s ]
+[2020-02-27T20:24:01+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000584s ]
+[2020-02-27T20:24:01+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001297s ]
+[2020-02-27T20:24:01+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000658s ]
+[2020-02-27T20:24:01+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:301]
+[2020-02-27T20:24:18+08:00][sql] CONNECT:[ UseTime:0.010823s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001173s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000397s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000559s ]
+[2020-02-27T20:24:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001221s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000598s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000576s ]
+[2020-02-27T20:24:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001077s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000682s ]
+[2020-02-27T20:24:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000936s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000483s ]
+[2020-02-27T20:24:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001059s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000588s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000575s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000547s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000518s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000551s ]
+[2020-02-27T20:24:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001070s ]
+[2020-02-27T20:24:18+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000424s ]
+[2020-02-27T20:24:20+08:00][sql] CONNECT:[ UseTime:0.001406s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001173s ]
+[2020-02-27T20:24:20+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000572s ]
+[2020-02-27T20:24:20+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:298]
+[2020-02-27T20:24:35+08:00][sql] CONNECT:[ UseTime:0.001368s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001088s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000391s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000527s ]
+[2020-02-27T20:24:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001207s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000583s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000561s ]
+[2020-02-27T20:24:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001056s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000674s ]
+[2020-02-27T20:24:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000911s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000480s ]
+[2020-02-27T20:24:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001032s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000568s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000554s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000534s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000502s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000549s ]
+[2020-02-27T20:24:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001019s ]
+[2020-02-27T20:24:35+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000429s ]
+[2020-02-27T20:24:37+08:00][sql] CONNECT:[ UseTime:0.003074s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001168s ]
+[2020-02-27T20:24:37+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000568s ]
+[2020-02-27T20:24:37+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:298]
+[2020-02-27T20:24:45+08:00][sql] CONNECT:[ UseTime:0.001438s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001382s ]
+[2020-02-27T20:24:45+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000519s ]
+[2020-02-27T20:24:45+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000491s ]
+[2020-02-27T20:24:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001169s ]
+[2020-02-27T20:24:45+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000508s ]
+[2020-02-27T20:24:45+08:00][sql] CONNECT:[ UseTime:0.001347s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:24:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001368s ]
+[2020-02-27T20:24:45+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000598s ]
+[2020-02-27T20:24:45+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\InfoDb.php:297]
+[2020-02-27T20:26:48+08:00][sql] CONNECT:[ UseTime:0.001514s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:26:48+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002153s ]
+[2020-02-27T20:26:48+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000601s ]
+[2020-02-27T20:26:48+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002172s ]
+[2020-02-27T20:26:48+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000639s ]
+[2020-02-27T20:26:48+08:00][error] [0]Call to undefined function action()[D:\web\tpflow\runtime\index\temp\6dbbd95afad94f92bd0aaffadb339e5a.php:69]
+[2020-02-27T20:26:52+08:00][sql] CONNECT:[ UseTime:0.001351s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:26:52+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002942s ]
+[2020-02-27T20:26:52+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000703s ]
+[2020-02-27T20:26:52+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.003055s ]
+[2020-02-27T20:26:52+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000740s ]
+[2020-02-27T20:26:52+08:00][error] [0]Call to undefined function action()[D:\web\tpflow\runtime\index\temp\6dbbd95afad94f92bd0aaffadb339e5a.php:69]
+[2020-02-27T20:28:26+08:00][sql] CONNECT:[ UseTime:0.009882s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:28:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002061s ]
+[2020-02-27T20:28:26+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000571s ]
+[2020-02-27T20:28:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001247s ]
+[2020-02-27T20:28:26+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000829s ]
+[2020-02-27T20:28:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.004506s ]
+[2020-02-27T20:28:26+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001129s ]
+[2020-02-27T20:28:27+08:00][sql] CONNECT:[ UseTime:0.001357s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:28:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001249s ]
+[2020-02-27T20:28:27+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000582s ]
+[2020-02-27T20:28:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001033s ]
+[2020-02-27T20:28:27+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000463s ]
+[2020-02-27T20:28:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002039s ]
+[2020-02-27T20:28:27+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000643s ]
+[2020-02-27T20:28:30+08:00][sql] CONNECT:[ UseTime:0.002063s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:28:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001286s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000579s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000612s ]
+[2020-02-27T20:28:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.003352s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001185s ]
+[2020-02-27T20:28:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.003521s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000537s ]
+[2020-02-27T20:28:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002700s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001043s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000838s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.001353s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000718s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.001008s ]
+[2020-02-27T20:28:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001433s ]
+[2020-02-27T20:28:30+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000580s ]
+[2020-02-27T20:28:30+08:00][error] [0]Call to undefined function action()[D:\web\tpflow\runtime\index\temp\382338859ba3ea51dbc23bac7bd0b3fd.php:144]
+[2020-02-27T20:29:27+08:00][sql] CONNECT:[ UseTime:0.001741s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:29:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001438s ]
+[2020-02-27T20:29:27+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000721s ]
+[2020-02-27T20:29:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001942s ]
+[2020-02-27T20:29:27+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000474s ]
+[2020-02-27T20:29:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002499s ]
+[2020-02-27T20:29:27+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000762s ]
+[2020-02-27T20:29:29+08:00][sql] CONNECT:[ UseTime:0.001726s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:29:29+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001997s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000591s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000582s ]
+[2020-02-27T20:29:29+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.003399s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001250s ]
+[2020-02-27T20:29:29+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.003583s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000566s ]
+[2020-02-27T20:29:29+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002028s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000645s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000581s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000581s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000569s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.001421s ]
+[2020-02-27T20:29:29+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001658s ]
+[2020-02-27T20:29:29+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000701s ]
+[2020-02-27T20:29:29+08:00][error] [8192]Non-static method app\index\Controller\wf::wflogs() should not be called statically[D:\web\tpflow\runtime\index\temp\382338859ba3ea51dbc23bac7bd0b3fd.php:144]
+[2020-02-27T20:29:47+08:00][sql] CONNECT:[ UseTime:0.001565s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:29:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001161s ]
+[2020-02-27T20:29:47+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000569s ]
+[2020-02-27T20:29:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001238s ]
+[2020-02-27T20:29:47+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000537s ]
+[2020-02-27T20:29:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002191s ]
+[2020-02-27T20:29:47+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000935s ]
+[2020-02-27T20:29:49+08:00][sql] CONNECT:[ UseTime:0.001378s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:29:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001599s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.001182s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.001065s ]
+[2020-02-27T20:29:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001863s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.000929s ]
+[2020-02-27T20:29:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.006860s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000685s ]
+[2020-02-27T20:29:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.003596s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001063s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001600s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000677s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000524s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000570s ]
+[2020-02-27T20:29:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001522s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000468s ]
+[2020-02-27T20:29:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.084031s ]
+[2020-02-27T20:29:49+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000915s ]
+[2020-02-27T20:29:49+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\ProcessDb.php:215]
+[2020-02-27T20:30:35+08:00][sql] CONNECT:[ UseTime:0.001415s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:30:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001459s ]
+[2020-02-27T20:30:35+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000601s ]
+[2020-02-27T20:30:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001009s ]
+[2020-02-27T20:30:35+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000462s ]
+[2020-02-27T20:30:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001055s ]
+[2020-02-27T20:30:35+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000620s ]
+[2020-02-27T20:30:36+08:00][sql] CONNECT:[ UseTime:0.001707s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:30:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001560s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000595s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.001440s ]
+[2020-02-27T20:30:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001662s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001874s ]
+[2020-02-27T20:30:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001536s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000498s ]
+[2020-02-27T20:30:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001080s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000595s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000565s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000553s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000502s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000571s ]
+[2020-02-27T20:30:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001767s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000918s ]
+[2020-02-27T20:30:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.003705s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000585s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000484s ]
+[2020-02-27T20:30:36+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000455s ]
+[2020-02-27T20:30:36+08:00][error] [0]Call to undefined function app\index\controller\db()[D:\web\tpflow\app\index\controller\News.php:52]
+[2020-02-27T20:31:11+08:00][sql] CONNECT:[ UseTime:0.001448s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:31:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001344s ]
+[2020-02-27T20:31:11+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000597s ]
+[2020-02-27T20:31:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001064s ]
+[2020-02-27T20:31:11+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000468s ]
+[2020-02-27T20:31:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001085s ]
+[2020-02-27T20:31:11+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000640s ]
+[2020-02-27T20:31:12+08:00][sql] CONNECT:[ UseTime:0.001856s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002970s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.001034s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000845s ]
+[2020-02-27T20:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001538s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.002527s ]
+[2020-02-27T20:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001066s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000496s ]
+[2020-02-27T20:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001062s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000576s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000565s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000554s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000702s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.001263s ]
+[2020-02-27T20:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002188s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000964s ]
+[2020-02-27T20:31:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.003902s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000744s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000477s ]
+[2020-02-27T20:31:12+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000436s ]
+[2020-02-27T20:31:12+08:00][error] [0]syntax error, unexpected ':'[D:\web\tpflow\app\index\controller\News.php:52]
+[2020-02-27T20:31:20+08:00][sql] CONNECT:[ UseTime:0.001370s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:31:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001159s ]
+[2020-02-27T20:31:20+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000622s ]
+[2020-02-27T20:31:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001428s ]
+[2020-02-27T20:31:20+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000442s ]
+[2020-02-27T20:31:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001191s ]
+[2020-02-27T20:31:20+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000629s ]
+[2020-02-27T20:31:21+08:00][sql] CONNECT:[ UseTime:0.011682s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001454s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000700s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.000838s ]
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.003455s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001076s ]
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001429s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001302s ]
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.003467s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001605s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000875s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000577s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000513s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000571s ]
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001151s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000518s ]
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.002389s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000585s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000483s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001121s ]
+[2020-02-27T20:31:21+08:00][sql] CONNECT:[ UseTime:0.002946s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:31:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002267s ]
+[2020-02-27T20:31:21+08:00][sql] SELECT * FROM `wf_news` WHERE  `id` = 3?sup=1 LIMIT 1 [ RunTime:0.000603s ]
+[2020-02-27T20:31:21+08:00][error] [0]Call to undefined function get_commonval()[D:\web\tpflow\runtime\index\temp\47790f20c2fc7579af215a41fa2c7981.php:43]
+[2020-02-27T20:32:13+08:00][sql] CONNECT:[ UseTime:0.001543s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:32:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001432s ]
+[2020-02-27T20:32:13+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000604s ]
+[2020-02-27T20:32:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001955s ]
+[2020-02-27T20:32:13+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000507s ]
+[2020-02-27T20:32:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001105s ]
+[2020-02-27T20:32:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000624s ]
+[2020-02-27T20:32:14+08:00][sql] CONNECT:[ UseTime:0.001462s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001775s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000740s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.001122s ]
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.003190s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001976s ]
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.002188s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001028s ]
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001629s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001887s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001597s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000602s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000613s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000650s ]
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001048s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000437s ]
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.002662s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000562s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.001141s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000827s ]
+[2020-02-27T20:32:14+08:00][sql] CONNECT:[ UseTime:0.010573s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:32:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001164s ]
+[2020-02-27T20:32:14+08:00][sql] SELECT * FROM `wf_news` WHERE  `id` = 3?sup=1 LIMIT 1 [ RunTime:0.001037s ]
+[2020-02-27T20:32:14+08:00][error] [0]Class 'Db' not found[D:\web\tpflow\app\common.php:20]
+[2020-02-27T20:32:33+08:00][sql] CONNECT:[ UseTime:0.001382s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:32:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001510s ]
+[2020-02-27T20:32:33+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000962s ]
+[2020-02-27T20:32:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001140s ]
+[2020-02-27T20:32:33+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000529s ]
+[2020-02-27T20:32:33+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001123s ]
+[2020-02-27T20:32:33+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000629s ]
+[2020-02-27T20:32:35+08:00][sql] CONNECT:[ UseTime:0.002809s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001763s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000875s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.001104s ]
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001871s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001618s ]
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001241s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000473s ]
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001202s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000786s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001282s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000698s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.001057s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000873s ]
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.003223s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.001281s ]
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.005602s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000855s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000748s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000811s ]
+[2020-02-27T20:32:35+08:00][sql] CONNECT:[ UseTime:0.001344s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001846s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT * FROM `wf_news` WHERE  `id` = 3?sup=1 LIMIT 1 [ RunTime:0.000888s ]
+[2020-02-27T20:32:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_news_type` [ RunTime:0.001639s ]
+[2020-02-27T20:32:35+08:00][sql] SELECT `type` FROM `wf_news_type` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000551s ]
+[2020-02-27T20:32:35+08:00][error] [0]Call to undefined function action()[D:\web\tpflow\runtime\index\temp\47790f20c2fc7579af215a41fa2c7981.php:49]
+[2020-02-27T20:33:13+08:00][sql] CONNECT:[ UseTime:0.002012s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001188s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000582s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001378s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000503s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001172s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000626s ]
+[2020-02-27T20:33:13+08:00][sql] CONNECT:[ UseTime:0.002775s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001846s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000925s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_run` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 LIMIT 1 [ RunTime:0.001757s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001678s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `run_id` = 3  AND `run_flow` = 1  AND `run_flow_process` = 2  AND `status` = 0 [ RunTime:0.001803s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001148s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000493s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001212s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT `id`,`process_name`,`process_type`,`process_to`,`auto_person`,`auto_sponsor_ids`,`auto_role_ids`,`auto_sponsor_text`,`auto_role_text`,`range_user_ids`,`range_user_text`,`is_sing`,`is_back`,`wf_mode`,`wf_action`,`work_ids`,`work_text`,`flow_id` FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000585s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000614s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_run_process` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000581s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT `run_flow_process` FROM `wf_run_process` WHERE  `run_flow` = 1  AND `run_id` = 3  AND `id` < 6 [ RunTime:0.000505s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000570s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001645s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT id as id,username as username FROM `wf_user` [ RunTime:0.000547s ]
+[2020-02-27T20:33:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.006708s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3?sup=1  AND `from_table` = 'news' [ RunTime:0.000674s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000679s ]
+[2020-02-27T20:33:13+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000601s ]
+[2020-02-27T20:33:14+08:00][sql] CONNECT:[ UseTime:0.001592s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001382s ]
+[2020-02-27T20:33:14+08:00][sql] SELECT * FROM `wf_news` WHERE  `id` = 3?sup=1 LIMIT 1 [ RunTime:0.000578s ]
+[2020-02-27T20:33:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_news_type` [ RunTime:0.002694s ]
+[2020-02-27T20:33:14+08:00][sql] SELECT `type` FROM `wf_news_type` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000749s ]
+[2020-02-27T20:33:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_log` [ RunTime:0.001334s ]
+[2020-02-27T20:33:14+08:00][sql] SELECT * FROM `wf_run_log` WHERE  `from_id` = 3  AND `from_table` = 'news' [ RunTime:0.001387s ]
+[2020-02-27T20:33:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001224s ]
+[2020-02-27T20:33:14+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000470s ]
+[2020-02-27T20:33:14+08:00][sql] SELECT `username` FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000452s ]
+[2020-02-27T20:33:23+08:00][sql] CONNECT:[ UseTime:0.001364s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001176s ]
+[2020-02-27T20:33:23+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000572s ]
+[2020-02-27T20:33:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001033s ]
+[2020-02-27T20:33:23+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000458s ]
+[2020-02-27T20:33:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001077s ]
+[2020-02-27T20:33:23+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000628s ]
+[2020-02-27T20:33:28+08:00][sql] CONNECT:[ UseTime:0.001380s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:28+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001129s ]
+[2020-02-27T20:33:28+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000646s ]
+[2020-02-27T20:33:28+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000894s ]
+[2020-02-27T20:33:28+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002655s ]
+[2020-02-27T20:33:28+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000931s ]
+[2020-02-27T20:33:31+08:00][sql] CONNECT:[ UseTime:0.001440s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001293s ]
+[2020-02-27T20:33:31+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000579s ]
+[2020-02-27T20:33:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001120s ]
+[2020-02-27T20:33:31+08:00][sql] SELECT `flow_name` FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000476s ]
+[2020-02-27T20:33:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001078s ]
+[2020-02-27T20:33:31+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000612s ]
+[2020-02-27T20:33:38+08:00][sql] CONNECT:[ UseTime:0.001341s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:33:38+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001145s ]
+[2020-02-27T20:33:38+08:00][sql] SELECT * FROM `wf_run` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000568s ]
+[2020-02-27T20:33:38+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:34:42+08:00][sql] CONNECT:[ UseTime:0.001449s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:34:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001227s ]
+[2020-02-27T20:34:42+08:00][sql] SELECT * FROM `wf_run` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000599s ]
+[2020-02-27T20:34:42+08:00][sql] UPDATE `wf_run`  SET `status` = 1 , `endtime` = 1582806882  WHERE  `id` = 3 [ RunTime:0.152637s ]
+[2020-02-27T20:34:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_run_process` [ RunTime:0.001157s ]
+[2020-02-27T20:34:42+08:00][sql] UPDATE `wf_run_process`  SET `status` = 2 , `remark` = '编号：2的超级管理员终止了本流程！' , `bl_time` = 1582806882  WHERE  `id` = 2 [ RunTime:0.027462s ]
+[2020-02-27T20:34:42+08:00][error] [8]未定义数组索引: run_process[D:\web\tpflow\extend\workflow\db\WorkDb.php:27]
+[2020-02-27T20:34:50+08:00][sql] CONNECT:[ UseTime:0.003161s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:34:50+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001207s ]
+[2020-02-27T20:34:50+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000576s ]
+[2020-02-27T20:34:53+08:00][sql] CONNECT:[ UseTime:0.002878s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:34:53+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001239s ]
+[2020-02-27T20:34:53+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000499s ]
+[2020-02-27T20:34:53+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000508s ]
+[2020-02-27T20:34:53+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001190s ]
+[2020-02-27T20:34:53+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000503s ]
+[2020-02-27T20:34:54+08:00][sql] CONNECT:[ UseTime:0.001530s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:34:54+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001055s ]
+[2020-02-27T20:34:54+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000527s ]
+[2020-02-27T20:34:54+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001380s ]
+[2020-02-27T20:34:54+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000950s ]
+[2020-02-27T20:34:57+08:00][sql] CONNECT:[ UseTime:0.001352s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:34:57+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001207s ]
+[2020-02-27T20:34:57+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000667s ]
+[2020-02-27T20:34:57+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000943s ]
+[2020-02-27T20:34:57+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000496s ]
+[2020-02-27T20:34:57+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` = 2  AND `is_del` = 0 [ RunTime:0.000476s ]
+[2020-02-27T20:34:57+08:00][error] [8]Indirect modification of overloaded element of think\Collection has no effect[D:\web\tpflow\extend\workflow\db\FlowDb.php:384]
+[2020-02-27T20:35:45+08:00][sql] CONNECT:[ UseTime:0.001821s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:35:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001302s ]
+[2020-02-27T20:35:45+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000695s ]
+[2020-02-27T20:35:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000955s ]
+[2020-02-27T20:35:45+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000492s ]
+[2020-02-27T20:35:45+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` = 2  AND `is_del` = 0 [ RunTime:0.000479s ]
+[2020-02-27T20:35:45+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000525s ]
+[2020-02-27T20:35:45+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000939s ]
+[2020-02-27T20:35:52+08:00][sql] CONNECT:[ UseTime:0.002031s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:35:52+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001496s ]
+[2020-02-27T20:35:52+08:00][error] [10500]method not exist:think\db\Query->setField[D:\web\tpflow\vendor\topthink\think-orm\src\db\BaseQuery.php:117]
+[2020-02-27T20:36:08+08:00][sql] CONNECT:[ UseTime:0.001950s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:36:08+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001544s ]
+[2020-02-27T20:36:08+08:00][error] [10500]method not exist:think\db\Query->setField[D:\web\tpflow\vendor\topthink\think-orm\src\db\BaseQuery.php:117]
+[2020-02-27T20:37:20+08:00][sql] CONNECT:[ UseTime:0.002776s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:37:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002655s ]
+[2020-02-27T20:37:20+08:00][sql] UPDATE `wf_flow_process`  SET `process_name` = '步骤' , `process_type` = 'is_one' , `auto_person` = 4 , `wf_mode` = 0 , `wf_action` = 'view' , `auto_sponsor_ids` = '1' , `auto_sponsor_text` = '员工' , `auto_role_ids` = '' , `auto_role_text` = '' , `range_user_ids` = '' , `range_user_text` = '' , `work_text` = '' , `work_ids` = '1' , `work_msg` = '' , `work_sql` = '' , `is_sing` = 1 , `is_back` = 1 , `out_condition` = '[]' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}'  WHERE  `id` = 3 [ RunTime:0.082952s ]
+[2020-02-27T20:37:21+08:00][sql] CONNECT:[ UseTime:0.001355s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:37:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001084s ]
+[2020-02-27T20:37:21+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000537s ]
+[2020-02-27T20:37:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001233s ]
+[2020-02-27T20:37:21+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000687s ]
+[2020-02-27T20:37:24+08:00][sql] CONNECT:[ UseTime:0.003163s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:37:24+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001251s ]
+[2020-02-27T20:37:24+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000672s ]
+[2020-02-27T20:37:24+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000981s ]
+[2020-02-27T20:37:24+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000495s ]
+[2020-02-27T20:37:24+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` = 2  AND `is_del` = 0 [ RunTime:0.000490s ]
+[2020-02-27T20:37:24+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000520s ]
+[2020-02-27T20:37:24+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000926s ]
+[2020-02-27T20:38:13+08:00][sql] CONNECT:[ UseTime:0.001439s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:38:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001076s ]
+[2020-02-27T20:38:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000528s ]
+[2020-02-27T20:38:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001094s ]
+[2020-02-27T20:38:13+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.001196s ]
+[2020-02-27T20:38:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000675s ]
+[2020-02-27T20:38:13+08:00][sql] INSERT INTO `wf_flow_process` SET `flow_id` = 1 , `setleft` = 100 , `settop` = 106 , `process_type` = 'is_step' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}' [ RunTime:0.366275s ]
+[2020-02-27T20:38:13+08:00][sql] CONNECT:[ UseTime:0.001348s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:38:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001070s ]
+[2020-02-27T20:38:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000535s ]
+[2020-02-27T20:38:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001375s ]
+[2020-02-27T20:38:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000694s ]
+[2020-02-27T20:38:17+08:00][sql] CONNECT:[ UseTime:0.001376s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:38:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001238s ]
+[2020-02-27T20:38:17+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000523s ]
+[2020-02-27T20:38:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001892s ]
+[2020-02-27T20:38:17+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:38:23+08:00][sql] CONNECT:[ UseTime:0.001342s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:38:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001120s ]
+[2020-02-27T20:38:23+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000514s ]
+[2020-02-27T20:38:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001092s ]
+[2020-02-27T20:38:23+08:00][error] [10500]查询表达式错误:EQ[D:\web\tpflow\vendor\topthink\think-orm\src\db\Builder.php:530]
+[2020-02-27T20:40:51+08:00][sql] CONNECT:[ UseTime:0.010649s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:40:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001236s ]
+[2020-02-27T20:40:51+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000556s ]
+[2020-02-27T20:40:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001293s ]
+[2020-02-27T20:40:51+08:00][sql] UPDATE `wf_flow_process`  SET `setleft` = 306 , `settop` = 134 , `process_to` = '' , `updatetime` = 1582807251  WHERE  `id` = 2  AND `flow_id` = 1 [ RunTime:0.091263s ]
+[2020-02-27T20:40:51+08:00][sql] UPDATE `wf_flow_process`  SET `setleft` = 70 , `settop` = 76 , `process_to` = '2,4' , `updatetime` = 1582807251  WHERE  `id` = 3  AND `flow_id` = 1 [ RunTime:0.047758s ]
+[2020-02-27T20:40:51+08:00][sql] UPDATE `wf_flow_process`  SET `setleft` = 216 , `settop` = 312 , `process_to` = '' , `updatetime` = 1582807251  WHERE  `id` = 4  AND `flow_id` = 1 [ RunTime:0.029014s ]
+[2020-02-27T20:40:55+08:00][sql] CONNECT:[ UseTime:0.001675s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:40:55+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001215s ]
+[2020-02-27T20:40:55+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000664s ]
+[2020-02-27T20:40:55+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000936s ]
+[2020-02-27T20:40:55+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000490s ]
+[2020-02-27T20:40:55+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.026500s ]
+[2020-02-27T20:40:55+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000539s ]
+[2020-02-27T20:40:55+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000901s ]
+[2020-02-27T20:40:58+08:00][sql] CONNECT:[ UseTime:0.010621s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:40:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001221s ]
+[2020-02-27T20:40:58+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 4 LIMIT 1 [ RunTime:0.000656s ]
+[2020-02-27T20:40:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001043s ]
+[2020-02-27T20:40:58+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000476s ]
+[2020-02-27T20:40:58+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` = 0  AND `is_del` = 0 [ RunTime:0.000439s ]
+[2020-02-27T20:40:58+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000508s ]
+[2020-02-27T20:40:58+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000881s ]
+[2020-02-27T20:41:12+08:00][sql] CONNECT:[ UseTime:0.001347s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:41:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001051s ]
+[2020-02-27T20:41:12+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000522s ]
+[2020-02-27T20:41:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002113s ]
+[2020-02-27T20:41:12+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000712s ]
+[2020-02-27T20:41:19+08:00][sql] CONNECT:[ UseTime:0.001426s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:41:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.002581s ]
+[2020-02-27T20:41:19+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000682s ]
+[2020-02-27T20:41:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000955s ]
+[2020-02-27T20:41:19+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000507s ]
+[2020-02-27T20:41:19+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000559s ]
+[2020-02-27T20:41:19+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000558s ]
+[2020-02-27T20:41:19+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000883s ]
+[2020-02-27T20:42:32+08:00][sql] CONNECT:[ UseTime:0.001438s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:42:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001263s ]
+[2020-02-27T20:42:32+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000668s ]
+[2020-02-27T20:42:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001069s ]
+[2020-02-27T20:42:32+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000523s ]
+[2020-02-27T20:42:32+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000512s ]
+[2020-02-27T20:42:32+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000511s ]
+[2020-02-27T20:42:32+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.001106s ]
+[2020-02-27T20:43:04+08:00][sql] CONNECT:[ UseTime:0.003085s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:43:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001497s ]
+[2020-02-27T20:43:04+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000730s ]
+[2020-02-27T20:43:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000986s ]
+[2020-02-27T20:43:04+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000500s ]
+[2020-02-27T20:43:04+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000520s ]
+[2020-02-27T20:43:04+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000531s ]
+[2020-02-27T20:43:04+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000920s ]
+[2020-02-27T20:43:18+08:00][sql] CONNECT:[ UseTime:0.001381s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:43:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001475s ]
+[2020-02-27T20:43:18+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000683s ]
+[2020-02-27T20:43:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000990s ]
+[2020-02-27T20:43:18+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000485s ]
+[2020-02-27T20:43:18+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000504s ]
+[2020-02-27T20:43:18+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000517s ]
+[2020-02-27T20:43:18+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000880s ]
+[2020-02-27T20:43:42+08:00][sql] CONNECT:[ UseTime:0.001385s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:43:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001251s ]
+[2020-02-27T20:43:42+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000720s ]
+[2020-02-27T20:43:42+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001762s ]
+[2020-02-27T20:43:42+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000499s ]
+[2020-02-27T20:43:42+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000512s ]
+[2020-02-27T20:43:42+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000530s ]
+[2020-02-27T20:43:42+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000888s ]
+[2020-02-27T20:44:13+08:00][sql] CONNECT:[ UseTime:0.001766s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:44:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001254s ]
+[2020-02-27T20:44:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000679s ]
+[2020-02-27T20:44:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000931s ]
+[2020-02-27T20:44:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000481s ]
+[2020-02-27T20:44:13+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000507s ]
+[2020-02-27T20:44:13+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000512s ]
+[2020-02-27T20:44:13+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000882s ]
+[2020-02-27T20:44:45+08:00][sql] CONNECT:[ UseTime:0.001422s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:44:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001259s ]
+[2020-02-27T20:44:45+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000673s ]
+[2020-02-27T20:44:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000955s ]
+[2020-02-27T20:44:45+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000502s ]
+[2020-02-27T20:44:45+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000537s ]
+[2020-02-27T20:44:45+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000535s ]
+[2020-02-27T20:44:45+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000904s ]
+[2020-02-27T20:46:06+08:00][sql] CONNECT:[ UseTime:0.001424s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:46:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001489s ]
+[2020-02-27T20:46:06+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000681s ]
+[2020-02-27T20:46:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000938s ]
+[2020-02-27T20:46:06+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000483s ]
+[2020-02-27T20:46:06+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000546s ]
+[2020-02-27T20:46:06+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000517s ]
+[2020-02-27T20:46:06+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000988s ]
+[2020-02-27T20:49:54+08:00][sql] CONNECT:[ UseTime:0.010675s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:49:54+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001677s ]
+[2020-02-27T20:49:54+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000785s ]
+[2020-02-27T20:49:54+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001087s ]
+[2020-02-27T20:49:54+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000521s ]
+[2020-02-27T20:49:54+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000528s ]
+[2020-02-27T20:49:54+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000511s ]
+[2020-02-27T20:49:54+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.000999s ]
+[2020-02-27T20:50:00+08:00][sql] CONNECT:[ UseTime:0.010818s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:50:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001254s ]
+[2020-02-27T20:50:00+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000669s ]
+[2020-02-27T20:50:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000942s ]
+[2020-02-27T20:50:00+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000486s ]
+[2020-02-27T20:50:00+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000509s ]
+[2020-02-27T20:50:00+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000506s ]
+[2020-02-27T20:50:00+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.001005s ]
+[2020-02-27T20:50:05+08:00][sql] CONNECT:[ UseTime:0.001478s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:50:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001269s ]
+[2020-02-27T20:50:05+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000684s ]
+[2020-02-27T20:50:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001074s ]
+[2020-02-27T20:50:05+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000521s ]
+[2020-02-27T20:50:05+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000514s ]
+[2020-02-27T20:50:05+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000529s ]
+[2020-02-27T20:50:05+08:00][error] [8]未定义数组索引: prefix[D:\web\tpflow\extend\workflow\db\FlowDb.php:528]
+[2020-02-27T20:50:18+08:00][sql] CONNECT:[ UseTime:0.002546s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:50:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001283s ]
+[2020-02-27T20:50:18+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000680s ]
+[2020-02-27T20:50:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000974s ]
+[2020-02-27T20:50:18+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000499s ]
+[2020-02-27T20:50:18+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000525s ]
+[2020-02-27T20:50:18+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000541s ]
+[2020-02-27T20:50:18+08:00][error] [8]未定义数组索引: database[D:\web\tpflow\extend\workflow\db\FlowDb.php:527]
+[2020-02-27T20:50:34+08:00][sql] CONNECT:[ UseTime:0.001392s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:50:34+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001253s ]
+[2020-02-27T20:50:34+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000676s ]
+[2020-02-27T20:50:34+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000929s ]
+[2020-02-27T20:50:34+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000476s ]
+[2020-02-27T20:50:34+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000517s ]
+[2020-02-27T20:50:34+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000514s ]
+[2020-02-27T20:50:34+08:00][error] [8]未定义数组索引: database[D:\web\tpflow\extend\workflow\db\FlowDb.php:527]
+[2020-02-27T20:51:13+08:00][sql] CONNECT:[ UseTime:0.001489s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:51:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001221s ]
+[2020-02-27T20:51:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000665s ]
+[2020-02-27T20:51:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001054s ]
+[2020-02-27T20:51:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000514s ]
+[2020-02-27T20:51:13+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000518s ]
+[2020-02-27T20:51:13+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000515s ]
+[2020-02-27T20:51:13+08:00][error] [8]未定义数组索引: database[D:\web\tpflow\extend\workflow\db\FlowDb.php:527]
+[2020-02-27T20:51:26+08:00][sql] CONNECT:[ UseTime:0.001403s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:51:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001349s ]
+[2020-02-27T20:51:26+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000683s ]
+[2020-02-27T20:51:26+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000963s ]
+[2020-02-27T20:51:26+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000499s ]
+[2020-02-27T20:51:26+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000529s ]
+[2020-02-27T20:51:26+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000529s ]
+[2020-02-27T20:51:26+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'news' AND table_schema = [ RunTime:0.001226s ]
+[2020-02-27T20:51:37+08:00][sql] CONNECT:[ UseTime:0.001391s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:51:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001463s ]
+[2020-02-27T20:51:37+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000677s ]
+[2020-02-27T20:51:37+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000958s ]
+[2020-02-27T20:51:37+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000498s ]
+[2020-02-27T20:51:37+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000515s ]
+[2020-02-27T20:51:37+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000523s ]
+[2020-02-27T20:51:37+08:00][error] [8]未定义数组索引: database[D:\web\tpflow\extend\workflow\db\FlowDb.php:527]
+[2020-02-27T20:52:04+08:00][sql] CONNECT:[ UseTime:0.001329s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:52:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001267s ]
+[2020-02-27T20:52:04+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000675s ]
+[2020-02-27T20:52:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000949s ]
+[2020-02-27T20:52:04+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000485s ]
+[2020-02-27T20:52:04+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000513s ]
+[2020-02-27T20:52:04+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000540s ]
+[2020-02-27T20:52:04+08:00][error] [2]Illegal string offset 'database'[D:\web\tpflow\extend\workflow\db\FlowDb.php:527]
+[2020-02-27T20:52:13+08:00][sql] CONNECT:[ UseTime:0.001435s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:52:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001228s ]
+[2020-02-27T20:52:13+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000662s ]
+[2020-02-27T20:52:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000932s ]
+[2020-02-27T20:52:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000493s ]
+[2020-02-27T20:52:13+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000519s ]
+[2020-02-27T20:52:13+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000515s ]
+[2020-02-27T20:52:13+08:00][error] [2]Illegal string offset 'database'[D:\web\tpflow\extend\workflow\db\FlowDb.php:527]
+[2020-02-27T20:53:00+08:00][sql] CONNECT:[ UseTime:0.001383s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001449s ]
+[2020-02-27T20:53:00+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000791s ]
+[2020-02-27T20:53:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001412s ]
+[2020-02-27T20:53:00+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000536s ]
+[2020-02-27T20:53:00+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000510s ]
+[2020-02-27T20:53:00+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000522s ]
+[2020-02-27T20:53:00+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'wf_news' AND table_schema = 'tpflow' [ RunTime:0.001119s ]
+[2020-02-27T20:53:17+08:00][sql] CONNECT:[ UseTime:0.001367s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001263s ]
+[2020-02-27T20:53:17+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000672s ]
+[2020-02-27T20:53:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000966s ]
+[2020-02-27T20:53:17+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000502s ]
+[2020-02-27T20:53:17+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000517s ]
+[2020-02-27T20:53:17+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000652s ]
+[2020-02-27T20:53:17+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'wf_news' AND table_schema = 'tpflow' [ RunTime:0.001163s ]
+[2020-02-27T20:53:28+08:00][sql] CONNECT:[ UseTime:0.001386s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:28+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001249s ]
+[2020-02-27T20:53:28+08:00][sql] UPDATE `wf_flow_process`  SET `process_name` = '步骤' , `process_type` = 'is_one' , `auto_person` = 4 , `wf_mode` = 1 , `wf_action` = 'view' , `auto_sponsor_ids` = '1' , `auto_sponsor_text` = '员工' , `auto_role_ids` = '' , `auto_role_text` = '' , `range_user_ids` = '' , `range_user_text` = '' , `work_text` = '' , `work_ids` = '1' , `work_msg` = '' , `work_sql` = '' , `is_sing` = 1 , `is_back` = 1 , `out_condition` = '{\"2\":{\"condition\":[\"id= \'1\'\"]},\"4\":{\"condition\":[\"id= \'2\'\"]}}' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}'  WHERE  `id` = 3 [ RunTime:0.090427s ]
+[2020-02-27T20:53:30+08:00][sql] CONNECT:[ UseTime:0.001872s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.025454s ]
+[2020-02-27T20:53:30+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000757s ]
+[2020-02-27T20:53:30+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001817s ]
+[2020-02-27T20:53:30+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000845s ]
+[2020-02-27T20:53:31+08:00][sql] CONNECT:[ UseTime:0.001352s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001253s ]
+[2020-02-27T20:53:31+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000670s ]
+[2020-02-27T20:53:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000936s ]
+[2020-02-27T20:53:31+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000482s ]
+[2020-02-27T20:53:31+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` IN (2,4)  AND `is_del` = 0 [ RunTime:0.000513s ]
+[2020-02-27T20:53:31+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000898s ]
+[2020-02-27T20:53:31+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'wf_news' AND table_schema = 'tpflow' [ RunTime:0.001330s ]
+[2020-02-27T20:53:43+08:00][sql] CONNECT:[ UseTime:0.001372s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:43+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001308s ]
+[2020-02-27T20:53:43+08:00][sql] UPDATE `wf_flow_process`  SET `process_name` = '步骤' , `process_type` = 'is_one' , `auto_person` = 4 , `wf_mode` = 1 , `wf_action` = 'view' , `auto_sponsor_ids` = '1' , `auto_sponsor_text` = '员工' , `auto_role_ids` = '' , `auto_role_text` = '' , `range_user_ids` = '' , `range_user_text` = '' , `work_text` = '' , `work_ids` = '1' , `work_msg` = '' , `work_sql` = '' , `is_sing` = 1 , `is_back` = 1 , `out_condition` = '{\"2\":{\"condition\":[\"id= \'1\'  AND\",\"add_time= \'3\'\"]},\"4\":{\"condition\":[\"id= \'2\'\"]}}' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}'  WHERE  `id` = 3 [ RunTime:0.093561s ]
+[2020-02-27T20:53:45+08:00][sql] CONNECT:[ UseTime:0.001626s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001091s ]
+[2020-02-27T20:53:45+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000518s ]
+[2020-02-27T20:53:45+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001827s ]
+[2020-02-27T20:53:45+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000707s ]
+[2020-02-27T20:53:56+08:00][sql] CONNECT:[ UseTime:0.001348s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:53:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001083s ]
+[2020-02-27T20:53:56+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000527s ]
+[2020-02-27T20:53:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001255s ]
+[2020-02-27T20:53:56+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.000679s ]
+[2020-02-27T20:53:56+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow_process` WHERE  `flow_id` = 1  AND `process_type` = 'is_one' [ RunTime:0.000632s ]
+[2020-02-27T20:54:02+08:00][sql] CONNECT:[ UseTime:0.001341s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:02+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001219s ]
+[2020-02-27T20:54:02+08:00][sql] DELETE FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.113522s ]
+[2020-02-27T20:54:02+08:00][sql] CONNECT:[ UseTime:0.001376s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:02+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001168s ]
+[2020-02-27T20:54:02+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000530s ]
+[2020-02-27T20:54:02+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001196s ]
+[2020-02-27T20:54:02+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000644s ]
+[2020-02-27T20:54:04+08:00][sql] CONNECT:[ UseTime:0.001544s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001175s ]
+[2020-02-27T20:54:04+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000531s ]
+[2020-02-27T20:54:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001253s ]
+[2020-02-27T20:54:04+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.000643s ]
+[2020-02-27T20:54:09+08:00][sql] CONNECT:[ UseTime:0.003163s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001404s ]
+[2020-02-27T20:54:09+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000563s ]
+[2020-02-27T20:54:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001287s ]
+[2020-02-27T20:54:09+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.000462s ]
+[2020-02-27T20:54:09+08:00][sql] INSERT INTO `wf_flow_process` SET `flow_id` = 1 , `setleft` = 100 , `settop` = 100 , `process_type` = 'is_one' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}' [ RunTime:0.083165s ]
+[2020-02-27T20:54:09+08:00][sql] CONNECT:[ UseTime:0.001394s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001145s ]
+[2020-02-27T20:54:09+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000541s ]
+[2020-02-27T20:54:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001258s ]
+[2020-02-27T20:54:09+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000686s ]
+[2020-02-27T20:54:11+08:00][sql] CONNECT:[ UseTime:0.001571s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001063s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000541s ]
+[2020-02-27T20:54:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001280s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.000491s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000625s ]
+[2020-02-27T20:54:11+08:00][sql] INSERT INTO `wf_flow_process` SET `flow_id` = 1 , `setleft` = 130 , `settop` = 130 , `process_type` = 'is_step' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}' [ RunTime:0.120835s ]
+[2020-02-27T20:54:11+08:00][sql] CONNECT:[ UseTime:0.001353s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001084s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000526s ]
+[2020-02-27T20:54:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001224s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000679s ]
+[2020-02-27T20:54:11+08:00][sql] CONNECT:[ UseTime:0.003042s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.002469s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000542s ]
+[2020-02-27T20:54:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001323s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow_process` WHERE  `flow_id` = 1 [ RunTime:0.000598s ]
+[2020-02-27T20:54:11+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000893s ]
+[2020-02-27T20:54:11+08:00][sql] INSERT INTO `wf_flow_process` SET `flow_id` = 1 , `setleft` = 160 , `settop` = 160 , `process_type` = 'is_step' , `style` = '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}' [ RunTime:0.088549s ]
+[2020-02-27T20:54:12+08:00][sql] CONNECT:[ UseTime:0.001359s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001089s ]
+[2020-02-27T20:54:12+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000531s ]
+[2020-02-27T20:54:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001221s ]
+[2020-02-27T20:54:12+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000710s ]
+[2020-02-27T20:54:13+08:00][sql] CONNECT:[ UseTime:0.001364s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001153s ]
+[2020-02-27T20:54:13+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000625s ]
+[2020-02-27T20:54:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001114s ]
+[2020-02-27T20:54:13+08:00][sql] UPDATE `wf_flow_process`  SET `setleft` = 100 , `settop` = 100 , `process_to` = '' , `updatetime` = 1582808052  WHERE  `id` = 5  AND `flow_id` = 1 [ RunTime:0.086320s ]
+[2020-02-27T20:54:13+08:00][sql] UPDATE `wf_flow_process`  SET `setleft` = 130 , `settop` = 130 , `process_to` = '' , `updatetime` = 1582808053  WHERE  `id` = 6  AND `flow_id` = 1 [ RunTime:0.036935s ]
+[2020-02-27T20:54:13+08:00][sql] UPDATE `wf_flow_process`  SET `setleft` = 160 , `settop` = 160 , `process_to` = '' , `updatetime` = 1582808053  WHERE  `id` = 7  AND `flow_id` = 1 [ RunTime:0.029213s ]
+[2020-02-27T20:54:15+08:00][sql] CONNECT:[ UseTime:0.001344s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.095225s ]
+[2020-02-27T20:54:15+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000831s ]
+[2020-02-27T20:54:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001199s ]
+[2020-02-27T20:54:15+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 1 ORDER BY `id` ASC [ RunTime:0.000673s ]
+[2020-02-27T20:54:16+08:00][sql] CONNECT:[ UseTime:0.001369s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.001245s ]
+[2020-02-27T20:54:16+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 7 LIMIT 1 [ RunTime:0.000680s ]
+[2020-02-27T20:54:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.000967s ]
+[2020-02-27T20:54:16+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000503s ]
+[2020-02-27T20:54:16+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` = 0  AND `is_del` = 0 [ RunTime:0.000452s ]
+[2020-02-27T20:54:16+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000527s ]
+[2020-02-27T20:54:16+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'wf_news' AND table_schema = 'tpflow' [ RunTime:0.001111s ]
+[2020-02-27T20:54:19+08:00][sql] CONNECT:[ UseTime:0.001322s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001046s ]
+[2020-02-27T20:54:19+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000471s ]
+[2020-02-27T20:54:19+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000470s ]
+[2020-02-27T20:54:19+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001133s ]
+[2020-02-27T20:54:19+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000813s ]
+[2020-02-27T20:54:20+08:00][sql] CONNECT:[ UseTime:0.001320s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:20+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001260s ]
+[2020-02-27T20:54:20+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000566s ]
+[2020-02-27T20:54:21+08:00][sql] CONNECT:[ UseTime:0.003106s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001241s ]
+[2020-02-27T20:54:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000409s ]
+[2020-02-27T20:54:21+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000531s ]
+[2020-02-27T20:54:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001340s ]
+[2020-02-27T20:54:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000590s ]
+[2020-02-27T20:54:32+08:00][sql] CONNECT:[ UseTime:0.001358s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:54:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001091s ]
+[2020-02-27T20:54:32+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000391s ]
+[2020-02-27T20:54:32+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000514s ]
+[2020-02-27T20:54:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001245s ]
+[2020-02-27T20:54:32+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000559s ]
+[2020-02-27T20:54:33+08:00][error] [8]Undefined property: app\index\Controller\wf::$Tmp[D:\web\tpflow\app\index\controller\Wf.php:340]
+[2020-02-27T20:55:16+08:00][sql] CONNECT:[ UseTime:0.002636s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001267s ]
+[2020-02-27T20:55:16+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000593s ]
+[2020-02-27T20:55:17+08:00][sql] CONNECT:[ UseTime:0.001434s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001171s ]
+[2020-02-27T20:55:17+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000519s ]
+[2020-02-27T20:55:17+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000494s ]
+[2020-02-27T20:55:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001161s ]
+[2020-02-27T20:55:17+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000496s ]
+[2020-02-27T20:55:17+08:00][sql] CONNECT:[ UseTime:0.002499s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001311s ]
+[2020-02-27T20:55:17+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000438s ]
+[2020-02-27T20:55:17+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000601s ]
+[2020-02-27T20:55:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001841s ]
+[2020-02-27T20:55:17+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000839s ]
+[2020-02-27T20:55:28+08:00][sql] CONNECT:[ UseTime:0.001678s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:28+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001694s ]
+[2020-02-27T20:55:28+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000925s ]
+[2020-02-27T20:55:28+08:00][sql] CONNECT:[ UseTime:0.001794s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:28+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001671s ]
+[2020-02-27T20:55:28+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000816s ]
+[2020-02-27T20:55:32+08:00][sql] CONNECT:[ UseTime:0.001891s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001328s ]
+[2020-02-27T20:55:32+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000405s ]
+[2020-02-27T20:55:32+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000855s ]
+[2020-02-27T20:55:32+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001254s ]
+[2020-02-27T20:55:32+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000721s ]
+[2020-02-27T20:55:35+08:00][sql] CONNECT:[ UseTime:0.010304s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001517s ]
+[2020-02-27T20:55:35+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000394s ]
+[2020-02-27T20:55:35+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000520s ]
+[2020-02-27T20:55:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001323s ]
+[2020-02-27T20:55:35+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000558s ]
+[2020-02-27T20:55:36+08:00][sql] CONNECT:[ UseTime:0.001360s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001073s ]
+[2020-02-27T20:55:36+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000386s ]
+[2020-02-27T20:55:36+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.001000s ]
+[2020-02-27T20:55:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001335s ]
+[2020-02-27T20:55:36+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000572s ]
+[2020-02-27T20:55:40+08:00][sql] CONNECT:[ UseTime:0.001374s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001094s ]
+[2020-02-27T20:55:40+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000388s ]
+[2020-02-27T20:55:40+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000522s ]
+[2020-02-27T20:55:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001214s ]
+[2020-02-27T20:55:40+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000566s ]
+[2020-02-27T20:55:41+08:00][sql] CONNECT:[ UseTime:0.001382s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:41+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001091s ]
+[2020-02-27T20:55:41+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000390s ]
+[2020-02-27T20:55:41+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000531s ]
+[2020-02-27T20:55:41+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001244s ]
+[2020-02-27T20:55:41+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000578s ]
+[2020-02-27T20:55:43+08:00][sql] CONNECT:[ UseTime:0.001361s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:43+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001200s ]
+[2020-02-27T20:55:43+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000495s ]
+[2020-02-27T20:55:43+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000492s ]
+[2020-02-27T20:55:43+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001175s ]
+[2020-02-27T20:55:43+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000506s ]
+[2020-02-27T20:55:44+08:00][sql] CONNECT:[ UseTime:0.010646s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:44+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001553s ]
+[2020-02-27T20:55:44+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000946s ]
+[2020-02-27T20:55:47+08:00][sql] CONNECT:[ UseTime:0.001401s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001129s ]
+[2020-02-27T20:55:47+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000576s ]
+[2020-02-27T20:55:49+08:00][sql] CONNECT:[ UseTime:0.001361s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001126s ]
+[2020-02-27T20:55:49+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000457s ]
+[2020-02-27T20:55:49+08:00][sql] CONNECT:[ UseTime:0.001428s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:55:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001101s ]
+[2020-02-27T20:55:49+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000446s ]
+[2020-02-27T20:56:25+08:00][sql] CONNECT:[ UseTime:0.001384s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:56:25+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001184s ]
+[2020-02-27T20:56:25+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000455s ]
+[2020-02-27T20:56:25+08:00][sql] CONNECT:[ UseTime:0.001763s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:56:25+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002668s ]
+[2020-02-27T20:56:25+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000568s ]
+[2020-02-27T20:56:40+08:00][sql] CONNECT:[ UseTime:0.002437s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:56:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001610s ]
+[2020-02-27T20:56:40+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000605s ]
+[2020-02-27T20:56:40+08:00][sql] CONNECT:[ UseTime:0.001904s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:56:40+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002093s ]
+[2020-02-27T20:56:40+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.001761s ]
+[2020-02-27T20:56:46+08:00][sql] CONNECT:[ UseTime:0.002646s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:56:46+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001112s ]
+[2020-02-27T20:56:46+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000389s ]
+[2020-02-27T20:56:46+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000529s ]
+[2020-02-27T20:56:46+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001172s ]
+[2020-02-27T20:56:46+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000562s ]
+[2020-02-27T20:57:21+08:00][sql] CONNECT:[ UseTime:0.001420s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:57:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001194s ]
+[2020-02-27T20:57:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000415s ]
+[2020-02-27T20:57:21+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000527s ]
+[2020-02-27T20:57:21+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001481s ]
+[2020-02-27T20:57:21+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000587s ]
+[2020-02-27T20:57:50+08:00][sql] CONNECT:[ UseTime:0.001370s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:57:50+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001183s ]
+[2020-02-27T20:57:50+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000452s ]
+[2020-02-27T20:57:50+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000547s ]
+[2020-02-27T20:57:50+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001199s ]
+[2020-02-27T20:57:50+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000559s ]
+[2020-02-27T20:57:51+08:00][sql] CONNECT:[ UseTime:0.001906s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:57:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001656s ]
+[2020-02-27T20:57:51+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000555s ]
+[2020-02-27T20:57:51+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000785s ]
+[2020-02-27T20:57:51+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001649s ]
+[2020-02-27T20:57:51+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000674s ]
+[2020-02-27T20:59:27+08:00][sql] CONNECT:[ UseTime:0.002183s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:59:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001317s ]
+[2020-02-27T20:59:27+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000454s ]
+[2020-02-27T20:59:27+08:00][sql] CONNECT:[ UseTime:0.002829s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T20:59:27+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001385s ]
+[2020-02-27T20:59:27+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000505s ]
+[2020-02-27T21:00:04+08:00][sql] CONNECT:[ UseTime:0.001438s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:00:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001148s ]
+[2020-02-27T21:00:04+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000444s ]
+[2020-02-27T21:00:05+08:00][sql] CONNECT:[ UseTime:0.003424s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:00:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001703s ]
+[2020-02-27T21:00:05+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000712s ]
+[2020-02-27T21:00:06+08:00][sql] CONNECT:[ UseTime:0.011108s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:00:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.002883s ]
+[2020-02-27T21:00:06+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000763s ]
+[2020-02-27T21:00:06+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000813s ]
+[2020-02-27T21:00:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001756s ]
+[2020-02-27T21:00:06+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000893s ]
+[2020-02-27T21:00:16+08:00][sql] CONNECT:[ UseTime:0.001981s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:00:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001974s ]
+[2020-02-27T21:00:16+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000789s ]
+[2020-02-27T21:00:16+08:00][sql] CONNECT:[ UseTime:0.002836s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:00:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002136s ]
+[2020-02-27T21:00:16+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000954s ]
+[2020-02-27T21:01:50+08:00][error] [0]Call to undefined method app\index\controller\News::error()[D:\web\tpflow\app\Base.php:59]
+[2020-02-27T21:01:57+08:00][error] [0]Call to undefined method app\index\controller\News::error()[D:\web\tpflow\app\Base.php:59]
+[2020-02-27T21:01:58+08:00][sql] CONNECT:[ UseTime:0.003552s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:01:58+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.003268s ]
+[2020-02-27T21:01:58+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000522s ]
+[2020-02-27T21:01:59+08:00][sql] CONNECT:[ UseTime:0.002335s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:01:59+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001950s ]
+[2020-02-27T21:01:59+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000752s ]
+[2020-02-27T21:02:00+08:00][error] [0]Call to undefined method app\index\controller\News::error()[D:\web\tpflow\app\Base.php:59]
+[2020-02-27T21:02:25+08:00][error] [0]Argument 2 passed to app\Base::error() must be of the type string or null, object given, called in D:\web\tpflow\app\Base.php on line 60[D:\web\tpflow\vendor\liliuwei\thinkphp-jump\src\Jump.php:86]
+[2020-02-27T21:03:05+08:00][error] [0]语法错误: unexpected 'use' (T_USE)[D:\web\tpflow\app\Base.php:57]
+[2020-02-27T21:03:14+08:00][error] [0]Argument 2 passed to app\Base::error() must be of the type string or null, object given, called in D:\web\tpflow\app\Base.php on line 60[D:\web\tpflow\vendor\liliuwei\thinkphp-jump\src\Jump.php:86]
+[2020-02-27T21:03:16+08:00][error] [0]Argument 2 passed to app\Base::error() must be of the type string or null, object given, called in D:\web\tpflow\app\Base.php on line 60[D:\web\tpflow\vendor\liliuwei\thinkphp-jump\src\Jump.php:86]
+[2020-02-27T21:04:25+08:00][error] [0]Argument 2 passed to app\Basec::error() must be of the type string or null, object given, called in D:\web\tpflow\app\Basec.php on line 60[D:\web\tpflow\vendor\liliuwei\thinkphp-jump\src\Jump.php:86]
+[2020-02-27T21:04:26+08:00][error] [0]Argument 2 passed to app\Basec::error() must be of the type string or null, object given, called in D:\web\tpflow\app\Basec.php on line 60[D:\web\tpflow\vendor\liliuwei\thinkphp-jump\src\Jump.php:86]
+[2020-02-27T21:07:06+08:00][sql] CONNECT:[ UseTime:0.003666s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001902s ]
+[2020-02-27T21:07:06+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000692s ]
+[2020-02-27T21:07:08+08:00][sql] CONNECT:[ UseTime:0.001672s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:08+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002202s ]
+[2020-02-27T21:07:08+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001032s ]
+[2020-02-27T21:07:11+08:00][sql] CONNECT:[ UseTime:0.002027s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.001963s ]
+[2020-02-27T21:07:11+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000857s ]
+[2020-02-27T21:07:11+08:00][sql] CONNECT:[ UseTime:0.001892s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.002229s ]
+[2020-02-27T21:07:11+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000951s ]
+[2020-02-27T21:07:12+08:00][sql] CONNECT:[ UseTime:0.001356s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.001072s ]
+[2020-02-27T21:07:12+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000403s ]
+[2020-02-27T21:07:12+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000525s ]
+[2020-02-27T21:07:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001253s ]
+[2020-02-27T21:07:12+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_run` WHERE  `from_id` = 3  AND `from_table` = 'news'  AND `is_del` = 0  AND `status` = 0 [ RunTime:0.000584s ]
+[2020-02-27T21:07:14+08:00][sql] CONNECT:[ UseTime:0.003136s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001087s ]
+[2020-02-27T21:07:14+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000495s ]
+[2020-02-27T21:07:14+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000521s ]
+[2020-02-27T21:07:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001247s ]
+[2020-02-27T21:07:14+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000504s ]
+[2020-02-27T21:07:15+08:00][sql] CONNECT:[ UseTime:0.001687s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:15+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.002576s ]
+[2020-02-27T21:07:15+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000570s ]
+[2020-02-27T21:07:16+08:00][sql] CONNECT:[ UseTime:0.001363s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001895s ]
+[2020-02-27T21:07:16+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000523s ]
+[2020-02-27T21:07:16+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000477s ]
+[2020-02-27T21:07:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001369s ]
+[2020-02-27T21:07:16+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000647s ]
+[2020-02-27T21:07:17+08:00][sql] CONNECT:[ UseTime:0.001863s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:17+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001618s ]
+[2020-02-27T21:07:17+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000844s ]
+[2020-02-27T21:07:22+08:00][sql] CONNECT:[ UseTime:0.002117s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001133s ]
+[2020-02-27T21:07:22+08:00][sql] SELECT * FROM `wf_run` WHERE  `status` = 0 [ RunTime:0.000594s ]
+[2020-02-27T21:07:23+08:00][sql] CONNECT:[ UseTime:0.001346s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow;charset=utf8
+[2020-02-27T21:07:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.001079s ]
+[2020-02-27T21:07:23+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000489s ]
+[2020-02-27T21:07:23+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000489s ]
+[2020-02-27T21:07:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.001165s ]
+[2020-02-27T21:07:23+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000495s ]

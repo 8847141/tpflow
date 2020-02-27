@@ -1,4 +1,4 @@
-<?php /*a:2:{s:40:"C:\tp6\app\index\view\index\welcome.html";i:1581909452;s:35:"C:\tp6\app\index\view\pub\base.html";i:1581909452;}*/ ?>
+<?php /*a:2:{s:43:"D:\web\tpflow\app\index\view\news\view.html";i:1582806788;s:42:"D:\web\tpflow\app\index\view\pub\base.html";i:1582799638;}*/ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -33,20 +33,20 @@
 <title>Tpflow</title>
 </head>
 <body>
-<body onload="prettyPrint()">
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 欢迎使用，Tpflow 工作流插件示例</nav>
-<div class="page-container">
-<h3>当前版本为：V3.1-正式版</h3>
+<article class="page-container">
+		<table class="table table-border table-bordered table-bg">
+			<tr>
+			<td style='width:70px'>新闻标题：</td><td style='width:330px' colspan="3">
+			<?php echo htmlentities($info['new_title']); ?></td>
+			</tr>
+			<tr>
+			<td>新闻类别：</td><td><?php echo get_commonval('news_type',$info['new_type'],'type'); ?></td>
+			<td></td><td></td>
+			</tr><td>新闻内容:</td><td colspan="3" ><?php echo $info['new_con']; ?>
+			</td></tr>
+		</table>
 
-<article class="f-14 l-30 mt-20 mr-50">
-			<p>致亲爱的Tpflow用户：</p>
-			<p style="text-indent:2em">首先感谢你们一路的支持，Tpflow上线以来收货颇多，这也是开源平台第一个工作流开源项目，我们希望做得更好。我们深知这非常不容易，目前团队只有一个人开发，希望有志之士的加入！</p>
-			<p style="text-indent:2em">希望各路大神，一起完善，改进这个开源的工作流。不管是公司，还是个人，UI前端，还是后端，若有建议，不妨提出。开源精神，与君共勉！</p>
-			
-			<p class="text-r">蝈蝈<br>2018.07.19</p>
+		<?php echo app\index\controller\wf::wflogs($info['id'],'news'); ?>
 </article>
-
-
 </body>
 </html>
-<script type="text/javascript" src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
