@@ -1,0 +1,79 @@
+[2020-02-27T16:59:02+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
+[2020-02-27T16:59:03+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
+[2020-02-27T16:59:03+08:00][error] [0]Call to undefined method app\index\controller\News::fetch()
+[2020-02-27T16:59:12+08:00][sql] CONNECT:[ UseTime:0.000955s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T16:59:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012769s ]
+[2020-02-27T16:59:12+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000488s ]
+[2020-02-27T16:59:12+08:00][sql] CONNECT:[ UseTime:0.000974s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T16:59:12+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.010476s ]
+[2020-02-27T16:59:12+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000474s ]
+[2020-02-27T16:59:47+08:00][sql] CONNECT:[ UseTime:0.001977s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T16:59:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012998s ]
+[2020-02-27T16:59:47+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000440s ]
+[2020-02-27T16:59:47+08:00][sql] CONNECT:[ UseTime:0.010387s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T16:59:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012762s ]
+[2020-02-27T16:59:47+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000353s ]
+[2020-02-27T16:59:56+08:00][sql] CONNECT:[ UseTime:0.009997s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T16:59:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.009855s ]
+[2020-02-27T16:59:56+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000343s ]
+[2020-02-27T16:59:56+08:00][error] [0]Class 'status' not found
+[2020-02-27T17:00:09+08:00][sql] CONNECT:[ UseTime:0.010353s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:00:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012447s ]
+[2020-02-27T17:00:09+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000335s ]
+[2020-02-27T17:00:09+08:00][error] [0]Class 'status' not found
+[2020-02-27T17:00:23+08:00][sql] CONNECT:[ UseTime:0.010478s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:00:23+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.013634s ]
+[2020-02-27T17:00:23+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000350s ]
+[2020-02-27T17:00:23+08:00][error] [0]Class 'status' not found
+[2020-02-27T17:00:31+08:00][sql] CONNECT:[ UseTime:0.000887s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:00:31+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.010235s ]
+[2020-02-27T17:00:31+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000364s ]
+[2020-02-27T17:00:31+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:00:39+08:00][sql] CONNECT:[ UseTime:0.000920s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:00:39+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012729s ]
+[2020-02-27T17:00:39+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000311s ]
+[2020-02-27T17:00:39+08:00][error] [0]Class 'index' not found
+[2020-02-27T17:01:35+08:00][sql] CONNECT:[ UseTime:0.000944s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:01:35+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.013577s ]
+[2020-02-27T17:01:35+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000382s ]
+[2020-02-27T17:01:35+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:01:47+08:00][sql] CONNECT:[ UseTime:0.000836s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:01:47+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011685s ]
+[2020-02-27T17:01:47+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000363s ]
+[2020-02-27T17:01:47+08:00][error] [0]Class 'app\index\index' not found
+[2020-02-27T17:02:00+08:00][sql] CONNECT:[ UseTime:0.000938s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:02:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012467s ]
+[2020-02-27T17:02:00+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000531s ]
+[2020-02-27T17:02:00+08:00][error] [0]Class 'app\index\index' not found
+[2020-02-27T17:02:13+08:00][sql] CONNECT:[ UseTime:0.000963s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:02:13+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.013269s ]
+[2020-02-27T17:02:13+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000332s ]
+[2020-02-27T17:02:13+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:02:22+08:00][sql] CONNECT:[ UseTime:0.000819s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:02:22+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012966s ]
+[2020-02-27T17:02:22+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000339s ]
+[2020-02-27T17:02:22+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:02:56+08:00][sql] CONNECT:[ UseTime:0.010233s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:02:56+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011593s ]
+[2020-02-27T17:02:56+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000368s ]
+[2020-02-27T17:02:56+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:03:04+08:00][sql] CONNECT:[ UseTime:0.000871s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:03:04+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012083s ]
+[2020-02-27T17:03:04+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000449s ]
+[2020-02-27T17:03:04+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:03:06+08:00][sql] CONNECT:[ UseTime:0.000977s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:03:06+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011425s ]
+[2020-02-27T17:03:06+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000429s ]
+[2020-02-27T17:03:06+08:00][error] [0]Class 'app\index\Index' not found
+[2020-02-27T17:04:36+08:00][sql] CONNECT:[ UseTime:0.000863s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:04:36+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011095s ]
+[2020-02-27T17:04:36+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000315s ]
+[2020-02-27T17:04:36+08:00][error] [0]Call to undefined function app\indexwfstatus()
+[2020-02-27T17:05:05+08:00][sql] CONNECT:[ UseTime:0.000878s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:05:05+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012056s ]
+[2020-02-27T17:05:05+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000415s ]
+[2020-02-27T17:05:05+08:00][error] [0]Class 'app\index\wf' not found
+[2020-02-27T17:06:01+08:00][sql] CONNECT:[ UseTime:0.001939s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-27T17:06:01+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011367s ]
+[2020-02-27T17:06:01+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000329s ]
+[2020-02-27T17:06:01+08:00][error] [8192]Non-static method app\index\Controller\wf::status() should not be called statically
