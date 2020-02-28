@@ -149,23 +149,23 @@ class wf extends Basec {
 	//用户选择控件
     public function super_user()
     {
-		View::assign('user',db('user')->field('id,username')->select());
+		View::assign('user',Db::name('user')->field('id,username')->select());
 		View::assign('kid',input('kid'));
         return View::fetch();
     }
 	//用户选择控件
     public function super_role()
     {
-		View::assign('role',db('role')->field('id,name as username')->select());
+		View::assign('role',Db::name('role')->field('id,name as username')->select());
         return View::fetch();
     }
 	public function super_get()
 	{
 		 $type = trim(input('type'));
 		 if($type=='user'){
-			$info =  db('user')->where('username','like','%'.input('key').'%')->field('id as vlaue,username as text')->select();
+			$info =  Db::name('user')->where('username','like','%'.input('key').'%')->field('id as vlaue,username as text')->select();
 		 }else{
-			 $info =  db('role')->where('name','like','%'.input('key').'%')->field('id as vlaue,name as text')->select();
+			 $info =  Db::name('role')->where('name','like','%'.input('key').'%')->field('id as vlaue,name as text')->select();
 		 }
 		 return ['data'=>$info,'code'=>1,'msg'=>'查询成功！'];
 	}

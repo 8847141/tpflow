@@ -1,0 +1,48 @@
+[2020-02-28T08:40:37+08:00][error] [1045]SQLSTATE[HY000] [1045] Access denied for user 'tpflow'@'localhost' (using password: YES)[C:\Users\Administrator\web\tpflow\vendor\topthink\think-orm\src\db\PDOConnection.php:554]
+[2020-02-28T08:41:02+08:00][sql] CONNECT:[ UseTime:0.010235s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:02+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.012471s ]
+[2020-02-28T08:41:02+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000498s ]
+[2020-02-28T08:41:02+08:00][sql] CONNECT:[ UseTime:0.001062s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:02+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011486s ]
+[2020-02-28T08:41:02+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000329s ]
+[2020-02-28T08:41:09+08:00][sql] CONNECT:[ UseTime:0.011467s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:09+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.009790s ]
+[2020-02-28T08:41:09+08:00][sql] SELECT * FROM `wf_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000531s ]
+[2020-02-28T08:41:11+08:00][sql] CONNECT:[ UseTime:0.000811s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.011650s ]
+[2020-02-28T08:41:11+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000438s ]
+[2020-02-28T08:41:11+08:00][sql] CONNECT:[ UseTime:0.000762s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:11+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.008958s ]
+[2020-02-28T08:41:11+08:00][sql] SELECT `id`,`username`,`role` FROM `wf_user` [ RunTime:0.000335s ]
+[2020-02-28T08:41:14+08:00][sql] CONNECT:[ UseTime:0.001074s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.013161s ]
+[2020-02-28T08:41:14+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000413s ]
+[2020-02-28T08:41:14+08:00][sql] SELECT * FROM `wf_flow` WHERE  `is_del` = 0 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000356s ]
+[2020-02-28T08:41:14+08:00][sql] SHOW FULL COLUMNS FROM `wf_run` [ RunTime:0.012912s ]
+[2020-02-28T08:41:14+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 2  AND `status` = 0 LIMIT 1 [ RunTime:0.000367s ]
+[2020-02-28T08:41:14+08:00][sql] SELECT `id` FROM `wf_run` WHERE  `flow_id` = 1  AND `status` = 0 LIMIT 1 [ RunTime:0.000293s ]
+[2020-02-28T08:41:16+08:00][sql] CONNECT:[ UseTime:0.009760s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.010556s ]
+[2020-02-28T08:41:16+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000437s ]
+[2020-02-28T08:41:16+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.010788s ]
+[2020-02-28T08:41:16+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `flow_id` = 2 ORDER BY `id` ASC [ RunTime:0.000620s ]
+[2020-02-28T08:41:18+08:00][sql] CONNECT:[ UseTime:0.001067s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:41:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow_process` [ RunTime:0.010141s ]
+[2020-02-28T08:41:18+08:00][sql] SELECT * FROM `wf_flow_process` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000553s ]
+[2020-02-28T08:41:18+08:00][sql] SHOW FULL COLUMNS FROM `wf_flow` [ RunTime:0.008512s ]
+[2020-02-28T08:41:18+08:00][sql] SELECT * FROM `wf_flow` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000354s ]
+[2020-02-28T08:41:18+08:00][sql] SELECT `id`,`process_name`,`process_type` FROM `wf_flow_process` WHERE  `id` = 9  AND `is_del` = 0 [ RunTime:0.000332s ]
+[2020-02-28T08:41:18+08:00][sql] SELECT `id`,`flow_name` FROM `wf_flow` WHERE  `is_del` = 0 [ RunTime:0.000333s ]
+[2020-02-28T08:41:18+08:00][sql] SELECT COLUMN_NAME as field,column_comment as comment FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'wf_news' AND table_schema = 'tpflow3.1' [ RunTime:0.009223s ]
+[2020-02-28T08:41:21+08:00][error] [0]Call to undefined function app\index\Controller\db()[C:\Users\Administrator\web\tpflow\app\index\controller\Wf.php:152]
+[2020-02-28T08:42:22+08:00][error] [0]syntax error, unexpected ':', expecting ',' or ')'[C:\Users\Administrator\web\tpflow\app\index\controller\Wf.php:152]
+[2020-02-28T08:42:44+08:00][sql] CONNECT:[ UseTime:0.010055s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:42:44+08:00][sql] SHOW FULL COLUMNS FROM `wf_user` [ RunTime:0.010422s ]
+[2020-02-28T08:42:44+08:00][sql] SELECT `id`,`username` FROM `wf_user` [ RunTime:0.000322s ]
+[2020-02-28T08:42:49+08:00][sql] CONNECT:[ UseTime:0.010450s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:42:49+08:00][sql] SHOW FULL COLUMNS FROM `wf_role` [ RunTime:0.012694s ]
+[2020-02-28T08:42:49+08:00][sql] SELECT `id`,name as username FROM `wf_role` [ RunTime:0.000445s ]
+[2020-02-28T08:43:00+08:00][sql] CONNECT:[ UseTime:0.010572s ] mysql:host=127.0.0.1;port=3306;dbname=tpflow3.1;charset=utf8
+[2020-02-28T08:43:00+08:00][sql] SHOW FULL COLUMNS FROM `wf_news` [ RunTime:0.011711s ]
+[2020-02-28T08:43:00+08:00][sql] SELECT COUNT(*) AS think_count FROM `wf_news` [ RunTime:0.000477s ]
+[2020-02-28T08:43:00+08:00][sql] SELECT * FROM `wf_news` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000582s ]
