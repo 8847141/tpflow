@@ -11,7 +11,7 @@
 
 namespace workflow;
 
-use think\Db;
+use think\facade\Db;
 
 class BackFlow{
 	/**
