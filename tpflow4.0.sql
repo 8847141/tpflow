@@ -300,7 +300,7 @@ CREATE TABLE `wf_run_sign` (
   `run_id` int(10) unsigned NOT NULL DEFAULT '0',
   `run_flow` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '流程ID,子流程时区分run step',
   `run_flow_process` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '当前步骤编号',
-  `content` text NOT NULL COMMENT '会签内容',
+  `content` text DEFAULT NULL COMMENT '会签内容',
   `is_agree` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '审核意见：1同意；2不同意',
   `sign_att_id` int(10) unsigned NOT NULL DEFAULT '0',
   `sign_look` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '步骤设置的会签可见性,0总是可见（默认）,1本步骤经办人之间不可见2针对其他步骤不可见',
