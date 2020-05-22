@@ -297,19 +297,16 @@ class InfoDB{
 	 */
 	public static function worklist()
 	{
-		$result = Db::name('run')->where('status',0)->select()->all();
+		$result = Db::name('run')->where('status','eq',0)->select();
 		foreach($result as $k=>$v)
 		{
-			$result[$k]['flow_name'] = Db::name('flow')->where('id',$v['flow_id'])->value('flow_name');
-			$process = Db::name('flow_process')->where('id',$v['run_flow_process'])->find();
-			
-			if($process['auto_person'] == 4){
-				$result[$k]['user'] =$process['auto_sponsor_text'];
-				}elseif($process['auto_person'] == 6){
-				$result[$k]['user'] =$process['range_user_text'];
-				}else{
-				$result[$k]['user'] =$process['auto_role_text'];
+			$result[$k]['flow_name'] = Db::name('flow')->where('id','eq',$v['flow_id'])->value('flow_name');
+			$process = Db::name('run_process')->where('run_id','eq',$v['id'])->where('run_flow_process','eq',$v['run_flow_process'])->select();
+			$sponsor_text= '';
+			foreach($process as $p=>$s){
+				$sponsor_text .=  $s['sponsor_text'].',';
 			}
+			$result[$k]['user'] = rtrim($sponsor_text,",");
 		}
         return $result;
 	}
