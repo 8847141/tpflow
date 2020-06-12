@@ -55,9 +55,9 @@ class wf extends Basec {
 			$data['add_time']=time();
 			$ret= self::work()->FlowApi('AddFlow',$data);
 			if($ret['code']==0){
-				return msg_return('发布成功！');
+				return $this->msg_return('发布成功！');
 				}else{
-				return msg_return($ret['data'],1);
+				return $this->msg_return($ret['data'],1);
 			}
 	   }
 	   View::assign('type', ['news'=>'新闻信息','cnt'=>'合同信息','paper'=>'证件信息']);
@@ -72,9 +72,9 @@ class wf extends Basec {
 			$data = input('post.');
 			$ret= self::work()->FlowApi('EditFlow',$data);
 			if($ret['code']==0){
-				return msg_return('修改成功！');
+				return $this->msg_return('修改成功！');
 				}else{
-				return msg_return($ret['data'],1);
+				return $this->msg_return($ret['data'],1);
 			}
 	   }
 	   if(input('id')){
