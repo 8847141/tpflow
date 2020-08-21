@@ -37,7 +37,7 @@
 
 ### 在线文档
 
-[看云文档](https://www.kancloud.cn/guowenbin/tpflow "安装手册")   [官方博客](http://www.cojz8.com/tag/30 "官方博客")
+[看云文档](https://www.kancloud.cn/guowenbin/tpflow "安装手册")   [官方博客](https://www.cojz8.com/ "官方博客")
 
 ### 界面截图
 
@@ -61,13 +61,13 @@
 ### 相关链接
 ---
 
-> 官方博客：http://www.cojz8.com/
+> 官方博客：https://www.cojz8.com/
 
-> 演示站点：http://tpflow.cojz8.com/   
+> 演示站点：https://tpflow.cojz8.com/   
 
 > 工作流手册：https://www.kancloud.cn/guowenbin/tpflow  赞助用户【VIP群】1062040103
 
-> 视频教程：http://www.cojz8.com/article/86
+> 视频教程：https://www.kancloud.cn/guowenbin/tpflow_video 【付费】实战视频教程
 
 ---
 
@@ -83,4 +83,5 @@ All rights reserved。
 
 ~~~
 对您有帮助的话，你可以在下方赞助我们，让我们更好的维护开发，谢谢！
+特别声明：坚决打击网络诈骗行为，严禁将本插件集成在任何违法违规的程序上。
 ~~~
