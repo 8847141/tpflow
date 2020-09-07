@@ -297,11 +297,11 @@ class InfoDB{
 	 */
 	public static function worklist()
 	{
-		$result = Db::name('run')->where('status','eq',0)->select();
+		$result = Db::name('run')->where('status',0)->select();
 		foreach($result as $k=>$v)
 		{
-			$result[$k]['flow_name'] = Db::name('flow')->where('id','eq',$v['flow_id'])->value('flow_name');
-			$process = Db::name('run_process')->where('run_id','eq',$v['id'])->where('run_flow_process','eq',$v['run_flow_process'])->select();
+			$result[$k]['flow_name'] = Db::name('flow')->where('id',$v['flow_id'])->value('flow_name');
+			$process = Db::name('run_process')->where('run_id',$v['id'])->where('run_flow_process',$v['run_flow_process'])->select();
 			$sponsor_text= '';
 			foreach($process as $p=>$s){
 				$sponsor_text .=  $s['sponsor_text'].',';
