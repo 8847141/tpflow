@@ -5,7 +5,7 @@ use think\facade\Db;
 use workflow\workflow;
 use think\facade\View;
 
-class wf extends Basec {
+class wf2 extends Basec {
 	public static function Tmp(){
 		return '../extend/workflow/view/';
 	}
@@ -22,7 +22,7 @@ class wf extends Basec {
 	 * 流程设计首页
 	 * @param $map 查询参数
 	 */
-    public function wfindex($map = []){
+    public function wfindex2($map = []){
         View::assign('list',self::work()->FlowApi('List'));
 		View::assign('type', ['news'=>'新闻信息','cnt'=>'合同信息','paper'=>'证件信息']);
         return  View::fetch();
