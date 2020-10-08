@@ -1,5 +1,4 @@
 <?php
-namespace workflow;
 /**
 *+------------------
 * Tpflow 节点事务处理
@@ -9,6 +8,7 @@ namespace workflow;
 * Author: guoguo(1838188896@qq.com)
 *+------------------
 */
+namespace workflow\db;
 use think\facade\Db;
 use think\facade\Session;
 

@@ -9,9 +9,7 @@
 *+------------------
 */
 
-namespace workflow;
-
-use think\facade\Db;
+namespace workflow\service\command;
 
 class BackFlow{
 	/**
@@ -74,20 +72,7 @@ class BackFlow{
 		}
 		return ['msg'=>'success!','code'=>'0'];
 	}
-	/**
-	 *判断是否是第一步
-	 *
-	 *@param $run_flow_process 工作流ID
-	 **/
-	public function IsOneFlow($run_flow_process)
-	{
-		$info = Db::name('flow_process')->find($run_flow_process);
-		if($info['process_type']=='is_one'){
-			return true;
-		}else{
-			return false;
-		}
-	}
+	
 	/**
 	 *运行
 	 *

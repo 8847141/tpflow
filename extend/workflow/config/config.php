@@ -8,7 +8,7 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------ 
 */
-namespace workflow;
+namespace workflow\config;
 
 //用户定义文件夹
 $flowstatus = ['-1'=>'未发起','0'=>'运行中','1'=>'已核准'];

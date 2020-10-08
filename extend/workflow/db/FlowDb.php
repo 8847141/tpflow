@@ -9,7 +9,7 @@
  *+------------------
  */
 
-namespace workflow;
+namespace workflow\db;
 
 use think\facade\Db;
 use think\facade\Session;

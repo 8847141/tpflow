@@ -8,9 +8,7 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------ 
 */
-namespace workflow;
-
-use think\facade\Db;
+namespace workflow\service\command;
 
 class SupFlow{
 	/**

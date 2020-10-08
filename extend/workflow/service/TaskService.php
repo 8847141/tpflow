@@ -9,7 +9,12 @@
 *+------------------
 */
 
-namespace workflow;
+namespace workflow\service;
+
+use workflow\service\command\TaskFlow;
+use workflow\service\command\BackFlow;
+use workflow\service\command\SingFlow;
+use workflow\service\command\SupFlow;
 
 class TaskService{
 	/**
@@ -19,7 +24,6 @@ class TaskService{
 	 * @param  $uid  用户ID
 	 */
 	public function doTask($config,$uid){
-		require_once BEASE_URL . '/class/command/TaskFlow.php';
 		$command = new TaskFlow();
 		return $command->doTask($config,$uid);
 	}
@@ -30,7 +34,6 @@ class TaskService{
 	 * @param  $uid  用户ID
 	 */
 	public function doBack($config,$uid){
-		require_once BEASE_URL . '/class/command/BackFlow.php';
 		$command = new BackFlow();
 		return $command->doTask($config,$uid);
 	}
@@ -41,7 +44,6 @@ class TaskService{
 	 * @param  $uid  用户ID
 	 */
 	public function doSing($config,$uid){
-		require_once BEASE_URL . '/class/command/SingFlow.php';
 		$command = new SingFlow();
 		return $command->doTask($config,$uid);
 	}
@@ -53,7 +55,6 @@ class TaskService{
 	 * @param  $uid  用户ID
 	 */
 	public function doSingEnt($config,$uid,$wf_actionid){
-		require_once BEASE_URL . '/class/command/SingFlow.php';
 		$command = new SingFlow();
 		return $command->doSingEnt($config,$uid,$wf_actionid);
 	}
@@ -64,7 +65,6 @@ class TaskService{
 	 * @param  $uid  用户ID
 	 */
 	public function doSupEnd($wfid,$uid){
-		require_once BEASE_URL . '/class/command/SupFlow.php';
 		$command = new SupFlow();
 		return $command->doSupEnd($wfid,$uid);
 	}

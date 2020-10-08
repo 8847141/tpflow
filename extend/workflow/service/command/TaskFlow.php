@@ -8,7 +8,7 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------
 */
-namespace workflow;
+namespace workflow\service\command;
 
 use think\facade\Db;
 

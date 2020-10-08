@@ -1,5 +1,5 @@
 <?php
-namespace workflow;
+namespace workflow\msg;
 
 class SendMail {
     /**

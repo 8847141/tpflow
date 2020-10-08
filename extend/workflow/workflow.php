@@ -11,22 +11,23 @@
 
 namespace workflow;
 
+
+
 define ( 'BEASE_URL', realpath ( dirname ( __FILE__ ) ) );
 
 //配置文件
-require_once BEASE_URL . '/config/config.php';
+use workflow\config\config;
 //数据库操作
-require_once BEASE_URL . '/db/InfoDb.php';
-require_once BEASE_URL . '/db/FlowDb.php';
-require_once BEASE_URL . '/db/ProcessDb.php';
-require_once BEASE_URL . '/db/LogDb.php';
-require_once BEASE_URL . '/db/UserDb.php';
-require_once BEASE_URL . '/db/WorkDb.php';
+use workflow\db\InfoDb;
+use workflow\db\FlowDb;
+use workflow\db\ProcessDb;
+use workflow\db\LogDb;
+use workflow\db\UserDb;
+use workflow\db\WorkDb;
 //类库
-require_once BEASE_URL . '/class/TaskService.php';
-//配置全局类
+use workflow\service\TaskService;
 //消息
-require_once BEASE_URL . '/msg/mail.php';
+use workflow\msg\mail;
 
 
 	/**
