@@ -12,7 +12,15 @@
 namespace workflow;
 
 use workflow\workflow;
+//数据库操作
+use workflow\db\InfoDb;
+use workflow\db\FlowDb;
+use workflow\db\ProcessDb;
+use workflow\db\LogDb;
+use workflow\db\UserDb;
+use workflow\db\WorkDb;
 use think\facade\Db;
+
 use think\facade\Request;
 define('ROOT_PATH',root_path() );
 
@@ -38,7 +46,7 @@ define('ROOT_PATH',root_path() );
 		return '<br/><br/><style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} 
 		a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; }
 		h1{ font-size: 40px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 35px }</style>
-		<div style="padding: 24px 48px;"> <h1>\﻿ (•◡•) / </h1><p> TpFlow V3.2正式版<br/>
+		<div style="padding: 24px 48px;"> <h1>\﻿ (•◡•) / </h1><p> TpFlow V4.0开发版<br/>
 		<span style="font-size:19px;">PHP开源工作流引擎系统</span></p>
 		<span style="font-size:15px;">[ ©2018-2020 Guoguo <a href="https://www.cojz8.com/">TpFlow</a> 本版权不可删除！ ]</span></div>';
     }
