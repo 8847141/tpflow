@@ -9,16 +9,16 @@
  *+------------------
  */
 
-namespace workflow;
+namespace tpflow;
 
-use workflow\workflow;
+use tpflow\workflow;
 //数据库操作
-use workflow\db\InfoDb;
-use workflow\db\FlowDb;
-use workflow\db\ProcessDb;
-use workflow\db\LogDb;
-use workflow\db\UserDb;
-use workflow\db\WorkDb;
+use tpflow\db\InfoDb;
+use tpflow\db\FlowDb;
+use tpflow\db\ProcessDb;
+use tpflow\db\LogDb;
+use tpflow\db\UserDb;
+use tpflow\db\WorkDb;
 use think\facade\Db;
 
 use think\facade\Request;
@@ -32,9 +32,8 @@ define('ROOT_PATH',root_path() );
 			$this->work = new workflow();
 			$this->uid = session('uid');
 			$this->role = session('role');
-			$this->Tmp  = '../extend/workflow/view/';
 			$this->table  = Db::query("select replace(TABLE_NAME,'".config('database.connections.mysql.prefix')."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".config('database.connections.mysql.database')."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
-			$this->patch =  ROOT_PATH . 'extend/workflow/view';
+			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
 			
 	   }

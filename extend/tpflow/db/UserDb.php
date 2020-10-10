@@ -8,7 +8,7 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------ 
 */
-namespace workflow\db;
+namespace tpflow\db;
 
 use think\facade\Db;
 

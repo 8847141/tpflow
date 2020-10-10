@@ -9,25 +9,25 @@
  *+------------------
  */
 
-namespace workflow;
+namespace tpflow;
 
 
 
 define ( 'BEASE_URL', realpath ( dirname ( __FILE__ ) ) );
 
 //配置文件
-use workflow\config\config;
+use tpflow\config\config;
 //数据库操作
-use workflow\db\InfoDb;
-use workflow\db\FlowDb;
-use workflow\db\ProcessDb;
-use workflow\db\LogDb;
-use workflow\db\UserDb;
-use workflow\db\WorkDb;
+use tpflow\db\InfoDb;
+use tpflow\db\FlowDb;
+use tpflow\db\ProcessDb;
+use tpflow\db\LogDb;
+use tpflow\db\UserDb;
+use tpflow\db\WorkDb;
 //类库
-use workflow\service\TaskService;
+use tpflow\service\TaskService;
 //消息
-use workflow\msg\mail;
+use tpflow\msg\mail;
 
 
 	/**

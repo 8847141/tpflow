@@ -4,7 +4,7 @@
 * 邮件消息
 *+------------------ 
 */
-namespace workflow;
+namespace tpflow;
 
 class MailService implements InterfaceNotice{
 	/*

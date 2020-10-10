@@ -9,7 +9,7 @@ namespace workflow;
 * Author: guoguo(1838188896@qq.com)
 *+------------------
 */
-use think\facade\Db\db;
+use tpflow\db;
 use think\facade\Session;
 
 class LogDb{
