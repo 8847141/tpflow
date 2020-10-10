@@ -10,6 +10,11 @@
 */
 namespace tpflow\service\command;
 
+//数据库操作
+use tpflow\db\InfoDb;
+use tpflow\db\FlowDb;
+use tpflow\db\LogDb;
+
 class SupFlow{
 	/**
 	 * 任务执行

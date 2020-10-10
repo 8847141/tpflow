@@ -296,7 +296,7 @@ class InfoDB{
 	 */
 	public static function worklist()
 	{
-		$result = Db::name('run')->where('status',0)->select();
+		$result = Db::name('run')->where('status',0)->select()->toArray();;
 		foreach($result as $k=>$v)
 		{
 			$result[$k]['flow_name'] = Db::name('flow')->where('id',$v['flow_id'])->value('flow_name');

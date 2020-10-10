@@ -10,7 +10,11 @@
 */
 namespace tpflow\service\command;
 
-use think\facade\Db;
+//数据库操作
+use tpflow\db\InfoDb;
+use tpflow\db\FlowDb;
+use tpflow\db\ProcessDb;
+use tpflow\db\LogDb;
 
 class SingFlow{
 	/**
@@ -54,7 +58,7 @@ class SingFlow{
 	 **/
 	public function doSingEnt($config,$uid,$wf_actionid)
 	{
-		$sing_id = Db::name('run')->where('id',$config['run_id'])->value('sing_id');
+		$sing_id = ProcessDb::get_sing_id($config['run_id']);
 		ProcessDb::EndSing($sing_id,$config['check_con']);//结束当前会签
 		if ($wf_actionid == "sok") {//提交处理
 			if($config['npid'] !=''){

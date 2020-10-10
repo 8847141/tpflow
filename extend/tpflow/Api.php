@@ -209,8 +209,64 @@ define('ROOT_PATH',root_path() );
 				return $this->msg_return($ret['data'],1);
 			}
 	   }
-	   return view($this->patch.'/wfadd.html',['int_url'=>$this->int_url,'type'=>$this->table]);
-    }
+	   $url = url($this->int_url.'/wf/wfadd');
+	   $type ='';
+	   foreach($this->table as $k=>$v){
+		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
+	   }
+	   $view=<<<php
+				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+				<form action="{$url}" method="post" name="form" id="form">
+				   <table class="table">
+							<tr>
+							<th style='width:75px'>流程名称</th>
+							<td style='width:330px;text-align: left;'><input type="text" class="input-text" value="" name="flow_name"  datatype="*" ></td>
+							</tr>
+							<tr>
+							<th>流程类型</th><td style='width:330px;text-align: left;'>
+							<span class="select-box">
+								<select name="type"  class="select"  datatype="*" >
+								{$type}
+								</select>
+								</span>
+							</td></tr><tr>
+							<th style='width:75px'>排序值</th>
+							<td style='width:330px;text-align: left;'><input type="text" class="input-text" value="" name="sort_order"  datatype="*" ></td>
+							</tr>
+							<tr>
+							<th>流程描述</th><td style='width:330px;text-align: left;'>
+								<textarea name='flow_desc'  datatype="*" style="width:100%;height:55px;"></textarea></td>
+							</tr>
+							<tr class='text-c' >
+							<td colspan=2>
+							<button  class="button" type="submit">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+								<button  class="button" type="button" onclick="layer_close()">&nbsp;&nbsp;取消&nbsp;&nbsp;</button></td>
+							</tr>
+						</table>
+					</form>
+			<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
+			<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+			<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+			<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+			<script type="text/javascript">
+			$(function(){
+				$("#form").Validform({
+						 tiptype:function(msg,o,cssctl){
+								if (o.type == 3){
+									layer.msg(msg, {time: 800}); 
+								}
+						},
+						ajaxPost:true,
+						showAllError:true,
+						callback:function(ret){
+							ajax_progress(ret);
+						}
+					});
+			});
+			</script>
+php;
+    return $view;
+}
 		 /**
 	 * 流程修改
 	 */
@@ -225,7 +281,72 @@ define('ROOT_PATH',root_path() );
 				return $this->msg_return($ret['data'],1);
 			}
 	   }
-	   return view($this->patch.'/wfadd.html',['int_url'=>$this->int_url,'type'=>$this->table,'info'=>$this->work->FlowApi('GetFlowInfo',input('id'))]);
+	   $info=$this->work->FlowApi('GetFlowInfo',input('id'));
+	   $url = url($this->int_url.'/wf/wfedit');
+	   $type ='';
+	   foreach($this->table as $k=>$v){
+		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
+		   
+	   }
+	     $view=<<<php
+				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+				<form action="{$url}" method="post" name="form" id="form">
+				<input type="hidden" name="id" value="{$info['id']}">
+				   <table class="table">
+							<tr>
+							<th style='width:75px'>流程名称</th>
+							<td style='width:330px;text-align: left;'>
+							<input type="text" class="input-text" value="{$info['flow_name']}" name="flow_name"  datatype="*" ></td>
+							
+							</tr>
+							<tr>
+							<th>流程类型</th><td style='width:330px;text-align: left;'>
+							<span class="select-box">
+								<select name="type"  class="select"  datatype="*" >
+								{$type}
+								</select>
+								</span>
+							</td>
+							</tr>
+							<tr>
+							<th style='width:75px'>排序值</th>
+							<td style='width:330px;text-align: left;'><input type="text" class="input-text" value="{$info['sort_order']}" name="sort_order"  datatype="*" ></td>
+							</tr>
+							<tr>
+							<tr>
+							<th>流程描述</th><td style='width:330px;text-align: left;'>
+								<textarea name='flow_desc'  datatype="*" style="width:100%;height:55px;">{$info['flow_desc']}</textarea></td>
+							</tr>
+							<tr class='text-c' >
+							<td colspan=2>
+							<button  class="button" type="submit">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+								<button  class="button" type="button" onclick="layer_close()">&nbsp;&nbsp;取消&nbsp;&nbsp;</button></td>
+							</tr>
+						</table>
+					</form>
+			<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
+			<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+			<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+			<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+			<script type="text/javascript">
+			$(function(){
+				$("[name='type']").find("[value='{$info['type']}']").attr("selected",true);
+				$("#form").Validform({
+						 tiptype:function(msg,o,cssctl){
+								if (o.type == 3){
+									layer.msg(msg, {time: 800}); 
+								}
+						},
+						ajaxPost:true,
+						showAllError:true,
+						callback:function(ret){
+							ajax_progress(ret);
+						}
+					});
+			});
+			</script>
+php;
+    return $view;
     }
 	/**
 	 * 工作流设计界面

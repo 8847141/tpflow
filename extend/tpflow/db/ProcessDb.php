@@ -299,5 +299,16 @@ class ProcessDb{
 	{
 		return Db::name('run')->where('id',$run_id)->update(['is_sing'=>1,'sing_id'=>$sid,'endtime'=>time()]);
 	}
+	/**
+	 *获取sing_id
+	 *
+	 *@param $run_id 工作流ID
+	 **/
+	public static function get_sing_id($run_id)
+	{
+		return Db::name('run')->where('id',$run_id)->value('sing_id');
+	}
+	
+	
 	
 }

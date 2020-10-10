@@ -10,6 +10,12 @@
 */
 namespace tpflow\service\command;
 
+//数据库操作
+use tpflow\db\InfoDb;
+use tpflow\db\FlowDb;
+use tpflow\db\ProcessDb;
+use tpflow\db\LogDb;
+
 class TaskFlow{
 	/**
 	 * 任务执行

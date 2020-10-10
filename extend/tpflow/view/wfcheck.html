@@ -111,7 +111,7 @@
 			</td>
 			<td valign="top" >
 				<div style='width:98%;overflow-y:scroll; height:200px'>
-					{:\\workflow\\Api::wflogs($info.wf_fid,$info.wf_type);}
+					{:\\tpflow\\Api::wflogs($info.wf_fid,$info.wf_type);}
 				
 				</div>
 			</td>
@@ -167,6 +167,7 @@ function tj(value){
 		$('#backbton').html('确认会签');
 		$('#sing_process').show();
 		$("#backflow").removeAttr("datatype");
+		$("#todo").removeAttr("datatype");
 		var select = $('#singflow option:selected').val();
 		if(select==''){
 			layer.msg('请选择会签人');
@@ -189,6 +190,7 @@ function sing(value){
 		$('#back_process').show();
 		var select = $('#backflow option:selected').val();
 		$("#singflow").removeAttr("datatype");
+		
 		if(select==''){
 			layer.msg('请选择回退步骤');
 			return false;

@@ -1,5 +1,5 @@
 <?php
-namespace workflow;
+namespace tpflow\db;
 /**
 *+------------------
 * Tpflow 工作流日志消息
@@ -9,7 +9,7 @@ namespace workflow;
 * Author: guoguo(1838188896@qq.com)
 *+------------------
 */
-use tpflow\db;
+use think\facade\Db;
 
 class LogDb{
 	
