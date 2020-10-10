@@ -375,8 +375,6 @@ class FlowDb
         $one['process_to'] = $one['process_to'] == '' ? array() : explode(',', $one['process_to']);
         $one['style'] = json_decode($one['style'], true);
         $one['out_condition'] = self::parse_out_condition($one['out_condition'], '');//json
-		dump($one['out_condition']);
-	
         $process_to_list =  Db::name('flow_process')->field('id,process_name,process_type')->where('id','in' ,$one['process_tos'])->where('is_del', 0)->select()->all();
 		foreach($process_to_list as $k=>$v){
 			if((count($one['out_condition'])>1)){
