@@ -10,8 +10,6 @@
 */
 namespace tpflow\service\command;
 
-use think\facade\Db;
-
 class TaskFlow{
 	/**
 	 * 任务执行
@@ -38,12 +36,7 @@ class TaskFlow{
 			$todo = '';
 		}
 		if($config['wf_mode']==2){
-			$run_info = Db::name('run')->find($config['run_id']);
-			$info_list = Db::name('run_process')
-					->where('run_id',$config['run_id'])
-					->where('status',0)
-					->where('id','neq',$config['run_process'])
-					->select();
+			$info_list =ProcessDb::Getnorunprocess($config['run_id'],$config['run_process']);
 			if(count($info_list)>0){
 				foreach($info_list as $k=>$v){
 						$npids[] = $v['run_flow_process'];

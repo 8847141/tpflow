@@ -12,7 +12,6 @@
 namespace tpflow\db;
 
 use think\facade\Db;
-use think\facade\Session;
 
 class FlowDb
 {

@@ -35,7 +35,6 @@ define('ROOT_PATH',root_path() );
 			$this->table  = Db::query("select replace(TABLE_NAME,'".config('database.connections.mysql.prefix')."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".config('database.connections.mysql.database')."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
-			
 	   }
 	/**
 	 * 版权信息，请勿删除

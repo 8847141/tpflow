@@ -10,7 +10,6 @@ namespace workflow;
 *+------------------
 */
 use tpflow\db;
-use think\facade\Session;
 
 class LogDb{
 	

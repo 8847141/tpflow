@@ -12,7 +12,6 @@
 namespace tpflow\db;
 
 use think\facade\Db;
-use think\facade\Session;
 
 class ProcessDb{
 	/**
@@ -178,7 +177,17 @@ class ProcessDb{
 		$pre_n = Db::name('run_process')->where('run_id',$run_id)->where('run_flow_process',$pid)->find();
 		return $pre_n;
 	}
-	
+	/**
+	 * 同步模式下获取未办结的流程信息
+	 *
+	 * @param $run_id 运行中的ID
+	 * @param $run_process 运行中的流程ID
+	 */
+	public static function Getnorunprocess($run_id,$run_process)
+	{
+		$no_run_list = Db::name('run_process')->where('run_id',$run_id)->where('status',0)->where('id','neq',$run_process)->select();
+		return $no_run_list;
+	}
 	/**
 	 * 获取第一个流程
 	 *
@@ -231,6 +240,64 @@ class ProcessDb{
 		return Db::name('run_process')->where('id',$id)->value('status');
 
 	}
-	
+	/**
+	 *新增会签
+	 *
+	 *@param $config 参数信息
+	 **/
+	public static function AddSing($config)
+	{
+		$data = [
+			'run_id'=>$config['run_id'],
+			'run_flow'=>$config['flow_id'],
+			'run_flow_process'=>$config['run_process'],
+			'uid'=>$config['wf_singflow'],
+			'dateline'=>time()
+		];
+		$run_sign = Db::name('run_sign')->insertGetId($data);
+		if(!$run_sign){
+            return  false;
+        }
+        return $run_sign;	
+	}
+	/**
+	 *会签执行
+	 *
+	 * @param $sing_sign 会签ID
+	 * @param $check_con  审核内容
+	 **/
+	public static function EndSing($sing_sign,$check_con)
+	{
+		return Db::name('run_sign')->where('id',$sing_sign)->update(['is_agree'=>1,'content'=>$check_con,'dateline'=>time()]);
+	}
+	/**
+	 *更新会签信息
+	 *
+	 *@param $run_id 工作流run id
+	 **/
+	public static function up_run_sing($run_id)
+	{
+		return Db::name('run')->where('id',$run_id)->update(['is_sing'=>0]);
+	}
+	/**
+	 *更新流程步骤信息
+	 *
+	 *@param $run_id 工作流ID
+	 *@param $run_process 运行步骤
+	 **/
+	public static function up_flow_press($run_id,$run_process)
+	{
+		return Db::name('run')->where('id',$run_id)->update(['run_flow_process'=>$run_process]);
+	}
+	/**
+	 *更新流程会签信息
+	 *
+	 *@param $run_id 工作流ID
+	 *@param $sid 会签ID
+	 **/
+	public static function up_flow_sing($run_id,$sid)
+	{
+		return Db::name('run')->where('id',$run_id)->update(['is_sing'=>1,'sing_id'=>$sid,'endtime'=>time()]);
+	}
 	
 }
