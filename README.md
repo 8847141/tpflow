@@ -4,6 +4,8 @@
 
 ![star](https://gitee.com/ntdgg/tpflow/badge/star.svg?theme=gvp "tpflow") ![fork](https://gitee.com/ntdgg/tpflow/badge/fork.svg?theme=gvp "tpflow") 
 
+4.0开发计划：https://gitee.com/ntdgg/tpflow/board
+
 ### 主要特性
 
 + 基于  `<jsPlumb>` 可视化设计流程图
@@ -62,8 +64,9 @@
 
 > https://www.cojz8.com/article/124   工作流实战教程----教程四
 
-
-
+~~~
+设计器、源代码标注有版权的位置，未经许可，严禁删除及修改，违者将承担法律侵权责任！
+~~~
 ### 相关链接
 ---
 
