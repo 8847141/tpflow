@@ -41,4 +41,8 @@ Route::group('wf', function () {
 		Route::post('wfupsave','\tpflow\Api@wfupsave');//审核保存
 		Route::post('wfend','\tpflow\Api@wfend');//终止工作流接口
 		Route::post('ajax_back','\tpflow\Api@ajax_back');//终止工作流接口
+		//
+		Route::get('wfgl','\tpflow\Api@wfgl'); //
+		Route::rule('entrust','\tpflow\Api@entrust'); //
+		
     });

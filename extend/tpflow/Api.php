@@ -442,11 +442,85 @@ php;
 		$ret = array_merge($ret, $extend);
 		return json($ret);
 	}
-	
+		
+	public function wfgl()
+    {
+        return view($this->patch.'/wfgl.html',['int_url'=>$this->int_url]);
+    }
+	/*委托授权审核*/
+	public function entrust(){
+		 $url = url($this->int_url.'/wf/wfedit');
+	   $type ='';
+	   foreach($this->table as $k=>$v){
+		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
+		   
+	   }
+	     $view=<<<php
+				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+				<form action="{$url}" method="post" name="form" id="form">
+				<input type="hidden" name="id" value="">
+				   <table class="table">
+							<tr>
+							<th style='width:75px'>委托标题</th>
+							<td style='width:330px;text-align: left;'>
+							<input type="text" class="input-text" value="" name="flow_name"  datatype="*" ></td>
+							
+							</tr>
+							<tr>
+							<th>委托起止</th><td style='width:330px;text-align: left;'>
+							<span class="select-box">
+								<select name="type"  class="select"  datatype="*" >
+								{$type}
+								</select>
+								</span>
+							</td>
+							</tr>
+							<tr>
+							<th>委托备注</th><td style='width:330px;text-align: left;'>
+								<textarea name='flow_desc'  datatype="*" style="width:100%;height:55px;"></textarea></td>
+							</tr>
+							<tr class='text-c' >
+							<td colspan=2>
+							<button  class="button" type="submit">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+								<button  class="button" type="button" onclick="layer_close()">&nbsp;&nbsp;取消&nbsp;&nbsp;</button></td>
+							</tr>
+							<tr>
+							<td style='width:330px;text-align: left;' colspan=2>
+								注：
+							</td>
+							</tr>
+						</table>
+					</form>
+			<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
+			<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+			<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+			<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+			<script type="text/javascript">
+			$(function(){
+				$("[name='type']").find("[value='']").attr("selected",true);
+				$("#form").Validform({
+						 tiptype:function(msg,o,cssctl){
+								if (o.type == 3){
+									layer.msg(msg, {time: 800}); 
+								}
+						},
+						ajaxPost:true,
+						showAllError:true,
+						callback:function(ret){
+							ajax_progress(ret);
+						}
+					});
+			});
+			</script>
+php;
+    return $view;
+		
+	}
 	public function wfup()
     {
         return view($this->patch.'/wfup.html',['int_url'=>$this->int_url]);
     }
+	
 	public function wfupsave()
     {
         $files = $this->request::file('file');
