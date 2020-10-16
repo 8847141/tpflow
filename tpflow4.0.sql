@@ -1,22 +1,48 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
-Source Server Version : 50726
-Source Host           : 127.0.0.1:3306
+Source Server         : localhost_3306
+Source Server Version : 50562
+Source Host           : localhost:3306
 Source Database       : tpflow4.0
 
 Target Server Type    : MYSQL
-Target Server Version : 50726
+Target Server Version : 50562
 File Encoding         : 65001
 
-Date: 2020-10-06 20:43:18
+Date: 2020-10-16 16:44:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for wf_flow
+-- Table structure for `wf_entrust`
+-- ----------------------------
+DROP TABLE IF EXISTS `wf_entrust`;
+CREATE TABLE `wf_entrust` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flow_id` int(11) NOT NULL COMMENT '运行id',
+  `flow_process` int(11) NOT NULL COMMENT '运行步骤id',
+  `entrust_title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `entrust_user` varchar(255) NOT NULL COMMENT '被授权人',
+  `entrust_name` varchar(255) NOT NULL COMMENT '被授权人名称',
+  `entrust_stime` int(11) NOT NULL COMMENT '授权开始时间',
+  `entrust_etime` int(11) NOT NULL COMMENT '授权结束时间',
+  `entrust_con` longtext COMMENT '授权备注',
+  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  `old_user` varchar(255) NOT NULL COMMENT '授权人',
+  `old_name` varchar(255) NOT NULL COMMENT '授权人名称',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='委托授权表';
+
+-- ----------------------------
+-- Records of wf_entrust
+-- ----------------------------
+INSERT INTO `wf_entrust` VALUES ('1', '0', '0', '测试11', '3', '主管', '1601481600', '1603159200', '测试22', '1602837263', '', '');
+INSERT INTO `wf_entrust` VALUES ('2', '1', '1', '222', '1', '员工', '1601481600', '1603123200', '2222', null, '', '');
+
+-- ----------------------------
+-- Table structure for `wf_flow`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_flow`;
 CREATE TABLE `wf_flow` (
@@ -30,15 +56,17 @@ CREATE TABLE `wf_flow` (
   `uid` int(11) DEFAULT NULL COMMENT '添加用户',
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='*工作流表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='*工作流表';
 
 -- ----------------------------
 -- Records of wf_flow
 -- ----------------------------
 INSERT INTO `wf_flow` VALUES ('1', 'news', '测试工作流', '2', '1', '0', '0', '1', '1601987835');
+INSERT INTO `wf_flow` VALUES ('2', 'news', '模板测试', '233', '2', '0', '0', '1', '1602298141');
+INSERT INTO `wf_flow` VALUES ('3', 'news', '22333', '22', '22', '0', '0', '1', '1602837774');
 
 -- ----------------------------
--- Table structure for wf_flow_process
+-- Table structure for `wf_flow_process`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_flow_process`;
 CREATE TABLE `wf_flow_process` (
@@ -70,14 +98,20 @@ CREATE TABLE `wf_flow_process` (
   `work_sql` longtext,
   `work_msg` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wf_flow_process
 -- ----------------------------
+INSERT INTO `wf_flow_process` VALUES ('1', '1', '步骤', 'is_one', '2', '4', '1', '员工', '1', '', '', '', '', '', '1', '1', '[]', '100', '100', '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}', '0', '1602295641', '0', '0', 'view', '', '');
+INSERT INTO `wf_flow_process` VALUES ('2', '1', '步骤', 'is_step', '', '3', '', '', '1', '', '', '', '3,1', '主管,员工', '1', '1', '[]', '321', '139', '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}', '0', '1602295641', '0', '0', 'edit', '', '');
+INSERT INTO `wf_flow_process` VALUES ('9', '2', '步骤', 'is_one', '10', '4', '1', '员工', '1', '', '', '', '', '', '1', '1', '[]', '100', '100', '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}', '0', '1602830975', '0', '0', 'view', '', '');
+INSERT INTO `wf_flow_process` VALUES ('10', '2', '步骤', 'is_step', '11', '5', '', '', '1', '', '2', '经理部', '', '', '1', '1', '[]', '520', '160', '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}', '0', '1602830975', '0', '0', 'view', '', '');
+INSERT INTO `wf_flow_process` VALUES ('11', '2', '步骤', 'is_step', '12', '3', '', '', '1', '', '', '', '4,3', '主任,主管', '1', '1', '[]', '662', '393', '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}', '0', '1602830975', '0', '0', 'view', '', '');
+INSERT INTO `wf_flow_process` VALUES ('12', '2', '步骤', 'is_step', '', '6', '', '', '1', 'uid', '', '', '', '', '1', '1', '[]', '343', '455', '{\"width\":\"120\",\"height\":\"auto\",\"color\":\"#0e76a8\"}', '0', '1602830975', '0', '0', 'view', '', '');
 
 -- ----------------------------
--- Table structure for wf_news
+-- Table structure for `wf_news`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_news`;
 CREATE TABLE `wf_news` (
@@ -92,15 +126,17 @@ CREATE TABLE `wf_news` (
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '-1回退修改0 保存中1流程中 2通过',
   `uptime` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[work]新闻表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='[work]新闻表';
 
 -- ----------------------------
 -- Records of wf_news
 -- ----------------------------
-INSERT INTO `wf_news` VALUES ('1', '1', '1601987850', '22', '1', '1', '222', null, '0', null);
+INSERT INTO `wf_news` VALUES ('1', '1', '1601987850', '22', '1', '1', '222', null, '2', '1602296182');
+INSERT INTO `wf_news` VALUES ('2', '3', '1602296353', '测试会签错误', '1', '1', '222', null, '2', '1602296994');
+INSERT INTO `wf_news` VALUES ('3', '1', '1602301562', '222', '1', '1', '22', null, '1', '1602301571');
 
 -- ----------------------------
--- Table structure for wf_news_type
+-- Table structure for `wf_news_type`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_news_type`;
 CREATE TABLE `wf_news_type` (
@@ -118,7 +154,7 @@ INSERT INTO `wf_news_type` VALUES ('1', '新闻', null, null);
 INSERT INTO `wf_news_type` VALUES ('2', '公告', null, null);
 
 -- ----------------------------
--- Table structure for wf_role
+-- Table structure for `wf_role`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_role`;
 CREATE TABLE `wf_role` (
@@ -145,7 +181,7 @@ INSERT INTO `wf_role` VALUES ('6', '总经理', '0', '1', '0', '');
 INSERT INTO `wf_role` VALUES ('7', '董事长', '0', '1', '0', '');
 
 -- ----------------------------
--- Table structure for wf_role_user
+-- Table structure for `wf_role_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_role_user`;
 CREATE TABLE `wf_role_user` (
@@ -167,7 +203,7 @@ INSERT INTO `wf_role_user` VALUES ('6', '6');
 INSERT INTO `wf_role_user` VALUES ('7', '7');
 
 -- ----------------------------
--- Table structure for wf_run
+-- Table structure for `wf_run`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_run`;
 CREATE TABLE `wf_run` (
@@ -197,14 +233,16 @@ CREATE TABLE `wf_run` (
   KEY `cache_run_id` (`cache_run_id`),
   KEY `uid` (`uid`),
   KEY `is_del` (`is_del`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wf_run
 -- ----------------------------
+INSERT INTO `wf_run` VALUES ('5', '0', 'news', '2', '0', '0', '3', '1', '0', '2', '1', '2', '', '1602296994', '1', '0', '0', '1602296380', '0', '1');
+INSERT INTO `wf_run` VALUES ('6', '0', 'news', '3', '0', '0', '1', '1', '0', '3', '1', '2', '', '0', '0', '0', '0', '1602301571', '0', null);
 
 -- ----------------------------
--- Table structure for wf_run_cache
+-- Table structure for `wf_run_cache`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_run_cache`;
 CREATE TABLE `wf_run_cache` (
@@ -220,14 +258,20 @@ CREATE TABLE `wf_run_cache` (
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `run_id` (`run_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wf_run_cache
 -- ----------------------------
+INSERT INTO `wf_run_cache` VALUES ('1', '1', '1', '1', '', '{\"id\":1,\"uid\":1,\"add_time\":1601987850,\"new_title\":\"22\",\"new_type\":1,\"new_top\":1,\"new_con\":\"222\",\"new_user\":null,\"status\":0,\"uptime\":null}', '{\"id\":1,\"flow_id\":1,\"process_name\":\"\\u6b65\\u9aa4\",\"process_type\":\"is_one\",\"process_to\":\"2\",\"auto_person\":4,\"auto_sponsor_ids\":\"1\",\"auto_sponsor_text\":\"\\u5458\\u5de5\",\"work_ids\":\"1\",\"work_text\":\"\",\"auto_role_ids\":\"\",\"auto_role_text\":\"\",\"range_user_ids\":\"\",\"range_user_text\":\"\",\"is_sing\":1,\"is_back\":1,\"out_condition\":\"[]\",\"setleft\":100,\"settop\":100,\"style\":\"{\\\"width\\\":\\\"120\\\",\\\"height\\\":\\\"auto\\\",\\\"color\\\":\\\"#0e76a8\\\"}\",\"is_del\":0,\"updatetime\":1602295641,\"dateline\":0,\"wf_mode\":0,\"wf_action\":\"view\",\"work_sql\":\"\",\"work_msg\":\"\"}', '0', '0', '1602295714');
+INSERT INTO `wf_run_cache` VALUES ('2', '2', '1', '1', '', '{\"id\":1,\"uid\":1,\"add_time\":1601987850,\"new_title\":\"22\",\"new_type\":1,\"new_top\":1,\"new_con\":\"222\",\"new_user\":null,\"status\":1,\"uptime\":1602295714}', '{\"id\":1,\"flow_id\":1,\"process_name\":\"\\u6b65\\u9aa4\",\"process_type\":\"is_one\",\"process_to\":\"2\",\"auto_person\":4,\"auto_sponsor_ids\":\"1\",\"auto_sponsor_text\":\"\\u5458\\u5de5\",\"work_ids\":\"1\",\"work_text\":\"\",\"auto_role_ids\":\"\",\"auto_role_text\":\"\",\"range_user_ids\":\"\",\"range_user_text\":\"\",\"is_sing\":1,\"is_back\":1,\"out_condition\":\"[]\",\"setleft\":100,\"settop\":100,\"style\":\"{\\\"width\\\":\\\"120\\\",\\\"height\\\":\\\"auto\\\",\\\"color\\\":\\\"#0e76a8\\\"}\",\"is_del\":0,\"updatetime\":1602295641,\"dateline\":0,\"wf_mode\":0,\"wf_action\":\"view\",\"work_sql\":\"\",\"work_msg\":\"\"}', '0', '0', '1602295723');
+INSERT INTO `wf_run_cache` VALUES ('3', '3', '1', '1', '', '{\"id\":1,\"uid\":1,\"add_time\":1601987850,\"new_title\":\"22\",\"new_type\":1,\"new_top\":1,\"new_con\":\"222\",\"new_user\":null,\"status\":1,\"uptime\":1602295723}', '{\"id\":1,\"flow_id\":1,\"process_name\":\"\\u6b65\\u9aa4\",\"process_type\":\"is_one\",\"process_to\":\"2\",\"auto_person\":4,\"auto_sponsor_ids\":\"1\",\"auto_sponsor_text\":\"\\u5458\\u5de5\",\"work_ids\":\"1\",\"work_text\":\"\",\"auto_role_ids\":\"\",\"auto_role_text\":\"\",\"range_user_ids\":\"\",\"range_user_text\":\"\",\"is_sing\":1,\"is_back\":1,\"out_condition\":\"[]\",\"setleft\":100,\"settop\":100,\"style\":\"{\\\"width\\\":\\\"120\\\",\\\"height\\\":\\\"auto\\\",\\\"color\\\":\\\"#0e76a8\\\"}\",\"is_del\":0,\"updatetime\":1602295641,\"dateline\":0,\"wf_mode\":0,\"wf_action\":\"view\",\"work_sql\":\"\",\"work_msg\":\"\"}', '0', '0', '1602295806');
+INSERT INTO `wf_run_cache` VALUES ('4', '4', '1', '1', '', '{\"id\":1,\"uid\":1,\"add_time\":1601987850,\"new_title\":\"22\",\"new_type\":1,\"new_top\":1,\"new_con\":\"222\",\"new_user\":null,\"status\":1,\"uptime\":1602295806}', '{\"id\":1,\"flow_id\":1,\"process_name\":\"\\u6b65\\u9aa4\",\"process_type\":\"is_one\",\"process_to\":\"2\",\"auto_person\":4,\"auto_sponsor_ids\":\"1\",\"auto_sponsor_text\":\"\\u5458\\u5de5\",\"work_ids\":\"1\",\"work_text\":\"\",\"auto_role_ids\":\"\",\"auto_role_text\":\"\",\"range_user_ids\":\"\",\"range_user_text\":\"\",\"is_sing\":1,\"is_back\":1,\"out_condition\":\"[]\",\"setleft\":100,\"settop\":100,\"style\":\"{\\\"width\\\":\\\"120\\\",\\\"height\\\":\\\"auto\\\",\\\"color\\\":\\\"#0e76a8\\\"}\",\"is_del\":0,\"updatetime\":1602295641,\"dateline\":0,\"wf_mode\":0,\"wf_action\":\"view\",\"work_sql\":\"\",\"work_msg\":\"\"}', '0', '0', '1602295905');
+INSERT INTO `wf_run_cache` VALUES ('5', '5', '2', '2', '', '{\"id\":2,\"uid\":3,\"add_time\":1602296353,\"new_title\":\"\\u6d4b\\u8bd5\\u4f1a\\u7b7e\\u9519\\u8bef\",\"new_type\":1,\"new_top\":1,\"new_con\":\"222\",\"new_user\":null,\"status\":0,\"uptime\":null}', '{\"id\":1,\"flow_id\":1,\"process_name\":\"\\u6b65\\u9aa4\",\"process_type\":\"is_one\",\"process_to\":\"2\",\"auto_person\":4,\"auto_sponsor_ids\":\"1\",\"auto_sponsor_text\":\"\\u5458\\u5de5\",\"work_ids\":\"1\",\"work_text\":\"\",\"auto_role_ids\":\"\",\"auto_role_text\":\"\",\"range_user_ids\":\"\",\"range_user_text\":\"\",\"is_sing\":1,\"is_back\":1,\"out_condition\":\"[]\",\"setleft\":100,\"settop\":100,\"style\":\"{\\\"width\\\":\\\"120\\\",\\\"height\\\":\\\"auto\\\",\\\"color\\\":\\\"#0e76a8\\\"}\",\"is_del\":0,\"updatetime\":1602295641,\"dateline\":0,\"wf_mode\":0,\"wf_action\":\"view\",\"work_sql\":\"\",\"work_msg\":\"\"}', '0', '0', '1602296380');
+INSERT INTO `wf_run_cache` VALUES ('6', '6', '3', '3', '', '{\"id\":3,\"uid\":1,\"add_time\":1602301562,\"new_title\":\"222\",\"new_type\":1,\"new_top\":1,\"new_con\":\"22\",\"new_user\":null,\"status\":0,\"uptime\":null}', '{\"id\":1,\"flow_id\":1,\"process_name\":\"\\u6b65\\u9aa4\",\"process_type\":\"is_one\",\"process_to\":\"2\",\"auto_person\":4,\"auto_sponsor_ids\":\"1\",\"auto_sponsor_text\":\"\\u5458\\u5de5\",\"work_ids\":\"1\",\"work_text\":\"\",\"auto_role_ids\":\"\",\"auto_role_text\":\"\",\"range_user_ids\":\"\",\"range_user_text\":\"\",\"is_sing\":1,\"is_back\":1,\"out_condition\":\"[]\",\"setleft\":100,\"settop\":100,\"style\":\"{\\\"width\\\":\\\"120\\\",\\\"height\\\":\\\"auto\\\",\\\"color\\\":\\\"#0e76a8\\\"}\",\"is_del\":0,\"updatetime\":1602295641,\"dateline\":0,\"wf_mode\":0,\"wf_action\":\"view\",\"work_sql\":\"\",\"work_msg\":\"\"}', '0', '0', '1602301571');
 
 -- ----------------------------
--- Table structure for wf_run_log
+-- Table structure for `wf_run_log`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_run_log`;
 CREATE TABLE `wf_run_log` (
@@ -245,14 +289,23 @@ CREATE TABLE `wf_run_log` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `run_id` (`run_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wf_run_log
 -- ----------------------------
+INSERT INTO `wf_run_log` VALUES ('1', '1', '1', 'news', '4', '0', '1', '1602295905', 'Send', '', '');
+INSERT INTO `wf_run_log` VALUES ('2', '1', '1', 'news', '1', '0', '2', '1602296171', 'ok', '', 'work_sql:null|work_msg:null');
+INSERT INTO `wf_run_log` VALUES ('3', '3', '1', 'news', '1', '0', '22', '1602296182', 'ok', '', 'work_sql:null|work_msg:null');
+INSERT INTO `wf_run_log` VALUES ('4', '3', '2', 'news', '5', '0', '1', '1602296380', 'Send', '', '');
+INSERT INTO `wf_run_log` VALUES ('5', '1', '2', 'news', '5', '0', '22', '1602296627', 'Sing', '', 'work_sql:null|work_msg:null');
+INSERT INTO `wf_run_log` VALUES ('6', '1', '2', 'news', '5', '0', '222', '1602296979', 'sok', '', 'work_sql:null|work_msg:null');
+INSERT INTO `wf_run_log` VALUES ('7', '1', '2', 'news', '5', '0', '222', '1602296994', 'ok', '', 'work_sql:null|work_msg:null');
+INSERT INTO `wf_run_log` VALUES ('8', '1', '3', 'news', '6', '0', '2', '1602301571', 'Send', '', '');
+INSERT INTO `wf_run_log` VALUES ('9', '1', '3', 'news', '6', '0', '22', '1602301585', 'ok', '', 'work_sql:null|work_msg:null');
 
 -- ----------------------------
--- Table structure for wf_run_process
+-- Table structure for `wf_run_process`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_run_process`;
 CREATE TABLE `wf_run_process` (
@@ -286,14 +339,23 @@ CREATE TABLE `wf_run_process` (
   KEY `run_id` (`run_id`),
   KEY `status` (`status`),
   KEY `is_del` (`is_del`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wf_run_process
 -- ----------------------------
+INSERT INTO `wf_run_process` VALUES ('1', '1', '1', '1', '1', '0', '0', '0', '2', '0', '4', '员工', '1', '0', '0', '0', '2', '1602295714', '1602296171', '0', '0', '0', '1602295714', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('2', '1', '2', '1', '1', '0', '0', '0', '', '0', '4', '员工', '1', '0', '0', '0', '0', '1602295723', '0', '0', '0', '0', '1602295723', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('3', '1', '3', '1', '1', '0', '0', '0', '', '0', '4', '员工', '1', '0', '0', '0', '0', '1602295806', '0', '0', '0', '0', '1602295806', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('4', '1', '4', '1', '1', '0', '0', '0', '', '0', '4', '员工', '1', '0', '0', '0', '0', '1602295905', '0', '0', '0', '0', '1602295905', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('5', '1', '1', '1', '2', '0', '0', '0', '22', '0', '3', '主管', '3', '0', '0', '0', '2', '1602296171', '1602296182', '0', '0', '0', '1602296171', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('6', '3', '5', '1', '1', '0', '0', '0', '22', '0', '4', '员工', '1', '0', '0', '0', '2', '1602296380', '1602296627', '0', '0', '0', '1602296380', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('7', '1', '5', '1', '2', '0', '0', '0', '222', '0', '3', '主管,员工', '3,1', '0', '0', '0', '2', '1602296979', '1602296994', '0', '0', '0', '1602296979', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('8', '1', '6', '1', '1', '0', '0', '0', '22', '0', '4', '员工', '1', '0', '0', '0', '2', '1602301571', '1602301585', '0', '0', '0', '1602301571', '0', 'view');
+INSERT INTO `wf_run_process` VALUES ('9', '1', '6', '1', '2', '0', '0', '0', '', '0', '3', '员工', '1', '0', '0', '0', '0', '1602301585', '0', '0', '0', '0', '1602301585', '0', '/news/edit');
 
 -- ----------------------------
--- Table structure for wf_run_sign
+-- Table structure for `wf_run_sign`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_run_sign`;
 CREATE TABLE `wf_run_sign` (
@@ -310,14 +372,15 @@ CREATE TABLE `wf_run_sign` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `run_id` (`run_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wf_run_sign
 -- ----------------------------
+INSERT INTO `wf_run_sign` VALUES ('1', '2', '5', '1', '6', '222', '1', '0', '0', '1602296979');
 
 -- ----------------------------
--- Table structure for wf_user
+-- Table structure for `wf_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_user`;
 CREATE TABLE `wf_user` (
@@ -350,7 +413,7 @@ INSERT INTO `wf_user` VALUES ('6', '总经理', 'c4ca4238a0b923820dcc509a6f75849
 INSERT INTO `wf_user` VALUES ('7', '董事长', 'c4ca4238a0b923820dcc509a6f75849b', '1', '1', '7', '0', '1', '1522376413', '127.0.0.1', '0', '新建用户', '1522376413');
 
 -- ----------------------------
--- Table structure for wf_workinfo
+-- Table structure for `wf_workinfo`
 -- ----------------------------
 DROP TABLE IF EXISTS `wf_workinfo`;
 CREATE TABLE `wf_workinfo` (

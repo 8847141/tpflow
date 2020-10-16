@@ -6,7 +6,7 @@
 <body>
 <div class="page-container">
 <div style='float: left;width:6%'>
-	<a onclick="layer_open('添加委托授权','{:url($int_url.'/wf/entrust')}','550','400')" class="button ">委托授权</a> <hr/>
+	<a onclick="layer_open('添加委托授权','{:url($int_url.'/wf/entrust')}','750','400')" class="button ">委托授权</a> <hr/>
 	<a onclick="location.reload();" class="button ">刷新页面</a>
 
 </div>
@@ -14,12 +14,31 @@
 <table class="table" >
     <tr>
         <th>ID</th>
-        <th>流程名称</th>
-        <th>流程类型</th>
-        <th>添加时间</th>
-		<th>状态</th>
+        <th>授权名称</th>
+        <th>委托类型</th>
+		<th>被授权人</th>
+        <th>起止时间</th>
+		<th>委托备注</th>
         <th>操作</th>
     </tr>
+	{volist name="list" id="vo"}
+    <tr>
+        <td>{$vo.id}</td>
+		<td>{$vo.entrust_title}</td>
+		<td>
+		{eq name='vo.flow_id' value='0'}
+		全局授权
+		{else/}
+		步骤授权
+		{/eq}</td>
+		<td>{$vo.entrust_name}</td>
+		<td>{$vo.entrust_stime|date='Y-m-d H:i:s'}~{$vo.entrust_etime|date='Y-m-d H:i:s'}</td>
+		<td>{$vo.entrust_con}</td>
+      <td> <a class='button' onclick="layer_open('修改','{:url($int_url.'/wf/entrust',['id'=>$vo.id])}','750','400')"> 修改</a>
+	   </td>
+    </tr>
+    {/volist}
+	
 </table>
 </div>
 </div>

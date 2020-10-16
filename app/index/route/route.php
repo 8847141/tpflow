@@ -17,8 +17,7 @@ Route::group('wf', function () {
 		Route::get('wfjk','\tpflow\Api@wfjk');
 		Route::rule('super_user','\tpflow\Api@super_user');//获取用户信息
 		Route::rule('super_role','\tpflow\Api@super_role');//获取角色信息
-		Route::rule('wfadd','\tpflow\Api@wfadd');//工作流添加
-		Route::rule('wfedit','\tpflow\Api@wfedit');//工作流修改
+		Route::rule('wfadd','\tpflow\Api@wfadd');//工作流添加\修改
 		//流程设计器
 		Route::get('wfdesc','\tpflow\Api@wfdesc'); //设计界面
 		Route::post('add_process','\tpflow\Api@add_process'); //添加一个新流程
