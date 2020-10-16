@@ -28,10 +28,20 @@ class EntrustDb{
     public static function find($id)
     {
 		$info = Db::name('entrust')->find($id);
-		$info['entrust_stime'] = date('Y-m-d',$info['entrust_stime'])."T".date('H:i:s',$info['entrust_stime']);
-		$info['entrust_etime'] = date('Y-m-d',$info['entrust_etime'])."T".date('H:i:s',$info['entrust_etime']);
-		$info['type'] = $info['flow_process']."@".$info['flow_id'];
-		$info['userinfo'] = $info['entrust_user']."@".$info['entrust_name'];
+		if($info==''){
+			$info['entrust_stime'] = '';
+			$info['entrust_etime'] = '';
+			$info['type'] ='';
+			$info['userinfo'] = '';
+			$info['id'] = '';
+			$info['entrust_title'] = '';
+			$info['entrust_con'] = '';
+		}else{
+			$info['entrust_stime'] = date('Y-m-d',$info['entrust_stime'])."T".date('H:i:s',$info['entrust_stime']);
+			$info['entrust_etime'] = date('Y-m-d',$info['entrust_etime'] ?? '')."T".date('H:i:s',$info['entrust_etime'] ?? '');
+			$info['type'] = $info['flow_process']."@".$info['flow_id'];
+			$info['userinfo'] = $info['entrust_user']."@".$info['entrust_name'];
+		}
 		return $info;
     }
 	/**
