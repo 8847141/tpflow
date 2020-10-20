@@ -14,6 +14,18 @@ use think\facade\Db;
 class EntrustDb{
 	
 	/**
+     * API 获取所有当前生效的授权信息
+     */
+    public static function get_Entrust($map=[],$Raw='')
+    {
+		return Db::name('entrust')
+		->whereBetweenTimeField('entrust_stime','entrust_etime')
+		->where($map)
+		->whereRaw($Raw)
+		->field('id,flow_process,old_user')
+		->select();
+    }
+	/**
      * API 查询
      * @param $data POST提交的数据
      */
@@ -48,8 +60,12 @@ class EntrustDb{
      * API 新增
      * @param $data POST提交的数据
      */
-    public static function Add($data)
+    public static function Add($uid,$data)
     {
+		if($uid==''){
+			 return ['code' => 1, 'data' => '请先登入账号信息哦！'];
+		}
+		$data['old_user'] =$uid;
 		$data['entrust_stime'] = strtotime($data['entrust_stime']);
 		$data['entrust_etime'] = strtotime($data['entrust_etime']);
 		$type = explode("@",$data['type']);
@@ -72,4 +88,22 @@ class EntrustDb{
             return ['code' => 1, 'data' => 'Db0001-写入数据库出错！'];
         }
     }
+	/**
+     * API 保存关系
+     */
+    public static function save_rel($data,$run_process)
+    {
+		foreach($data as $k=>$v){
+			$rel=[
+				'entrust_id'=>$v['id'],
+				'process_id'=>$run_process,
+				'add_time'=>date('Y-m-d H:i:s'),
+			];
+			$ret =  Db::name('entrust_rel')->insertGetId($rel);
+			if (!$ret) {
+				return ['code' => 1, 'data' => 'Db0001-写入关系失败！'];
+			}
+		}
+    }
+	
 }

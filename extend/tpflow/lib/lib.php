@@ -81,7 +81,7 @@ class lib
 php;
 	return 	$view;	
 	}
-	function tmp_entrust($url,$info,$type){
+	function tmp_entrust($url,$info,$type,$user){
 		 $view=<<<php
 				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 				<form action="{$url}" method="post" name="form" id="form">

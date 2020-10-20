@@ -120,6 +120,21 @@ class InfoDB{
 			'wf_action'=>$wf_process['wf_action'],
         );
         $process_id = Db::name('run_process')->insertGetId($data);
+		
+		//如果是角色办理，将角色ID转化为用户ID
+		if($wf_process['auto_person']==5){ 
+			$sponsor_ids = '';
+		}
+		//取出当前所有授权信息
+		$map[] = ['old_user','in',$sponsor_ids];
+		$Raw = 'flow_process = 0 or flow_process='.$wf_process['id'];
+
+		$all_Entrust = EntrustDb::get_Entrust($map,$Raw);
+		
+		if(count($all_Entrust)>0){
+			//写入授权表
+			EntrustDb::save_rel($all_Entrust,$process_id);
+		}
 		if(!$process_id)
         {
             return  false;

@@ -332,7 +332,8 @@ define('ROOT_PATH',root_path() );
 		
 		if ($this->request::isPost()) {
 			$post = input('post.');
-			$ret = EntrustDb::Add($post);
+			
+			$ret = EntrustDb::Add(1,$post);
 			if($ret['code']==0){
 				return $this->msg_return('发布成功！');
 				}else{
@@ -350,10 +351,12 @@ define('ROOT_PATH',root_path() );
 		   foreach($user as $k=>$v){
 			   $user .='<option value="'.$v['id'].'@'.$v['username'].'">'.$v['username'].'</option>'; 
 		   }
+		   
+		   
 		$id = input('id');
 		$info = EntrustDb::find($id);
 		$lib = new lib();
-	   return $lib->tmp_entrust($url,$info,$type);
+	   return $lib->tmp_entrust($url,$info,$type,$user);
 	}
 	public function wfup()
     {
