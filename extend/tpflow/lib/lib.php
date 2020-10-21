@@ -12,12 +12,63 @@ namespace tpflow\lib;
 
 class lib
 {
-	function tpflow_btn()
+	function tpflow_status($status=0){
+		$stv = [
+			-1=>'<span class="label label-danger radius" >退回修改</span>',0=>'<span class="label radius">保存中</span>',1=>'<span class="label radius" >流程中</span>',2=>'<span class="label label-success radius" >审核通过</span>'
+		];
+		return $stv[$status] ?? 'ERR';
+	}
+	function tpflow_btn($wf_fid,$wf_type,$status,$url,$thisuser,$work)
 	{
-		
-		
-		
-		
+		switch ($status)
+		{
+		case 0:
+		  return '<span class="btn  radius size-S" onclick=layer_show(\'发起工作流\',"'.$url['url_star'].'","450","350")>发起工作流</span>';
+		  break;
+		case 1:
+			$st = 0;
+			$user_name ='';
+			$flowinfo =  $work->workflowInfo($wf_fid,$wf_type,['uid'=>$thisuser['thisuid'],'role'=>$thisuser['thisrole']]);
+			if($flowinfo!=-1){
+				if(!isset($flowinfo['status'])){
+					 return '<span class="btn btn-danger  radius size-S" onclick=javascript:alert("提示：当前流程故障，请联系管理员重置流程！")>Info:Flow Err</span>';
+				}
+					if($flowinfo['sing_st']==0){
+						$user = explode(",", $flowinfo['status']['sponsor_ids']);
+						$user_name =$flowinfo['status']['sponsor_text'];
+						if($flowinfo['status']['auto_person']==3||$flowinfo['status']['auto_person']==4||$flowinfo['status']['auto_person']==6){
+							if (in_array($thisuser['thisuid'], $user)) {
+								$st = 1;
+							}
+						}
+						if($flowinfo['status']['auto_person']==5){
+							if (in_array($thisuser['thisrole'], $user)) {
+								$st = 1;
+							}
+						}
+					}else{
+						if($flowinfo['sing_info']['uid']==$thisuser['thisuid']){
+							  $st = 1;
+						}else{
+							   $user_name =$flowinfo['sing_info']['uid'];
+						}
+					}
+				}else{
+					 return '<span class="btn  radius size-S">无权限</span>';
+				}	
+				if($st == 1){
+					 return '<span class="btn  radius size-S" onclick=layer_show(\'审核\',"'.$url['url'].'","850","650")>审核('.$user_name.')</span>';
+					}else{
+					 return '<span class="btn  radius size-S">无权限('.$user_name.')</span>';
+				}
+			
+		case 100:
+			echo '<span class="btn btn-primary" onclick=layer_open(\'代审\',"'.$url['url'].'?sup=1","850","650")>代审</span>';
+		  break;
+		  break;
+		default:
+		  return '';
+		}
 	}
 	function tmp_add($url,$info,$type)
 	{

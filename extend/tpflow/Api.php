@@ -24,18 +24,18 @@ use think\facade\Db;
 use tpflow\lib\lib;
 
 use think\facade\Request;
-define('ROOT_PATH',root_path() );
 
 	class Api{
 		public $patch = '';
 		public $topconfig = '';
 		function __construct(Request $request) {
-			$this->int_url = 'index';//定义默认使用index模块，可以直接修改
 			$this->work = new workflow();
+			$this->dbconfig = require ( BEASE_URL . '/config/database.php');
+			$this->int_url = 'index';//定义默认使用index模块，可以直接修改
 			$this->lib = new lib();
 			$this->uid = session('uid');
 			$this->role = session('role');
-			$this->table  = Db::query("select replace(TABLE_NAME,'".config('database.connections.mysql.prefix')."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".config('database.connections.mysql.database')."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
+			$this->table  = Db::query("select replace(TABLE_NAME,'".$this->dbconfig['prefix']."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".$this->dbconfig['database']."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
 	   }
@@ -59,77 +59,16 @@ define('ROOT_PATH',root_path() );
 	public static function wfbtn($wf_fid,$wf_type,$status)
 	{
 		$work = new workflow();
-		$thisuid = session('uid');
-		$thisrole = session('role');
-		$url = url("/index/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]);
-		$url_star = url("/index/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]);
-		switch ($status)
-		{
-		case 0:
-		  return '<span class="btn  radius size-S" onclick=layer_show(\'发起工作流\',"'.$url_star.'","450","350")>发起工作流</span>';
-		  break;
-		case 1:
-			$st = 0;
-			$user_name ='';
-			$flowinfo =  $work->workflowInfo($wf_fid,$wf_type,['uid'=>$thisuid,'role'=>$thisrole]);
-			if($flowinfo!=-1){
-				if(!isset($flowinfo['status'])){
-					 return '<span class="btn btn-danger  radius size-S" onclick=javascript:alert("提示：当前流程故障，请联系管理员重置流程！")>Info:Flow Err</span>';
-				}
-					if($flowinfo['sing_st']==0){
-						$user = explode(",", $flowinfo['status']['sponsor_ids']);
-						$user_name =$flowinfo['status']['sponsor_text'];
-						if($flowinfo['status']['auto_person']==3||$flowinfo['status']['auto_person']==4||$flowinfo['status']['auto_person']==6){
-							if (in_array($thisuid, $user)) {
-								$st = 1;
-							}
-						}
-						if($flowinfo['status']['auto_person']==5){
-							if (in_array($thisrole, $user)) {
-								$st = 1;
-							}
-						}
-					}else{
-						if($flowinfo['sing_info']['uid']==$thisuid){
-							  $st = 1;
-						}else{
-							   $user_name =$flowinfo['sing_info']['uid'];
-						}
-					}
-				}else{
-					 return '<span class="btn  radius size-S">无权限</span>';
-				}	
-				if($st == 1){
-					 return '<span class="btn  radius size-S" onclick=layer_show(\'审核\',"'.$url.'","850","650")>审核('.$user_name.')</span>';
-					}else{
-					 return '<span class="btn  radius size-S">无权限('.$user_name.')</span>';
-				}
-			
-		case 100:
-			echo '<span class="btn btn-primary" onclick=layer_open(\'代审\',"'.$url.'?sup=1","850","650")>代审</span>';
-		  break;
-		  break;
-		default:
-		  return '';
-		}
+		$lib = new lib();
+		$user = ['thisuid'=>session('uid'),'thisrole'=>session('role')];
+		$url = ['url'=>url("/index/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url("/index/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
+		return $lib->tpflow_btn($wf_fid,$wf_type,$status,$url,$user,$work);
 	}
 	 
 	 public static function wfstatus($status)
 	{
-		switch ($status)
-		{
-		case 0:
-		  echo '<span class="label radius">保存中</span>';
-		  break;
-		case 1:
-		  echo '<span class="label radius" >流程中</span>';
-		  break;
-		case 2:
-		  echo '<span class="label label-success radius" >审核通过</span>';
-		  break;
-		default: //-1
-		  echo '<span class="label label-danger radius" >退回修改</span>';
-		}
+		$lib = new lib();
+		return $lib->tpflow_status($status);
 	}
 	/*发起流程，选择工作流*/
 	public function wfstart()

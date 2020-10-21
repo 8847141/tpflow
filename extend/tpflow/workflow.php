@@ -13,7 +13,8 @@ namespace tpflow;
 
 
 
-define ( 'BEASE_URL', realpath ( dirname ( __FILE__ ) ) );
+define('BEASE_URL', realpath ( dirname ( __FILE__ ) ) );
+define('ROOT_PATH',root_path());
 
 //配置文件
 use tpflow\config\config;
