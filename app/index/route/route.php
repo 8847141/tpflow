@@ -36,8 +36,7 @@ Route::group('wf', function () {
 		Route::get('wfstart','\tpflow\Api@wfstart'); //发起工作流界面
 		Route::post('statr_save','\tpflow\Api@statr_save');//发起工作流保存
 		Route::post('do_check_save','\tpflow\Api@do_check_save');//审核保存
-		Route::get('wfup','\tpflow\Api@wfup'); //发起工作流界面
-		Route::post('wfupsave','\tpflow\Api@wfupsave');//审核保存
+		Route::rule('wfup','\tpflow\Api@wfup'); //发起工作流界面
 		Route::post('wfend','\tpflow\Api@wfend');//终止工作流接口
 		Route::post('ajax_back','\tpflow\Api@ajax_back');//终止工作流接口
 		//

@@ -32,6 +32,7 @@ define('ROOT_PATH',root_path() );
 		function __construct(Request $request) {
 			$this->int_url = 'index';//定义默认使用index模块，可以直接修改
 			$this->work = new workflow();
+			$this->lib = new lib();
 			$this->uid = session('uid');
 			$this->role = session('role');
 			$this->table  = Db::query("select replace(TABLE_NAME,'".config('database.connections.mysql.prefix')."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".config('database.connections.mysql.database')."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
@@ -149,7 +150,6 @@ define('ROOT_PATH',root_path() );
 	public function wfcheck()
 	{
 		$info = ['wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid'),'wf_type'=>input('wf_type')];
-		
 		return view($this->patch.'/wfcheck.html',['int_url'=>$this->int_url,'info'=>$info,'flowinfo'=>$this->work->workflowInfo(input('wf_fid'),input('wf_type'),['uid'=>$this->uid,'role'=>$this->role])]);
 	}
 	public function do_check_save()
@@ -192,8 +192,7 @@ define('ROOT_PATH',root_path() );
     }
 	public function super_get()
 	{
-		 $type = trim(input('type'));
-		 return ['data'=>UserDb::AjaxGet($type,input('key')),'code'=>1,'msg'=>'查询成功！'];
+		 return ['data'=>UserDb::AjaxGet(trim(input('type')),input('key')),'code'=>1,'msg'=>'查询成功！'];
 	}
 	
 		 /**
@@ -219,14 +218,11 @@ define('ROOT_PATH',root_path() );
 	   }
 	   $id = input('id') ?? -1;
 	   $info=$this->work->FlowApi('GetFlowInfo',$id);
-	   $url = url($this->int_url.'/wf/wfadd');
 	   $type ='';
 	   foreach($this->table as $k=>$v){
 		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
-		   
 	   }
-	   $lib = new lib();
-	   return $lib->tmp_add($url,$info,$type);
+	   return $this->lib->tmp_add(url($this->int_url.'/wf/wfadd'),$info,$type);
     }
 	/**
 	 * 工作流设计界面
@@ -310,19 +306,6 @@ define('ROOT_PATH',root_path() );
 	{
 		return json($this->work->ProcessApi('ProcessDelAll',input('flow_id')));
 	}
-	public function msg_return($msg = "操作成功！", $code = 0,$data = [],$redirect = 'parent',$alert = '', $close = false, $url = '')
-	{
-		$ret = ["code" => $code, "msg" => $msg, "data" => $data];
-		$extend['opt'] = [
-			'alert'    => $alert,
-			'close'    => $close,
-			'redirect' => $redirect,
-			'url'      => $url,
-		];
-		$ret = array_merge($ret, $extend);
-		return json($ret);
-	}
-		
 	public function wfgl()
     {
         return view($this->patch.'/wfgl.html',['int_url'=>$this->int_url,'list'=>EntrustDb::lists()]);
@@ -332,7 +315,6 @@ define('ROOT_PATH',root_path() );
 		
 		if ($this->request::isPost()) {
 			$post = input('post.');
-			
 			$ret = EntrustDb::Add(1,$post);
 			if($ret['code']==0){
 				return $this->msg_return('发布成功！');
@@ -348,35 +330,27 @@ define('ROOT_PATH',root_path() );
 			   $type .='<option value="'.$v['id'].'@'.$v['flow_id'].'">['.$v['flow_name'].']'.$v['process_name'].'</option>'; 
 		   }
 		  $user = UserDb::GetUser();
-		   foreach($user as $k=>$v){
+		  foreach($user as $k=>$v){
 			   $user .='<option value="'.$v['id'].'@'.$v['username'].'">'.$v['username'].'</option>'; 
-		   }
-		   
-		   
-		$id = input('id');
-		$info = EntrustDb::find($id);
-		$lib = new lib();
-	   return $lib->tmp_entrust($url,$info,$type,$user);
+		  }
+		$info = EntrustDb::find(input('id'));
+	   return $this->lib->tmp_entrust($url,$info,$type,$user);
 	}
 	public function wfup()
     {
-        return view($this->patch.'/wfup.html',['int_url'=>$this->int_url]);
-    }
-	
-	public function wfupsave()
-    {
-        $files = $this->request::file('file');
-        $insert = [];
-        foreach ($files as $file) {
-            $path = \Env::get('root_path') . '/public/uploads/';
-            $info = $file->move($path);
-            if ($info) {
-                $data[] = $info->getSaveName();
-            } else {
-                $error[] = $file->getError();
-            }
-        }
-        return $this->msg_return($data,0,$info->getInfo('name'));
+		if ($this->request::isPost()) {
+			$files = $this->request::file('file');
+			foreach ($files as $file) {
+				$info = \think\facade\Filesystem::disk('public')->putFile( 'uploads', $file);
+				if ($info) {
+					$data[] = $info;
+				} else {
+					$error[] = $info;
+				}
+			}
+			return $this->msg_return($data,0,$info);
+		}
+	   return $this->lib->tmp_upload(url($this->int_url.'/wf/wfup'),input('id'));
     }
 	public function ajax_back()
 	{
@@ -388,6 +362,18 @@ define('ROOT_PATH',root_path() );
 	{
 		$flowinfo =  $this->work->SuperApi('WfEnd',input('get.id'),$this->uid);
 		return $this->msg_return('Success!');
+	}
+	public function msg_return($msg = "操作成功！", $code = 0,$data = [],$redirect = 'parent',$alert = '', $close = false, $url = '')
+	{
+		$ret = ["code" => $code, "msg" => $msg, "data" => $data];
+		$extend['opt'] = [
+			'alert'    => $alert,
+			'close'    => $close,
+			'redirect' => $redirect,
+			'url'      => $url,
+		];
+		$ret = array_merge($ret, $extend);
+		return json($ret);
 	}
 
 		
