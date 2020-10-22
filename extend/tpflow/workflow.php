@@ -24,6 +24,7 @@ use tpflow\db\LogDb;
 use tpflow\db\UserDb;
 use tpflow\db\WorkDb;
 use tpflow\db\EntrustDb;
+use tpflow\lib\lib;
 //类库
 use tpflow\service\TaskService;
 //消息
