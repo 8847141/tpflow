@@ -171,9 +171,8 @@ class FlowDb
 				}else{
 					$name_att = '<font color=red>[同步]</font>';	
 				}
+			
 			}
-			
-			
             $process_data[] = [
                 'id' => $value['id'],
 				'mode' => $mode,
@@ -360,9 +359,6 @@ class FlowDb
      */
     public static function ProcessAttView($process_id)
     {
-        //连接数据表用的。表 model 
-        $flow_model =  Db::name('flow');
-        $process_model =  Db::name('flow_process');
         $one = self::getflowprocess($process_id);
         if (!$one) {
             return ['status' => 0, 'msg' => '未找到步骤信息!', 'info' => ''];
@@ -526,9 +522,9 @@ class FlowDb
      */
     public static function get_db_column_comment($table_name = '', $field = true, $table_schema = '')
     {
-        $database = config('database.connections.mysql');
-        $table_schema = empty($table_schema) ? $database['database'] : $table_schema;
-        $table_name = $database['prefix'] . $table_name;
+		$dbconfig = require ( BEASE_URL . '/config/common.php');
+        $table_schema = empty($table_schema) ? $dbconfig['database'] : $table_schema;
+        $table_name = $dbconfig['prefix'] . $table_name;
         $fieldName = $field === true ? 'allField' : $field;
         $cacheKeyName = 'db_' . $table_schema . '_' . $table_name . '_' . $fieldName;
         $param = [

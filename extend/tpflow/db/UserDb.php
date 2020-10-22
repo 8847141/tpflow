@@ -13,34 +13,61 @@ namespace tpflow\db;
 use think\facade\Db;
 
 class UserDb{
+	public static function config($type='user'){
+		$config = require ( BEASE_URL . '/config/common.php');// 
+		return $config[$type];
+	} 
 	/**
-	 * 获取用户信息
+	 * 获取用户列表
 	 *
-	 * @param $wf_type
 	 */
 	public static function GetUser() 
 	{
-		require ( BEASE_URL . '/config/config.php');// 
-		return  Db::name($user_table['user'][0])->field($user_table['user'][3])->select();
+		$config = self::config();
+		return  Db::name($config['db'])->field($config['field'])->select();
 	}
+	/**
+	 * 获取角色列表
+	 *
+	 */
 	public static function GetRole() 
 	{
-		require ( BEASE_URL . '/config/config.php');// 
-		return  Db::name($user_table['role'][0])->field($user_table['role'][3])->select();
+		$config = self::config('role');
+		return  Db::name($config['db'])->field($config['field'])->select();
 	}
+	/**
+	 * 获取AJAX信息
+	 *
+	 */
 	public static function AjaxGet($type,$keyword){
-		require ( BEASE_URL . '/config/config.php');// 
+		
 		if($type=='user'){
-			$map[$user_table['user'][4]]  = array('like','%'.$keyword.'%');
-			return Db::name($user_table['user'][0])->where($map)->field($user_table['user'][3])->select();
+			$config = self::config();
+			$map[$config['searchwhere']]  = array('like','%'.$keyword.'%');
+			return Db::name($config['db'])->where($map)->field($config['field'])->select();
 		 }else{
-			$map[$user_table['role'][4]]  = array('like','%'.$keyword.'%');
-			return Db::name($user_table['role'][0])->where($map)->field($user_table['role'][3])->select();
+			$config = self::config('role');
+			$map[$config['searchwhere']]  = array('like','%'.$keyword.'%');
+			return Db::name($config['db'])->where($map)->field($config['field'])->select();
 		 }
 	}
+	/**
+	 * 查询用户消息
+	 *
+	 */
 	public static function GetUserInfo($id) 
 	{
-		require ( BEASE_URL . '/config/config.php');// 
-		return  Db::name($user_table['user'][0])->where($user_table['user'][1],$id)->field($user_table['user'][3])->find();
+		$config = self::config();
+		return  Db::name($config['db'])->where($config['key'],$id)->field($config['field'])->find();
 	}
+	/**
+	 * 查询用户名称
+	 *
+	 */
+	public static function GetUserName($uid) 
+	{
+		$config = self::config();
+		return  Db::name($config['db'])->where($config['key'],$uid)->value($config['getfield']);
+	}
+	
 }

@@ -27,15 +27,13 @@ use think\facade\Request;
 
 	class Api{
 		public $patch = '';
-		public $topconfig = '';
 		function __construct(Request $request) {
 			$this->work = new workflow();
-			$this->dbconfig = require ( BEASE_URL . '/config/database.php');
-			$this->int_url = 'index';//定义默认使用index模块，可以直接修改
+			$this->common = require ( BEASE_URL . '/config/common.php');
 			$this->lib = new lib();
-			$this->uid = session('uid');
-			$this->role = session('role');
-			$this->table  = Db::query("select replace(TABLE_NAME,'".$this->dbconfig['prefix']."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".$this->dbconfig['database']."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
+			$this->uid = session($this->common['user_id']);
+			$this->role = session($this->common['role_id']);
+			$this->table  = Db::query("select replace(TABLE_NAME,'".$this->common['prefix']."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".$this->common['database']."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
 	   }
@@ -44,12 +42,7 @@ use think\facade\Request;
 	 * 授权请联系：632522043@qq.com
 	 */
 	public function welcome(){
-		return '<br/><br/><style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} 
-		a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; }
-		h1{ font-size: 40px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 35px }</style>
-		<div style="padding: 24px 48px;"> <h1>\﻿ (•◡•) / </h1><p> TpFlow V4.0开发版<br/>
-		<span style="font-size:19px;">PHP开源工作流引擎系统</span></p>
-		<span style="font-size:15px;">[ ©2018-2020 Guoguo <a href="https://www.cojz8.com/">TpFlow</a> 本版权不可删除！ ]</span></div>';
+		return '<br/><br/><style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; }h1{ font-size: 40px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 35px }</style><div style="padding: 24px 48px;"> <h1>\﻿ (•◡•) / </h1><p> TpFlow V4.0开发版<br/><span style="font-size:19px;">PHP开源工作流引擎系统</span></p><span style="font-size:15px;">[ ©2018-2020 Guoguo <a href="https://www.cojz8.com/">TpFlow</a> 本版权不可删除！ ]</span></div>';
     }
 	public static function wflogs($id,$wf_type,$type='html'){
 		$work = new workflow();
@@ -60,8 +53,9 @@ use think\facade\Request;
 	{
 		$work = new workflow();
 		$lib = new lib();
-		$user = ['thisuid'=>session('uid'),'thisrole'=>session('role')];
-		$url = ['url'=>url("/index/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url("/index/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
+		$common = require ( BEASE_URL . '/config/common.php');
+		$user = ['thisuid'=>session($common['user_id']),'thisrole'=>session($common['role_id'])];
+		$url = ['url'=>url("/".$common['int_url']."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url("/".$common['int_url']."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
 		return $lib->tpflow_btn($wf_fid,$wf_type,$status,$url,$user,$work);
 	}
 	 
@@ -75,7 +69,7 @@ use think\facade\Request;
 	{
 		$info = ['wf_type'=>input('wf_type'),'wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid')];
 		$flow =  $this->work->getWorkFlow(input('wf_type'));
-		return view($this->patch.'/wfstart.html',['int_url'=>$this->int_url,'info'=>$info,'flow'=>$flow]);
+		return view($this->patch.'/wfstart.html',['int_url'=>$this->common['int_url'],'info'=>$info,'flow'=>$flow]);
 	}
 	/*正式发起工作流*/
 	public function statr_save()
@@ -89,7 +83,7 @@ use think\facade\Request;
 	public function wfcheck()
 	{
 		$info = ['wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid'),'wf_type'=>input('wf_type')];
-		return view($this->patch.'/wfcheck.html',['int_url'=>$this->int_url,'info'=>$info,'flowinfo'=>$this->work->workflowInfo(input('wf_fid'),input('wf_type'),['uid'=>$this->uid,'role'=>$this->role])]);
+		return view($this->patch.'/wfcheck.html',['int_url'=>$this->common['int_url'],'info'=>$info,'flowinfo'=>$this->work->workflowInfo(input('wf_fid'),input('wf_type'),['uid'=>$this->uid,'role'=>$this->role])]);
 	}
 	public function do_check_save()
 	{
@@ -111,22 +105,22 @@ use think\facade\Request;
 		foreach($this->table as $k=>$v){
 			$type[$v['name']] = str_replace('[work]', '', $v['title']);;
 		}
-		return view($this->patch.'/wfindex.html',['int_url'=>$this->int_url,'type'=>$type,'list'=>$this->work->FlowApi('List')]);
+		return view($this->patch.'/wfindex.html',['int_url'=>$this->common['int_url'],'type'=>$type,'list'=>$this->work->FlowApi('List')]);
     }
 	/*流程监控*/
 	public function wfjk($map = [])
 	{
-		return view($this->patch.'/wfjk.html',['int_url'=>$this->int_url,'list'=>$this->work->worklist()]);
+		return view($this->patch.'/wfjk.html',['int_url'=>$this->common['int_url'],'list'=>$this->work->worklist()]);
 	}
 		//用户选择控件
     public function super_user()
     {
-		return view($this->patch.'/super_user.html',['int_url'=>$this->int_url,'user'=>UserDb::GetUser(),'kid'=>input('kid')]);
+		return view($this->patch.'/super_user.html',['int_url'=>$this->common['int_url'],'user'=>UserDb::GetUser(),'kid'=>input('kid')]);
     }
 	//用户选择控件
     public function super_role()
     {
-		return view($this->patch.'/super_role.html',['int_url'=>$this->int_url,'role'=>UserDb::GetRole()]);
+		return view($this->patch.'/super_role.html',['int_url'=>$this->common['int_url'],'role'=>UserDb::GetRole()]);
         
     }
 	public function super_get()
@@ -161,7 +155,7 @@ use think\facade\Request;
 	   foreach($this->table as $k=>$v){
 		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
 	   }
-	   return $this->lib->tmp_add(url($this->int_url.'/wf/wfadd'),$info,$type);
+	   return $this->lib->tmp_add(url($this->common['int_url'].'/wf/wfadd'),$info,$type);
     }
 	/**
 	 * 工作流设计界面
@@ -178,13 +172,13 @@ use think\facade\Request;
         }
 		//Url转换地址
 		$urls = [
-			'welcome'=>url($this->int_url.'/wf/welcome'),
-			'add_process'=>url($this->int_url.'/wf/add_process'),
-			'Checkflow'=>url($this->int_url.'/wf/Checkflow'),
-			'save_canvas'=>url($this->int_url.'/wf/save_canvas'),
-			'del_allprocess'=>url($this->int_url.'/wf/del_allprocess'),
-			'delete_process'=>url($this->int_url.'/wf/delete_process'),
-			'wfatt'=>url($this->int_url.'/wf/wfatt')
+			'welcome'=>url($this->common['int_url'].'/wf/welcome'),
+			'add_process'=>url($this->common['int_url'].'/wf/add_process'),
+			'Checkflow'=>url($this->common['int_url'].'/wf/Checkflow'),
+			'save_canvas'=>url($this->common['int_url'].'/wf/save_canvas'),
+			'del_allprocess'=>url($this->common['int_url'].'/wf/del_allprocess'),
+			'delete_process'=>url($this->common['int_url'].'/wf/delete_process'),
+			'wfatt'=>url($this->common['int_url'].'/wf/wfatt')
 		];
 		return view($this->patch.'/wfdesc.html',['url'=>$urls,'one'=>$one,'process_data'=>$this->work->ProcessApi('All',$flow_id)]);
     }
@@ -232,7 +226,7 @@ use think\facade\Request;
     public function wfatt()
     {
 	    $info = $this->work->ProcessApi('ProcessAttView',input('id'));
-		return view($this->patch.'/wfatt.html',['int_url'=>$this->int_url,'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
+		return view($this->patch.'/wfatt.html',['int_url'=>$this->common['int_url'],'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
     }
 	/**
 	 * 删除流程
@@ -247,7 +241,7 @@ use think\facade\Request;
 	}
 	public function wfgl()
     {
-        return view($this->patch.'/wfgl.html',['int_url'=>$this->int_url,'list'=>EntrustDb::lists()]);
+        return view($this->patch.'/wfgl.html',['int_url'=>$this->common['int_url'],'list'=>EntrustDb::lists()]);
     }
 	/*委托授权审核*/
 	public function entrust(){
@@ -263,7 +257,7 @@ use think\facade\Request;
 	   }
 		//获取全部跟自己相关的步骤
 		$data =ProcessDb::get_userprocess($this->uid,$this->role);
-		$url = url($this->int_url.'/wf/entrust');
+		$url = url($this->common['int_url'].'/wf/entrust');
 		$type ='';
 		   foreach($data as $k=>$v){
 			   $type .='<option value="'.$v['id'].'@'.$v['flow_id'].'">['.$v['flow_name'].']'.$v['process_name'].'</option>'; 
@@ -289,7 +283,7 @@ use think\facade\Request;
 			}
 			return $this->msg_return($data,0,$info);
 		}
-	   return $this->lib->tmp_upload(url($this->int_url.'/wf/wfup'),input('id'));
+	   return $this->lib->tmp_upload(url($this->common['int_url'].'/wf/wfup'),input('id'));
     }
 	public function ajax_back()
 	{

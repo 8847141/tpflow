@@ -16,8 +16,6 @@ namespace tpflow;
 define('BEASE_URL', realpath ( dirname ( __FILE__ ) ) );
 define('ROOT_PATH',root_path());
 
-//配置文件
-use tpflow\config\config;
 //数据库操作
 use tpflow\db\InfoDb;
 use tpflow\db\FlowDb;

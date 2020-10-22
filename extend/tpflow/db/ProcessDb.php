@@ -37,9 +37,7 @@ class ProcessDb{
 		if($info['auto_person']==6){ //办理角色
 				$wf  =  Db::name('run')->find($run_id);
 				$user_id = InfoDB::GetBillValue($wf['from_table'],$wf['from_id'],$info['work_text']);
-				$user_info = UserDb::GetUserInfo($user_id);
-				$info['user_info']= $user_info;
-				$info['todo']= $user_info['username'];
+				$info['todo']= UserDb::GetUserName($user_id);
 			}
 			
 		return $info;
@@ -225,8 +223,7 @@ class ProcessDb{
 		foreach($run_log as $k=>$v)
         {
 			$run_log[$k]['btn'] =$type[$v['btn']];
-			  require ( BEASE_URL . '/config/config.php');// 
-			   $run_log[$k]['user'] =Db::name($user_table['user'][0])->where($user_table['user'][1],$v['uid'])->value($user_table['user'][2]);
+			$run_log[$k]['user'] = UserDb::GetUserName($v['uid']);
         }
 		return $run_log;
 	}
