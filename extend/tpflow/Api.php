@@ -20,7 +20,6 @@ use tpflow\db\LogDb;
 use tpflow\db\UserDb;
 use tpflow\db\WorkDb;
 use tpflow\db\EntrustDb;
-use think\facade\Db;
 use tpflow\lib\lib;
 
 use think\facade\Request;
@@ -33,7 +32,7 @@ use think\facade\Request;
 			$this->lib = new lib();
 			$this->uid = session($this->common['user_id']);
 			$this->role = session($this->common['role_id']);
-			$this->table  = Db::query("select replace(TABLE_NAME,'".$this->common['prefix']."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".$this->common['database']."' and table_type='base table' and TABLE_COMMENT like '[work]%';");
+			$this->table  = InfoDb::get_wftype();
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
 	   }
@@ -77,7 +76,7 @@ use think\facade\Request;
 		$data = input('post.');
 		$flow = $this->work->startworkflow($data,$this->uid);
 		if($flow['code']==1){
-			return $this->msg_return('Success!');
+			return msg_return('Success!');
 		}
 	}
 	public function wfcheck()
@@ -90,9 +89,9 @@ use think\facade\Request;
 		$data = input('post.');
 		$flowinfo =  $this->work->workdoaction($data,$this->uid);
 		if($flowinfo['code']=='0'){
-			return $this->msg_return('Success!');
+			return msg_return('Success!');
 			}else{
-			return $this->msg_return($flowinfo['msg'],1);
+			return msg_return($flowinfo['msg'],1);
 		}
 	}
 	
@@ -112,16 +111,25 @@ use think\facade\Request;
 	{
 		return view($this->patch.'/wfjk.html',['int_url'=>$this->common['int_url'],'list'=>$this->work->worklist()]);
 	}
-		//用户选择控件
+	//用户选择控件
     public function super_user()
     {
-		return view($this->patch.'/super_user.html',['int_url'=>$this->common['int_url'],'user'=>UserDb::GetUser(),'kid'=>input('kid')]);
+	  $info=UserDb::GetUser();
+	   $user ='';
+	   foreach($info as $k=>$v){
+		   $user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
+	   }
+	   return $this->lib->tmp_user(url($this->common['int_url'].'/wf/super_get'),input('kid'),$user);
     }
-	//用户选择控件
+	//角色选择控件
     public function super_role()
     {
-		return view($this->patch.'/super_role.html',['int_url'=>$this->common['int_url'],'role'=>UserDb::GetRole()]);
-        
+		$info=UserDb::GetRole();
+	   $user ='';
+	   foreach($info as $k=>$v){
+			$user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
+	   }
+	   return $this->lib->tmp_role(url($this->common['int_url'].'/wf/super_get'),$user);
     }
 	public function super_get()
 	{
@@ -144,9 +152,9 @@ use think\facade\Request;
 				$ret= $this->work->FlowApi('EditFlow',$data);
 			}
 			if($ret['code']==0){
-				return $this->msg_return('操作成功！');
+				return msg_return('操作成功！');
 				}else{
-				return $this->msg_return($ret['data'],1);
+				return msg_return($ret['data'],1);
 			}
 	   }
 	   $id = input('id') ?? -1;
@@ -250,9 +258,9 @@ use think\facade\Request;
 			$post = input('post.');
 			$ret = EntrustDb::Add(1,$post);
 			if($ret['code']==0){
-				return $this->msg_return('发布成功！');
+				return msg_return('发布成功！');
 				}else{
-				return $this->msg_return($ret['data'],1);
+				return msg_return($ret['data'],1);
 			}
 	   }
 		//获取全部跟自己相关的步骤
@@ -281,7 +289,7 @@ use think\facade\Request;
 					$error[] = $info;
 				}
 			}
-			return $this->msg_return($data,0,$info);
+			return msg_return($data,0,$info);
 		}
 	   return $this->lib->tmp_upload(url($this->common['int_url'].'/wf/wfup'),input('id'));
     }
@@ -294,20 +302,12 @@ use think\facade\Request;
 	public function wfend()
 	{
 		$flowinfo =  $this->work->SuperApi('WfEnd',input('get.id'),$this->uid);
-		return $this->msg_return('Success!');
+		return msg_return('Success!');
 	}
-	public function msg_return($msg = "操作成功！", $code = 0,$data = [],$redirect = 'parent',$alert = '', $close = false, $url = '')
-	{
-		$ret = ["code" => $code, "msg" => $msg, "data" => $data];
-		$extend['opt'] = [
-			'alert'    => $alert,
-			'close'    => $close,
-			'redirect' => $redirect,
-			'url'      => $url,
-		];
-		$ret = array_merge($ret, $extend);
-		return json($ret);
-	}
-
-		
+	
 }
+	/*消息返回*/
+	function msg_return($msg = "操作成功！", $code = 0,$data = [])
+	{
+		return json(["code" => $code, "msg" => $msg, "data" => $data]);
+	}

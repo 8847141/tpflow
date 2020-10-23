@@ -15,6 +15,7 @@ return [
 	'int_url'=>'index',//使用工作流的模块名称
 	'user_id' =>'uid',//用户的session名称 
 	'role_id' =>'role',//用户角色的session名称 
+	'work_table'=>'[work]',//特定的表前缀，用于接入工作流的实体表
 	/*用户信息配置*/
 	'user' => [
 		'db'=>'user', //表名
@@ -32,3 +33,4 @@ return [
 		'searchwhere'=>'name'//查询筛选字段 用于设计器where匹配
 	],
 ];
+

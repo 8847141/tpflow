@@ -1,7 +1,7 @@
 <?php
 /**
 *+------------------
-* Tpflow 类库文件，公共函数
+* Tpflow 公共类，模板文件
 *+------------------
 * Copyright (c) 2006~2018 http://cojz8.cn All rights reserved.
 *+------------------
@@ -188,7 +188,7 @@ php;
 php;
 		return 	$view;
 	}
-	public function tmp_upload($url,$id){
+	function tmp_upload($url,$id){
 		return <<<php
 	<div class="page-container">
     <input type="hidden" id="callbackId" value="{$id}">
@@ -254,5 +254,182 @@ php;
 
 </script>
 php;
+	}
+	
+	function tmp_user($url,$kid,$user){
+		 return <<<php
+		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+<link rel="stylesheet" type="text/css" href="/static/work/multiselect2side.css" media="screen" />
+<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/work/multiselect2side.js" ></script>
+<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+<article class="page-container">
+<table class="table table-bordered table-bg">
+			<tr><td><form method="post"><div class="text-l"><input type="text" id="key" style="width:150px" class="input-text"><a id="search" class="button">搜人员</a></div></form></td></tr>
+			<tr><td><select name="dialog_searchable" id="dialog_searchable" multiple="multiple" style="display:none;">{$user}</select></td></tr><tr><td>
+			<button class="btn btn-info" type="button" onclick='call_back()' id="dialog_confirm">确定</button>
+			<button class="btn" type="button" id="dialog_close">取消</button></td></tr>
+			</table>
+</article>
+<script type="text/javascript">
+	function call_back(){
+			var nameText = [];
+            var idText = [];
+			var html = "<table class='tables'><tr><td>序号</td><td>名称</td></tr>";
+            if(!$('#dialog_searchable').val())
+            {
+               layer.msg('未选择');
+				return false;
+            }else
+            {
+              $('#dialog_searchable option').each(function(){
+                if($(this).attr("selected"))
+                {
+                    nameText.push($(this).text());
+                    idText.push($(this).val());
+                }
+                });
+				for (x in nameText){
+					html += '<tr><td>'+x+'</td><td>';
+					html += nameText[x];
+					html += '</td></tr>';
+				}
+					html += '</table>';
+                var name = nameText.join(',');
+				var ids = idText.join(',');
+            }
+		var index = parent.layer.getFrameIndex(window.name);
+		parent.layer.msg('设置成功');
+		parent.$('#{$kid}_ids').val(ids);
+		parent.$('#{$kid}_text').val(name);
+		parent.$('#{$kid}_html').html(html);
+		parent.layer.close(index);
+	}
+    $(function(){
+          $('#dialog_searchable').multiselect2side({
+            selectedPosition: 'right',
+            moveOptions: false,
+            labelsx: '备选',
+            labeldx: '已选',
+            autoSort: true
+            //,autoSortAvailable: true
+        });
+        //搜索用户
+        $("#search").on("click",function(){
+			var url = "{$url}";
+			$.post(url,{"type":'user',"key":$('#key').val()},function(data){
+				layer.msg(data.msg);
+				var userdata = data.data;
+				var optionList = [];
+            for(var i=0;i<userdata.length;i++){
+                optionList.push('<option value="');
+                optionList.push(userdata[i].id);
+                optionList.push('">');
+                optionList.push(userdata[i].username);
+                optionList.push('</option>');
+            }
+            $('#dialog_searchablems2side__sx').html(optionList.join(''));
+			},'json');
+        });
+        $("#dialog_close").on("click",function(){
+			var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+        });
+    });
+	
+</script>
+php;
+		
+	}
+	function tmp_role($url,$role){
+		 return <<<php
+		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+<link rel="stylesheet" type="text/css" href="/static/work/multiselect2side.css" media="screen" />
+<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/work/multiselect2side.js" ></script>
+<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+<article class="page-container">
+<table class="table">
+<tr><td><form method="post"><div class="text-l"><input type="text" id="key" style="width:150px" class="input-text"><a id="search" class="button">搜角色</a></div></form></td></tr>
+<tr><td> <select name="dialog_searchable" id="dialog_searchable" multiple="multiple" style="display:none;">{$role}</select></td></tr>
+<tr><td><button  type="button" onclick='call_back()' id="dialog_confirm">确定</button><button  type="button" id="dialog_close">取消</button></td></tr></table>
+</article>
+<script type="text/javascript">
+	function call_back(){
+			var nameText = [];
+            var idText = [];
+			var html = "<table class='tables'><tr><td>序号</td><td>名称</td></tr>";
+            if(!$('#dialog_searchable').val())
+            {
+               layer.msg('未选择');
+				return false;
+            }else
+            {
+              $('#dialog_searchable option').each(function(){
+                if($(this).attr("selected"))
+                {
+                    if($(this).val()=='all')//有全部，其它就不要了
+                    {
+                        nameText = [];
+                        idText = [];
+                        nameText.push($(this).text());
+                        idText.push($(this).val());
+                        return false;
+                    }
+                    nameText.push($(this).text());
+                    idText.push($(this).val());
+                }
+                });
+                var name = nameText.join(',');
+				var ids = idText.join(',');
+				for (x in nameText){
+					html += '<tr><td>'+x+'</td><td>';
+					html += nameText[x];
+					html += '</td></tr>';
+				}
+				html += '</table>';
+            }
+		var index = parent.layer.getFrameIndex(window.name);
+		parent.layer.msg('设置成功');
+		parent.$('#auto_role_value').val(ids);
+		parent.$('#auto_role_text').val(name);
+		parent.$('#auto_role_html').html(html);
+		parent.layer.close(index);
+	}
+    $(function(){
+          $('#dialog_searchable').multiselect2side({
+            selectedPosition: 'right',
+            moveOptions: false,
+            labelsx: '备选',
+            labeldx: '已选',
+            autoSort: true
+        });
+    $("#search").on("click",function(){
+			var url = "{$url}";
+			$.post(url,{"type":'role',"key":$('#key').val()},function(data){
+				layer.msg(data.msg);
+				var userdata = data.data;
+				var optionList = [];
+            for(var i=0;i<userdata.length;i++){
+                optionList.push('<option value="');
+                optionList.push(userdata[i].id);
+                optionList.push('">');
+                optionList.push(userdata[i].username);
+                optionList.push('</option>');
+            }
+            $('#dialog_searchablems2side__sx').html(optionList.join(''));
+			},'json');
+        });
+        $("#dialog_close").on("click",function(){
+			var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+        });
+    });
+	
+</script>
+php;
+		
 	}
 }
