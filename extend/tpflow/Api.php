@@ -24,14 +24,16 @@ use tpflow\lib\lib;
 
 use think\facade\Request;
 
+define('BEASE_LIB', realpath ( dirname ( __FILE__ ) ).'/lib/' );
+require_once ( BEASE_LIB . 'unit.php');//加载工具配置
+
 	class Api{
 		public $patch = '';
 		function __construct(Request $request) {
 			$this->work = new workflow();
-			$this->common = require ( BEASE_URL . '/config/common.php');
 			$this->lib = new lib();
-			$this->uid = session($this->common['user_id']);
-			$this->role = session($this->common['role_id']);
+			$this->uid = session(gconfig('user_id'));
+			$this->role = session(gconfig('role_id'));
 			$this->table  = InfoDb::get_wftype();
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
@@ -52,9 +54,8 @@ use think\facade\Request;
 	{
 		$work = new workflow();
 		$lib = new lib();
-		$common = require ( BEASE_URL . '/config/common.php');
-		$user = ['thisuid'=>session($common['user_id']),'thisrole'=>session($common['role_id'])];
-		$url = ['url'=>url("/".$common['int_url']."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url("/".$common['int_url']."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
+		$user = ['thisuid'=>session(gconfig('user_id')),'thisrole'=>session(gconfig('role_id'))];
+		$url = ['url'=>url("/".gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url("/".gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
 		return $lib->tpflow_btn($wf_fid,$wf_type,$status,$url,$user,$work);
 	}
 	 
@@ -68,7 +69,7 @@ use think\facade\Request;
 	{
 		$info = ['wf_type'=>input('wf_type'),'wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid')];
 		$flow =  $this->work->getWorkFlow(input('wf_type'));
-		return view($this->patch.'/wfstart.html',['int_url'=>$this->common['int_url'],'info'=>$info,'flow'=>$flow]);
+		return view($this->patch.'/wfstart.html',['int_url'=>gconfig('int_url'),'info'=>$info,'flow'=>$flow]);
 	}
 	/*正式发起工作流*/
 	public function statr_save()
@@ -82,7 +83,7 @@ use think\facade\Request;
 	public function wfcheck()
 	{
 		$info = ['wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid'),'wf_type'=>input('wf_type')];
-		return view($this->patch.'/wfcheck.html',['int_url'=>$this->common['int_url'],'info'=>$info,'flowinfo'=>$this->work->workflowInfo(input('wf_fid'),input('wf_type'),['uid'=>$this->uid,'role'=>$this->role])]);
+		return view($this->patch.'/wfcheck.html',['int_url'=>gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->work->workflowInfo(input('wf_fid'),input('wf_type'),['uid'=>$this->uid,'role'=>$this->role])]);
 	}
 	public function do_check_save()
 	{
@@ -104,12 +105,12 @@ use think\facade\Request;
 		foreach($this->table as $k=>$v){
 			$type[$v['name']] = str_replace('[work]', '', $v['title']);;
 		}
-		return view($this->patch.'/wfindex.html',['int_url'=>$this->common['int_url'],'type'=>$type,'list'=>$this->work->FlowApi('List')]);
+		return view($this->patch.'/wfindex.html',['int_url'=>gconfig('int_url'),'type'=>$type,'list'=>$this->work->FlowApi('List')]);
     }
 	/*流程监控*/
 	public function wfjk($map = [])
 	{
-		return view($this->patch.'/wfjk.html',['int_url'=>$this->common['int_url'],'list'=>$this->work->worklist()]);
+		return view($this->patch.'/wfjk.html',['int_url'=>gconfig('int_url'),'list'=>$this->work->worklist()]);
 	}
 	//用户选择控件
     public function super_user()
@@ -119,7 +120,7 @@ use think\facade\Request;
 	   foreach($info as $k=>$v){
 		   $user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
 	   }
-	   return $this->lib->tmp_user(url($this->common['int_url'].'/wf/super_get'),input('kid'),$user);
+	   return $this->lib->tmp_user(url(gconfig('int_url').'/wf/super_get'),input('kid'),$user);
     }
 	//角色选择控件
     public function super_role()
@@ -129,7 +130,7 @@ use think\facade\Request;
 	   foreach($info as $k=>$v){
 			$user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
 	   }
-	   return $this->lib->tmp_role(url($this->common['int_url'].'/wf/super_get'),$user);
+	   return $this->lib->tmp_role(url(gconfig('int_url').'/wf/super_get'),$user);
     }
 	public function super_get()
 	{
@@ -163,7 +164,7 @@ use think\facade\Request;
 	   foreach($this->table as $k=>$v){
 		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
 	   }
-	   return $this->lib->tmp_add(url($this->common['int_url'].'/wf/wfadd'),$info,$type);
+	   return $this->lib->tmp_add(url(gconfig('int_url').'/wf/wfadd'),$info,$type);
     }
 	/**
 	 * 工作流设计界面
@@ -180,13 +181,13 @@ use think\facade\Request;
         }
 		//Url转换地址
 		$urls = [
-			'welcome'=>url($this->common['int_url'].'/wf/welcome'),
-			'add_process'=>url($this->common['int_url'].'/wf/add_process'),
-			'Checkflow'=>url($this->common['int_url'].'/wf/Checkflow'),
-			'save_canvas'=>url($this->common['int_url'].'/wf/save_canvas'),
-			'del_allprocess'=>url($this->common['int_url'].'/wf/del_allprocess'),
-			'delete_process'=>url($this->common['int_url'].'/wf/delete_process'),
-			'wfatt'=>url($this->common['int_url'].'/wf/wfatt')
+			'welcome'=>url(gconfig('int_url').'/wf/welcome'),
+			'add_process'=>url(gconfig('int_url').'/wf/add_process'),
+			'Checkflow'=>url(gconfig('int_url').'/wf/Checkflow'),
+			'save_canvas'=>url(gconfig('int_url').'/wf/save_canvas'),
+			'del_allprocess'=>url(gconfig('int_url').'/wf/del_allprocess'),
+			'delete_process'=>url(gconfig('int_url').'/wf/delete_process'),
+			'wfatt'=>url(gconfig('int_url').'/wf/wfatt')
 		];
 		return view($this->patch.'/wfdesc.html',['url'=>$urls,'one'=>$one,'process_data'=>$this->work->ProcessApi('All',$flow_id)]);
     }
@@ -234,7 +235,7 @@ use think\facade\Request;
     public function wfatt()
     {
 	    $info = $this->work->ProcessApi('ProcessAttView',input('id'));
-		return view($this->patch.'/wfatt.html',['int_url'=>$this->common['int_url'],'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
+		return view($this->patch.'/wfatt.html',['int_url'=>gconfig('int_url'),'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
     }
 	/**
 	 * 删除流程
@@ -249,7 +250,7 @@ use think\facade\Request;
 	}
 	public function wfgl()
     {
-        return view($this->patch.'/wfgl.html',['int_url'=>$this->common['int_url'],'list'=>EntrustDb::lists()]);
+        return view($this->patch.'/wfgl.html',['int_url'=>gconfig('int_url'),'list'=>EntrustDb::lists()]);
     }
 	/*委托授权审核*/
 	public function entrust(){
@@ -265,7 +266,7 @@ use think\facade\Request;
 	   }
 		//获取全部跟自己相关的步骤
 		$data =ProcessDb::get_userprocess($this->uid,$this->role);
-		$url = url($this->common['int_url'].'/wf/entrust');
+		$url = url(gconfig('int_url').'/wf/entrust');
 		$type ='';
 		   foreach($data as $k=>$v){
 			   $type .='<option value="'.$v['id'].'@'.$v['flow_id'].'">['.$v['flow_name'].']'.$v['process_name'].'</option>'; 
@@ -291,7 +292,7 @@ use think\facade\Request;
 			}
 			return msg_return($data,0,$info);
 		}
-	   return $this->lib->tmp_upload(url($this->common['int_url'].'/wf/wfup'),input('id'));
+	   return $this->lib->tmp_upload(url(gconfig('int_url').'/wf/wfup'),input('id'));
     }
 	public function ajax_back()
 	{
@@ -306,8 +307,4 @@ use think\facade\Request;
 	}
 	
 }
-	/*消息返回*/
-	function msg_return($msg = "操作成功！", $code = 0,$data = [])
-	{
-		return json(["code" => $code, "msg" => $msg, "data" => $data]);
-	}
+	
