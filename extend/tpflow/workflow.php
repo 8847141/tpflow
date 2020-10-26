@@ -30,8 +30,6 @@ use tpflow\service\TaskService;
 //消息
 use tpflow\msg\mail;
 
-require_once( BEASE_URL . '/lib/unit.php');//加载工具配置
-
 	/**
 	 * 根据单据ID获取流程信息
 	 */

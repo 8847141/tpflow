@@ -12,13 +12,13 @@ namespace tpflow\lib;
 
 class lib
 {
-	function tpflow_status($status=0){
+	public static function tpflow_status($status=0){
 		$stv = [
 			-1=>'<span class="label label-danger radius" >退回修改</span>',0=>'<span class="label radius">保存中</span>',1=>'<span class="label radius" >流程中</span>',2=>'<span class="label label-success radius" >审核通过</span>'
 		];
 		return $stv[$status] ?? 'ERR';
 	}
-	function tpflow_btn($wf_fid,$wf_type,$status,$url,$thisuser,$work)
+	public static function tpflow_btn($wf_fid,$wf_type,$status,$url,$thisuser,$work)
 	{
 		switch ($status)
 		{
@@ -70,7 +70,7 @@ class lib
 		  return '';
 		}
 	}
-	function tmp_add($url,$info,$type)
+	public static function tmp_add($url,$info,$type)
 	{
 		$view=<<<php
 				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
@@ -132,7 +132,7 @@ class lib
 php;
 	return 	$view;	
 	}
-	function tmp_entrust($url,$info,$type,$user){
+	public static function tmp_entrust($url,$info,$type,$user){
 		 $view=<<<php
 				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 				<form action="{$url}" method="post" name="form" id="form">
@@ -188,7 +188,7 @@ php;
 php;
 		return 	$view;
 	}
-	function tmp_upload($url,$id){
+	public static function tmp_upload($url,$id){
 		return <<<php
 	<div class="page-container">
     <input type="hidden" id="callbackId" value="{$id}">
@@ -256,7 +256,7 @@ php;
 php;
 	}
 	
-	function tmp_user($url,$kid,$user){
+	public static function tmp_user($url,$kid,$user){
 		 return <<<php
 		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 <link rel="stylesheet" type="text/css" href="/static/work/multiselect2side.css" media="screen" />
@@ -342,7 +342,7 @@ php;
 php;
 		
 	}
-	function tmp_role($url,$role){
+	public static function tmp_role($url,$role){
 		 return <<<php
 		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 <link rel="stylesheet" type="text/css" href="/static/work/multiselect2side.css" media="screen" />
