@@ -102,6 +102,7 @@ use tpflow\msg\mail;
 		  *
 		  * @$wf_fid 单据编号
 		  * @$wf_type 单据表 
+		  * @$userinfo 用户的uid，用户的role 
 		  **/
 		function workflowInfo($wf_fid,$wf_type,$userinfo=[])
 		{

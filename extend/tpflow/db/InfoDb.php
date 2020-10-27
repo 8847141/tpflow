@@ -116,6 +116,8 @@ class InfoDB{
 			'auto_person'=>$wf_process['auto_person'],//办理类别
             'js_time'=>time(),
             'dateline'=>time(),
+			'is_sing'=>$wf_process['is_sing'],
+			'is_back'=>$wf_process['is_back'],
 			'wf_mode'=>$wf_process['wf_mode'],
 			'wf_action'=>$wf_process['wf_action'],
         );
@@ -175,25 +177,14 @@ class InfoDB{
 	 */
 	public static function workflowInfo($wf_fid,$wf_type,$userinfo) {
 		$workflow = [];
-		require ( BEASE_URL . '/config/config.php');
 		//根据表信息，判断当前流程是否还在运行  
-		$count = Db::name('run')->where('from_id','=',$wf_fid)->where('from_table',$wf_type)->where('is_del',0)->where('status',0)->count();
-		
+		$count = Db::name('run')->where('from_id',$wf_fid)->where('from_table',$wf_type)->where('is_del',0)->where('status',0)->count();
 		if($count > 0){
-			//获取当前运行的信息
-			$result = Db::name('run')->where('from_id',$wf_fid)->where('from_table',$wf_type)->where('is_del',0)->where('status',0)->find();
-			$info_list = Db::name('run_process')
-					->where('run_id',$result['id'])
-					->where('run_flow',$result['flow_id'])
-					->where('run_flow_process','in',$result['run_flow_process'])
-					->where('status',0)
-					->select();
-			
+			$result = Db::name('run')->where('from_id',$wf_fid)->where('from_table',$wf_type)->where('is_del',0)->where('status',0)->find();//获取当前运行的信息
+			$info_list = Db::name('run_process')->where('run_id',$result['id'])->where('run_flow_process','in',$result['run_flow_process'])->where('status',0)->select();
 			if(count($info_list)==0){
-				 $info_list[0]=Db::name('run_process')->where('run_id',$result['id'])->where('run_flow',$result['flow_id'])->where('run_flow_process',$result['run_flow_process'])->where('status',0)->find();
+				 $info_list[0]=Db::name('run_process')->where('run_id',$result['id'])->where('run_flow_process',$result['run_flow_process'])->where('status',0)->find();
 			}
-			
-			
 			/*
 			 * 2019年1月27日
 			 *1、先计算当前流程下有几个步骤
@@ -204,7 +195,6 @@ class InfoDB{
 			 *6、修改提醒模式
 			 */
 			//如果有两个以上的运行步骤，则认定为师同步模式
-			
 			if(count($info_list)<2){
 				$info = $info_list[0];
 				$workflow ['wf_mode'] = 0;//wf_mode
@@ -219,7 +209,7 @@ class InfoDB{
 							}
 						}else{
 						$uids = explode(",", $v['sponsor_ids']);
-						if (in_array($userinfo['role'], $uids)) {
+						if (in_array($userinfo['role'], $uids)){
 							$info = $v;
 							 break;
 						}
@@ -237,13 +227,12 @@ class InfoDB{
 					$workflow ['status'] = $info;
 					$workflow ['flow_process'] = $info['run_flow_process'];
 					$workflow ['run_process'] = $info['id'];
-					$workflow ['flow_name'] = FlowDb::GetFlowInfo($result['flow_id']);
-					$workflow ['process'] = ProcessDb::GetProcessInfo($info['run_flow_process'],$result['id']);
+					$workflow ['process'] = ProcessDb::GetProcessInfo($info['run_flow_process'],$result['id']);//flow_process获取步骤信息
 					$workflow ['nexprocess'] = ProcessDb::GetNexProcessInfo($wf_type,$wf_fid,$info['run_flow_process'],$result['id'],$workflow ['wf_mode']);//获取下一个步骤
 					$workflow ['preprocess'] = ProcessDb::GetPreProcessInfo($info['id']);//获取前几个步骤信息，用于步骤回退
 					$workflow ['singuser'] = UserDb::GetUser();//获取所有会签人员
 					if($result['is_sing']==1){
-						$info = Db::name('run_process')->where('run_id',$result['id'])->where('run_flow',$result['flow_id'])->where('run_flow_process',$result['run_flow_process'])->find();
+					   $info = Db::name('run_process')->where('run_id',$result['id'])->where('run_flow',$result['flow_id'])->where('run_flow_process',$result['run_flow_process'])->find();
 					   $workflow ['sing_st'] = 1;
 					   $workflow ['flow_process'] = $result['run_flow_process'];
 					   $process = ProcessDb::GetProcessInfo($result['run_flow_process'],$result['id']);
@@ -262,6 +251,7 @@ class InfoDB{
 			$workflow ['bill_check'] = '';
 			$workflow ['bill_time'] = '';
 		}
+		dump($workflow);
 		return $workflow;
 	}
 	
