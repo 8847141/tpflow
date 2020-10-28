@@ -323,6 +323,11 @@ class InfoDB{
 	public static function get_wftype()
 	{
 		$config = require ( BEASE_URL . '/config/common.php');//
-		return Db::query("select replace(TABLE_NAME,'".$config['prefix']."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".$config['database']."' and table_type='base table' and TABLE_COMMENT like '".$config['work_table']."%';");
+		if($config['wf_type_mode']==0){
+			return Db::query("select replace(TABLE_NAME,'".$config['prefix']."','')as name,TABLE_COMMENT as title from information_schema.tables where table_schema='".$config['database']."' and table_type='base table' and TABLE_COMMENT like '".$config['work_table']."%';");
+		}else{
+			return $config['wf_type_data'];
+		}
+		
 	}
 }

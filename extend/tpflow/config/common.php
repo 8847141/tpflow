@@ -10,6 +10,7 @@
 */
 namespace tpflow\config;
 return [
+	'version'=>'4.0',//当前版本
 	'database'=>'tpflow4.0',//数据库名称
 	'prefix'=>'wf_',//数据库前缀
 	'int_url'=>'index',//使用工作流的模块名称
@@ -31,6 +32,11 @@ return [
 		'getfield'=>'name',//获取用户名称
 		'field'=>'id as id,name as username',//查询筛选字段 用于设计器的选人
 		'searchwhere'=>'name'//查询筛选字段 用于设计器where匹配
+	],
+	/*工作流类别信息配置*/
+	'wf_type_mode'=>0,//工作流类别模式 0为数据库驱动，1自定义模式
+	'wf_type_data' => [
+		['name'=>'news','title'=>'新闻'], //业务表=>业务名称
 	],
 ];
 
