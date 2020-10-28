@@ -1,12 +1,12 @@
 <html>
 <head>
-<title>Tpflow V4.0 管理列表</title>
+<title>Tpflow V4.0 代理列表</title>
 </head>
 <link rel="stylesheet" type="text/css" href="__Flow__/workflow-common.css"/>
 <body>
 <div class="page-container">
 <div style='float: left;width:6%'>
-	<a onclick="layer_open('添加委托授权','{:url($int_url.'/wf/entrust')}','750','400')" class="button ">委托授权</a> <hr/>
+	<a onclick="layer_open('添加委托授权','{:url($int_url.'/wf/entrust')}','750','400')" class="button ">委托代理</a> <hr/>
 	<a onclick="location.reload();" class="button ">刷新页面</a>
 
 </div>
@@ -16,7 +16,7 @@
         <th>ID</th>
         <th>授权名称</th>
         <th>委托类型</th>
-		<th>被授权人</th>
+		<th>授权关系</th>
         <th>起止时间</th>
 		<th>委托备注</th>
         <th>操作</th>
@@ -31,7 +31,7 @@
 		{else/}
 		步骤授权
 		{/eq}</td>
-		<td>{$vo.entrust_name}</td>
+		<td>{$vo.old_name}=>{$vo.entrust_name}</td>
 		<td>{$vo.entrust_stime|date='Y-m-d H:i:s'}~{$vo.entrust_etime|date='Y-m-d H:i:s'}</td>
 		<td>{$vo.entrust_con}</td>
       <td> <a class='button' onclick="layer_open('修改','{:url($int_url.'/wf/entrust',['id'=>$vo.id])}','750','400')"> 修改</a>
