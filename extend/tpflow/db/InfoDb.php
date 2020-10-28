@@ -219,7 +219,10 @@ class InfoDB{
 					return -1;
 				}
 			}
-	
+			/*
+			*4.0版本新增查找是否有代理审核人员，并给与权限，权限转换
+			*/
+			$info = EntrustDb::change($info);
 			if ($result) {
 					$workflow ['sing_st'] = 0;
 					$workflow ['flow_id'] = $result['flow_id'];
@@ -251,7 +254,6 @@ class InfoDB{
 			$workflow ['bill_check'] = '';
 			$workflow ['bill_time'] = '';
 		}
-		dump($workflow);
 		return $workflow;
 	}
 	

@@ -63,7 +63,7 @@ class lib
 				}
 			
 		case 100:
-			echo '<span class="btn btn-primary" onclick=layer_open(\'代审\',"'.$url['url'].'?sup=1","850","650")>代审</span>';
+			return '<span class="button" onclick=layer_open(\'代审\',"'.$url['url'].'?sup=1","850","650")>代审</span>';
 		  break;
 		  break;
 		default:
@@ -429,6 +429,50 @@ php;
     });
 	
 </script>
+php;
+	}
+	public static function tmp_wfjk($url,$data){
+		 return <<<php
+		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+<div class="page-container">
+	<table class="table">
+			<tr class="text-c">
+				<th>工作流编号</th>
+				<th >工作流类型</th>
+				<th >工作流名称</th>
+				<th >当前状态</th>
+				<th >业务办理人</th>
+				<th >接收时间</th>
+				<th >操作</th>
+			</tr>
+		<tbody>
+			{$data}
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+<script>
+function end(id){
+		layer.confirm('你确定终止此流程？[此操作无法恢复]',function(index){
+			$.ajax({
+				type: 'POST',
+				url: '{$url}?id='+id,
+				dataType: 'json',
+				success: function(data){
+					layer.msg('操作成功!',{icon:1,time:1000});
+					setTimeout("location.reload()",1000);
+				},
+				error:function(data) {
+					console.log(data.msg);
+				},
+			});		
+		});
+	}
+</script>
+</body>
+</html>
 php;
 		
 	}

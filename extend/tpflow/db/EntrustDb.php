@@ -105,5 +105,19 @@ class EntrustDb{
 			}
 		}
     }
+	/**
+     * change 权限转换
+     */
+	 public static function change($info)
+    {
+		$has_rel = Db::name('entrust_rel')->where('process_id',$info['id'])->find();
+		if(!$has_rel){
+			return $info;
+		}
+		$entrust = self::find($has_rel['entrust_id']);
+		$info['sponsor_text'] = $info['sponsor_text'].',[代理]'.$entrust['entrust_name'];
+		$info['sponsor_ids'] = $info['sponsor_text'].','.$entrust['entrust_user'];
+		return $info;
+    }
 	
 }

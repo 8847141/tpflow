@@ -99,7 +99,13 @@ use think\facade\Request;
 	/*流程监控*/
 	public function wfjk($map = [])
 	{
-		return view($this->patch.'/wfjk.html',['int_url'=>unit::gconfig('int_url'),'list'=>$this->worklist()]);
+		$data = $this->worklist();
+		$tr = '';
+		foreach($data as $k=>$v){
+			   $status = ['未审核','已审核'];
+				$tr .='<tr class="text-c"><td>'.$v['id'].'</td><td>'.$v['from_table'].'</td><td>'.$v['flow_name'].'</td><td>'.$status[$v['status']].'</td><td>'.$v['flow_name'].'</td><td>'.date("Y-m-d H:i",$v['dateline']).'</td><td><a onclick=end('.$v['id'].')>终止</a>  |  '.self::wfbtn($v['from_id'],$v['from_table'],100).'</td></tr>'; 
+		  }
+		return lib::tmp_wfjk(url(unit::gconfig('int_url').'/wf/wfend'),$tr);
 	}
 	//用户选择控件
     public function super_user()
@@ -204,7 +210,6 @@ use think\facade\Request;
 					echo "<script language='javascript'>alert('操作成功！！'); top.location.reload();</script>";exit;
 				}else{
 					echo "<script language='javascript'>alert('操作失败！！'); top.location.reload();</script>";exit;
-			
 			}
 		 }
 	}
