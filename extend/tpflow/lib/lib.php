@@ -149,6 +149,10 @@ php;
 								{$type}</select>
 							</td></tr>
 							<tr>
+							<th>授权人</th><td style='width:330px;text-align: left;'>
+							<select name="oldinfo"  class="select"  datatype="*" >{$user}</select>
+							</td></tr>
+							<tr>
 							<th>被授权人</th><td style='width:330px;text-align: left;'>
 							<select name="userinfo"  class="select"  datatype="*" >{$user}</select>
 							</td></tr>

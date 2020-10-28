@@ -60,21 +60,21 @@ class EntrustDb{
      * API 新增
      * @param $data POST提交的数据
      */
-    public static function Add($uid,$data)
+    public static function Add($data)
     {
-		if($uid==''){
-			 return ['code' => 1, 'data' => '请先登入账号信息哦！'];
-		}
-		$data['old_user'] =$uid;
 		$data['entrust_stime'] = strtotime($data['entrust_stime']);
 		$data['entrust_etime'] = strtotime($data['entrust_etime']);
 		$type = explode("@",$data['type']);
 		$data['flow_process'] =$type[0];
 		$data['flow_id'] =$type[1];
 		$user = explode("@",$data['userinfo']);
+		$oldinfo = explode("@",$data['oldinfo']);
 		$data['entrust_user'] =$user[0];
 		$data['entrust_name'] =$user[1];
+		$data['old_user'] =$oldinfo[0];
+		$data['old_name'] =$oldinfo[1];
 		unset($data['userinfo']);
+		unset($data['oldinfo']);
 		unset($data['type']);
 		$data['add_time'] =time();
 		if($data['id']!=''){
@@ -116,7 +116,8 @@ class EntrustDb{
 		}
 		$entrust = self::find($has_rel['entrust_id']);
 		$info['sponsor_text'] = $info['sponsor_text'].',[代理]'.$entrust['entrust_name'];
-		$info['sponsor_ids'] = $info['sponsor_text'].','.$entrust['entrust_user'];
+		$info['sponsor_ids'] = $info['sponsor_ids'].','.$entrust['entrust_user'];
+		
 		return $info;
     }
 	

@@ -251,7 +251,7 @@ use think\facade\Request;
 		
 		if ($this->request::isPost()) {
 			$post = input('post.');
-			$ret = EntrustDb::Add(1,$post);
+			$ret = EntrustDb::Add($post);
 			if($ret['code']==0){
 				return unit::msg_return('发布成功！');
 				}else{
