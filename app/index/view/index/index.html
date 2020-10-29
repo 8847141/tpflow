@@ -9,20 +9,8 @@
 			<span class='logo navbar-slogan f-l mr-10 hidden-xs'>作者：蝈蝈（1838188896） 交流群：532797225</span>
 		</nav>
 		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
-			<ul class="cl">
-				<li>{if condition='session("uid")'}
-欢迎您：{:session('uname')} 
-{else/}
-	请先模拟登入！
-{/if}</li>
-				<li class="dropDown dropDown_hover">
-					<a href="#" class="dropDown_A">切换账户 <i class="Hui-iconfont">&#xe6d5;</i></a>
-					<ul class="dropDown-menu menu radius box-shadow">
-						{volist name='user' id='k'}
-							<li><a href="{:url('login',['id'=>$k.id,'user'=>$k.username,'role'=>$k.role])}">{$k.username}</a></li>
-						{/volist}
-				</ul>
-			</li>
+			<ul class="cl"><li>{if condition='session("uid")'}欢迎您：{:session('uname')} {else/}请先模拟登入！{/if}</li>
+			<li><a onClick='login()'>切换账号</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -82,8 +70,11 @@
 </div>
 </section>
 <script>
+
+
 var session ="{:session('uid')}";
 if(session =='' ){
+login();
 layer.open({
       type: 2,
       title: '网站',
@@ -94,6 +85,14 @@ layer.open({
       content: '//cojz8.com/'
     });
 	}
+function login(){
+	layer.open({
+	  type: 1,
+	  skin: 'layui-layer-rim', //加上边框
+	  area: ['520px', '180px'], //宽高
+	  content: '<h2>模拟登入:</h2><br><b>　　{volist name="user" id="k"}<span class="btn  radius size-S"><a href="{:url("login",["id"=>$k.id,"user"=>$k.username,"role"=>$k.role])}">{$k.username}</a></span>　{/volist}<b>'
+	});
+}
 </script>
 </body>
 </html>
