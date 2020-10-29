@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="__Flow__/workflow-common.css"/>
 <div class="page-container" style='width:98%'>
-<form action="{:url($int_url.'/wf/do_check_save')}" method="post" name="form" id="forms">
+<form action="{:url($int_url.'/wf/do_check_save')}" method="post" name="form" id="wfform">
 <input type="hidden" value="{$info.wf_title}" name="wf_title">
 <input type="hidden" value="{$info.wf_fid}" name="wf_fid">
 <input type="hidden" value="{$info.wf_type}" name="wf_type">
@@ -82,7 +82,6 @@
 					<option value="{$sing.id}">{$sing.username}</option>
 					{/volist}
 					</select>
-				
 				</td>
 				</tr>
 				<tr>
@@ -91,18 +90,18 @@
 				<input id='upload' name='art' value='' type='hidden'>
 				<input  name='sing_st' value='{$flowinfo.sing_st}' type='hidden'>
 				{if condition='$flowinfo.sing_st == 0'}
-					<a class="button" id='nexbton' onclick='tj("ok")' >提交</a> 
+					<a class="button" id='nexbton' onclick='tpflow_tj("ok")' >提交</a> 
 					{if condition='$flowinfo.status.is_back != 2'}
-					<a class="button" id='backbton' onclick='tj("back")'value='back' >回退</a> 
+					<a class="button" id='backbton' onclick='tpflow_tj("back")'value='back' >回退</a> 
 					{/if}
 					{if condition='$flowinfo.status.is_sing != 2'}
-					<a class="button" id='singbton' onclick='tj("sing")' value='sing' >会签</a>
+					<a class="button" id='singbton' onclick='tpflow_tj("sing")' value='sing' >会签</a>
 					{/if}
 					<a class="button" id='bupload'onclick="layer_open('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">附件</a> 
 				{else/}
-					<a class="button" id='nexbton' onclick='sing("sok")' >会签提交</a> 
-					<a class="button" id='backbton' onclick='sing("sback")'value='back' >会签回退</a> 
-					<a class="button" id='singbton' onclick='sing("ssing")' value='sing' >再会签</a>
+					<a class="button" id='nexbton' onclick='tpflow_sing("sok")' >会签提交</a> 
+					<a class="button" id='backbton' onclick='tpflow_sing("sback")'value='back' >会签回退</a> 
+					<a class="button" id='singbton' onclick='tpflow_sing("ssing")' value='sing' >再会签</a>
 				{/if}
 				
 				</td>
@@ -120,8 +119,7 @@
 </form>		
 		<table class="table table-border table-bordered mt-20" style='width:98%'>
 		<tr><td>
-		
-		<iframe src="{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()"></iframe>
+		<div id='bill_data'style='width:100%;overflow-y:scroll; height:200px'></div>
 		
 		</td></tr>
 		</table>
@@ -133,7 +131,7 @@
 <script type="text/javascript" src="__Flow__/lib/Validform/5.3.2/Validform.min.js" ></script>
 <script type="text/javascript">
 $(function(){
-	$("#forms").Validform({
+	$("#wfform").Validform({
             tiptype:function(msg,o,cssctl){
 				if (o.type == 3){
 					layer.msg(msg, {time: 800}); 
@@ -145,85 +143,11 @@ $(function(){
                 ajax_progress(ret);
             }
         });
-});
-function tj(value){
-	if(value =='back'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#singbton').hide();
-		$('#backbton').html('确认回退');
-		$('#back_process').show();
-		var select = $('#backflow option:selected').val();
-		$("#singflow").removeAttr("datatype");
-		if(select==''){
-			layer.msg('请选择回退步骤');
-			return false;
-		}
-	}
-	if(value =='sing'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#backbton').hide();
-		$('#backbton').html('确认会签');
-		$('#sing_process').show();
-		$("#backflow").removeAttr("datatype");
-		$("#todo").removeAttr("datatype");
-		var select = $('#singflow option:selected').val();
-		if(select==''){
-			layer.msg('请选择会签人');
-			return false;
-		}
-	}
-	if(value =='ok'){
-		$("#backflow").removeAttr("datatype");
-		$("#singflow").removeAttr("datatype");
-	}
-	$('#submit_to_save').val(value);
-	$('#forms').submit();
-}
-function sing(value){
-	if(value =='sback'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#singbton').hide();
-		$('#backbton').html('确认回退');
-		$('#back_process').show();
-		var select = $('#backflow option:selected').val();
-		$("#singflow").removeAttr("datatype");
 		
-		if(select==''){
-			layer.msg('请选择回退步骤');
-			return false;
-		}
-	}
-	if(value =='ssing'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#backbton').hide();
-		$('#backbton').html('确认会签');
-		$('#sing_process').show();
-		$("#backflow").removeAttr("datatype");
-		var select = $('#singflow option:selected').val();
-		if(select==''){
-			layer.msg('请选择会签人');
-			return false;
-		}
-	}
-	if(value =='sok'){
-		$("#backflow").removeAttr("datatype");
-		$("#singflow").removeAttr("datatype");
-	}
-	$('#submit_to_save').val(value);
-	$('#forms').submit();
-} 
-function iFrameHeight() {   
-		var ifm= document.getElementById("iframepage");   
-		var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
-		if(ifm != null && subWeb != null) {
-		   ifm.height = subWeb.body.scrollHeight;
-		   ifm.width = '100%';
-		}   
-} 
+		$("#bill_data").load('{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}');
+
+});
+
 function find(){
 	$.post("{:url($int_url.'/wf/ajax_back')}",{"back_id":$('#backflow').val(),"run_id":$('#run_id').val()},function(data){
 				if(data != ''){
