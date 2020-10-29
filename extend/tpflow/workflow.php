@@ -120,7 +120,6 @@ use tpflow\msg\mail;
 				if($run_check==2){
 					return ['msg'=>'该业务已办理，请勿重复提交！','code'=>'-1'];
 				}
-				
 				if ($wf_actionid == "ok") {//提交处理
 					$ret = $taskService->doTask($config,$uid);
 				} else if ($wf_actionid == "back") {//退回处理
