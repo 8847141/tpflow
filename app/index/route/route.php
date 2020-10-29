@@ -15,9 +15,9 @@ Route::group('wf', function () {
         Route::rule('welcome', '\tpflow\Api@welcome');
         Route::rule('wfindex', '\tpflow\Api@wfindex');
 		Route::get('wfjk','\tpflow\Api@wfjk');
-		Route::rule('super_user','\tpflow\Api@super_user');//获取用户信息
-		Route::rule('super_role','\tpflow\Api@super_role');//获取角色信息
+		Route::rule('super_user','\tpflow\Api@super_user');//获取用户信息/角色信息查询接口
 		Route::rule('wfadd','\tpflow\Api@wfadd');//工作流添加\修改
+		Route::rule('entrust','\tpflow\Api@entrust'); //代理授权接口
 		//流程设计器
 		Route::get('wfdesc','\tpflow\Api@wfdesc'); //设计界面
 		Route::post('add_process','\tpflow\Api@add_process'); //添加一个新流程
@@ -29,18 +29,14 @@ Route::group('wf', function () {
 		Route::get('wfatt','\tpflow\Api@wfatt'); //设计界面
 		Route::post('save_attribute','\tpflow\Api@save_attribute'); //步骤属性保存
 		Route::post('Checkflow','\tpflow\Api@Checkflow'); //步骤属性保存
-		//用户查询
-		Route::post('super_get','\tpflow\Api@super_get');//查询用户或者角色
 		//流程启动  
-		Route::get('wfcheck','\tpflow\Api@wfcheck'); //发起工作流界面
-		Route::get('wfstart','\tpflow\Api@wfstart'); //发起工作流界面
-		Route::post('statr_save','\tpflow\Api@statr_save');//发起工作流保存
+		Route::get('wfcheck','\tpflow\Api@wfcheck'); //工作流审核
+		Route::rule('wfstart','\tpflow\Api@wfstart'); //发起工作流界面
 		Route::post('do_check_save','\tpflow\Api@do_check_save');//审核保存
 		Route::rule('wfup','\tpflow\Api@wfup'); //发起工作流界面
 		Route::post('wfend','\tpflow\Api@wfend');//终止工作流接口
 		Route::post('ajax_back','\tpflow\Api@ajax_back');//终止工作流接口
-		//
 		Route::get('wfgl','\tpflow\Api@wfgl'); //
-		Route::rule('entrust','\tpflow\Api@entrust'); //
+		
 		
     });

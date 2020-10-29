@@ -14,6 +14,7 @@ namespace tpflow;
 use tpflow\workflow;
 //数据库操作
 use tpflow\db\InfoDb;
+use tpflow\db\FlowDb;
 use tpflow\db\ProcessDb;
 use tpflow\db\UserDb;
 use tpflow\db\EntrustDb;
@@ -56,19 +57,22 @@ use think\facade\Request;
 	/*发起流程，选择工作流*/
 	public function wfstart()
 	{
-		$info = ['wf_type'=>input('wf_type'),'wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid')];
-		$flow =  $this->getWorkFlow(input('wf_type'));
-		return view($this->patch.'/wfstart.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flow'=>$flow]);
-	}
-	/*正式发起工作流*/
-	public function statr_save()
-	{
-		$data = input('post.');
-		$flow = $this->startworkflow($data,$this->uid);
-		if($flow['code']==1){
-			return unit::msg_return('Success!');
+		if ($this->request::isPost()) {
+			$data = input('post.');
+			$flow = $this->startworkflow($data['wf_id'],$data['wf_fid'],$data['check_con'],$this->uid);
+			if($flow['code']==1){
+				return unit::msg_return('Success!');
+			}
 		}
+		$info = ['wf_type'=>input('wf_type'),'wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid')];
+		$flow =  FlowDb::getWorkflowByType(input('wf_type'));;
+		$op ='';
+		foreach($flow as $k=>$v){
+			   $op .='<option value="'.$v['id'].'">'.$v['flow_name'].'</option>'; 
+		}
+		return lib::tmp_wfstart(url(unit::gconfig('int_url').'/wf/wfstart'),$info,$op);
 	}
+	
 	public function wfcheck()
 	{
 		$info = ['wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid'),'wf_type'=>input('wf_type')];
@@ -110,27 +114,25 @@ use think\facade\Request;
 	//用户选择控件
     public function super_user()
     {
-	  $info=UserDb::GetUser();
-	   $user ='';
-	   foreach($info as $k=>$v){
-		   $user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
-	   }
-	   return lib::tmp_user(url(unit::gconfig('int_url').'/wf/super_get'),input('kid'),$user);
+		if(input('type_mode')=='user'){
+			$info=UserDb::GetUser();
+		   $user ='';
+		   foreach($info as $k=>$v){
+			   $user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
+		   }
+		   return lib::tmp_user(url(unit::gconfig('int_url').'/wf/super_user'),input('kid'),$user);
+		}elseif(input('type_mode')=='role'){
+		   $info=UserDb::GetRole();
+		   $user ='';
+		   foreach($info as $k=>$v){
+				$user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
+		   }
+		   return lib::tmp_role(url(unit::gconfig('int_url').'/wf/super_user',['type_mode'=>'super_get']),$user);
+		}else{
+			 return ['data'=>UserDb::AjaxGet(trim(input('type')),input('key')),'code'=>1,'msg'=>'查询成功！'];
+		}
     }
-	//角色选择控件
-    public function super_role()
-    {
-		$info=UserDb::GetRole();
-	   $user ='';
-	   foreach($info as $k=>$v){
-			$user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
-	   }
-	   return lib::tmp_role(url(unit::gconfig('int_url').'/wf/super_get'),$user);
-    }
-	public function super_get()
-	{
-		 return ['data'=>UserDb::AjaxGet(trim(input('type')),input('key')),'code'=>1,'msg'=>'查询成功！'];
-	}
+	
 	
 	/**
 	 * 流程修改

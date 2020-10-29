@@ -36,36 +36,29 @@ use tpflow\msg\mail;
 	class workflow{
 		
 		/**
-		 * 根据业务类别获取工作流
-		 *
-		 * @param  $type 类别
-		 */
-		function getWorkFlow($type)
-		{
-			return FlowDb::getWorkflowByType($type);
-		}
-		/**
 		 *流程发起
 		 *
-		 * @param  $config 参数信息
+		 * @param  $wf_id 实例化流程id 
+		 * @param  $wf_fid  实例化单据id
+		 * @param  $check_con 提交意见 
 		 * @param  $uid    用户ID
 		 **/
-		function startworkflow($config,$uid)
+		function startworkflow($wf_id,$wf_fid,$check_con,$uid)
 		{
-			$wf_id = $config['wf_id'];
-			$wf_fid = $config['wf_fid'];
-			$wf_type = $config['wf_type'];
+			if ($wf_id == '' || $wf_fid == ''|| $uid == '') {
+				return ['msg'=>'参数不完整！','code'=>'-1'];
+			}
 			//判断流程是否存在
 			$wf = FlowDb::getWorkflow($wf_id);
 			if(!$wf){
 				return ['msg'=>'未找到工作流！','code'=>'-1'];
 			}
+			$wf_type  = $wf['type'];
 			//判断单据是否存在
-			$wf = InfoDB::getbill($wf_fid,$wf_type);
-			if(!$wf){
+			$getbill = InfoDB::getbill($wf_fid,$wf_type);
+			if(!$getbill){
 				return ['msg'=>'单据不存在！','code'=>'-1'];
 			}
-			
 			//根据流程获取流程第一个步骤
 			$wf_process = ProcessDb::getWorkflowProcess($wf_id);
 			if(!$wf_process){
@@ -86,15 +79,12 @@ use tpflow\msg\mail;
 			if(!$run_cache){
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}
-			
 			//更新单据状态
 			$bill_update = InfoDB::UpdateBill($wf_fid,$wf_type);
 			if(!$bill_update){
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}
-			
-			$run_log = LogDb::AddrunLog($uid,$wf_run,$config,'Send');
-			
+			$run_log = LogDb::AddrunLog($uid,$wf_run,['wf_id'=>$wf_id,'wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'check_con'=>$check_con],'Send');
 			return ['run_id'=>$wf_run,'msg'=>'success','code'=>'1'];
 		}
 		/**

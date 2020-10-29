@@ -480,4 +480,44 @@ function end(id){
 php;
 		
 	}
+	public static function tmp_wfstart($url,$info,$flow)
+	{
+		return <<<php
+		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+		<form action="{$url}" method="post" name="form" id="form">
+		<input type='hidden' value="{$info['wf_fid']}" name='wf_fid'>
+		<table class="table">
+			<tr><td style='width:85px'>项目名称：</td>
+			<td>{$info['wf_title']}</td>
+			</tr><tr><td>选择工作流：</td><td style="text-align:left"><select name="wf_id"  class="select"  datatype="*" ><option value="">请选择工作流</option>{$flow}</select>
+			</td></tr><tr>
+			<td>审核意见：</td><td style="text-align:left"><input type="text" class="input-text" name="check_con"  datatype="*" >
+			</td></tr>
+			<tr><td colspan='2' class='text-c'><button  class="button" type="submit">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>&nbsp;&nbsp;<button  class="button" type="button" onclick="layer_close()">&nbsp;&nbsp;取消&nbsp;&nbsp;</button></td></tr>
+		</table>
+	</form>
+<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+<script type="text/javascript">
+$(function(){
+	$("#form").Validform({
+            tiptype:function(msg,o,cssctl){
+				if (o.type == 3){
+					layer.msg(msg, {time: 800}); 
+				}
+			},
+            ajaxPost:true,
+            showAllError:true,
+            callback:function(ret){
+                ajax_progress(ret);
+            }
+        });
+});
+</script>
+</body>
+</html>	
+php;
+	} 
 }

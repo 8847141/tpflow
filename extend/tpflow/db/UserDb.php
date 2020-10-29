@@ -43,11 +43,11 @@ class UserDb{
 		
 		if($type=='user'){
 			$config = self::config();
-			$map[$config['searchwhere']]  = array('like','%'.$keyword.'%');
-			return Db::name($config['db'])->where($map)->field($config['field'])->select();
-		 }else{
+				$map[] = [$config['searchwhere'],'like','%'.$keyword.'%'];
+				return Db::name($config['db'])->where($map)->field($config['field'])->select();
+		}else{
 			$config = self::config('role');
-			$map[$config['searchwhere']]  = array('like','%'.$keyword.'%');
+			$map[] = [$config['searchwhere'],'like','%'.$keyword.'%'];
 			return Db::name($config['db'])->where($map)->field($config['field'])->select();
 		 }
 	}
