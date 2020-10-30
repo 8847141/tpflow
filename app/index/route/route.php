@@ -30,7 +30,7 @@ Route::group('wf', function () {
 		Route::post('save_attribute','\tpflow\Api@save_attribute'); //步骤属性保存
 		Route::post('Checkflow','\tpflow\Api@Checkflow'); //步骤属性保存
 		//流程启动  
-		Route::get('wfcheck','\tpflow\Api@wfcheck'); //工作流审核
+		Route::rule('wfcheck','\tpflow\Api@wfcheck'); //工作流审核
 		Route::rule('wfstart','\tpflow\Api@wfstart'); //发起工作流界面
 		Route::post('do_check_save','\tpflow\Api@do_check_save');//审核保存
 		Route::rule('wfup','\tpflow\Api@wfup'); //发起工作流界面

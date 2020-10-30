@@ -25,11 +25,8 @@ class BackFlow{
 	 * @param  $uid  用户ID
 	 */
 	public function doTask($config,$uid) {
-		$wf_title = $config['wf_title'];
 		$wf_fid = $config['wf_fid'];
 		$wf_type = $config['wf_type'];
-		$flow_id = $config['flow_id'];
-		$npid = $config['npid'];//下一步骤流程id
 		$run_id = $config['run_id'];
 		if($config['sup']=='1'){
 			$check_con = '[管理员代办]'.$config['check_con'];
@@ -38,7 +35,6 @@ class BackFlow{
 			$check_con = $config['check_con'];
 		}
 		$run_process = $config['run_process'];//运行中的process
-		$submit_to_save = $config['submit_to_save'];
 		$wf_backflow = $config['wf_backflow'];//退回的步骤ID，如果等于0则默认是第一步
 		if($wf_backflow==0){
 			$back = true;
@@ -63,7 +59,7 @@ class BackFlow{
 			}
 			//消息通知
 			//日志记录
-			$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'Back');
+			$run_log = LogDb::AddrunLog($uid,$run_id,$config,'Back');
 			if(!$run_log){
 					return ['msg'=>'消息记录失败，数据库错误！！！','code'=>'-1'];
 				}

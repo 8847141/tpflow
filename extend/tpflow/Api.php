@@ -73,10 +73,41 @@ use think\facade\Request;
 		return lib::tmp_wfstart(url(unit::gconfig('int_url').'/wf/wfstart'),$info,$op);
 	}
 	
-	public function wfcheck()
+	public function wfcheck($wf_fid,$wf_type,$wf_title,$wf_mode='check',$ssing='sing')
 	{
-		$info = ['wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid'),'wf_type'=>input('wf_type')];
-		return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo(input('wf_fid'),input('wf_type'),['uid'=>$this->uid,'role'=>$this->role])]);
+		$sup = $_GET['sup'] ?? '';
+		$info = ["wf_title"=>$wf_title,'wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url("/".unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url("/".unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
+		if($wf_mode=='check'){
+			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role])]);
+		}
+		if($wf_mode=='back'){
+			//btodo
+			 if ($this->request::isPost()) {
+				$data = input('post.');
+				$data['btodo'] = $this->getprocessinfo($data['wf_backflow'],$data['run_id']);
+				$flowinfo =  $this->workdoaction($data,$this->uid);
+				if($flowinfo['code']=='0'){
+					return unit::msg_return('Success!');
+					}else{
+					return unit::msg_return($flowinfo['msg'],1);
+				}
+			 }
+			return lib::tmp_wfback($info,$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role]));
+		}
+		if($wf_mode=='sign'){
+			//btodo
+			 if ($this->request::isPost()) {
+				$data = input('post.');
+				$flowinfo =  $this->workdoaction($data,$this->uid);
+				if($flowinfo['code']=='0'){
+					return unit::msg_return('Success!');
+					}else{
+					return unit::msg_return($flowinfo['msg'],1);
+				}
+			 }
+			return lib::tmp_wfsign($info,$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role]),$ssing);
+		}
+		
 	}
 	public function do_check_save()
 	{
@@ -161,7 +192,12 @@ use think\facade\Request;
 	   foreach($this->table as $k=>$v){
 		   $type .='<option value="'.$v['name'].'">'.$v['title'].'</option>'; 
 	   }
-	   return lib::tmp_add(url(unit::gconfig('int_url').'/wf/wfadd'),$info,$type);
+		if(unit::gconfig('view_return')==1){
+			return lib::tmp_add(unit::gconfig('int_url').'/wf/wfadd',$info,$type);
+		}else{
+			return json_encode(['urls'=>unit::gconfig('int_url').'/wf/wfadd','info'=>$info,'type'=>$this->table]);
+		}
+	   
     }
 	/**
 	 * 工作流设计界面

@@ -14,7 +14,6 @@
 <input type="hidden" value="{$flowinfo.process.process_to}" name="npid">
 {/if}
 <input type="hidden" value="{$flowinfo.wf_mode}" name="wf_mode">
-
 <input type="hidden" value="{$_GET['sup'] ?? ''}" name="sup">
 		<table class="table table-border table-bordered table-bg" style='width:98%'>
 			<thead>
@@ -54,34 +53,6 @@
 						{$v['process_name']}({$v['todo']})<br/>
 					{/volist}
 				{/if}
-				
-				
-				</td>
-				</tr>
-				<tr style='display:none' id='back_process'>
-				<td style='width:30px'>回退步骤</td>
-				<td>
-					<span class="select-box">
-					<select name="wf_backflow" id='backflow'  class="select"  datatype="*" onchange='find()'>
-					<option value="">请选择回退步骤</option>
-					{volist name='$flowinfo.preprocess' id='back'}
-					<option value="{$key}">{$back}</option>
-					{/volist}
-					</select>
-					<input type="hidden" value="" name="btodo" id='btodo'>
-				</span>
-				</td>
-				</tr>
-				<tr style='display:none' id='sing_process'>
-				<td style='width:30px'>会签步骤</td>
-				<td>
-					<span class="select-box">
-					<select name="wf_singflow" id='singflow'  class="select"  datatype="*" >
-					<option value="">请选择会签人</option>
-					{volist name='$flowinfo.singuser' id='sing'}
-					<option value="{$sing.id}">{$sing.username}</option>
-					{/volist}
-					</select>
 				</td>
 				</tr>
 				<tr>
@@ -92,18 +63,17 @@
 				{if condition='$flowinfo.sing_st == 0'}
 					<a class="button" id='nexbton' onclick='tpflow_tj("ok")' >提交</a> 
 					{if condition='$flowinfo.status.is_back != 2'}
-					<a class="button" id='backbton' onclick='tpflow_tj("back")'value='back' >回退</a> 
+					<a class="button" id='backbton' onclick='tpflow_back()'value='back' >回退</a> 
 					{/if}
 					{if condition='$flowinfo.status.is_sing != 2'}
-					<a class="button" id='singbton' onclick='tpflow_tj("sing")' value='sing' >会签</a>
+					<a class="button" id='singbton' onclick='tpflow_sing_send()' value='sing' >会签</a>
 					{/if}
 					<a class="button" id='bupload'onclick="layer_open('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">附件</a> 
 				{else/}
 					<a class="button" id='nexbton' onclick='tpflow_sing("sok")' >会签提交</a> 
 					<a class="button" id='backbton' onclick='tpflow_sing("sback")'value='back' >会签回退</a> 
-					<a class="button" id='singbton' onclick='tpflow_sing("ssing")' value='sing' >再会签</a>
+					<a class="button" id='singbton' onclick='tpflow_sing_send("ssing")' value='sing' >再会签</a>
 				{/if}
-				
 				</td>
 				</tr>
 				</table>
@@ -111,7 +81,6 @@
 			<td valign="top" >
 				<div style='width:98%;overflow-y:scroll; height:200px'>
 					{:\\tpflow\\Api::wflogs($info.wf_fid,$info.wf_type);}
-				
 				</div>
 			</td>
 			</tr>
@@ -123,7 +92,6 @@
 		
 		</td></tr>
 		</table>
-	
 </div>
 <script type="text/javascript" src="__Flow__/jquery-1.7.2.min.js" ></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
@@ -142,20 +110,16 @@ $(function(){
             callback:function(ret){
                 ajax_progress(ret);
             }
-        });
-		
-		$("#bill_data").load('{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}');
-
+        });	
+		//$("#bill_data").load('{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}');
 });
-
-function find(){
-	$.post("{:url($int_url.'/wf/ajax_back')}",{"back_id":$('#backflow').val(),"run_id":$('#run_id').val()},function(data){
-				if(data != ''){
-					$('#btodo').val(data);
-				}
-				
-			},'json');
+function tpflow_back(){
+	layer_open('工作流回退','{$info.tpflow_back}',500,300);
 }
+function tpflow_sing_send(ssing){
+	layer_open('工作流会签','{$info.tpflow_sign}&ssing='+ssing,500,300);
+}
+
 </script>
 </body>
 </html>

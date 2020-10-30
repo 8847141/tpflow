@@ -38,5 +38,6 @@ return [
 	'wf_type_data' => [
 		['name'=>'news','title'=>'新闻'], //业务表=>业务名称
 	],
+	'view_return'=>1,//1、直接从lib类库中返回 2、直接返回JSON数据，需要自行进行数据处理
 ];
 

@@ -49,37 +49,11 @@ function ajax_progress(data) {
        layer.alert(data.msg, {title: "错误信息", icon: 2});
     }
 }
+
 /**
  * 审核页面提交单据控制
  */
 function tpflow_tj(value){
-	if(value =='back'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#singbton').hide();
-		$('#backbton').html('确认回退');
-		$('#back_process').show();
-		var select = $('#backflow option:selected').val();
-		$("#singflow").removeAttr("datatype");
-		if(select==''){
-			layer.msg('请选择回退步骤');
-			return false;
-		}
-	}
-	if(value =='sing'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#backbton').hide();
-		$('#backbton').html('确认会签');
-		$('#sing_process').show();
-		$("#backflow").removeAttr("datatype");
-		$("#todo").removeAttr("datatype");
-		var select = $('#singflow option:selected').val();
-		if(select==''){
-			layer.msg('请选择会签人');
-			return false;
-		}
-	}
 	if(value =='ok'){
 		$("#backflow").removeAttr("datatype");
 		$("#singflow").removeAttr("datatype");
@@ -101,19 +75,6 @@ function tpflow_sing(value){
 		$("#singflow").removeAttr("datatype");
 		if(select==''){
 			layer.msg('请选择回退步骤');
-			return false;
-		}
-	}
-	if(value =='ssing'){
-		$('#nex_process').hide();//
-		$('#nexbton').hide();
-		$('#backbton').hide();
-		$('#backbton').html('确认会签');
-		$('#sing_process').show();
-		$("#backflow").removeAttr("datatype");
-		var select = $('#singflow option:selected').val();
-		if(select==''){
-			layer.msg('请选择会签人');
 			return false;
 		}
 	}

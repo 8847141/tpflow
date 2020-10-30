@@ -24,13 +24,7 @@ class SingFlow{
 	 * @param  $uid  用户ID
 	 */
 	public function doTask($config,$uid) {
-		//任务全局类
-		$wf_title = $config['wf_title'];
-		$wf_fid = $config['wf_fid'];
-		$wf_type = $config['wf_type'];
-		$flow_id = $config['flow_id'];
 		$run_process = $config['run_process'];
-		$npid = $config['npid'];//下一步骤流程id
 		$run_id = $config['run_id'];
 		if($config['sup']=='1'){
 			$check_con = '[管理员代办]'.$config['check_con'];
@@ -38,7 +32,6 @@ class SingFlow{
 		}else{
 			$check_con = $config['check_con'];
 		}
-		$submit_to_save = $config['submit_to_save'];
 		$sid = ProcessDb::AddSing($config);
 		//结束当前流程，给个会签标志
 		$end = ProcessDb::up_flow_sing($run_id,$sid);
