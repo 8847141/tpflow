@@ -81,7 +81,6 @@ use think\facade\Request;
 			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role])]);
 		}
 		if($wf_mode=='back'){
-			//btodo
 			 if ($this->request::isPost()) {
 				$data = input('post.');
 				$data['btodo'] = $this->getprocessinfo($data['wf_backflow'],$data['run_id']);
@@ -95,7 +94,6 @@ use think\facade\Request;
 			return lib::tmp_wfback($info,$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role]));
 		}
 		if($wf_mode=='sign'){
-			//btodo
 			 if ($this->request::isPost()) {
 				$data = input('post.');
 				$flowinfo =  $this->workdoaction($data,$this->uid);
