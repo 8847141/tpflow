@@ -39,5 +39,7 @@ return [
 		['name'=>'news','title'=>'新闻'], //业务表=>业务名称
 	],
 	'view_return'=>1,//1、直接从lib类库中返回 2、直接返回JSON数据，需要自行进行数据处理
+	'wf_bill_mode'=>1,//工作流读取单据信息，系统自带模式,2、自定义模式
+	'wf_bill_namespace'=>'',
 ];
 

@@ -15,24 +15,6 @@ use think\facade\Db;
 class InfoDB{
 	
 	/**
-	 * 判断业务是否存在，避免已经删除导致错误
-	 *
-	 * @param $wf_fid  业务id
-	 * @param $wf_type 业务表名
-	 */
-	public static function getbill($wf_fid,$wf_type) 
-	{
-		if ($wf_fid == '' || $wf_type == '' ) {
-			return false;
-		}
-		$info = Db::name($wf_type)->find($wf_fid);
-		if($info){
-			return  $info;
-		}else{
-			return  false;
-		}
-	}
-	/**
 	 * 添加工作流
 	 *
 	 * @param $wf_id  流程主ID
@@ -72,7 +54,7 @@ class InfoDB{
 	{
 		if($wf_process['auto_person']==6 && $wf_process['process_type']=='is_one'){ //事务人员
 				$wf  =  Db::name('run')->find($run_id);
-				$user_id = InfoDB::GetBillValue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
+				$user_id = (new Bill())->getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$user_info = UserDb::GetUserInfo($user_id);
 				$wf_process['user_info']= $user_info;
 				$wf_process['todo']= $user_info['username'];
@@ -267,36 +249,6 @@ class InfoDB{
 		$result = Db::name('run')->find($run_id);
 		return $result;
 	}
-	/**
-	 * 更新单据信息
-	 *
-	 * @param $wf_fid  运行的id
-	 * @param $wf_type 业务表名
-	 * @param $status  单据状态
-	 */
-	public static function UpdateBill($wf_fid,$wf_type,$status = 1)
-	{
-		$result = Db::name($wf_type)->where('id',$wf_fid)->update(['status'=>$status,'uptime'=>time()]);
-		 if(!$result){
-            return  false;
-        }
-        return $result;
-	} 
-	/**
-	 * 更新单据信息
-	 *
-	 * @param $wf_fid  运行的id
-	 * @param $wf_type 业务表名
-	 * @param $status  单据状态
-	 */
-	public static function GetBillValue($table,$id,$value)
-	{
-		$result = Db::name($table)->where('id',$id)->value($value);
-		 if(!$result){
-            return  false;
-        }
-        return $result;
-	} 
 	/**
 	 * 工作流列表
 	 *

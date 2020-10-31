@@ -20,6 +20,7 @@ use tpflow\db\UserDb;
 use tpflow\db\EntrustDb;
 use tpflow\lib\lib;
 use tpflow\lib\unit;
+use tpflow\adaptive\Bill;
 
 use think\facade\Request;
 

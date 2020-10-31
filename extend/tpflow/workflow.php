@@ -25,6 +25,7 @@ use tpflow\db\UserDb;
 use tpflow\db\WorkDb;
 use tpflow\db\EntrustDb;
 use tpflow\lib\lib;
+use tpflow\adaptive\Bill;
 //类库
 use tpflow\service\TaskService;
 //消息
@@ -55,7 +56,7 @@ use tpflow\msg\mail;
 			}
 			$wf_type  = $wf['type'];
 			//判断单据是否存在
-			$getbill = InfoDB::getbill($wf_fid,$wf_type);
+			$getbill = (new Bill())->getbill($wf_type,$wf_fid);
 			if(!$getbill){
 				return ['msg'=>'单据不存在！','code'=>'-1'];
 			}
@@ -80,7 +81,7 @@ use tpflow\msg\mail;
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}
 			//更新单据状态
-			$bill_update = InfoDB::UpdateBill($wf_fid,$wf_type);
+			$bill_update = (new Bill())->updatebill($wf_type,$wf_fid,1);
 			if(!$bill_update){
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}
