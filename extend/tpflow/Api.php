@@ -139,7 +139,11 @@ use think\facade\Request;
 			   $status = ['未审核','已审核'];
 				$tr .='<tr class="text-c"><td>'.$v['id'].'</td><td>'.$v['from_table'].'</td><td>'.$v['flow_name'].'</td><td>'.$status[$v['status']].'</td><td>'.$v['flow_name'].'</td><td>'.date("Y-m-d H:i",$v['dateline']).'</td><td><a onclick=end('.$v['id'].')>终止</a>  |  '.self::wfbtn($v['from_id'],$v['from_table'],100).'</td></tr>'; 
 		  }
-		return lib::tmp_wfjk(url(unit::gconfig('int_url').'/wf/wfend'),$tr);
+		if(unit::gconfig('view_return')==1){
+			return lib::tmp_wfjk(url(unit::gconfig('int_url').'/wf/wfend'),$tr);
+			}else{
+			return json_encode(['urls'=>url(unit::gconfig('int_url').'/wf/wfend'),'data'=>$data]);
+		}
 	}
 	//用户选择控件
     public function super_user()
@@ -150,14 +154,24 @@ use think\facade\Request;
 		   foreach($info as $k=>$v){
 			   $user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
 		   }
-		   return lib::tmp_user(url(unit::gconfig('int_url').'/wf/super_user'),input('kid'),$user);
+		    if(unit::gconfig('view_return')==1){
+				return lib::tmp_user(url(unit::gconfig('int_url').'/wf/super_user'),input('kid'),$user);
+				}else{
+				return json_encode(['urls'=>url(unit::gconfig('int_url').'/wf/super_user'),'kid'=>input('kid'),'user'=>$user]);
+			}
+		   
 		}elseif(input('type_mode')=='role'){
 		   $info=UserDb::GetRole();
 		   $user ='';
 		   foreach($info as $k=>$v){
 				$user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
 		   }
-		   return lib::tmp_role(url(unit::gconfig('int_url').'/wf/super_user',['type_mode'=>'super_get']),$user);
+		   if(unit::gconfig('view_return')==1){
+				return lib::tmp_role(url(unit::gconfig('int_url').'/wf/super_user',['type_mode'=>'super_get']),$user);
+				}else{
+				return json_encode(['urls'=>url(unit::gconfig('int_url').'/wf/super_user',['type_mode'=>'super_get']),'user'=>$user]);
+			}
+		  
 		}else{
 			 return ['data'=>UserDb::AjaxGet(trim(input('type')),input('key')),'code'=>1,'msg'=>'查询成功！'];
 		}

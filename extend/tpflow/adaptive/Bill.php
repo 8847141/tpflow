@@ -25,7 +25,6 @@ Class Bill implements InterfaceBill {
 		$this->mode = new $className();
     }
 	public function getbill($bill_table,$bill_id){
-
 		return $this->mode->getbill($bill_table,$bill_id);
 	}
     public function getbillvalue($bill_table,$bill_id,$bill_field){
@@ -34,7 +33,7 @@ Class Bill implements InterfaceBill {
     public function updatebill($bill_table,$bill_id,$updata){
 		return $this->mode->updatebill($bill_table,$bill_id,$updata);
 	}
-	public function checkbill($bill_table,$bill_id,$where)
+	public function checkbill($bill_table,$bill_id,$where){
 		return $this->mode->checkbill($bill_table,$bill_id,$where);
 	}
    

@@ -37,5 +37,5 @@ Interface InterfaceBill{
 	 * @param $bill_id id
 	 * @param $where 判断条件
 	 */
-	public function checkbill($bill_table,$bill_id,$where)
+	public function checkbill($bill_table,$bill_id,$where);
 }

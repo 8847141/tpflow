@@ -12,6 +12,8 @@ namespace tpflow\db;
 
 use think\facade\Db;
 
+
+
 class InfoDB{
 	
 	/**
@@ -228,6 +230,8 @@ class InfoDB{
 					   $workflow ['run_process'] = $info['id'];
 					   $workflow ['sing_info'] = Db::name('run_sign')->find($result['sing_id']);
 					}
+					$workflow ['npi'] = self::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
+					
 			} else {
 				$workflow ['bill_check'] = '';
 				$workflow ['bill_time'] = '';
@@ -237,6 +241,27 @@ class InfoDB{
 			$workflow ['bill_time'] = '';
 		}
 		return $workflow;
+	}
+	public static function nexnexprocessinfo($wf_mode,$npi){
+		if($wf_mode!=2){
+			if($npi['auto_person']!=3){
+				//非自由模式
+				return $npi['process_name'].'('.$npi['todo'].')';
+			}else{
+				$todu = "<select name='todo' id='todo'  class='select'  datatype='*' ><option value=''>请指定办理人员</option>";
+				$op ='';
+				foreach($npi['todo']['ids'] as $k=>$v){
+					   $op .='<option value="'.$v.'*%*'.$npi['todo']['text'][$k].'">'.$npi['todo']['text'][$k].'</option>'; 
+				}
+				return $todu.$op.'</select>';;
+			}
+		}else{
+			$op ='';
+			foreach($npi['nexprocess'] as $k=>$v){
+				   $op .=$v['process_name'].'('.$v['todo'].')'; 
+			}
+			return $op;
+		}
 	}
 	
 	/**

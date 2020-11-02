@@ -34,25 +34,7 @@
 				<td style='width:30px' >下一步骤</td>
 				<td>
 				{if condition='$flowinfo.wf_mode == 2'}[同步]{/if}
-				
-				{if condition='$flowinfo.status.wf_mode != 2'}
-					{if condition='$flowinfo.nexprocess.auto_person != 3'}
-						{$flowinfo['nexprocess']['process_name']}({$flowinfo['nexprocess']['todo']})
-					{else/}
-						<span class="select-box">
-						<select name="todo" id='todo'  class="select"  datatype="*" >
-						<option value="">请指定办理人员</option>
-						{volist name='$flowinfo.nexprocess.todo.ids' id='todo'}
-						<option value="{$todo}*%*{$flowinfo['nexprocess']['todo']['text'][$key]}">{$flowinfo['nexprocess']['todo']['text'][$key]}</option>
-						{/volist}
-						</select>
-					{/if}
-				{else/}
-					<!--同步模式-->
-					{volist name='$flowinfo.nexprocess' id='v'}
-						{$v['process_name']}({$v['todo']})<br/>
-					{/volist}
-				{/if}
+					{$flowinfo.npi|raw}
 				</td>
 				</tr>
 				<tr>
