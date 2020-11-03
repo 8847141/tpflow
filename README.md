@@ -41,7 +41,7 @@
     * TAB式步骤属性配置
     * 步骤审批、步骤模式更加清晰
  *  环形审批流模式
-    * 解决以往A发起人->B审核人->C核准人->A发起人完结 的环型审批流
+    * 解决以往A发起人->B审核人->C核准人->A发起人完结 的环型审批流 
 
 ### 在线文档
 
@@ -76,7 +76,7 @@
 
 > 工作流手册：https://www.kancloud.cn/guowenbin/tpflow  赞助用户【VIP群】1062040103
 
-> 视频教程：https://www.kancloud.cn/guowenbin/tpflow_video 【付费】实战视频教程
+> 视频教程：https://www.kancloud.cn/guowenbin/tpflow_video 【付费】视频教程
 
 ---
 
