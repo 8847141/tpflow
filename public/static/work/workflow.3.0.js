@@ -82,8 +82,7 @@
       }
       jsPlumb.repaintEverything();//重画
   };
-
-   /*Flowdesign 命名纯粹为了美观，而不是 formDesign */
+  
    $.fn.Flowdesign = function(options)
     {
         var _canvas = $(this);

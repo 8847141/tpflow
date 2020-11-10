@@ -33,7 +33,6 @@
 				<tr id='nex_process'>
 				<td style='width:30px' >下一步骤</td>
 				<td>
-				{if condition='$flowinfo.wf_mode == 2'}[同步]{/if}
 					{$flowinfo.npi|raw}
 				</td>
 				</tr>
@@ -81,19 +80,19 @@
 <script type="text/javascript" src="__Flow__/lib/Validform/5.3.2/Validform.min.js" ></script>
 <script type="text/javascript">
 $(function(){
-	$("#wfform").Validform({
-            tiptype:function(msg,o,cssctl){
-				if (o.type == 3){
-					layer.msg(msg, {time: 800}); 
-				}
-			},
-            ajaxPost:true,
-            showAllError:true,
-            callback:function(ret){
-                ajax_progress(ret);
-            }
-        });	
-		//$("#bill_data").load('{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}');
+$("#wfform").Validform({
+		tiptype:function(msg,o,cssctl){
+			if (o.type == 3){
+				layer.msg(msg, {time: 800}); 
+			}
+		},
+		ajaxPost:true,
+		showAllError:true,
+		callback:function(ret){
+			ajax_progress(ret);
+		}
+	});	
+	//$("#bill_data").load('{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}');
 });
 function tpflow_back(){
 	layer_open('工作流回退','{$info.tpflow_back}',500,300);

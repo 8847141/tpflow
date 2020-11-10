@@ -255,12 +255,14 @@ class InfoDB{
 				}
 				return $todu.$op.'</select>';;
 			}
+			$pr = '';
 		}else{
+			$pr = '[同步]';
 			$op ='';
 			foreach($npi['nexprocess'] as $k=>$v){
 				   $op .=$v['process_name'].'('.$v['todo'].')'; 
 			}
-			return $op;
+			return $pr.$op;
 		}
 	}
 	

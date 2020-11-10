@@ -3,31 +3,14 @@
 <script type="text/javascript" src="__Flow__/jquery-1.7.2.min.js?"></script>
 <form  class="form-horizontal" action="{:url($int_url.'/wf/save_attribute')}" method="post" name="form" id="form">
 <style type="text/css">
-       #box{
-           height: auto;
-           width: auto;
-           border: 1px solid #ccc;
-           
-       }
-       ul{
-           height: 30px;
-           width: 600px;
-           padding: 0;
-           margin: 0;
-       }
        li{
            display: block;
            text-align: center;
            width: 80px;
-           float: left;
-           list-style: none;
-           cursor: pointer;
-           height: 30px;
-           line-height: 30px;
+           float: left; list-style: none;cursor: pointer;height: 30px;line-height: 30px;
        }
        .choice{
-               background: #409EFF;
-               color: #fff;
+               background: #409EFF;color: #fff;
        }
        .tab-item{
            display: none;
@@ -41,14 +24,14 @@
    </style>
 </head>
 <body>
-   <ul>
+   <ul style='height: 30px;width: 600px;padding: 0;margin: 0;'>
        <li tabid="1" class="choice">节点信息</li>
        <li tabid="2">节点属性</li>
        <li tabid="3">节点人员</li>
 	   <li tabid="4">节点转出</li>
 	   <li tabid="5">节点事务</li>
    </ul>
-   <div id="box">
+   <div id="box" style='height: auto;width: auto;border: 1px solid #ccc;'>
        <div class="tab-item show">
 	   <input type="hidden" name="flow_id" value="{$one.flow_id}"/>
 	<input type="hidden" name="process_id" value="{$one.id}"/>
@@ -189,8 +172,6 @@
 				<option value="&lt;"><</option>
 				<option value="&gt;=">>=</option>
 				<option value="&lt;="><=</option>
-				<option value="include">含</option>
-				<option value="exclude">不含</option>
             </select>
             <input type="text" id="item_value_{$k.id}" class="smalls" style="width: 40px;">
             <select id="relation_{$k.id}" class="smalls" style="width: 40px;"><option value="AND">AND</option><option value="OR">OR</option>

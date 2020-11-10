@@ -202,47 +202,39 @@
     }
 
 $(function(){
-  //选人方式
   $("#auto_person_id").on('change',function(){
       var apid = $(this).val();
-	  if(apid==3)//指定用户
-      {
-          $("#auto_person_3").show();
+	  if(apid==3){
+          $("#auto_person_3").show();//指定用户
       }else{
           $("#auto_person_3").hide();
       }
-      if(apid==4)//指定用户
-      {
-          $("#auto_person_4").show();
+      if(apid==4){
+          $("#auto_person_4").show();//指定用户
       }else{
           $("#auto_person_4").hide();
       }
-      if(apid==5)//指定角色
-      {
-          $("#auto_person_5").show();
+      if(apid==5){
+          $("#auto_person_5").show();//指定角色
       }else{
           $("#auto_person_5").hide();
       }
-	  if(apid==6)//指定角色
-      {
-          $("#auto_person_6").show();
+	  if(apid==6){
+          $("#auto_person_6").show();//指定角色
       }else{
           $("#auto_person_6").hide();
       }
   });
     $("#wf_mode_id").on('change',function(){
       var apid = $(this).val();
-	  if(apid==0)//单一转出模式
-      {
-          $("#wf_mode_2").hide();
+	  if(apid==0){
+          $("#wf_mode_2").hide();//单一转出模式
       }
-      if(apid==2)//转出模式
-      {
-         $("#wf_mode_2").hide();
+      if(apid==2){
+         $("#wf_mode_2").hide();//转出模式
       }
-      if(apid==1)//同步模式
-      {
-          $("#wf_mode_2").show();
+      if(apid==1){
+          $("#wf_mode_2").show();//同步模式
       }else{
           $("#wf_mode_2").hide();
       }
