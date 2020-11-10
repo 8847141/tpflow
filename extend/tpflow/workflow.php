@@ -135,15 +135,6 @@ use tpflow\msg\mail;
 			}
 			return $ret;
 		}
-		/*
-		 * 工作流监控
-		 *
-		 * @param  $status 流程状态
-		 **/
-		function worklist($status = 0)
-		{
-			return InfoDB::worklist();
-		}
 		
 		/*
 		 * FlowDesc API

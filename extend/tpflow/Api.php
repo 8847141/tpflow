@@ -133,7 +133,7 @@ use think\facade\Request;
 	/*流程监控*/
 	public function wfjk($map = [])
 	{
-		$data = $this->worklist();
+		$data = InfoDB::worklist();
 		$tr = '';
 		foreach($data as $k=>$v){
 			   $status = ['未审核','已审核'];
