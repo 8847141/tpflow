@@ -9,13 +9,12 @@ namespace tpflow\custom;
 * Author: guoguo(1838188896@qq.com)
 *+------------------
 */
-use tpflow\inheritance\InterfaceBill;
 use think\facade\Db;
 
-class AdapteeBill implements InterfaceBill
+class AdapteeBill 
 {
 	
-	public  function getbill($bill_table,$bill_id){
+	static function getbill($bill_table,$bill_id){
 		if ($bill_table == '' || $bill_id == '' ) {
 			return false;
 		}
@@ -26,23 +25,22 @@ class AdapteeBill implements InterfaceBill
 			return  false;
 		}
 	}
-    public function getbillvalue($bill_table,$bill_id,$bill_field){
+    static function getbillvalue($bill_table,$bill_id,$bill_field){
 		$result = Db::name($bill_table)->where('id',$bill_id)->value($bill_field);
 		 if(!$result){
             return  false;
         }
         return $result;
 	}
-    public function updatebill($bill_table,$bill_id,$updata){
+    static function updatebill($bill_table,$bill_id,$updata){
 		$result = Db::name($bill_table)->where('id',$bill_id)->update(['status'=>$updata,'uptime'=>time()]);
 		 if(!$result){
             return  false;
         }
         return $result;
 	}
-	 public function checkbill($bill_table,$bill_id,$where){
+	static function checkbill($bill_table,$bill_id,$where){
 		return Db::name($bill_table)->where($where)->where('id',$bill_id)->find();
-		 
 	}
 	
 	

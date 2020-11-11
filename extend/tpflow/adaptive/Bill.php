@@ -1,7 +1,7 @@
 <?php
 /**
  *+------------------
- * Tpflow 调用接口类
+ * Tpflow 统一标准接口------单据接口
  *+------------------
  * Copyright (c) 2006~2018 http://cojz8.cn All rights reserved.
  *+------------------
@@ -10,10 +10,9 @@
  */
 namespace tpflow\adaptive;
 
-use tpflow\inheritance\InterfaceBill;
 use tpflow\lib\unit;
 
-Class Bill implements InterfaceBill {
+Class Bill{
     
 	protected $mode ; 
     public function  __construct($type='Bill'){
@@ -24,17 +23,40 @@ Class Bill implements InterfaceBill {
 		}
 		$this->mode = new $className();
     }
-	public function getbill($bill_table,$bill_id){
-		return $this->mode->getbill($bill_table,$bill_id);
+	/**
+	 * 定义获取单据详细信息
+	 * @param $bill_table 表名称
+	 * @param $bill_id id
+	 */
+	static function getbill($bill_table,$bill_id){
+		return (new Bill())->mode::getbill($bill_table,$bill_id);
 	}
-    public function getbillvalue($bill_table,$bill_id,$bill_field){
-		return $this->mode->getbillvalue($bill_table,$bill_id,$bill_field);
+	/**
+	 * 定义获取单据单个字段值
+	 * @param $bill_table 表名称
+	 * @param $bill_id id
+	 * @param $bill_field 查询参数
+	 */
+    static function getbillvalue($bill_table,$bill_id,$bill_field){
+		return (new Bill())->mode->getbillvalue($bill_table,$bill_id,$bill_field);
 	}
-    public function updatebill($bill_table,$bill_id,$updata){
-		return $this->mode->updatebill($bill_table,$bill_id,$updata);
+	/**
+	 * 更新单据信息
+	 * @param $bill_table 表名称
+	 * @param $bill_id id
+	 * @param $updata 更新数据
+	 */
+    static function updatebill($bill_table,$bill_id,$updata){
+		return (new Bill())->mode->updatebill($bill_table,$bill_id,$updata);
 	}
-	public function checkbill($bill_table,$bill_id,$where){
-		return $this->mode->checkbill($bill_table,$bill_id,$where);
+	/**
+	 * 判断单据信息
+	 * @param $bill_table 表名称
+	 * @param $bill_id id
+	 * @param $where 判断条件
+	 */
+	static function checkbill($bill_table,$bill_id,$where){
+		return (new Bill())->mode->checkbill($bill_table,$bill_id,$where);
 	}
    
 }

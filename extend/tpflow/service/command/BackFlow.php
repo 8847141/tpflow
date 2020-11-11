@@ -53,7 +53,7 @@ class BackFlow{
 				return ['msg'=>'结束流程错误！！！','code'=>'-1'];
 			} 
 			//更新单据状态
-			$bill_update = (new Bill())->updatebill($wf_type,$wf_fid,'-1');
+			$bill_update = Bill::updatebill($wf_type,$wf_fid,'-1');
 			if(!$bill_update){
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}

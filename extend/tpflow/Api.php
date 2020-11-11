@@ -128,6 +128,9 @@ use think\facade\Request;
 		foreach($this->table as $k=>$v){
 			$type[$v['name']] = str_replace('[work]', '', $v['title']);;
 		}
+		
+		$data = Bill::getbill('news',1);
+		dump($data);
 		return view($this->patch.'/wfindex.html',['int_url'=>unit::gconfig('int_url'),'type'=>$type,'list'=>$this->FlowApi('List')]);
     }
 	/*流程监控*/

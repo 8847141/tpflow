@@ -36,7 +36,7 @@ class ProcessDb{
 		}
 		if($info['auto_person']==6){ //办理角色
 				$wf  =  Db::name('run')->find($run_id);
-				$user_id = (new Bill())->getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
+				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$info['todo']= UserDb::GetUserName($user_id);
 			}
 			
@@ -66,7 +66,7 @@ class ProcessDb{
 			}
 			if($v['auto_person']==6){ //办理角色
 				$wf  =  Db::name('run')->find($run_id);
-				$user_id = (new Bill())->getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
+				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$user_info = UserDb::GetUserInfo($user_id);
 				$info['user_info']= $user_info;
 				$info[$k]['todo']= $user_info['username'];
@@ -112,7 +112,7 @@ class ProcessDb{
 				foreach($out_condition as $key=>$val){
 					$where =implode(",",$val['condition']);
 					//根据条件寻找匹配符合的工作流id
-					$info = (new Bill())->checkbill($wf_type,$wf_fid,$where);
+					$info = Bill::checkbill($wf_type,$wf_fid,$where);
 					if($info){
 						$nexprocessid = $key; //获得下一个流程的id
 						break;	
