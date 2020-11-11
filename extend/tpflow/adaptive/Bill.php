@@ -29,7 +29,7 @@ Class Bill{
 	 * @param $bill_id id
 	 */
 	static function getbill($bill_table,$bill_id){
-		return (new Bill())->mode::getbill($bill_table,$bill_id);
+		return (new Bill())->mode->getbill($bill_table,$bill_id);
 	}
 	/**
 	 * 定义获取单据单个字段值
