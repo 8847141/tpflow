@@ -1,7 +1,7 @@
 <?php
 /**
  *+------------------
- * Tpflow 模板驱动类
+ * Tpflow 接口调用类
  *+------------------
  * Copyright (c) 2006~2018 http://cojz8.cn All rights reserved.
  *+------------------
