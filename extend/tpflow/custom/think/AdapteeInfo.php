@@ -8,13 +8,17 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------ 
 */
-namespace tpflow\db;
+namespace tpflow\custom\think;
 
 use think\facade\Db;
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\Process;
+use tpflow\adaptive\User;
+use tpflow\adaptive\Entrust;
+use tpflow\adaptive\Bill;
 
 
-
-class InfoDB{
+class AdapteeInfo{
 	
 	/**
 	 * 添加工作流
@@ -24,7 +28,7 @@ class InfoDB{
 	 * @param $wf_fid  业务id
 	 * @param $wf_type 业务表名
 	 */
-	public static function addWorkflowRun($wf_id,$wf_process,$wf_fid,$wf_type,$uid)
+	function addWorkflowRun($wf_id,$wf_process,$wf_fid,$wf_type,$uid)
 	{
 		$data = array(
             'pid'=>0,
@@ -52,12 +56,12 @@ class InfoDB{
 	 * @param $run_id  运行的id
 	 * @param $wf_type 业务表名
 	 */
-	public static function addWorkflowProcess($wf_id,$wf_process,$run_id,$uid,$todo = '')
+	function addWorkflowProcess($wf_id,$wf_process,$run_id,$uid,$todo = '')
 	{
 		if($wf_process['auto_person']==6 && $wf_process['process_type']=='is_one'){ //事务人员
 				$wf  =  Db::name('run')->find($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
-				$user_info = UserDb::GetUserInfo($user_id);
+				$user_info = User::GetUserInfo($user_id);
 				$wf_process['user_info']= $user_info;
 				$wf_process['todo']= $user_info['username'];
 			}
@@ -115,11 +119,11 @@ class InfoDB{
 		$map[] = ['old_user','in',$sponsor_ids];
 		$Raw = 'flow_process = 0 or flow_process='.$wf_process['id'];
 
-		$all_Entrust = EntrustDb::get_Entrust($map,$Raw);
+		$all_Entrust = Entrust::get_Entrust($map,$Raw);
 		
 		if(count($all_Entrust)>0){
 			//写入授权表
-			EntrustDb::save_rel($all_Entrust,$process_id);
+			Entrust::save_rel($all_Entrust,$process_id);
 		}
 		if(!$process_id)
         {
@@ -135,7 +139,7 @@ class InfoDB{
 	 * @param $run_id  运行的id
 	 * @param $wf 流程信息
 	 */
-	public static function addWorkflowCache($run_id,$wf,$flow_process,$wf_fid)
+	function addWorkflowCache($run_id,$wf,$flow_process,$wf_fid)
 	{
 	$run_cache = array(
                 'run_id'=>$run_id,
@@ -159,7 +163,7 @@ class InfoDB{
 	 * @param $run_id  运行的id
 	 * @param $wf_type 业务表名
 	 */
-	public static function workflowInfo($wf_fid,$wf_type,$userinfo) {
+	function workflowInfo($wf_fid,$wf_type,$userinfo) {
 		$workflow = [];
 		//根据表信息，判断当前流程是否还在运行  
 		$count = Db::name('run')->where('from_id',$wf_fid)->where('from_table',$wf_type)->where('is_del',0)->where('status',0)->count();
@@ -203,10 +207,12 @@ class InfoDB{
 					return -1;
 				}
 			}
+			
 			/*
 			*4.0版本新增查找是否有代理审核人员，并给与权限，权限转换
 			*/
-			$info = EntrustDb::change($info);
+			$info = Entrust::change($info);
+			
 			if ($result) {
 					$workflow ['sing_st'] = 0;
 					$workflow ['flow_id'] = $result['flow_id'];
@@ -214,23 +220,24 @@ class InfoDB{
 					$workflow ['status'] = $info;
 					$workflow ['flow_process'] = $info['run_flow_process'];
 					$workflow ['run_process'] = $info['id'];
-					$workflow ['process'] = ProcessDb::GetProcessInfo($info['run_flow_process'],$result['id']);//flow_process获取步骤信息
-					$workflow ['nexprocess'] = ProcessDb::GetNexProcessInfo($wf_type,$wf_fid,$info['run_flow_process'],$result['id'],$workflow ['wf_mode']);//获取下一个步骤
-					//$workflow ['preprocess'] = ProcessDb::GetPreProcessInfo($info['id']);//获取前几个步骤信息，用于步骤回退
-					//$workflow ['singuser'] = UserDb::GetUser();//获取所有会签人员
+					$workflow ['process'] = Process::GetProcessInfo($info['run_flow_process'],$result['id']);//flow_process获取步骤信息
+					$workflow ['process'] = Process::GetProcessInfo($info['run_flow_process'],$result['id']);//flow_process获取步骤信息
+					$workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$info['run_flow_process'],$result['id'],$workflow ['wf_mode']);//获取下一个步骤
+					//$workflow ['preprocess'] = Process::GetPreProcessInfo($info['id']);//获取前几个步骤信息，用于步骤回退
+					//$workflow ['singuser'] = User::GetUser();//获取所有会签人员
 					if($result['is_sing']==1){
 					   $info = Db::name('run_process')->where('run_id',$result['id'])->where('run_flow',$result['flow_id'])->where('run_flow_process',$result['run_flow_process'])->find();
 					   $workflow ['sing_st'] = 1;
 					   $workflow ['flow_process'] = $result['run_flow_process'];
-					   $process = ProcessDb::GetProcessInfo($result['run_flow_process'],$result['id']);
+					   $process = Process::GetProcessInfo($result['run_flow_process'],$result['id']);
 					   $workflow ['status']['wf_mode'] = $process['wf_mode'];
 					   $workflow ['status']['wf_action'] = $process['wf_action'];
-					   $workflow ['nexprocess'] = ProcessDb::GetNexProcessInfo($wf_type,$wf_fid,$result['run_flow_process'],$result['id']);
+					   $workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$result['run_flow_process'],$result['id']);
 					   $workflow ['process'] = $process;
 					   $workflow ['run_process'] = $info['id'];
 					   $workflow ['sing_info'] = Db::name('run_sign')->find($result['sing_id']);
 					}
-					$workflow ['npi'] = self::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
+					$workflow ['npi'] = $this->nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
 					
 			} else {
 				$workflow ['bill_check'] = '';
@@ -242,7 +249,7 @@ class InfoDB{
 		}
 		return $workflow;
 	}
-	public static function nexnexprocessinfo($wf_mode,$npi){
+	function nexnexprocessinfo($wf_mode,$npi){
 		if($wf_mode!=2){
 			if($npi['auto_person']!=3){
 				//非自由模式
@@ -272,7 +279,7 @@ class InfoDB{
 	 * @param $run_id  运行的id
 	 * @param $wf_type 业务表名
 	 */
-	public static function workrunInfo($run_id) {
+	function workrunInfo($run_id) {
 		$result = Db::name('run')->find($run_id);
 		return $result;
 	}
@@ -280,7 +287,7 @@ class InfoDB{
 	 * 工作流列表
 	 *
 	 */
-	public static function worklist()
+	function worklist()
 	{
 		$result = Db::name('run')->where('status',0)->select()->toArray();;
 		foreach($result as $k=>$v)
@@ -299,7 +306,7 @@ class InfoDB{
 	 * 接入工作流的类别
 	 *
 	 */
-	public static function get_wftype()
+	function get_wftype()
 	{
 		$config = require ( BEASE_URL . '/config/common.php');//
 		if($config['wf_type_mode']==0){

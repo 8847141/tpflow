@@ -13,7 +13,7 @@ return [
 	'version'=>'4.0',//当前版本
 	'database'=>'tpflow4.0',//数据库名称
 	'prefix'=>'wf_',//数据库前缀
-	'int_url'=>'index',//使用工作流的模块名称
+	'int_url'=>'/index',//使用工作流的模块名称
 	'user_id' =>'uid',//用户的session名称 
 	'role_id' =>'role',//用户角色的session名称 
 	'work_table'=>'[work]',//特定的表前缀，用于接入工作流的实体表
@@ -41,5 +41,7 @@ return [
 	'view_return'=>1,//1、直接从lib类库中返回 2、直接返回JSON数据，需要自行进行数据处理
 	'wf_bill_mode'=>1,//工作流读取单据信息，系统自带模式,2、自定义模式
 	'wf_bill_namespace'=>'',
+	'wf_db_mode'=>1,//工作ORM驱动，系统自带模式Think-ORM,2、自定义ORM
+	'wf_db_namespace'=>'',
 ];
 

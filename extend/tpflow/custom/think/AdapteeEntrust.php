@@ -8,15 +8,12 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------
 */
-namespace tpflow\db;
+namespace tpflow\custom\think;
 use think\facade\Db;
 
-class EntrustDb{
+class AdapteeEntrust{
 	
-	/**
-     * API 获取所有当前生效的授权信息
-     */
-    public static function get_Entrust($map=[],$Raw='')
+    function get_Entrust($map=[],$Raw='')
     {
 		return Db::name('entrust')
 		->whereBetweenTimeField('entrust_stime','entrust_etime')
@@ -25,19 +22,11 @@ class EntrustDb{
 		->field('id,flow_process,old_user')
 		->select();
     }
-	/**
-     * API 查询
-     * @param $data POST提交的数据
-     */
-    public static function lists()
+    function lists()
     {
 		return Db::name('entrust')->select();
     }
-	/**
-     * API 查询
-     * @param $data POST提交的数据
-     */
-    public static function find($id)
+    function find($id)
     {
 		$info = Db::name('entrust')->find($id);
 		if($info==''){
@@ -56,11 +45,7 @@ class EntrustDb{
 		}
 		return $info;
     }
-	/**
-     * API 新增
-     * @param $data POST提交的数据
-     */
-    public static function Add($data)
+    function Add($data)
     {
 		$data['entrust_stime'] = strtotime($data['entrust_stime']);
 		$data['entrust_etime'] = strtotime($data['entrust_etime']);
@@ -88,10 +73,7 @@ class EntrustDb{
             return ['code' => 1, 'data' => 'Db0001-写入数据库出错！'];
         }
     }
-	/**
-     * API 保存关系
-     */
-    public static function save_rel($data,$run_process)
+    function save_rel($data,$run_process)
     {
 		foreach($data as $k=>$v){
 			$rel=[
@@ -105,10 +87,7 @@ class EntrustDb{
 			}
 		}
     }
-	/**
-     * change 权限转换
-     */
-	 public static function change($info)
+	 function change($info)
     {
 		$has_rel = Db::name('entrust_rel')->where('process_id',$info['id'])->find();
 		if(!$has_rel){
@@ -117,7 +96,6 @@ class EntrustDb{
 		$entrust = self::find($has_rel['entrust_id']);
 		$info['sponsor_text'] = $info['sponsor_text'].',[代理]'.$entrust['entrust_name'];
 		$info['sponsor_ids'] = $info['sponsor_ids'].','.$entrust['entrust_user'];
-		
 		return $info;
     }
 	

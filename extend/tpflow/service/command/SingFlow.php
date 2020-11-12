@@ -11,10 +11,11 @@
 namespace tpflow\service\command;
 
 //数据库操作
-use tpflow\db\InfoDb;
-use tpflow\db\FlowDb;
-use tpflow\db\ProcessDb;
-use tpflow\db\LogDb;
+use tpflow\adaptive\Info;
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\Process;
+use tpflow\adaptive\Log;
+use tpflow\adaptive\Bill;
 
 class SingFlow{
 	/**
@@ -32,13 +33,13 @@ class SingFlow{
 		}else{
 			$check_con = $config['check_con'];
 		}
-		$sid = ProcessDb::AddSing($config);
+		$sid = Process::AddSing($config);
 		//结束当前流程，给个会签标志
-		$end = ProcessDb::up_flow_sing($run_id,$sid);
+		$end = Process::up_flow_sing($run_id,$sid);
 		//结束process
-		$end = FlowDb::end_process($run_process,$check_con);
+		$end = Flow::end_process($run_process,$check_con);
 		//加入会签
-		$run_log = LogDb::AddrunLog($uid,$run_id,$config,'Sing');
+		$run_log = Log::AddrunLog($uid,$run_id,$config,'Sing');
 		//日志记录
 		return ['msg'=>'success!','code'=>'0'];
 	}
@@ -51,8 +52,8 @@ class SingFlow{
 	 **/
 	public function doSingEnt($config,$uid,$wf_actionid)
 	{
-		$sing_id = ProcessDb::get_sing_id($config['run_id']);
-		ProcessDb::EndSing($sing_id,$config['check_con']);//结束当前会签
+		$sing_id = Process::get_sing_id($config['run_id']);
+		Process::EndSing($sing_id,$config['check_con']);//结束当前会签
 		if ($wf_actionid == "sok") {//提交处理
 			if($config['npid'] !=''){
 				/*
@@ -60,18 +61,18 @@ class SingFlow{
 				 ***/
 				$nex_pid = explode(",",$config['npid']);
 				foreach($nex_pid as $v){
-					$wf_process = ProcessDb::GetProcessInfo($v,$config['run_id']);
-					$add_process = InfoDB::addWorkflowProcess($config['flow_id'],$wf_process,$config['run_id'],$uid);	
+					$wf_process = Process::GetProcessInfo($v,$config['run_id']);
+					$add_process = Info::addWorkflowProcess($config['flow_id'],$wf_process,$config['run_id'],$uid);	
 				}
-				ProcessDb::up_flow_press($config['run_id'],$config['npid']);
+				Process::up_flow_press($config['run_id'],$config['npid']);
 			}else{
 				$bill_update = Bill::updatebill($config['wf_type'],$config['wf_fid'],2);
 				if(!$bill_update){
 					return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 				}
 			}
-			ProcessDb::up_run_sing($config['run_id']);
-			$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'sok');
+			Process::up_run_sing($config['run_id']);
+			$run_log = Log::AddrunLog($uid,$config['run_id'],$config,'sok');
 			if(!$run_log){
 					return ['msg'=>'消息记录失败，数据库错误！！！','code'=>'-1'];
 				}
@@ -91,15 +92,15 @@ class SingFlow{
 				if(!$bill_update){
 					return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 				}
-				$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'SingBack');
-				ProcessDb::up_run_sing($config['run_id']);
+				$run_log = Log::AddrunLog($uid,$config['run_id'],$config,'SingBack');
+				Process::up_run_sing($config['run_id']);
 				//日志记录
 			}else{ //结束流程
-				$wf_process = ProcessDb::GetProcessInfo($wf_backflow);
-				$wf_run_process = InfoDB::addWorkflowProcess($config['flow_id'],$wf_process,$config['run_id'],$uid);
-				ProcessDb::up_run_sing($config['run_id']);
+				$wf_process = Process::GetProcessInfo($wf_backflow);
+				$wf_run_process = Info::addWorkflowProcess($config['flow_id'],$wf_process,$config['run_id'],$uid);
+				Process::up_run_sing($config['run_id']);
 				//消息通知发起人
-				$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'SingBack');
+				$run_log = Log::AddrunLog($uid,$config['run_id'],$config,'SingBack');
 				if(!$run_log){
 						return ['msg'=>'消息记录失败，数据库错误！！！','code'=>'-1'];
 					}
@@ -107,9 +108,9 @@ class SingFlow{
 			//日志记录
 		} else if ($wf_actionid == "ssing") {//会签
 			//日志记录
-			$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'SingSing');
-			$sid = ProcessDb::AddSing($config);
-			$end = ProcessDb::up_flow_sing($config['run_id'],$sid);
+			$run_log = Log::AddrunLog($uid,$config['run_id'],$config,'SingSing');
+			$sid = Process::AddSing($config);
+			$end = Process::up_flow_sing($config['run_id'],$sid);
 			//发起新的会签
 		} else { //通过
 			throw new \Exception ("参数出错！");

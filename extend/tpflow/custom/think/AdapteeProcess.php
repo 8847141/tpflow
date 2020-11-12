@@ -9,17 +9,23 @@
 *+------------------ 
 */
 
-namespace tpflow\db;
+namespace tpflow\custom\think;;
 
 use think\facade\Db;
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\User;
+use tpflow\adaptive\Entrust;
+use tpflow\adaptive\Bill;
+use tpflow\adaptive\Info;
+use tpflow\adaptive\Log;
 
-class ProcessDb{
+class AdapteeProcess{
 	/**
 	 * 根据ID获取流程信息
 	 *
 	 * @param $pid 步骤编号
 	 */
-	public static function GetProcessInfo($pid,$run_id='')
+	function GetProcessInfo($pid,$run_id='')
 	{
 		$info = Db::name('flow_process')
 				->field('id,process_name,process_type,process_to,auto_person,auto_sponsor_ids,auto_role_ids,auto_sponsor_text,auto_role_text,range_user_ids,range_user_text,is_sing,is_back,wf_mode,wf_action,work_ids,work_text,flow_id')
@@ -37,7 +43,7 @@ class ProcessDb{
 		if($info['auto_person']==6){ //办理角色
 				$wf  =  Db::name('run')->find($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
-				$info['todo']= UserDb::GetUserName($user_id);
+				$info['todo']= User::GetUserName($user_id);
 			}
 			
 		return $info;
@@ -47,7 +53,7 @@ class ProcessDb{
 	 *
 	 * @param $pid 步骤编号
 	 */
-	public static function GetProcessInfos($ids,$run_id)
+	function GetProcessInfos($ids,$run_id)
 	{
 		$info = Db::name('flow_process')
 				->field('id,process_name,process_type,process_to,auto_person,auto_sponsor_ids,auto_role_ids,auto_sponsor_text,auto_role_text,range_user_ids,range_user_text,is_sing,is_back,wf_mode,wf_action,work_ids,work_text')
@@ -67,7 +73,7 @@ class ProcessDb{
 			if($v['auto_person']==6){ //办理角色
 				$wf  =  Db::name('run')->find($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
-				$user_info = UserDb::GetUserInfo($user_id);
+				$user_info = User::GetUserInfo($user_id);
 				$info['user_info']= $user_info;
 				$info[$k]['todo']= $user_info['username'];
 			}
@@ -83,7 +89,7 @@ class ProcessDb{
 	 * @param $pid   流程id
 	 * @param $premode   上一个步骤的模式
 	 **/
-	public static function GetNexProcessInfo($wf_type,$wf_fid,$pid,$run_id,$premode='')
+	function GetNexProcessInfo($wf_type,$wf_fid,$pid,$run_id,$premode='')
 	{
 		if($pid==''){
 			return [];
@@ -134,7 +140,7 @@ class ProcessDb{
 	 *
 	 * @param $runid
 	 */
-	public static function GetPreProcessInfo($runid)
+	function GetPreProcessInfo($runid)
 	{
 		$pre = [];
 		$pre_n = Db::name('run_process')->find($runid);
@@ -170,7 +176,7 @@ class ProcessDb{
 	 *
 	 * @param $runid
 	 */
-	public static function Getrunprocess($pid,$run_id)
+	function Getrunprocess($pid,$run_id)
 	{
 		$pre_n = Db::name('run_process')->where('run_id',$run_id)->where('run_flow_process',$pid)->find();
 		return $pre_n;
@@ -181,7 +187,7 @@ class ProcessDb{
 	 * @param $run_id 运行中的ID
 	 * @param $run_process 运行中的流程ID
 	 */
-	public static function Getnorunprocess($run_id,$run_process)
+	function Getnorunprocess($run_id,$run_process)
 	{
 		$no_run_list = Db::name('run_process')->where('run_id',$run_id)->where('status',0)->where('id','neq',$run_process)->select();
 		return $no_run_list;
@@ -191,7 +197,7 @@ class ProcessDb{
 	 *
 	 * @param $wf_id
 	 */
-	public static function getWorkflowProcess($wf_id) 
+	function getWorkflowProcess($wf_id) 
 	{
 		$flow_process = Db::name('flow_process')->where('is_del',0)->where('flow_id',$wf_id)->select();
 		//找到 流程第一步
@@ -216,14 +222,14 @@ class ProcessDb{
 	 * @param $wf_fid
 	 * @param $wf_type
 	 */
-	public static function RunLog($wf_fid,$wf_type) 
+	function RunLog($wf_fid,$wf_type) 
 	{
 		$type = ['Send'=>'流程发起','ok'=>'同意提交','Back'=>'退回修改','SupEnd'=>'终止流程','Sing'=>'会签提交','sok'=>'会签同意','SingBack'=>'会签退回','SingSing'=>'会签再会签'];
 		$run_log = Db::name('run_log')->where('from_id',$wf_fid)->where('from_table',$wf_type)->select()->all();
 		foreach($run_log as $k=>$v)
         {
 			$run_log[$k]['btn'] =$type[$v['btn']];
-			$run_log[$k]['user'] = UserDb::GetUserName($v['uid']);
+			$run_log[$k]['user'] = User::GetUserName($v['uid']);
         }
 		return $run_log;
 	}
@@ -232,7 +238,7 @@ class ProcessDb{
 	 *
 	 * @param $id
 	 */
-	public static function run_check($id) 
+	function run_check($id) 
 	{
 		return Db::name('run_process')->where('id',$id)->value('status');
 
@@ -242,7 +248,7 @@ class ProcessDb{
 	 *
 	 *@param $config 参数信息
 	 **/
-	public static function AddSing($config)
+	function AddSing($config)
 	{
 		$data = [
 			'run_id'=>$config['run_id'],
@@ -263,7 +269,7 @@ class ProcessDb{
 	 * @param $sing_sign 会签ID
 	 * @param $check_con  审核内容
 	 **/
-	public static function EndSing($sing_sign,$check_con)
+	function EndSing($sing_sign,$check_con)
 	{
 		return Db::name('run_sign')->where('id',$sing_sign)->update(['is_agree'=>1,'content'=>$check_con,'dateline'=>time()]);
 	}
@@ -272,7 +278,7 @@ class ProcessDb{
 	 *
 	 *@param $run_id 工作流run id
 	 **/
-	public static function up_run_sing($run_id)
+	function up_run_sing($run_id)
 	{
 		return Db::name('run')->where('id',$run_id)->update(['is_sing'=>0]);
 	}
@@ -282,7 +288,7 @@ class ProcessDb{
 	 *@param $run_id 工作流ID
 	 *@param $run_process 运行步骤
 	 **/
-	public static function up_flow_press($run_id,$run_process)
+	function up_flow_press($run_id,$run_process)
 	{
 		return Db::name('run')->where('id',$run_id)->update(['run_flow_process'=>$run_process]);
 	}
@@ -292,7 +298,7 @@ class ProcessDb{
 	 *@param $run_id 工作流ID
 	 *@param $sid 会签ID
 	 **/
-	public static function up_flow_sing($run_id,$sid)
+	function up_flow_sing($run_id,$sid)
 	{
 		return Db::name('run')->where('id',$run_id)->update(['is_sing'=>1,'sing_id'=>$sid,'endtime'=>time()]);
 	}
@@ -301,7 +307,7 @@ class ProcessDb{
 	 *
 	 *@param $run_id 工作流ID
 	 **/
-	public static function get_sing_id($run_id)
+	function get_sing_id($run_id)
 	{
 		return Db::name('run')->where('id',$run_id)->value('sing_id');
 	}
@@ -311,7 +317,7 @@ class ProcessDb{
 	 *@param $uid 用户id
 	 *@param $role 用户角色id
 	 **/
-	public static function get_userprocess($uid,$role)
+	function get_userprocess($uid,$role)
 	{
 		return Db::name('flow_process')->alias('f')
 			->join('flow w','f.flow_id = w.id')

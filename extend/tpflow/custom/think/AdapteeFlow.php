@@ -9,19 +9,25 @@
  *+------------------
  */
 
-namespace tpflow\db;
+namespace tpflow\custom\think;
 
 use think\facade\Db;
-use tpflow\service\SetService;
 
-class FlowDb
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\User;
+use tpflow\adaptive\Entrust;
+use tpflow\adaptive\Bill;
+use tpflow\adaptive\Process;
+use tpflow\adaptive\Log;
+
+class AdapteeFlow
 {
     /**
      * 获取类别工作流
      *
      * @param $wf_type
      */
-    public static function getWorkflowByType($wf_type)
+   function getWorkflowByType($wf_type)
     {
         $workflow = array();
         if ($wf_type == '') {
@@ -36,7 +42,7 @@ class FlowDb
      *
      * @param $fid
      */
-    public static function GetFlowInfo($fid)
+   function GetFlowInfo($fid)
     {
         if ($fid == '') {
             return false;
@@ -54,7 +60,7 @@ class FlowDb
      *
      * @param $wf_id
      */
-    public static function getWorkflow($wf_id)
+   function getWorkflow($wf_id)
     {
         if ($wf_id == '') {
             return false;
@@ -72,7 +78,7 @@ class FlowDb
      *
      * @param $id
      */
-    public static function getflowprocess($id)
+   function getflowprocess($id)
     {
         if ($id == '') {
             return false;
@@ -89,7 +95,7 @@ class FlowDb
      * API获取工作流列表
      * API接口调用
      */
-    public static function GetFlow($info = '')
+   function GetFlow($info = '')
     {
         if ($info == '') {
             $list = Db::name('flow')->order('id desc')->where('is_del', '0')->paginate('10');
@@ -99,7 +105,9 @@ class FlowDb
             });
         } else {
             $list = Db::name('flow')->find($info);
+			
         }
+		
         return $list;
     }
 
@@ -107,7 +115,7 @@ class FlowDb
      * API 新增工作流
      * @param $data POST提交的数据
      */
-    public static function AddFlow($data)
+   function AddFlow($data)
     {
         $id = Db::name('flow')->insertGetId($data);
         if ($id) {
@@ -121,7 +129,7 @@ class FlowDb
      * API 编辑工作流
      * @param $data POST提交的数据
      */
-    public static function EditFlow($data)
+   function EditFlow($data)
     {
         $id = Db::name('flow')->update($data);
         if ($id) {
@@ -134,7 +142,7 @@ class FlowDb
      * 获取所有步骤信息
      * @param $flow_id 
      */
-    public static function ProcessAll($flow_id)
+   function ProcessAll($flow_id)
     {
         $list = Db::name('flow_process')->where('flow_id', $flow_id)->order('id asc')->select();
         $process_data = [];
@@ -191,7 +199,7 @@ class FlowDb
      * @param $flow_id 
 	 * @param $process_id 
      */
-    public static function ProcessDel($flow_id, $process_id)
+   function ProcessDel($flow_id, $process_id)
     {
         if ($process_id <= 0 or $flow_id <= 0) {
             return ['status' => 0, 'msg' => '操作不正确'];
@@ -232,7 +240,7 @@ class FlowDb
      * 删除步骤信息
      * @param $flow_id 
      */
-    public static function ProcessDelAll($flow_id)
+   function ProcessDelAll($flow_id)
     {
         $res = Db::name('flow_process')->where('flow_id', $flow_id)->delete();
         if ($res) {
@@ -245,7 +253,7 @@ class FlowDb
      * 新增步骤信息
      * @param $flow_id 
      */
-    public static function ProcessAdd($flow_id)
+   function ProcessAdd($flow_id)
     {
         $process_count = Db::name('flow_process')->where('flow_id', $flow_id)->count();
         $process_type = 'is_step';
@@ -276,7 +284,7 @@ class FlowDb
      * @param $flow_id 
 	 * @param $process_info 
      */
-    public static function ProcessLink($flow_id, $process_info)
+   function ProcessLink($flow_id, $process_info)
     {
         $one = self::GetFlow($flow_id);;
         if (!$one) {
@@ -302,7 +310,7 @@ class FlowDb
      * @param $process_id 
 	 * @param $datas 
      */
-    public static function ProcessAttSave($process_id, $datas)
+   function ProcessAttSave($process_id, $datas)
     {
         $process_condition = trim($datas['process_condition'], ',');//process_to
         $process_condition = explode(',', $process_condition);
@@ -358,7 +366,7 @@ class FlowDb
      * 属性查看
 	 * @param $process_id
      */
-    public static function ProcessAttView($process_id)
+   function ProcessAttView($process_id)
     {
         $one = self::getflowprocess($process_id);
         if (!$one) {
@@ -444,7 +452,7 @@ class FlowDb
      * @param $flow_id 
 	 * @param $process_info 
      */
-    public static function parse_out_condition($json_data, $field_data)
+   function parse_out_condition($json_data, $field_data)
     {
         $array = json_decode($json_data, true);
         if (!$array) {
@@ -475,7 +483,7 @@ class FlowDb
     /**
      * 获取字段名称
      */
-    public static function get_field_name($field, $field_data)
+   function get_field_name($field, $field_data)
     {
         $field = trim($field);
         if (!$field) return '';
@@ -494,7 +502,7 @@ class FlowDb
 	/**
      * IDS数组转换
      */
-    public static function ids_parse($str, $dot_tmp = ',')
+   function ids_parse($str, $dot_tmp = ',')
     {
         if (!$str) return '';
         if (is_array($str)) {
@@ -521,7 +529,7 @@ class FlowDb
      * 获取表字段信息
      *
      */
-    public static function get_db_column_comment($table_name = '', $field = true, $table_schema = '')
+   function get_db_column_comment($table_name = '', $field = true, $table_schema = '')
     {
 		$dbconfig = require ( BEASE_URL . '/config/common.php');
         $table_schema = empty($table_schema) ? $dbconfig['database'] : $table_schema;

@@ -8,11 +8,11 @@
 * Author: guoguo(1838188896@qq.com)
 *+------------------ 
 */
-namespace tpflow\db;
+namespace tpflow\custom\think;
 
 use think\facade\Db;
 
-class UserDb{
+class AdapteeUser{
 	public static function config($type='user'){
 		$config = require ( BEASE_URL . '/config/common.php');// 
 		return $config[$type];
@@ -21,7 +21,7 @@ class UserDb{
 	 * 获取用户列表
 	 *
 	 */
-	public static function GetUser() 
+	function GetUser() 
 	{
 		$config = self::config();
 		return  Db::name($config['db'])->field($config['field'])->select();
@@ -30,7 +30,7 @@ class UserDb{
 	 * 获取角色列表
 	 *
 	 */
-	public static function GetRole() 
+	function GetRole() 
 	{
 		$config = self::config('role');
 		return  Db::name($config['db'])->field($config['field'])->select();
@@ -39,7 +39,7 @@ class UserDb{
 	 * 获取AJAX信息
 	 *
 	 */
-	public static function AjaxGet($type,$keyword){
+	function AjaxGet($type,$keyword){
 		
 		if($type=='user'){
 			$config = self::config();
@@ -55,7 +55,7 @@ class UserDb{
 	 * 查询用户消息
 	 *
 	 */
-	public static function GetUserInfo($id) 
+	function GetUserInfo($id) 
 	{
 		$config = self::config();
 		return  Db::name($config['db'])->where($config['key'],$id)->field($config['field'])->find();
@@ -64,7 +64,7 @@ class UserDb{
 	 * 查询用户名称
 	 *
 	 */
-	public static function GetUserName($uid) 
+	function GetUserName($uid) 
 	{
 		$config = self::config();
 		return  Db::name($config['db'])->where($config['key'],$uid)->value($config['getfield']);

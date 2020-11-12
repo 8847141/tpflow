@@ -10,8 +10,8 @@
 */
 namespace tpflow\lib;
 
-use tpflow\db\ProcessDb;
-use tpflow\db\UserDb;
+use tpflow\adaptive\Process;
+use tpflow\adaptive\User;
 
 class lib
 {
@@ -525,7 +525,7 @@ php;
 	}
 	public static function tmp_wfback($info,$flowinfo)
 	{
-		$preprocess = ProcessDb::GetPreProcessInfo($flowinfo['run_process']);
+		$preprocess = Process::GetPreProcessInfo($flowinfo['run_process']);
 		$op ='';
 		foreach($preprocess as $k=>$v){
 			   $op .='<option value="'.$k.'">'.$v.'</option>'; 
@@ -605,7 +605,7 @@ php;
 	}
 	public static function tmp_wfsign($info,$flowinfo,$sing)
 	{
-		$UserDb = UserDb::GetUser();
+		$UserDb = User::GetUser();
 		$op ='';
 		foreach($UserDb as $k=>$v){
 			   $op .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 

@@ -13,11 +13,11 @@ namespace tpflow;
 
 use tpflow\workflow;
 //数据库操作
-use tpflow\db\InfoDb;
-use tpflow\db\FlowDb;
-use tpflow\db\ProcessDb;
-use tpflow\db\UserDb;
-use tpflow\db\EntrustDb;
+use tpflow\adaptive\Info;
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\Process;
+use tpflow\adaptive\User;
+use tpflow\adaptive\Entrust;
 use tpflow\lib\lib;
 use tpflow\lib\unit;
 use tpflow\adaptive\Bill;
@@ -29,7 +29,7 @@ use think\facade\Request;
 		function __construct(Request $request) {
 			$this->uid = session(unit::gconfig('user_id'));
 			$this->role = session(unit::gconfig('role_id'));
-			$this->table  = InfoDb::get_wftype();
+			$this->table  = Info::get_wftype();
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
 	   }
@@ -47,7 +47,7 @@ use think\facade\Request;
 	public static function wfbtn($wf_fid,$wf_type,$status)
 	{
 		$user = ['thisuid'=>session(unit::gconfig('user_id')),'thisrole'=>session(unit::gconfig('role_id'))];
-		$url = ['url'=>url("/".unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url("/".unit::gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
+		$url = ['url'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url(unit::gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
 		return (new lib())::tpflow_btn($wf_fid,$wf_type,$status,$url,$user,new workflow());
 	}
 	 
@@ -66,7 +66,7 @@ use think\facade\Request;
 			}
 		}
 		$info = ['wf_type'=>input('wf_type'),'wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid')];
-		$flow =  FlowDb::getWorkflowByType(input('wf_type'));;
+		$flow =  Flow::getWorkflowByType(input('wf_type'));;
 		$op ='';
 		foreach($flow as $k=>$v){
 			   $op .='<option value="'.$v['id'].'">'.$v['flow_name'].'</option>'; 
@@ -77,7 +77,7 @@ use think\facade\Request;
 	public function wfcheck($wf_fid,$wf_type,$wf_title,$wf_mode='check',$ssing='sing')
 	{
 		$sup = $_GET['sup'] ?? '';
-		$info = ["wf_title"=>$wf_title,'wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url("/".unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url("/".unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
+		$info = ["wf_title"=>$wf_title,'wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
 		if($wf_mode=='check'){
 			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role])]);
 		}
@@ -128,15 +128,12 @@ use think\facade\Request;
 		foreach($this->table as $k=>$v){
 			$type[$v['name']] = str_replace('[work]', '', $v['title']);;
 		}
-		
-		$data = Bill::getbill('news',1);
-		dump($data);
 		return view($this->patch.'/wfindex.html',['int_url'=>unit::gconfig('int_url'),'type'=>$type,'list'=>$this->FlowApi('List')]);
     }
 	/*流程监控*/
 	public function wfjk($map = [])
 	{
-		$data = InfoDB::worklist();
+		$data = Info::worklist();
 		$tr = '';
 		foreach($data as $k=>$v){
 			   $status = ['未审核','已审核'];
@@ -152,7 +149,7 @@ use think\facade\Request;
     public function super_user()
     {
 		if(input('type_mode')=='user'){
-			$info=UserDb::GetUser();
+			$info=User::GetUser();
 		   $user ='';
 		   foreach($info as $k=>$v){
 			   $user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
@@ -164,7 +161,7 @@ use think\facade\Request;
 			}
 		   
 		}elseif(input('type_mode')=='role'){
-		   $info=UserDb::GetRole();
+		   $info=User::GetRole();
 		   $user ='';
 		   foreach($info as $k=>$v){
 				$user .='<option value="'.$v['id'].'">'.$v['username'].'</option>'; 
@@ -176,7 +173,7 @@ use think\facade\Request;
 			}
 		  
 		}else{
-			 return ['data'=>UserDb::AjaxGet(trim(input('type')),input('key')),'code'=>1,'msg'=>'查询成功！'];
+			 return ['data'=>User::AjaxGet(trim(input('type')),input('key')),'code'=>1,'msg'=>'查询成功！'];
 		}
     }
 	
@@ -203,6 +200,7 @@ use think\facade\Request;
 			}
 	   }
 	   $id = input('id') ?? -1;
+	   
 	   $info=$this->FlowApi('GetFlowInfo',$id);
 	   $type ='';
 	   foreach($this->table as $k=>$v){
@@ -298,14 +296,14 @@ use think\facade\Request;
 	}
 	public function wfgl()
     {
-        return view($this->patch.'/wfgl.html',['int_url'=>unit::gconfig('int_url'),'list'=>EntrustDb::lists()]);
+        return view($this->patch.'/wfgl.html',['int_url'=>unit::gconfig('int_url'),'list'=>Entrust::lists()]);
     }
 	/*委托授权审核*/
 	public function entrust(){
 		
 		if ($this->request::isPost()) {
 			$post = input('post.');
-			$ret = EntrustDb::Add($post);
+			$ret = Entrust::Add($post);
 			if($ret['code']==0){
 				return unit::msg_return('发布成功！');
 				}else{
@@ -313,17 +311,17 @@ use think\facade\Request;
 			}
 	   }
 		//获取全部跟自己相关的步骤
-		$data =ProcessDb::get_userprocess($this->uid,$this->role);
+		$data =Process::get_userprocess($this->uid,$this->role);
 		$url = url(unit::gconfig('int_url').'/wf/entrust');
 		$type ='';
 		   foreach($data as $k=>$v){
 			   $type .='<option value="'.$v['id'].'@'.$v['flow_id'].'">['.$v['flow_name'].']'.$v['process_name'].'</option>'; 
 		   }
-		  $user = UserDb::GetUser();
+		  $user = User::GetUser();
 		  foreach($user as $k=>$v){
 			   $user .='<option value="'.$v['id'].'@'.$v['username'].'">'.$v['username'].'</option>'; 
 		  }
-		$info = EntrustDb::find(input('id'));
+		$info = Entrust::find(input('id'));
 	   return lib::tmp_entrust($url,$info,$type,$user);
 	}
 	public function wfup()

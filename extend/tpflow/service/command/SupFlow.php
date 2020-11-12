@@ -11,9 +11,10 @@
 namespace tpflow\service\command;
 
 //数据库操作
-use tpflow\db\InfoDb;
-use tpflow\db\FlowDb;
-use tpflow\db\LogDb;
+use tpflow\adaptive\Info;
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\Log;
+use tpflow\adaptive\Bill;
 
 class SupFlow{
 	/**
@@ -24,7 +25,7 @@ class SupFlow{
 	 */
 	public function doSupEnd($wfid,$uid) {
 		//读取工作流信息
-		$wfinfo = InfoDB::workrunInfo($wfid);
+		$wfinfo = Info::workrunInfo($wfid);
 		if(!$wfinfo){
 				return ['msg'=>'流程信息有误！','code'=>'-1'];
 			} 
@@ -34,9 +35,9 @@ class SupFlow{
                 'check_con'=>'编号：'.$uid.'的超级管理员终止了本流程！',
             ];
 		//结束当前run 工作流
-		$end = FlowDb::end_flow($wfid);
-		$end = FlowDb::end_process($wfinfo['run_flow_process'],$config['check_con']);
-		$run_log = LogDb::AddrunLog($uid,$wfid,$config,'SupEnd');
+		$end = Flow::end_flow($wfid);
+		$end = Flow::end_process($wfinfo['run_flow_process'],$config['check_con']);
+		$run_log = Log::AddrunLog($uid,$wfid,$config,'SupEnd');
 		
 		if(!$end){
 				return ['msg'=>'结束流程错误！！！','code'=>'-1'];

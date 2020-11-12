@@ -11,10 +11,11 @@
 namespace tpflow\service\command;
 
 //数据库操作
-use tpflow\db\InfoDb;
-use tpflow\db\FlowDb;
-use tpflow\db\ProcessDb;
-use tpflow\db\LogDb;
+use tpflow\adaptive\Info;
+use tpflow\adaptive\Flow;
+use tpflow\adaptive\Process;
+use tpflow\adaptive\Log;
+use tpflow\adaptive\Bill;
 
 class TaskFlow{
 	/**
@@ -42,7 +43,7 @@ class TaskFlow{
 			$todo = '';
 		}
 		if($config['wf_mode']==2){
-			$info_list =ProcessDb::Getnorunprocess($config['run_id'],$config['run_process']);
+			$info_list =Process::Getnorunprocess($config['run_id'],$config['run_process']);
 			if(count($info_list)>0){
 				foreach($info_list as $k=>$v){
 						$npids[] = $v['run_flow_process'];
@@ -52,7 +53,7 @@ class TaskFlow{
 		}
 		if($npid != ''){//判断是否为最后
 			//结束流程
-			$end = FlowDb::end_process($run_process,$check_con);
+			$end = Flow::end_process($run_process,$check_con);
 			if(!$end){
 				return ['msg'=>'结束流程错误！！！','code'=>'-1'];
 			} 
@@ -62,21 +63,21 @@ class TaskFlow{
 			 */
 			if($config['wf_mode']!=2){
 				//更新单据信息
-				$run_update = FlowDb::up($run_id,$npid);
+				$run_update = Flow::up($run_id,$npid);
 				//记录下一个流程->消息记录
 					$run = $this->Run($config,$uid,$todo);
 				}else{
 			//日志记录
-					$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'ok');
+					$run_log = Log::AddrunLog($uid,$config['run_id'],$config,'ok');
 					if(!$run_log){
 							return ['msg'=>'消息记录失败，数据库错误！！！','code'=>'-1'];
 					}	
 			}
 			}else{ 
 				//结束该流程
-				$end = FlowDb::end_flow($run_id);
-				$end = FlowDb::end_process($run_process,$check_con);
-				$run_log = LogDb::AddrunLog($uid,$run_id,$config,'ok');
+				$end = Flow::end_flow($run_id);
+				$end = Flow::end_process($run_process,$check_con);
+				$run_log = Log::AddrunLog($uid,$run_id,$config,'ok');
 				if(!$end){
 					return ['msg'=>'结束流程错误！！！','code'=>'-1'];
 				} 
@@ -99,15 +100,15 @@ class TaskFlow{
 		
 		$nex_pid = explode(",",$config['npid']);
 		foreach($nex_pid as $v){
-			$wf_process = ProcessDb::GetProcessInfo($v,$config['run_id']);
+			$wf_process = Process::GetProcessInfo($v,$config['run_id']);
 			//添加流程步骤日志
-			$wf_process_log = InfoDB::addWorkflowProcess($config['flow_id'],$wf_process,$config['run_id'],$uid,$todo);	
+			$wf_process_log = Info::addWorkflowProcess($config['flow_id'],$wf_process,$config['run_id'],$uid,$todo);	
 		}
 		if(!$wf_process_log){
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}
 		//日志记录
-		$run_log = LogDb::AddrunLog($uid,$config['run_id'],$config,'ok');
+		$run_log = Log::AddrunLog($uid,$config['run_id'],$config,'ok');
 		if(!$run_log){
 				return ['msg'=>'消息记录失败，数据库错误！！！','code'=>'-1'];
 			}

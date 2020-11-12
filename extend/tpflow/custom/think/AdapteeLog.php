@@ -1,5 +1,5 @@
 <?php
-namespace tpflow\db;
+namespace tpflow\custom\think;
 /**
 *+------------------
 * Tpflow 工作流日志消息
@@ -11,7 +11,9 @@ namespace tpflow\db;
 */
 use think\facade\Db;
 
-class LogDb{
+use tpflow\adaptive\Work;
+
+class AdapteeLog{
 	
 	/**
 	 * 工作流审批日志记录
@@ -23,11 +25,11 @@ class LogDb{
 	 * @param  $from_table 单据表
 	 * @param  $btn 操作按钮 ok 提交 back 回退 sing 会签  Send 发起 
 	 **/
-	public static function AddrunLog($uid,$run_id,$config,$btn)
+	function AddrunLog($uid,$run_id,$config,$btn)
 	{
 		$work_return ='';
 		if($btn<>'Send' && $btn<>'SupEnd'){
-			$work_return = WorkDb::WorkApi($config);//在日志记录前加载节点钩子
+			$work_return = Work::WorkApi($config);//在日志记录前加载节点钩子
 		}
 		 if (!isset($config['art'])) {
                $config['art'] = '';
