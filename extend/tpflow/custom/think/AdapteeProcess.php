@@ -20,6 +20,17 @@ use tpflow\adaptive\Info;
 use tpflow\adaptive\Log;
 
 class AdapteeProcess{
+	
+	/**
+	 * flow_process find
+	 *
+	 * @param $id 步骤编号
+	 * @param $field 字段过滤
+	 */
+	function find($id,$field='*'){
+		return Db::name('flow_process')->field($field)->find($id);
+	}
+	
 	/**
 	 * 根据ID获取流程信息
 	 *
@@ -27,9 +38,7 @@ class AdapteeProcess{
 	 */
 	function GetProcessInfo($pid,$run_id='')
 	{
-		$info = Db::name('flow_process')
-				->field('id,process_name,process_type,process_to,auto_person,auto_sponsor_ids,auto_role_ids,auto_sponsor_text,auto_role_text,range_user_ids,range_user_text,is_sing,is_back,wf_mode,wf_action,work_ids,work_text,flow_id')
-				->find($pid);
+		$info = $this->find($pid);
 		if($info['auto_person']==3){ //办理人员
 			$ids = explode(",",$info['range_user_text']);
 			$info['todo'] = ['ids'=>explode(",",$info['range_user_ids']),'text'=>explode(",",$info['range_user_text'])];

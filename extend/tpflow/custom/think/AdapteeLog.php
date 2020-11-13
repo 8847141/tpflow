@@ -11,46 +11,20 @@ namespace tpflow\custom\think;
 */
 use think\facade\Db;
 
-use tpflow\adaptive\Work;
-
 class AdapteeLog{
 	
 	/**
 	 * 工作流审批日志记录
 	 *
-	 * @param  $uid 实例id
-	 * @param  $run_id 运行的工作流id
-	 * @param  $content 审批意见
-	 * @param  $from_id 单据id
-	 * @param  $from_table 单据表
-	 * @param  $btn 操作按钮 ok 提交 back 回退 sing 会签  Send 发起 
+	 * @param  $run_log_data 插入数据
 	 **/
-	function AddrunLog($uid,$run_id,$config,$btn)
+	function AddrunLog($run_log_data)
 	{
-		$work_return ='';
-		if($btn<>'Send' && $btn<>'SupEnd'){
-			$work_return = Work::WorkApi($config);//在日志记录前加载节点钩子
-		}
-		 if (!isset($config['art'])) {
-               $config['art'] = '';
-         }
-		
-		$run_log = array(
-                'uid'=>$uid,
-				'from_id'=>$config['wf_fid'],
-				'from_table'=>$config['wf_type'],
-                'run_id'=>$run_id,
-                'content'=>$config['check_con'],
-				'work_info'=>$work_return,
-				'art'=>$config['art'],
-                'btn'=>$btn,//从 serialize 改用  json_encode 兼容其它语言
-                'dateline'=>time()
-            );
-			 $run_log = Db::name('run_log')->insertGetId($run_log);
-			 if(!$run_log){
-					return  false;
-			 }
-		return $run_log;
+		 $ret = Db::name('run_log')->insertGetId($run_log_data);
+		 if(!$ret){
+				return  false;
+		 }
+		return $ret;
 	}
 	
 	

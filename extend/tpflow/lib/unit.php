@@ -32,7 +32,86 @@ class unit{
 	{
 		return json(["code" => $code, "msg" => $msg, "data" => $data]);
 	}
-	
+	/**
+	 * IDS数组转换
+	 *
+	 * @param  $str  字符串
+	 * @param  $dot_tmp 分割字符串
+	 */
+   public static function ids_parse($str, $dot_tmp = ',')
+    {
+        if (!$str) return '';
+        if (is_array($str)) {
+            $idarr = $str;
+        } else {
+            $idarr = explode(',', $str);
+        }
+        $idarr = array_unique($idarr);
+        $dot = '';
+        $idstr = '';
+        foreach ($idarr as $id) {
+            $id = intval($id);
+            if ($id > 0) {
+                $idstr .= $dot . $id;
+                $dot = $dot_tmp;
+            }
+        }
+        if (!$idstr) $idstr = 0;
+        return $idstr;
+    }
+	/**
+     * JSON 转换处理
+	 *
+     * @param $flow_id 
+	 * @param $process_info 
+     */
+    public static function parse_out_condition($json_data, $field_data)
+    {
+        $array = json_decode($json_data, true);
+        if (!$array) {
+            return [];
+        }
+        $json_data = array();//重置
+        foreach ($array as $key => $value) {
+            $condition = '';
+            foreach ($value['condition'] as $val) {
+                $preg = "/'(data_[0-9]*|checkboxs_[0-9]*)'/s";
+                preg_match_all($preg, $val, $temparr);
+                $val_text = '';
+                foreach ($temparr[0] as $k => $v) {
+                    $field_name = self::get_field_name($temparr[1][$k], $field_data);
+                    if ($field_name)
+                        $val_text = str_replace($v, "'" . $field_name . "'", $val);
+                    else
+                        $val_text = $val;
+                }
+                $condition .= '<option value="' . $val . '">' . $val . '</option>';
+            }
+            $value['condition'] = $condition;
+            $json_data[$key] = $value;
+        }
+        return $json_data;
+    }
+
+    /**
+     * 获取字段名称
+     */
+    public static function get_field_name($field, $field_data)
+    {
+        $field = trim($field);
+        if (!$field) return '';
+        $title = '';
+        foreach ($field_data as $value) {
+            if ($value['plugins'] == 'checkboxs' && $value['parse_name'] == $field) {
+                $title = $value['title'];
+                break;
+            } else if ($value['name'] == $field) {
+                $title = $value['title'];
+                break;
+            }
+        }
+        return $title;
+    }
 
 }
 

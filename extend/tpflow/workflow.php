@@ -151,7 +151,7 @@ use tpflow\msg\mail;
 				} else if ($wf_type == "EditFlow") {
 					$info = Flow::EditFlow($data);//更新工作流
 				} else if ($wf_type == "GetFlowInfo")  { 
-					$info = Flow::GetFlow($data); //获取工作流详情
+					$info = Flow::getWorkflow($data); //获取工作流详情
 				}else{
 					throw new \Exception ( "参数出错！" );
 				}

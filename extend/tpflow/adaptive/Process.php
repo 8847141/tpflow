@@ -29,9 +29,35 @@ class Process{
 	 *
 	 * @param $pid 步骤编号
 	 */
+	static function find($pid)
+	{
+		return (new Process())->mode->find($pid);
+	}
+	/**
+	 * 根据ID获取流程信息
+	 *
+	 * @param $pid 步骤编号
+	 */
 	static function GetProcessInfo($pid,$run_id='')
 	{
-		return (new Process())->mode->GetProcessInfo($pid,$run_id);
+		$info = (new Process())->mode->find($pid);
+		
+		if($info['auto_person']==3){ //办理人员
+			$ids = explode(",",$info['range_user_text']);
+			$info['todo'] = ['ids'=>explode(",",$info['range_user_ids']),'text'=>explode(",",$info['range_user_text'])];
+		}
+		if($info['auto_person']==4){ //办理人员
+			$info['todo'] = $info['auto_sponsor_text'];
+		}
+		if($info['auto_person']==5){ //办理角色
+			$info['todo'] = $info['auto_role_text'];
+		}
+		if($info['auto_person']==6){ //办理角色
+				$wf  =  Db::name('run')->find($run_id);
+				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
+				$info['todo']= User::GetUserName($user_id);
+			}
+		return $info;
 	}
 	/**
 	 * 同步步骤信息

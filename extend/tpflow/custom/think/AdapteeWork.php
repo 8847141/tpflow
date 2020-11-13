@@ -9,9 +9,8 @@
 *+------------------
 */
 namespace tpflow\custom\think;
+
 use think\facade\Db;
-
-
 
 class AdapteeWork{
 	

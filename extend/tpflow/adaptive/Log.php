@@ -35,6 +35,24 @@ Class Log{
 	 **/
 	static function AddrunLog($uid,$run_id,$config,$btn)
 	{
-		return (new Log())->mode->AddrunLog($uid,$run_id,$config,$btn);
+		$work_return ='';
+		if($btn<>'Send' && $btn<>'SupEnd'){
+			$work_return = Work::WorkApi($config);//在日志记录前加载节点钩子
+		}
+		 if (!isset($config['art'])) {
+               $config['art'] = '';
+         }
+		$run_log_data = array(
+                'uid'=>$uid,
+				'from_id'=>$config['wf_fid'],
+				'from_table'=>$config['wf_type'],
+                'run_id'=>$run_id,
+                'content'=>$config['check_con'],
+				'work_info'=>$work_return,
+				'art'=>$config['art'],
+                'btn'=>$btn,
+                'dateline'=>time()
+            );
+		return (new Log())->mode->AddrunLog($run_log_data);
 	}
 }
