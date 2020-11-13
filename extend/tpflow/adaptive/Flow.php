@@ -24,6 +24,17 @@ class Flow
 		}
 		$this->mode = new $className();
     }
+	
+	
+	/**
+     * 获取类别工作流
+     *
+     * @param $wf_type
+     */
+   static function FindRun($id,$field='*')
+    {
+       return (new Flow())->mode->FindRun($id,$field='*');
+    }
     /**
      * 获取类别工作流
      *

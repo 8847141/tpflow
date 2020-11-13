@@ -41,7 +41,6 @@ class Process{
 	static function GetProcessInfo($pid,$run_id='')
 	{
 		$info = (new Process())->mode->find($pid);
-		
 		if($info['auto_person']==3){ //办理人员
 			$ids = explode(",",$info['range_user_text']);
 			$info['todo'] = ['ids'=>explode(",",$info['range_user_ids']),'text'=>explode(",",$info['range_user_text'])];
@@ -53,7 +52,7 @@ class Process{
 			$info['todo'] = $info['auto_role_text'];
 		}
 		if($info['auto_person']==6){ //办理角色
-				$wf  =  Db::name('run')->find($run_id);
+				$wf  =  Flow::FindRun($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$info['todo']= User::GetUserName($user_id);
 			}
@@ -66,7 +65,27 @@ class Process{
 	 */
 	static function GetProcessInfos($ids,$run_id)
 	{
-		return (new Process())->mode->GetProcessInfos($ids,$run_id);
+		$info = (new Process())->mode->finds($ids);
+		foreach($info as $k=>$v){
+			if($v['auto_person']==3){ //办理人员
+				$ids = explode(",",$info['range_user_text']);
+				$info[$k]['todo'] = ['ids'=>explode(",",$v['range_user_ids']),'text'=>explode(",",$v['range_user_text'])];
+			}
+			if($v['auto_person']==4){ //办理人员
+				$info[$k]['todo'] = $v['auto_sponsor_text'];
+			}
+			if($v['auto_person']==5){ //办理角色
+				$info[$k]['todo'] = $v['auto_role_text'];
+			}
+			if($v['auto_person']==6){ //办理角色
+				$wf  =   Flow::FindRun($run_id);
+				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
+				$user_info = User::GetUserInfo($user_id);
+				$info['user_info']= $user_info;
+				$info[$k]['todo']= $user_info['username'];
+			}
+		}
+		return $info;
 	}
 	/**
 	 * 获取下个审批流信息
@@ -78,7 +97,43 @@ class Process{
 	 **/
 	static function GetNexProcessInfo($wf_type,$wf_fid,$pid,$run_id,$premode='')
 	{
-		return (new Process())->mode->GetNexProcessInfo($wf_type,$wf_fid,$pid,$run_id,$premode);
+		if($pid==''){
+			return [];
+		}
+		$nex = (new Process())->mode->find($pid);
+		//先判断下上一个流程是什么模式
+		if($nex['process_to'] !=''){
+		$nex_pid = explode(",",$nex['process_to']);
+		$out_condition = json_decode($nex['out_condition'],true);
+			/* 加入同步模式 2为同步模式
+			 * 2019年1月28日14:30:52
+			 *1、加入同步模式       2、先获取本步骤信息 3、获取本步骤的模式   4、根据模式进行读取  5、获取下一步骤需要的信息
+			 **/
+			switch ($nex['wf_mode']){
+			case 0:
+			  $process = self::GetProcessInfo($nex_pid,$run_id);
+			  break;
+			case 1:
+				//多个审批流
+				foreach($out_condition as $key=>$val){
+					$where =implode(",",$val['condition']);
+					//根据条件寻找匹配符合的工作流id
+					$info = Bill::checkbill($wf_type,$wf_fid,$where);
+					if($info){
+						$nexprocessid = $key; //获得下一个流程的id
+						break;	
+					}
+				}
+				$process = self::GetProcessInfo($nexprocessid,$run_id);
+			   break;
+			case 2:
+				$process = self::GetProcessInfos($nex_pid,$run_id);
+			  break;
+			}
+		}else{
+			$process = ['auto_person'=>'','id'=>'','process_name'=>'END','todo'=>'结束'];
+		}
+		return $process;
 	}
 	/**
 	 * 获取前步骤的流程信息

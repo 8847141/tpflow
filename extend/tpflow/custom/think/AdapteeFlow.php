@@ -13,8 +13,6 @@ namespace tpflow\custom\think;
 
 use think\facade\Db;
 
-use tpflow\lib\unit;
-
 class AdapteeFlow
 {
 	/**
@@ -75,6 +73,9 @@ class AdapteeFlow
 	}
 	function DelFlowProcess($where){
 		return Db::name('flow_process')->where($where)->delete();
+	}
+	function FindRun($id,$field='*'){
+		return Db::name('run')->field($field)->find($id);
 	}
 	function EditRun($id,$data){
 		return Db::name('run')->where('id',$run_id)->update($data);
