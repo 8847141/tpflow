@@ -217,7 +217,7 @@ class Info{
 					   $workflow ['run_process'] = $info['id'];
 					   $workflow ['sing_info'] =$dbmode->FindRunSign(['id','=',$result['sing_id']]); 
 					}
-					$workflow ['npi'] = $this->nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
+					$workflow ['npi'] = unit::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
 					
 			} else {
 				$workflow ['bill_check'] = '';
@@ -229,9 +229,7 @@ class Info{
 		}
 		return $workflow;
 	}
-	public static function nexnexprocessinfo($wf_mode,$npi){
-		return (new Info())->mode->nexnexprocessinfo($wf_mode,$npi);
-	}
+	
 	
 	/**
 	 * 根据单据ID，单据表 获取流程信息
