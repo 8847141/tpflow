@@ -165,7 +165,7 @@ use tpflow\msg\mail;
 		{
 			
 			if ($logtype == "logs") {
-					$info = Process::RunLog($wf_fid,$wf_type);//获取log
+					$info = Log::RunLog($wf_fid,$wf_type);//获取log
 					$html ='
 					 <style type="text/css">
 						.new_table{border-collapse: collapse;margin: 0 auto;text-align: center;}

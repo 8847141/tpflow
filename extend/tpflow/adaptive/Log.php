@@ -24,6 +24,23 @@ Class Log{
 		$this->mode = new $className();
     }
 	/**
+	 * 流程日志
+	 *
+	 * @param $wf_fid
+	 * @param $wf_type
+	 */
+	static function RunLog($wf_fid,$wf_type) 
+	{
+		$type = ['Send'=>'流程发起','ok'=>'同意提交','Back'=>'退回修改','SupEnd'=>'终止流程','Sing'=>'会签提交','sok'=>'会签同意','SingBack'=>'会签退回','SingSing'=>'会签再会签'];
+		$run_log = (new Log())->mode->SearchRunLog($wf_fid,$wf_type) ;
+		foreach($run_log as $k=>$v)
+        {
+			$run_log[$k]['btn'] =$type[$v['btn']];
+			$run_log[$k]['user'] = User::GetUserName($v['uid']);
+        }
+		return $run_log;
+	}
+	/**
 	 * 工作流审批日志记录
 	 *
 	 * @param  $uid 实例id

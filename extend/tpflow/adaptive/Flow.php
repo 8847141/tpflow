@@ -375,6 +375,7 @@ class Flow
         $one['style'] = json_decode($one['style'], true);
         $one['out_condition'] = unit::parse_out_condition($one['out_condition'], '');//json
 		$process_to_list = $mode->SearchFlowProcess([['id','in',$one['process_tos']],['is_del','=',0]],'id,process_name,process_type');
+
 		foreach($process_to_list as $k=>$v){
 			if((count($one['out_condition'])>1)){
 				//修复设计完成后，新增转出条件报错问题

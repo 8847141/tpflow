@@ -33,6 +33,33 @@ class unit{
 		return json(["code" => $code, "msg" => $msg, "data" => $data]);
 	}
 	/**
+	 * 步骤转换
+	 *
+	 */
+	public static function nexnexprocessinfo($wf_mode,$npi){
+		if($wf_mode!=2){
+			if($npi['auto_person']!=3){
+				//非自由模式
+				return $npi['process_name'].'('.$npi['todo'].')';
+			}else{
+				$todu = "<select name='todo' id='todo'  class='select'  datatype='*' ><option value=''>请指定办理人员</option>";
+				$op ='';
+				foreach($npi['todo']['ids'] as $k=>$v){
+					   $op .='<option value="'.$v.'*%*'.$npi['todo']['text'][$k].'">'.$npi['todo']['text'][$k].'</option>'; 
+				}
+				return $todu.$op.'</select>';;
+			}
+			$pr = '';
+		}else{
+			$pr = '[同步]';
+			$op ='';
+			foreach($npi['nexprocess'] as $k=>$v){
+				   $op .=$v['process_name'].'('.$v['todo'].')'; 
+			}
+			return $pr.$op;
+		}
+	}
+	/**
 	 * IDS数组转换
 	 *
 	 * @param  $str  字符串

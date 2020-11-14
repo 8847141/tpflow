@@ -52,7 +52,7 @@ class AdapteeFlow
 		if($limit>0){
 			return Db::name('flow_process')->where($where)->field($field)->order($order)->limit($limit)->select();
 		}else{
-			return Db::name('flow_process')->where($where)->field($field)->order($order)->select();
+			return Db::name('flow_process')->where($where)->field($field)->order($order)->select()->all();
 		}
 	}
     /**

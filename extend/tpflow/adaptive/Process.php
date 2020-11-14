@@ -33,6 +33,10 @@ class Process{
 	{
 		return (new Process())->mode->find($pid);
 	}
+	static function FindRun($id,$field='*')
+	{
+		return (new Process())->mode->FindRun($id,$field='*');
+	}
 	/**
 	 * 根据ID获取流程信息
 	 *
@@ -107,7 +111,7 @@ class Process{
 		$out_condition = json_decode($nex['out_condition'],true);
 			/* 加入同步模式 2为同步模式
 			 * 2019年1月28日14:30:52
-			 *1、加入同步模式       2、先获取本步骤信息 3、获取本步骤的模式   4、根据模式进行读取  5、获取下一步骤需要的信息
+			 *1、加入同步模式    2、先获取本步骤信息 3、获取本步骤的模式   4、根据模式进行读取  5、获取下一步骤需要的信息
 			 **/
 			switch ($nex['wf_mode']){
 			case 0:
@@ -142,7 +146,31 @@ class Process{
 	 */
 	static function GetPreProcessInfo($runid)
 	{
-		return (new Process())->mode->GetPreProcessInfo($runid);
+		$mode = (new Process())->mode;
+		$pre = [];
+		$pre_n = $mode->FindRunProcess($runid);
+		//获取本流程中小于本次ID的步骤信息
+		$pre_p = $mode->SearchRunProcess([['run_flow','=',$pre_n['run_flow']],['run_id','=',$pre_n['run_id']],['id','<',$pre_n['id']]],'run_flow_process');
+		//遍历获取小于本次ID中的相关步骤
+		foreach($pre_p as $k=>$v){
+			$pre[] = $mode->find($v['run_flow_process']);
+		}
+		$prearray = [];
+		if(count($pre)>=1){
+			$prearray[0] = '退回制单人修改';
+			foreach($pre as $k => $v){
+				if($v['auto_person']==4){ //办理人员
+					$todo = $v['auto_sponsor_text'];
+				}
+				if($v['auto_person']==5){ //办理角色
+					$todo = $v['auto_role_text'];
+				}
+				$prearray[$v['id']] = $v['process_name'].'('.$todo.')';
+			}
+			}else{
+			$prearray[0] = '退回制单人修改';	
+		}
+		return $prearray;
 	}
 	/**
 	 * 获取前步骤的流程信息
@@ -161,7 +189,7 @@ class Process{
 	 */
 	static function Getnorunprocess($run_id,$run_process)
 	{
-		return (new Process())->mode->Getnorunprocess($run_id,$run_process);
+		return (new Process())->mode->SearchRunProcess([['run_id','=',$run_id],['status','=',0],['id','<>',$run_process]]);
 	}
 	/**
 	 * 获取第一个流程
@@ -170,17 +198,22 @@ class Process{
 	 */
 	static function getWorkflowProcess($wf_id) 
 	{
-		return (new Process())->mode->getWorkflowProcess($wf_id);
-	}
-	/**
-	 * 流程日志
-	 *
-	 * @param $wf_fid
-	 * @param $wf_type
-	 */
-	static function RunLog($wf_fid,$wf_type) 
-	{
-		return (new Process())->mode->RunLog($wf_fid,$wf_type);
+		$flow_process = (new Process())->mode->SearchFlowProcess([['flow_id','=',$wf_id],['is_del','=',0]]);
+		//找到 流程第一步
+        $flow_process_first = array();
+        foreach($flow_process as $value)
+        {
+            if($value['process_type'] == 'is_one')
+            {
+                $flow_process_first = $value;
+                break;
+            }
+        }
+		if(!$flow_process_first)
+        {
+            return  false;
+        }
+		return $flow_process_first;
 	}
 	/**
 	 * 阻止重复提交
@@ -189,7 +222,8 @@ class Process{
 	 */
 	static function run_check($id) 
 	{
-		return (new Process())->mode->run_check($id);
+		$data = (new Process())->mode->FindRunProcess($id);
+		return $data['status'];
 	}
 	/**
 	 *新增会签
@@ -198,7 +232,18 @@ class Process{
 	 **/
 	static function AddSing($config)
 	{
-		return (new Process())->mode->AddSing($config);
+		$data = [
+			'run_id'=>$config['run_id'],
+			'run_flow'=>$config['flow_id'],
+			'run_flow_process'=>$config['run_process'],
+			'uid'=>$config['wf_singflow'],
+			'dateline'=>time()
+		];
+		$run_sign = (new Process())->mode->AddSing($data);
+		if(!$run_sign){
+            return  false;
+        }
+        return $run_sign;
 	}
 	/**
 	 *会签执行
@@ -217,7 +262,7 @@ class Process{
 	 **/
 	static function up_run_sing($run_id)
 	{
-		return (new Process())->mode->up_run_sing($run_id);
+		return (new Process())->mode->EditRun($run_id,['is_sing'=>0]);
 	}
 	/**
 	 *更新流程步骤信息
@@ -227,7 +272,7 @@ class Process{
 	 **/
 	static function up_flow_press($run_id,$run_process)
 	{
-		return (new Process())->mode->up_flow_press($run_id,$run_process);
+		return (new Process())->mode->EditRun($run_id,['run_flow_process'=>$run_process]);
 	}
 	/**
 	 *更新流程会签信息
@@ -237,7 +282,7 @@ class Process{
 	 **/
 	static function up_flow_sing($run_id,$sid)
 	{
-		return (new Process())->mode->up_flow_sing($run_id,$sid);
+		return (new Process())->mode->EditRun($run_id,['is_sing'=>1,'sing_id'=>$sid,'endtime'=>time()]);
 	}
 	/**
 	 *获取sing_id
@@ -246,7 +291,8 @@ class Process{
 	 **/
 	static function get_sing_id($run_id)
 	{
-		return (new Process())->mode->get_sing_id($run_id);
+		$data = (new Process())->mode->FindRun($run_id);
+		return $data['sing_id'];
 	}
 	/**
 	 *获取所有相关的流程步骤
