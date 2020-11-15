@@ -78,7 +78,7 @@ class AdapteeFlow
 		return Db::name('run')->field($field)->find($id);
 	}
 	function EditRun($id,$data){
-		return Db::name('run')->where('id',$run_id)->update($data);
+		return Db::name('run')->where('id',$id)->update($data);
 	}
 	function EditRunProcess($where,$data){
 		return Db::name('run_process')->where($where)->update($data);

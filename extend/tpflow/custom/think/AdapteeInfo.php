@@ -29,7 +29,7 @@ class AdapteeInfo{
 		return Db::name('run_process')->insertGetId($data);
 	}
 	function SearchRun($where=[],$field='*'){
-		return Db::name('run')->where($where)->field($field)->select();
+		return Db::name('run')->where($where)->field($field)->select()->toArray();
 	}
 	function FindRunSign($where=[],$field='*'){
 		return Db::name('run_sign')->where($where)->field($field)->find();

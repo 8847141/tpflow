@@ -156,11 +156,15 @@ class Info{
 		$findwhere = [['from_id','=',$wf_fid],['from_table','=',$wf_type],['is_del','=',0],['status','=',0]];
 		$count = $dbmode->SearchRun($findwhere);
 		if(count($count) > 0){
-			$result = $dbmode->SearchRun($findwhere);
+			
+			$result = $count[0];
 			$info_list = $dbmode->SearchRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
+			
+			
 			if(count($info_list)==0){
 				$info_list[0]= $dbmode->FindRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
 			}
+			
 			/*
 			 * 2019年1月27日
 			 *1、先计算当前流程下有几个步骤 2、如果有多个步骤，判定为同步模式，（特别注意，同步模式下最后一个步骤，也会认定会是单一步骤） 3、根据多个步骤进行循环，找出当前登入用户对应的步骤 4、将对应的步骤设置为当前审批步骤 5、修改下一步骤处理模式 6、修改提醒模式
