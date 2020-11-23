@@ -27,8 +27,6 @@ use think\facade\Request;
 	class Api extends workflow{
 		public $patch = '';
 		function __construct(Request $request) {
-			$this->uid = session(unit::gconfig('user_id'));
-			$this->role = session(unit::gconfig('role_id'));
 			$this->table  = Info::get_wftype();
 			$this->patch =  ROOT_PATH . 'extend/tpflow/view';
 			$this->request = $request;
@@ -40,14 +38,20 @@ use think\facade\Request;
 	public function welcome(){
 		return '<br/><br/><style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; }h1{ font-size: 40px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 35px }</style><div style="padding: 24px 48px;"> <h1>\﻿ (•◡•) / </h1><p> TpFlow V4.0开发版<br/><span style="font-size:19px;">PHP开源工作流引擎系统</span></p><span style="font-size:15px;">[ ©2018-2020 Guoguo <a href="https://www.cojz8.com/">TpFlow</a> 本版权不可删除！ ]</span></div>';
     }
+	/**
+	 * 从系统获取到审批记录
+	 * type 
+	 * @param $type html 返回html代码；json 返回json数据
+	 */
 	public static function wflogs($id,$wf_type,$type='html'){
 		$logs = (new workflow())->FlowLog('logs',$id,$wf_type);
 		echo $logs[$type];
 	}
 	public static function wfbtn($wf_fid,$wf_type,$status)
 	{
-		$user = ['thisuid'=>session(unit::gconfig('user_id')),'thisrole'=>session(unit::gconfig('role_id'))];
-		$url = ['url'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),'url_star'=>url(unit::gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
+		$user = ['thisuid'=>unit::getuserinfo('uid'),'thisrole'=>unit::getuserinfo('role')];
+		$url = ['url'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),
+				'url_star'=>url(unit::gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
 		return (new lib())::tpflow_btn($wf_fid,$wf_type,$status,$url,$user,new workflow());
 	}
 	 
@@ -60,7 +64,7 @@ use think\facade\Request;
 	{
 		if ($this->request::isPost()) {
 			$data = input('post.');
-			$flow = $this->startworkflow($data['wf_id'],$data['wf_fid'],$data['check_con'],$this->uid);
+			$flow = $this->startworkflow($data['wf_id'],$data['wf_fid'],$data['check_con'],unit::getuserinfo('uid'));
 			if($flow['code']==1){
 				return unit::msg_return('Success!');
 			}
@@ -79,39 +83,39 @@ use think\facade\Request;
 		$sup = $_GET['sup'] ?? '';
 		$info = ["wf_title"=>$wf_title,'wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
 		if($wf_mode=='check'){
-			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role])]);
+			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo())]);
 		}
 		if($wf_mode=='back'){
 			 if ($this->request::isPost()) {
 				$data = input('post.');
 				$data['btodo'] = $this->getprocessinfo($data['wf_backflow'],$data['run_id']);
-				$flowinfo =  $this->workdoaction($data,$this->uid);
+				$flowinfo =  $this->workdoaction($data,unit::getuserinfo('uid'));
 				if($flowinfo['code']=='0'){
 					return unit::msg_return('Success!');
 					}else{
 					return unit::msg_return($flowinfo['msg'],1);
 				}
 			 }
-			return lib::tmp_wfback($info,$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role]));
+			return lib::tmp_wfback($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()));
 		}
 		if($wf_mode=='sign'){
 			 if ($this->request::isPost()) {
 				$data = input('post.');
-				$flowinfo =  $this->workdoaction($data,$this->uid);
+				$flowinfo =  $this->workdoaction($data,unit::getuserinfo('uid'));
 				if($flowinfo['code']=='0'){
 					return unit::msg_return('Success!');
 					}else{
 					return unit::msg_return($flowinfo['msg'],1);
 				}
 			 }
-			return lib::tmp_wfsign($info,$this->workflowInfo($wf_fid,$wf_type,['uid'=>$this->uid,'role'=>$this->role]),$ssing);
+			return lib::tmp_wfsign($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()),$ssing);
 		}
 		
 	}
 	public function do_check_save()
 	{
 		$data = input('post.');
-		$flowinfo =  $this->workdoaction($data,$this->uid);
+		$flowinfo =  $this->workdoaction($data,unit::getuserinfo('uid'));
 		if($flowinfo['code']=='0'){
 			return unit::msg_return('Success!');
 			}else{
@@ -186,7 +190,7 @@ use think\facade\Request;
         if ($this->request::isPost()) {
 			$data = input('post.');
 			if($data['id']==''){
-				$data['uid']=$this->uid;
+				$data['uid']=unit::getuserinfo('uid');
 				$data['add_time']=time();
 				unset($data['id']);
 				$ret= $this->FlowApi('AddFlow',$data);
@@ -311,7 +315,7 @@ use think\facade\Request;
 			}
 	   }
 		//获取全部跟自己相关的步骤
-		$data =Process::get_userprocess($this->uid,$this->role);
+		$data =Process::get_userprocess(unit::getuserinfo('uid'),unit::getuserinfo('role'));
 		$url = url(unit::gconfig('int_url').'/wf/entrust');
 		$type ='';
 		   foreach($data as $k=>$v){
@@ -347,7 +351,7 @@ use think\facade\Request;
 	
 	public function wfend()
 	{
-		$flowinfo =  $this->SuperApi('WfEnd',input('get.id'),$this->uid);
+		$flowinfo =  $this->SuperApi('WfEnd',input('get.id'),unit::getuserinfo('uid'));
 		return unit::msg_return('Success!');
 	}
 	

@@ -64,7 +64,6 @@ class lib
 					}else{
 					 return '<span class="btn  radius size-S">无权限('.$user_name.')</span>';
 				}
-			
 		case 100:
 			return '<span class="button" onclick=layer_open(\'代审\',"'.$url['url'].'&sup=1","850","650")>代审</span>';
 		  break;

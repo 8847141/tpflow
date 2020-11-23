@@ -186,7 +186,7 @@ use tpflow\msg\mail;
 				}else{
 					throw new \Exception ( "参数出错！" );
 				}
-			return ['logs'=>$info,'html'=>$html];
+			return ['json'=>$info,'html'=>$html];
 		}
 		/*
 		 * ProcessDesc API

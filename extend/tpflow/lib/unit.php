@@ -13,6 +13,19 @@ namespace tpflow\lib;
 
 class unit{
 	/**
+	*
+	* @param  $key 键值
+	**/
+	public static function getuserinfo($key='') {
+		$user_info = ['uid'=>session(self::gconfig('user_id')),'role'=>session(self::gconfig('role_id'))];
+		if($key==''){
+			return $user_info;
+		}else{
+			return $user_info[$key] ?? '';
+		}
+	}
+	
+	/**
 	 * 根据键值加载全局配置文件
 	 *
 	 * @param  $key 键值
