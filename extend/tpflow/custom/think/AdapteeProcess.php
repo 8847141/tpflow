@@ -50,7 +50,7 @@ class AdapteeProcess{
 		}
 	}
 	function EditRun($id,$data){
-		return Db::name('run')->where('id',$run_id)->update($data);
+		return Db::name('run')->where('id',$id)->update($data);
 	}
 	function Getrunprocess($pid,$run_id)
 	{

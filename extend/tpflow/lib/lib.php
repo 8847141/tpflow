@@ -82,9 +82,7 @@ class lib
 							<tr>
 							<th style='width:75px'>流程名称</th>
 							<td style='width:330px;text-align: left;'>
-							<input type="text" class="input-text" value="{$info['flow_name']}" name="flow_name"  datatype="*" ></td>
-							
-							</tr>
+							<input type="text" class="input-text" value="{$info['flow_name']}" name="flow_name"  datatype="*" ></td></tr>
 							<tr>
 							<th>流程类型</th><td style='width:330px;text-align: left;'>
 							<span class="select-box">
@@ -489,9 +487,7 @@ php;
 		<form action="{$url}" method="post" name="form" id="form">
 		<input type='hidden' value="{$info['wf_fid']}" name='wf_fid'>
 		<table class="table">
-			<tr><td style='width:85px'>项目名称：</td>
-			<td>{$info['wf_title']}</td>
-			</tr><tr><td>选择工作流：</td><td style="text-align:left"><select name="wf_id"  class="select"  datatype="*" ><option value="">请选择工作流</option>{$flow}</select>
+			<tr><td>选择工作流：</td><td style="text-align:left"><select name="wf_id"  class="select"  datatype="*" ><option value="">请选择工作流</option>{$flow}</select>
 			</td></tr><tr>
 			<td>审核意见：</td><td style="text-align:left"><input type="text" class="input-text" name="check_con"  datatype="*" >
 			</td></tr>

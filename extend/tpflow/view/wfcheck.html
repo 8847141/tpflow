@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="__Flow__/workflow-common.css"/>
 <div class="page-container" style='width:98%'>
 <form action="{:url($int_url.'/wf/do_check_save')}" method="post" name="form" id="wfform">
-<input type="hidden" value="{$info.wf_title}" name="wf_title">
 <input type="hidden" value="{$info.wf_fid}" name="wf_fid">
 <input type="hidden" value="{$info.wf_type}" name="wf_type">
 <input type="hidden" value="{$flowinfo.flow_id}" name="flow_id">
@@ -47,13 +46,13 @@
 					<a class="button" id='backbton' onclick='tpflow_back()'value='back' >回退</a> 
 					{/if}
 					{if condition='$flowinfo.status.is_sing != 2'}
-					<a class="button" id='singbton' onclick='tpflow_sing_send()' value='sing' >会签</a>
+					<a class="button" id='singbton' onclick='tpflow_sing_send("sing")' >会签</a>
 					{/if}
 					<a class="button" id='bupload'onclick="layer_open('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">附件</a> 
 				{else/}
-					<a class="button" id='nexbton' onclick='tpflow_sing("sok")' >会签提交</a> 
-					<a class="button" id='backbton' onclick='tpflow_sing("sback")'value='back' >会签回退</a> 
-					<a class="button" id='singbton' onclick='tpflow_sing_send("ssing")' value='sing' >再会签</a>
+					<a class="button" id='nexbton' onclick='tpflow_sing("sok")'>会签提交</a> 
+					<a class="button" id='backbton' onclick='tpflow_sing("sback")'>会签回退</a> 
+					<a class="button" id='singbton' onclick='tpflow_sing_send("ssing")'>再会签</a>
 				{/if}
 				</td>
 				</tr>

@@ -26,7 +26,6 @@ class TaskFlow{
 	 */
 	public function doTask($config,$uid) {
 		//任务全局类
-		$wf_title = $config['wf_title'];
 		$npid = $config['npid'];//下一步骤流程id
 		$run_id = $config['run_id'];//运行中的id
 		$run_process = $config['run_process'];//运行中的process

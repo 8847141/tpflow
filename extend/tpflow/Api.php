@@ -50,11 +50,10 @@ use think\facade\Request;
 	public static function wfbtn($wf_fid,$wf_type,$status)
 	{
 		$user = ['thisuid'=>unit::getuserinfo('uid'),'thisrole'=>unit::getuserinfo('role')];
-		$url = ['url'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid]),
-				'url_star'=>url(unit::gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,"wf_title"=>'2','wf_fid'=>$wf_fid])];
+		$url = ['url'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid]),
+				'url_star'=>url(unit::gconfig('int_url')."/wf/wfstart/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid])];
 		return (new lib())::tpflow_btn($wf_fid,$wf_type,$status,$url,$user,new workflow());
 	}
-	 
 	 public static function wfstatus($status)
 	{
 		return (new lib())::tpflow_status($status);
@@ -69,7 +68,7 @@ use think\facade\Request;
 				return unit::msg_return('Success!');
 			}
 		}
-		$info = ['wf_type'=>input('wf_type'),'wf_title'=>input('wf_title'),'wf_fid'=>input('wf_fid')];
+		$info = ['wf_type'=>input('wf_type'),'wf_fid'=>input('wf_fid')];
 		$flow =  Flow::getWorkflowByType(input('wf_type'));;
 		$op ='';
 		foreach($flow as $k=>$v){
@@ -78,10 +77,10 @@ use think\facade\Request;
 		return lib::tmp_wfstart(url(unit::gconfig('int_url').'/wf/wfstart'),$info,$op);
 	}
 	
-	public function wfcheck($wf_fid,$wf_type,$wf_title,$wf_mode='check',$ssing='sing')
+	public function wfcheck($wf_fid,$wf_type,$wf_mode='check',$ssing='sing')
 	{
 		$sup = $_GET['sup'] ?? '';
-		$info = ["wf_title"=>$wf_title,'wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_title"=>$wf_title,"wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
+		$info = ['wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
 		if($wf_mode=='check'){
 			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo())]);
 		}
@@ -221,7 +220,6 @@ use think\facade\Request;
 	 * 工作流设计界面
 	 */
     public function wfdesc(){
-		 
         $flow_id = intval(input('flow_id'));
         if($flow_id<=0){
             $this->error('参数有误，请返回重试!');

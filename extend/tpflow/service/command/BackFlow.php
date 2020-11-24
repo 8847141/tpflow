@@ -14,7 +14,6 @@ namespace tpflow\service\command;
 //数据库操作
 use tpflow\adaptive\Info;
 use tpflow\adaptive\Flow;
-use tpflow\adaptive\Flow;
 use tpflow\adaptive\Process;
 use tpflow\adaptive\Log;
 use tpflow\adaptive\Bill;

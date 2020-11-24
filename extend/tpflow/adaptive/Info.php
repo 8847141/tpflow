@@ -219,7 +219,7 @@ class Info{
 					   $workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$result['run_flow_process'],$result['id']);
 					   $workflow ['process'] = $process;
 					   $workflow ['run_process'] = $info['id'];
-					   $workflow ['sing_info'] =$dbmode->FindRunSign(['id','=',$result['sing_id']]); 
+					   $workflow ['sing_info'] =$dbmode->FindRunSign([['id','=',$result['sing_id']]]); 
 					}
 					$workflow ['npi'] = unit::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
 					
