@@ -43,36 +43,6 @@ class AdapteeInfo{
 	function SearchRunProcess($where=[],$field='*'){
 		return Db::name('run_process')->where($where)->field($field)->select();
 	}
-	
-	
-	
-	
-	/**
-	 * 缓存信息
-	 *
-	 * @param $wf_fid  单据编号
-	 * @param $flow_process 流程信息
-	 * @param $run_id  运行的id
-	 * @param $wf 流程信息
-	 */
-	function addWorkflowCache($run_id,$wf,$flow_process,$wf_fid)
-	{
-	$run_cache = array(
-                'run_id'=>$run_id,
-                'form_id'=>$wf_fid,
-                'flow_id'=>$wf['id'],
-                'run_form'=>'',//从 serialize 改用  json_encode 兼容其它语言
-                'run_flow'=>json_encode($wf),
-                'run_flow_process'=>json_encode($flow_process), //这里未缓存 子流程 数据是不完善的， 后期会完善
-                'dateline'=>time()
-            );
-     $run_cache = Db::name('run_cache')->insertGetId($run_cache);
-	 if(!$run_cache)
-        {
-            return  false;
-        }
-        return $run_cache;
-	}
 	/**
 	 * 工作流列表
 	 *

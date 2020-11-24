@@ -76,11 +76,6 @@ use tpflow\msg\mail;
 			if(!$wf_process_log){
 				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
 			}
-			//添加流程日志
-			$run_cache = Info::addWorkflowCache($wf_run,$wf,$wf_process,$wf_fid);
-			if(!$run_cache){
-				return ['msg'=>'流程步骤操作记录失败，数据库错误！！！','code'=>'-1'];
-			}
 			//更新单据状态
 			$bill_update = Bill::updatebill($wf_type,$wf_fid,1);
 			if(!$bill_update){

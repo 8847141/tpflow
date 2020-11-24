@@ -131,18 +131,6 @@ class Info{
         return $process_id;
 	}
 	/**
-	 * 缓存信息
-	 *
-	 * @param $wf_fid  单据编号
-	 * @param $flow_process 流程信息
-	 * @param $run_id  运行的id
-	 * @param $wf 流程信息
-	 */
-	public static function addWorkflowCache($run_id,$wf,$flow_process,$wf_fid)
-	{
-		return (new Info())->mode->addWorkflowCache($run_id,$wf,$flow_process,$wf_fid);
-	}
-	/**
 	 * 根据单据ID，单据表 获取流程信息
 	 *
 	 * @param $run_id  运行的id
