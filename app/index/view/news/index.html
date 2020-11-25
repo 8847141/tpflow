@@ -70,7 +70,22 @@ function end_flow(){
 	var id = arr[0];
 	var status = arr[1];
 	if(status==1){
-		
+	  var index = layer.load(1, {
+		  shade: [0.1,'#fff'] //0.1透明度的白色背景
+		});
+	  $.ajax({
+		 type: "GET",
+		 url: "{:url('/index/wf/endflow')}?bill_id="+id+'&bill_table=news',
+		 dataType: "json",
+		 success: function(data){
+			if(data.code==1){
+				layer.close(index); 
+				layer.alert(data.msg);
+			}else{
+				window.location.reload();
+			}
+		  }
+	 });
 	}else{
 		layer.msg('选中的单据已经被审批或者未发起工作流~~');return;
 	}

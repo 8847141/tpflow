@@ -43,5 +43,9 @@ return [
 	'wf_bill_namespace'=>'',
 	'wf_db_mode'=>1,//工作ORM驱动，系统自带模式Think-ORM,2、自定义ORM
 	'wf_db_namespace'=>'',
+	'wf_access_control'=>3,//工作流权限控制（终止和去审），1、所有人均可终止；2、单据发起人可以终止；3、指定uid可以终止；
+	'wf_access_control_uid' => [1,2,3],//可以控制
+
+	
 ];
 

@@ -18,6 +18,7 @@ use tpflow\adaptive\Flow;
 use tpflow\adaptive\Process;
 use tpflow\adaptive\User;
 use tpflow\adaptive\Entrust;
+use tpflow\adaptive\Control;
 use tpflow\lib\lib;
 use tpflow\lib\unit;
 use tpflow\adaptive\Bill;
@@ -350,6 +351,13 @@ use think\facade\Request;
 	public function wfend()
 	{
 		$flowinfo =  $this->SuperApi('WfEnd',input('get.id'),unit::getuserinfo('uid'));
+		return unit::msg_return('Success!');
+	}
+	public function endflow($bill_table,$bill_id){
+		$data = Control::EndRun(unit::getuserinfo('uid'),$bill_table,$bill_id);
+		if($data['code']=='-1'){
+			return unit::msg_return($data['msg'],1);
+		}
 		return unit::msg_return('Success!');
 	}
 	

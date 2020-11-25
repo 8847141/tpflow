@@ -23,6 +23,10 @@ class Info{
 		}
 		$this->mode = new $className();
     }
+	
+	public static function FindRun($where=[],$field='*'){
+		return (new Info())->mode->FindRun($where,$field);
+	}
 	/**
 	 * 添加工作流
 	 *
