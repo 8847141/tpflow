@@ -43,7 +43,7 @@ Class Control{
 		//权限判断结束
 		//终止流程及步骤
 		$findwhere = [['from_id','=',$bill_id],['from_table','=',$bill_table]];
-		$FindRun = Info::FindRun($findwhere);
+		$FindRun = Run::FindRun($findwhere);
 		if(!$FindRun){
 			return ['msg'=>'没有找到流程~','code'=>'-1'];
 		}

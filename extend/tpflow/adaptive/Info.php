@@ -11,6 +11,7 @@
 namespace tpflow\adaptive;
 
 use tpflow\lib\unit;
+use think\facade\Db;
 
 class Info{
 	
@@ -24,9 +25,6 @@ class Info{
 		$this->mode = new $className();
     }
 	
-	public static function FindRun($where=[],$field='*'){
-		return (new Info())->mode->FindRun($where,$field);
-	}
 	/**
 	 * 添加工作流
 	 *
@@ -48,7 +46,7 @@ class Info{
             'run_flow_process'=>$wf_process,
             'dateline'=>time(),
         );
-        $run_id = (new Info())->mode->AddRun($data);
+        $run_id = Run::AddRun($data);
 		if(!$run_id){
             return  false;
         }
@@ -65,7 +63,7 @@ class Info{
 	public static function addWorkflowProcess($wf_id,$wf_process,$run_id,$uid,$todo = '')
 	{
 		if($wf_process['auto_person']==6 && $wf_process['process_type']=='is_one'){ //事务人员
-				$wf  = Process::FindRun($run_id);
+				$wf  = Run::FindRunId($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$user_info = User::GetUserInfo($user_id);
 				$wf_process['user_info']= $user_info;
@@ -115,7 +113,7 @@ class Info{
 			'wf_mode'=>$wf_process['wf_mode'],
 			'wf_action'=>$wf_process['wf_action'],
         );
-        $process_id = (new Info())->mode->AddRunProcess($data);
+        $process_id = Run::AddRunProcess($data);
 		//如果是角色办理，将角色ID转化为用户ID
 		if($wf_process['auto_person']==5){ 
 			$sponsor_ids = '';
@@ -144,17 +142,16 @@ class Info{
 		
 		$workflow = [];
 		//根据表信息，判断当前流程是否还在运行  
-		$dbmode = (new Info())->mode;
 		$findwhere = [['from_id','=',$wf_fid],['from_table','=',$wf_type],['is_del','=',0],['status','=',0]];
-		$count = $dbmode->SearchRun($findwhere);
+		$count = Run::SearchRun($findwhere);
 		if(count($count) > 0){
 			
 			$result = $count[0];
-			$info_list = $dbmode->SearchRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
+			$info_list = Run::SearchRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
 			
 			
 			if(count($info_list)==0){
-				$info_list[0]= $dbmode->FindRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
+				$info_list[0]= Run::FindRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
 			}
 			
 			/*
@@ -202,7 +199,7 @@ class Info{
 					//$workflow ['preprocess'] = Process::GetPreProcessInfo($info['id']);//获取前几个步骤信息，用于步骤回退
 					//$workflow ['singuser'] = User::GetUser();//获取所有会签人员
 					if($result['is_sing']==1){
-					   $info = $dbmode->FindRunProcess([['run_id','=',$result['id']],['run_flow','=',$result['flow_id']],['run_flow_process','=',$result['run_flow_process']]]);
+					   $info = Run::FindRunProcess([['run_id','=',$result['id']],['run_flow','=',$result['flow_id']],['run_flow_process','=',$result['run_flow_process']]]);
 					   $workflow ['sing_st'] = 1;
 					   $workflow ['flow_process'] = $result['run_flow_process'];
 					   $process = Process::GetProcessInfo($result['run_flow_process'],$result['id']);
@@ -211,7 +208,7 @@ class Info{
 					   $workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$result['run_flow_process'],$result['id']);
 					   $workflow ['process'] = $process;
 					   $workflow ['run_process'] = $info['id'];
-					   $workflow ['sing_info'] =$dbmode->FindRunSign([['id','=',$result['sing_id']]]); 
+					   $workflow ['sing_info'] =Run::FindRunSign([['id','=',$result['sing_id']]]); 
 					}
 					$workflow ['npi'] = unit::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
 					
@@ -234,7 +231,7 @@ class Info{
 	 * @param $wf_type 业务表名
 	 */
 	public static function workrunInfo($run_id) {
-		return Process::FindRun($run_id);
+		return Run::FindRunId($run_id);
 	}
 	/**
 	 * 工作流列表
@@ -242,7 +239,18 @@ class Info{
 	 */
 	public static function worklist()
 	{
-		return (new Info())->mode->worklist();
+		$result = Run::SearchRun([['status','=',0]]);
+		foreach($result as $k=>$v)
+		{
+			$result[$k]['flow_name'] = Db::name('flow')->where('id',$v['flow_id'])->value('flow_name');
+			$process = Run::SearchRunProcess([['run_id','=',$v['id']],['run_flow_process','=',$v['run_flow_process']]]);
+			$sponsor_text= '';
+			foreach($process as $p=>$s){
+				$sponsor_text .=  $s['sponsor_text'].',';
+			}
+			$result[$k]['user'] = rtrim($sponsor_text,",");
+		}
+        return $result;
 	}
 	/**
 	 * 接入工作流的类别

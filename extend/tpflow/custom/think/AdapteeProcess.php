@@ -33,15 +33,6 @@ class AdapteeProcess{
 	function finds($ids,$field='*'){
 		return Db::name('flow_process')->field($field)->where('id','in',$ids)->select();
 	}
-	function FindRun($id,$field='*'){
-		return Db::name('run')->field($field)->find($id);
-	}
-	function FindRunProcess($id,$field='*'){
-		return Db::name('run_process')->field($field)->find($id);
-	}
-	function SearchRunProcess($where=[],$field='*'){
-		return Db::name('run_process')->where($where)->field($field)->select();
-	}
 	function SearchFlowProcess($where=[],$field='*',$order='',$limit=0){
 		if($limit>0){
 			return Db::name('flow_process')->where($where)->field($field)->order($order)->limit($limit)->select();
@@ -49,21 +40,7 @@ class AdapteeProcess{
 			return Db::name('flow_process')->where($where)->field($field)->order($order)->select()->all();
 		}
 	}
-	function EditRun($id,$data){
-		return Db::name('run')->where('id',$id)->update($data);
-	}
-	function Getrunprocess($pid,$run_id)
-	{
-		return Db::name('run_process')->where('run_id',$run_id)->where('run_flow_process',$pid)->find();
-	}
-	function AddSing($data)
-	{
-		return Db::name('run_sign')->insertGetId($data);
-	}
-	function EndSing($sing_sign,$check_con)
-	{
-		return Db::name('run_sign')->where('id',$sing_sign)->update(['is_agree'=>1,'content'=>$check_con,'dateline'=>time()]);
-	}
+	
 	function get_userprocess($uid,$role)
 	{
 		return Db::name('flow_process')->alias('f')

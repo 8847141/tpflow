@@ -12,6 +12,7 @@
 namespace tpflow\adaptive;
 
 use tpflow\lib\unit;
+use think\facade\Db;
 
 class Flow
 {
@@ -25,16 +26,6 @@ class Flow
 		$this->mode = new $className();
     }
 	
-	
-	/**
-     * 获取类别工作流
-     *
-     * @param $wf_type
-     */
-   static function FindRun($id,$field='*')
-    {
-       return (new Flow())->mode->FindRun($id,$field='*');
-    }
     /**
      * 获取类别工作流
      *
@@ -104,7 +95,13 @@ class Flow
      */
    static function GetFlow($info = '')
     {
-       return (new Flow())->mode->GetFlow($info);
+		$list = Db::name('flow')->order('id desc')->where('is_del', '0')->paginate('10');
+		$list->each(function ($item, $key) {
+			$run = Run::FindRun([['flow_id','=',$item['id']],['status','=',0]]);
+			$item['edit'] =$run['id'];
+			return $item;
+		});
+        return $list;
     }
 
     /**
@@ -423,7 +420,7 @@ class Flow
 	 **/
 	public static function end_flow($run_id)
 	{
-		return (new Flow())->mode->EditRun($run_id,['status'=>1,'endtime'=>time()]);
+		return Run::EditRun($run_id,['status'=>1,'endtime'=>time()]);
 	}
 	/**
 	 *结束工作流步骤信息
@@ -432,7 +429,7 @@ class Flow
 	 **/
 	public static function end_process($run_process,$check_con)
 	{
-		return (new Flow())->mode->EditRunProcess([['id','in',$run_process]],['status'=>2,'remark'=>$check_con,'bl_time'=>time()]);
+		return Run::EditRunProcess([['id','in',$run_process]],['status'=>2,'remark'=>$check_con,'bl_time'=>time()]);
 	}
 	/**
 	 *更新流程主信息
@@ -441,6 +438,6 @@ class Flow
 	 **/
 	public static function up($run_id,$flow_process)
 	{
-		return (new Flow())->mode->EditRun($run_id,['run_flow_process'=>$flow_process]);
+		return Run::EditRun($run_id,['run_flow_process'=>$flow_process]);
 	}
 }

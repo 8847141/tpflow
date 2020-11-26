@@ -33,10 +33,6 @@ class Process{
 	{
 		return (new Process())->mode->find($pid);
 	}
-	static function FindRun($id,$field='*')
-	{
-		return (new Process())->mode->FindRun($id,$field='*');
-	}
 	/**
 	 * 根据ID获取流程信息
 	 *
@@ -56,7 +52,7 @@ class Process{
 			$info['todo'] = $info['auto_role_text'];
 		}
 		if($info['auto_person']==6){ //办理角色
-				$wf  =  Flow::FindRun($run_id);
+				$wf  =  Run::FindRunId($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$info['todo']= User::GetUserName($user_id);
 			}
@@ -82,7 +78,7 @@ class Process{
 				$info[$k]['todo'] = $v['auto_role_text'];
 			}
 			if($v['auto_person']==6){ //办理角色
-				$wf  =   Flow::FindRun($run_id);
+				$wf  =   Run::FindRunId($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$user_info = User::GetUserInfo($user_id);
 				$info['user_info']= $user_info;
@@ -148,9 +144,9 @@ class Process{
 	{
 		$mode = (new Process())->mode;
 		$pre = [];
-		$pre_n = $mode->FindRunProcess($runid);
+		$pre_n = Run::FindRunProcessId($runid);
 		//获取本流程中小于本次ID的步骤信息
-		$pre_p = $mode->SearchRunProcess([['run_flow','=',$pre_n['run_flow']],['run_id','=',$pre_n['run_id']],['id','<',$pre_n['id']]],'run_flow_process');
+		$pre_p = Run::SearchRunProcess([['run_flow','=',$pre_n['run_flow']],['run_id','=',$pre_n['run_id']],['id','<',$pre_n['id']]],'run_flow_process');
 		//遍历获取小于本次ID中的相关步骤
 		foreach($pre_p as $k=>$v){
 			$pre[] = $mode->find($v['run_flow_process']);
@@ -172,15 +168,7 @@ class Process{
 		}
 		return $prearray;
 	}
-	/**
-	 * 获取前步骤的流程信息
-	 *
-	 * @param $runid
-	 */
-	static function Getrunprocess($pid,$run_id)
-	{
-		return (new Process())->mode->Getrunprocess($pid,$run_id);
-	}
+	
 	/**
 	 * 同步模式下获取未办结的流程信息
 	 *
@@ -189,7 +177,7 @@ class Process{
 	 */
 	static function Getnorunprocess($run_id,$run_process)
 	{
-		return (new Process())->mode->SearchRunProcess([['run_id','=',$run_id],['status','=',0],['id','<>',$run_process]]);
+		return Run::SearchRunProcess([['run_id','=',$run_id],['status','=',0],['id','<>',$run_process]]);
 	}
 	/**
 	 * 获取第一个流程
@@ -222,67 +210,8 @@ class Process{
 	 */
 	static function run_check($id) 
 	{
-		$data = (new Process())->mode->FindRunProcess($id);
+		$data = Run::FindRunProcessId($id);
 		return $data['status'];
-	}
-	/**
-	 *新增会签
-	 *
-	 *@param $config 参数信息
-	 **/
-	static function AddSing($config)
-	{
-		$data = [
-			'run_id'=>$config['run_id'],
-			'run_flow'=>$config['flow_id'],
-			'run_flow_process'=>$config['run_process'],
-			'uid'=>$config['wf_singflow'],
-			'dateline'=>time()
-		];
-		$run_sign = (new Process())->mode->AddSing($data);
-		if(!$run_sign){
-            return  false;
-        }
-        return $run_sign;
-	}
-	/**
-	 *会签执行
-	 *
-	 * @param $sing_sign 会签ID
-	 * @param $check_con  审核内容
-	 **/
-	static function EndSing($sing_sign,$check_con)
-	{
-		return (new Process())->mode->EndSing($sing_sign,$check_con);
-	}
-	/**
-	 *更新会签信息
-	 *
-	 *@param $run_id 工作流run id
-	 **/
-	static function up_run_sing($run_id)
-	{
-		return (new Process())->mode->EditRun($run_id,['is_sing'=>0]);
-	}
-	/**
-	 *更新流程步骤信息
-	 *
-	 *@param $run_id 工作流ID
-	 *@param $run_process 运行步骤
-	 **/
-	static function up_flow_press($run_id,$run_process)
-	{
-		return (new Process())->mode->EditRun($run_id,['run_flow_process'=>$run_process]);
-	}
-	/**
-	 *更新流程会签信息
-	 *
-	 *@param $run_id 工作流ID
-	 *@param $sid 会签ID
-	 **/
-	static function up_flow_sing($run_id,$sid)
-	{
-		return (new Process())->mode->EditRun($run_id,['is_sing'=>1,'sing_id'=>$sid,'endtime'=>time()]);
 	}
 	/**
 	 *获取sing_id
@@ -291,7 +220,7 @@ class Process{
 	 **/
 	static function get_sing_id($run_id)
 	{
-		$data = (new Process())->mode->FindRun($run_id);
+		$data = Run::FindRunId($run_id);
 		return $data['sing_id'];
 	}
 	/**

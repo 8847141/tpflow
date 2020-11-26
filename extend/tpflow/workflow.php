@@ -233,7 +233,7 @@ use tpflow\msg\mail;
 			if( @$pid=='' || @$run_id ==''){
 		       	throw new \Exception ( "config参数信息不全！" );
 			}
-			$wf_process = Process::Getrunprocess($pid,$run_id);
+			$wf_process = Run::FindRunProcess([['run_id','=',$run_id],['run_flow_process','=',$pid],['status','=',0]]);
 			if($wf_process['auto_person']==3){
 				$todo = $wf_process['sponsor_ids'].'*%*'.$wf_process['sponsor_text'];
 				}else{

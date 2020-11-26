@@ -55,33 +55,12 @@ class AdapteeFlow
 			return Db::name('flow_process')->where($where)->field($field)->order($order)->select()->all();
 		}
 	}
-    /**
-     * API获取工作流列表
-     * API接口调用
-     */
-   function GetFlow()
-    {
-		$list = Db::name('flow')->order('id desc')->where('is_del', '0')->paginate('10');
-		$list->each(function ($item, $key) {
-			$item['edit'] = Db::name('run')->where('flow_id', $item['id'])->where('status', '0')->value('id');
-			return $item;
-		});
-        return $list;
-    }
+    
 	function EditFlowProcess($where,$data){
 		return Db::name('flow_process')->where($where)->update($data);
 	}
 	function DelFlowProcess($where){
 		return Db::name('flow_process')->where($where)->delete();
-	}
-	function FindRun($id,$field='*'){
-		return Db::name('run')->field($field)->find($id);
-	}
-	function EditRun($id,$data){
-		return Db::name('run')->where('id',$id)->update($data);
-	}
-	function EditRunProcess($where,$data){
-		return Db::name('run_process')->where($where)->update($data);
 	}
     /**
      * 获取表字段信息
