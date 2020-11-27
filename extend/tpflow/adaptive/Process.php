@@ -33,6 +33,24 @@ class Process{
 	{
 		return (new Process())->mode->find($pid);
 	}
+	static function AddFlowProcess($data)
+	{
+		return (new Process())->mode->AddFlowProcess($data);
+	}
+	static function EditFlowProcess($where,$data)
+	{
+		return (new Process())->mode->EditFlowProcess($where,$data);
+	}
+	static function DelFlowProcess($where)
+	{
+		return (new Process())->mode->DelFlowProcess($where);
+	}
+	static function SearchFlowProcess($where=[],$field='*',$order='',$limit=0)
+	{
+		return (new Process())->mode->SearchFlowProcess($where,$field,$order,$limit);
+	}
+	
+	
 	/**
 	 * 根据ID获取流程信息
 	 *

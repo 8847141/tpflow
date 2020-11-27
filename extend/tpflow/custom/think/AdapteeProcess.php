@@ -40,6 +40,16 @@ class AdapteeProcess{
 			return Db::name('flow_process')->where($where)->field($field)->order($order)->select()->all();
 		}
 	}
+	function EditFlowProcess($where,$data){
+		return Db::name('flow_process')->where($where)->update($data);
+	}
+	function DelFlowProcess($where){
+		return Db::name('flow_process')->where($where)->delete();
+	}
+	function AddFlowProcess($data)
+    {
+        return  Db::name('flow_process')->insertGetId($data);
+    }
 	
 	function get_userprocess($uid,$role)
 	{

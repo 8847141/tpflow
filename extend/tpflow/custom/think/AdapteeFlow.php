@@ -32,10 +32,6 @@ class AdapteeFlow
     {
         return Db::name('flow')->insertGetId($data);
     }
-	function AddFlowProcess($data)
-    {
-        return  Db::name('flow_process')->insertGetId($data);
-    }
     /**
      * API 编辑工作流
      * @param $data POST提交的数据
@@ -46,21 +42,6 @@ class AdapteeFlow
     }
 	function SearchFlow($where=[],$field='*'){
 		return Db::name('flow')->where($where)->field($field)->select();
-	}
-	
-	function SearchFlowProcess($where=[],$field='*',$order='',$limit=0){
-		if($limit>0){
-			return Db::name('flow_process')->where($where)->field($field)->order($order)->limit($limit)->select();
-		}else{
-			return Db::name('flow_process')->where($where)->field($field)->order($order)->select()->all();
-		}
-	}
-    
-	function EditFlowProcess($where,$data){
-		return Db::name('flow_process')->where($where)->update($data);
-	}
-	function DelFlowProcess($where){
-		return Db::name('flow_process')->where($where)->delete();
 	}
     /**
      * 获取表字段信息

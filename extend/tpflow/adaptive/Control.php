@@ -14,6 +14,29 @@ use tpflow\lib\unit;
 
 Class Control{
 	/**
+	  * 工作流程统一接口
+	  *
+	  *
+	  *
+	  */
+	static function WfCenter(){
+		//流程发起
+		
+		//流程审批
+		
+		//超级接口
+		
+	} 
+	/**
+	  * 工作流设计统一接口
+	  *
+	  *
+	  *
+	  */
+	static function WfDescCenter(){
+		//流程添加，编辑，查看，删除
+	} 
+	/**
 	 * 结束流程接口
 	 * @param $bill_table 表名称
 	 * @param $bill_id id

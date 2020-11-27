@@ -138,7 +138,7 @@ class Flow
    static function ProcessAll($flow_id)
     {
 		$map[] = ['flow_id','=',$flow_id];
-		$list = (new Flow())->mode->SearchFlowProcess($map);
+		$list = Process::SearchFlowProcess($map);
         $process_data = [];
         $process_total = 0;
         foreach ($list as $value) {
@@ -201,8 +201,8 @@ class Flow
 		$map2[] = ['flow_id','=',$flow_id];
 		$map2[] = ['is_del','=',0];
 		$map2[] = ['process_to','find in set',$process_id];
-		$list =$mode->SearchFlowProcess($map2,'id,process_to');
-        $trans =  $mode->DelFlowProcess([['id','=',$process_id],['flow_id','=', $flow_id],['is_del','=' ,0]]);
+		$list =Process::SearchFlowProcess($map2,'id,process_to');
+        $trans =  Process::DelFlowProcess([['id','=',$process_id],['flow_id','=', $flow_id],['is_del','=' ,0]]);
         if (!$trans) {
             return ['status' => 0, 'msg' => '删除失败', 'info' => ''];
         }
@@ -216,7 +216,7 @@ class Flow
                     $process_to = implode(',', $arr);
                 }
                 $data = ['process_to' => $process_to, 'updatetime' => time()];
-				$trans = $mode->EditFlowProcess([['id','=',$value['id']]],$data);
+				$trans = Process::EditFlowProcess([['id','=',$value['id']]],$data);
                 if (!$trans) {//有错误，跳出
                     break;
                 }
@@ -233,7 +233,7 @@ class Flow
      */
    static function ProcessDelAll($flow_id)
     {
-		$res = (new Flow())->mode->DelFlowProcess([['flow_id','=',$flow_id]]);
+		$res = Process::DelFlowProcess([['flow_id','=',$flow_id]]);
         if ($res) {
             return ['status' => 1, 'data' => $res, 'msg' => '操作成功！'];
         } else {
@@ -247,7 +247,7 @@ class Flow
    static function ProcessAdd($flow_id)
     {
 		$mode = (new Flow())->mode;
-		$process_count =  $mode->SearchFlowProcess([['flow_id','=',$flow_id]]);
+		$process_count =  Process::SearchFlowProcess([['flow_id','=',$flow_id]]);
         $process_type = 'is_step';
         if (count($process_count) <= 0){
             $process_type = 'is_one';
@@ -255,7 +255,7 @@ class Flow
 			$process_settop = '100';			
 		}else{
 			//新建步骤显示在上一个步骤下方 2019年1月28日14:32:45
-			$style = $mode->SearchFlowProcess([['flow_id','=',$flow_id]],'*','id desc',1);
+			$style = Process::SearchFlowProcess([['flow_id','=',$flow_id]],'*','id desc',1);
 			$process_type = 'is_step';
 			$process_setleft = $style[0]['setleft']+30;
 			$process_settop = $style[0]['settop']+30;
@@ -264,13 +264,12 @@ class Flow
             'flow_id' => $flow_id,'setleft' => $process_setleft,'settop' => $process_settop,
             'process_type' => $process_type, 'style' => json_encode(['width' => '120', 'height' => 'auto', 'color' => '#0e76a8'])
         ];
-        $processid = $mode->AddFlowProcess($data);
+        $processid = Process::AddFlowProcess($data);
         if ($processid <= 0) {
             return ['status' => 0, 'msg' => '添加失败！', 'info' => ''];
         } else {
             return ['status' => 1, 'msg' => '添加成功！', 'info' => ''];
         }
-       return (new Flow())->mode->ProcessAdd($flow_id);
     }
 	/**
      * 步骤连接
@@ -294,7 +293,7 @@ class Flow
                 'process_to' => unit::ids_parse($value['process_to']),
                 'updatetime' => time()
             ];
-			$ret = (new Flow())->mode->EditFlowProcess([['id','=',$process_id],['flow_id','=',$flow_id]],$datas);
+			$ret = Process::EditFlowProcess([['id','=',$process_id],['flow_id','=',$flow_id]],$datas);
         }
         return ['status' => 1, 'msg' => '保存步骤成功~', 'info' => ''];
     }
@@ -345,7 +344,7 @@ class Flow
         if (isset($datas["process_to"])) {
             $data['process_to'] = unit::ids_parse($datas['process_to']);
         }
-		$ret = (new Flow())->mode->EditFlowProcess([['id','=',$process_id]],$data);
+		$ret = Process::EditFlowProcess([['id','=',$process_id]],$data);
         if ($ret!==false) {
             return ['code' => 0, 'msg' => '保存成功！', 'info' => ''];
         } else {
@@ -371,7 +370,7 @@ class Flow
         $one['process_to'] = $one['process_to'] == '' ? array() : explode(',', $one['process_to']);
         $one['style'] = json_decode($one['style'], true);
         $one['out_condition'] = unit::parse_out_condition($one['out_condition'], '');//json
-		$process_to_list = $mode->SearchFlowProcess([['id','in',$one['process_tos']],['is_del','=',0]],'id,process_name,process_type');
+		$process_to_list = Process::SearchFlowProcess([['id','in',$one['process_tos']],['is_del','=',0]],'id,process_name,process_type');
 
 		foreach($process_to_list as $k=>$v){
 			if((count($one['out_condition'])>1)){
@@ -399,11 +398,11 @@ class Flow
 		if (!$wfid) {
             return ['status' => 0, 'msg' => '参数出错!', 'info' => ''];
         }
-		$pinfo =  $mode->SearchFlowProcess([['flow_id','=',$wfid]]);
+		$pinfo =  Process::SearchFlowProcess([['flow_id','=',$wfid]]);
 		if (count($pinfo)<1) {
             return ['status' => 0, 'msg' => '没有找到步骤信息!', 'info' => ''];
         }
-		$one_pinfo =$mode->SearchFlowProcess([['flow_id','=',$wfid],['process_type','=','is_one']]);
+		$one_pinfo =Process::SearchFlowProcess([['flow_id','=',$wfid],['process_type','=','is_one']]);
 		if (count($one_pinfo)<1) {
             return ['status' => 0, 'msg' => '没有设置第一步骤,请修改!', 'info' => ''];
         }

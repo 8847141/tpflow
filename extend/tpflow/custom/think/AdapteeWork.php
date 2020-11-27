@@ -24,9 +24,10 @@ class AdapteeWork{
 		$sql_return = 'null';
 		$msg_return = 'null';
 		//取出当前运行的步骤ID
-		$run_flow_process = Db::name('run_process')->where('id',$config['run_process'])->value('run_flow_process');
+		$run_process = Run::FindRunProcessId($config['run_process']);
+		$run_flow_process = ;
 		//获取当前步骤版本ID，对应的所有信息
-		$flow_process_info = Db::name('flow_process')->find($run_flow_process);
+		$flow_process_info = Process::find($run_process['run_flow_process']);;
 		if(!$flow_process_info){
 			return 'flow_process_info err!';
 		}

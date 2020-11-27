@@ -1,5 +1,5 @@
 <?php
-namespace tpflow\custom;
+namespace tpflow\custom\think;
 /**
 *+------------------
 * Tpflow 单据实例化类

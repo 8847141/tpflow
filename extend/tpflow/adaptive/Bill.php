@@ -17,7 +17,7 @@ Class Bill{
 	protected $mode ; 
     public function  __construct($type='Bill'){
 		if(unit::gconfig('wf_bill_mode')==1){
-			$className = '\\tpflow\\custom\\Adaptee'.$type;
+			$className = '\\tpflow\\custom\\think\\Adaptee'.$type;
 		}else{
 			$className = unit::gconfig('wf_bill_namespace').$type;
 		}
