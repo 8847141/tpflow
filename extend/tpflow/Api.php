@@ -343,10 +343,6 @@ use think\facade\Request;
 		}
 	   return lib::tmp_upload(url(unit::gconfig('int_url').'/wf/wfup'),input('id'));
     }
-	public function ajax_back()
-	{
-		return $this->getprocessinfo(input('back_id'),input('run_id'));
-	}
 	
 	public function wfend()
 	{
