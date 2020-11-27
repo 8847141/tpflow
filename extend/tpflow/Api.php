@@ -303,7 +303,6 @@ use think\facade\Request;
     }
 	/*委托授权审核*/
 	public function entrust(){
-		
 		if ($this->request::isPost()) {
 			$post = input('post.');
 			$ret = Entrust::Add($post);

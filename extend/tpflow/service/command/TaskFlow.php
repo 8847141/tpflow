@@ -35,7 +35,6 @@ class TaskFlow{
 		}else{
 			$check_con = $config['check_con'];
 		}
-		$submit_to_save = $config['submit_to_save'];
 		if(isset($config['todo'])){
 			$todo = $config['todo'];
 		}else{
