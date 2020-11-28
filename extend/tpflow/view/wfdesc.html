@@ -28,7 +28,7 @@
      <div class="panel" >
       <div class="panel-header">属性控制栏</div>
 	  <div class="panel-body" style='height: 800px;'>
-		<iframe src="{$url['welcome']}" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()"></iframe>
+		<iframe src="{$url['welcome']}" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="Tpflow.SetHeight()"></iframe>
 	  </div></div> 
    </div>
   </div> 
@@ -37,103 +37,49 @@
 <script type="text/javascript" src="__Flow__/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="__Flow__/jquery-ui-1.9.2-min.js?" ></script>
 <script type="text/javascript" src="__Flow__/jsPlumb-1.3.16-all-min.js"></script>
-<script type="text/javascript" src="__Flow__/workflow.3.0.js"></script>
+<script type="text/javascript" src="__Flow__/workflow.4.0.js" ></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow-common.3.0.js" ></script>
+
 <script type="text/javascript">
-function iFrameHeight() {   
-		var ifm= document.getElementById("iframepage");   
-		var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
-		if(ifm != null && subWeb != null) {
-		   ifm.height = '100%';
-		   ifm.width = '100%';
-		}   
-	} 
 var the_flow_id ='{$one.id}';
 $(function(){
-    var attributeModal =  $("#attributeModal");
-    //属性设置
-    attributeModal.on("hidden", function() {
-        $(this).removeData("modal");//移除数据，防止缓存
-    });
-    /*创建流程设计器*/
-    var _canvas = $("#flowdesign_canvas").Flowdesign({
-                      "processData":{$process_data|raw}
-                      ,fnClick:function(){ /*步骤单击*/
-						 var url = "{$url['wfatt']}?id="+_canvas.getActiveId();
-						 $('#iframepage').attr('src',url);
-                      },fnDbClick:function(){
-						if(confirm("你确定删除步骤吗？")){
-							var activeId = _canvas.getActiveId();//右键当前的ID
-							var url = "{$url['delete_process']}";
-							$.post(url,{"flow_id":the_flow_id,"process_id":activeId},function(data){
-								if(data.status==1){
-									_canvas.delProcess(activeId);
-									var processInfo = _canvas.getProcessInfo();//连接信息
-									var url = "{$url['save_canvas']}";
-									$.post(url,{"flow_id":the_flow_id,"process_info":processInfo},function(data){
-										location.reload();
-									},'json');
-								}
-								layer.msg(data.msg);
-							},'json');
-                           }
+	Tpflow.Init($('#flowdesign_canvas'),{$process_data|raw});
+	console.log('page no load star fun ~');
+	
+		
+	$("#wfSave").bind('click',function(){
+		   try{
+              var aProcessData = {};
+              $("#wf_process_info input[type=hidden]").each(function(i){
+                  var processVal = $(this).val().split(",");
+                  if(processVal.length==2)
+                  {
+                    if(!aProcessData[processVal[0]])
+                    {
+                        aProcessData[processVal[0]] = {"top":0,"left":0,"process_to":[]};
+                    }
+                    aProcessData[processVal[0]]["process_to"].push(processVal[1]);
+                  }
+              })
+              _canvas.find("div.process-step").each(function(i){ //生成Json字符串，发送到服务器解析
+                      if($(this).attr('id')){
+                          var pId = $(this).attr('process_id');
+                          var pLeft = parseInt($(this).css('left'));
+                          var pTop = parseInt($(this).css('top'));
+                         if(!aProcessData[pId])
+                          {
+                              aProcessData[pId] = {"top":0,"left":0,"process_to":[]};
+                          }
+                          aProcessData[pId]["top"] =pTop;
+                          aProcessData[pId]["left"] =pLeft;
                       }
-         });
-		/*保存*/
-		$("#wfSave").bind('click',function(){
-			var processInfo = _canvas.getProcessInfo();//连接信息
-			var url = "{$url['save_canvas']}";
-			$.post(url,{"flow_id":the_flow_id,"process_info":processInfo},function(data){
-				layer.msg(data.msg);
-			},'json');
-		});
-		$("#wfRefresh").bind('click',function(){
-			  location.reload();
-		});
-		$("#wfHelp").bind('click',function(){
-			  layer.open({
-			  type: 2,
-			  title: '工作流官网',
-			  shadeClose: true,
-			  shade: false,
-			  maxmin: true, //开启最大化最小化按钮
-			  area: ['893px', '600px'],
-			  content: '//cojz8.com/'
-			});
-		});
-		$("#wfCheck").bind('click',function(){
-			  var url = "{$url['Checkflow']}";
-			  $.post(url,{"fid":the_flow_id},function(data){
-				if(data.status==1){
-					layer.msg(data.msg);
-					}else{
-					layer.msg(data.msg);
-				   }
-				},'json');
-		});
-		$("#wfAdd").bind('click',function(){
-			var url = "{$url['add_process']}";
-			$.post(url,{"flow_id":the_flow_id},function(data){
-			if(data.status==1){
-				location.reload();
-				}else{
-				layer.msg("添加失败");
-			   }
-			},'json');
-		});
-		$("#wfCleam").bind('click',function(){
-			if(confirm("你确定删除步骤吗？")){
-				var url = "{$url['del_allprocess']}";
-				$.post(url,{"flow_id":the_flow_id},function(data){
-				if(data.status==1){
-					location.reload();
-					}else{
-					layer.msg("添加失败");
-				   }
-				},'json');
-			
-			}
-		});
+                  })
+            console.log(JSON.stringify(aProcessData));
+          }catch(e){
+              return '';
+          }
+	});
+
 });
 </script>

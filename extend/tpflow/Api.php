@@ -132,8 +132,31 @@ use think\facade\Request;
 		foreach($this->table as $k=>$v){
 			$type[$v['name']] = str_replace('[work]', '', $v['title']);;
 		}
-		return view($this->patch.'/wfindex.html',['int_url'=>unit::gconfig('int_url'),'type'=>$type,'list'=>$this->FlowApi('List')]);
-    }
+		$html = '';
+		foreach($type as $k=>$v){
+			$html .='<li>┣'.$k.'-'.$v.'</li>';
+		}
+		$data = $this->FlowApi('List');
+		$tr = '';
+		foreach($data as $k=>$v){
+			   $status = ['正常','禁用'];
+			   if($v['edit']==''){
+				   $url_edit = url(unit::gconfig('int_url').'/wf/wfadd',['id'=>$v['id']]);
+				   $url_desc = url(unit::gconfig('int_url').'/wf/wfdesc',['flow_id'=>$v['id']]);
+				   $btn ="<a class='button' onclick=layer_open('修改','".$url_edit."','550','400')> 修改</a> <a class='button' onclick=layer_open('流程设计','".$url_desc."')> 设计流程</a> ";
+			   }else{
+				   $btn ="<a class='btn  radius size-S'> 运行中....</a>";
+			   }
+			   if($v['status']==0){
+				   $btn .="<a class='button' href=".url(unit::gconfig('int_url').'/wf/wfchange',['id'=>$v['id'],'status'=>1])."> 禁用</a>";
+			   }else{
+				   $btn .="<a class='button' href=".url(unit::gconfig('int_url').'/wf/wfchange',['id'=>$v['id'],'status'=>0])."> 启用</a>";
+			   }
+			   $tr .='<tr><td>'.$v['id'].'</td><td><span title="'.$v['flow_desc'].'">'.$v['flow_name'].'</span></td><td>'.$v['type'].$type[$v['type']].'</td><td>'.date('Y/m/d H:i',$v['add_time']).'</td><td>'.$status[$v['status']].'</td><td>'.$btn.'</td></tr>';	
+		  }
+		
+		return lib::tmp_index(url(unit::gconfig('int_url').'/wf/wfadd'),$tr,$html);
+	}
 	/*流程监控*/
 	public function wfjk($map = [])
 	{

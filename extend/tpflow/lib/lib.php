@@ -74,6 +74,7 @@ class lib
 	}
 	public static function tmp_add($url,$info,$type)
 	{
+		$js = self::commonjs();
 		$view=<<<php
 				<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 				<form action="{$url}" method="post" name="form" id="form">
@@ -82,21 +83,12 @@ class lib
 							<tr>
 							<th style='width:75px'>流程名称</th>
 							<td style='width:330px;text-align: left;'>
-							<input type="text" class="input-text" value="{$info['flow_name']}" name="flow_name"  datatype="*" ></td></tr>
-							<tr>
+							<input type="text" class="input-text" value="{$info['flow_name']}" name="flow_name"  datatype="*" ></td></tr><tr>
 							<th>流程类型</th><td style='width:330px;text-align: left;'>
-							<span class="select-box">
-								<select name="type"  class="select"  datatype="*" >
-								{$type}
-								</select>
-								</span>
-							</td>
-							</tr>
-							<tr>
-							<th style='width:75px'>排序值</th>
-							<td style='width:330px;text-align: left;'><input type="text" class="input-text" value="{$info['sort_order']}" name="sort_order"  datatype="*" ></td>
-							</tr>
-							<tr>
+							<span class="select-box"><select name="type"  class="select"  datatype="*" >{$type}</select></span>
+							</td></tr>
+							<tr><th style='width:75px'>排序值</th>
+							<td style='width:330px;text-align: left;'><input type="text" class="input-text" value="{$info['sort_order']}" name="sort_order"  datatype="*" ></td></tr>
 							<tr>
 							<th>流程描述</th><td style='width:330px;text-align: left;'>
 								<textarea name='flow_desc'  datatype="*" style="width:100%;height:55px;">{$info['flow_desc']}</textarea></td>
@@ -108,10 +100,7 @@ class lib
 							</tr>
 						</table>
 					</form>
-			<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
-			<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
-			<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
-			<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+					{$js}
 			<script type="text/javascript">
 			$(function(){
 				$("[name='type']").find("[value='{$info['type']}']").attr("selected",true);
@@ -210,8 +199,6 @@ php;
 <script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
 <script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
 <script type="text/javascript" src="/static/work/lib/H5upload.js" ></script>
-
-
 <script>
     $(function () {
         var callbackId = $("#callbackId").val();
@@ -255,7 +242,6 @@ php;
             layer_close();
         }
     }
-
 </script>
 php;
 	}
@@ -436,27 +422,17 @@ php;
 php;
 	}
 	public static function tmp_wfjk($url,$data){
+		$js = self::commonjs();
 		 return <<<php
 		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 <div class="page-container">
 	<table class="table">
-			<tr class="text-c">
-				<th>工作流编号</th>
-				<th >工作流类型</th>
-				<th >工作流名称</th>
-				<th >当前状态</th>
-				<th >业务办理人</th>
-				<th >接收时间</th>
-				<th >操作</th>
-			</tr>
+		<tr class="text-c"><th>工作流编号</th><th >工作流类型</th><th >工作流名称</th><th >当前状态</th><th >业务办理人</th><th >接收时间</th><th >操作</th></tr>
 		<tbody>
 			{$data}
 		</tbody>
 	</table>
-</div>
-<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
-<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
-<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
+</div>{$js}
 <script>
 function end(id){
 		layer.confirm('你确定终止此流程？[此操作无法恢复]',function(index){
@@ -482,6 +458,7 @@ php;
 	}
 	public static function tmp_wfstart($url,$info,$flow)
 	{
+		$js = self::commonjs();
 		return <<<php
 		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 		<form action="{$url}" method="post" name="form" id="form">
@@ -493,11 +470,7 @@ php;
 			</td></tr>
 			<tr><td colspan='2' class='text-c'><button  class="button" type="submit">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>&nbsp;&nbsp;<button  class="button" type="button" onclick="layer_close()">&nbsp;&nbsp;取消&nbsp;&nbsp;</button></td></tr>
 		</table>
-	</form>
-<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
-<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
-<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
-<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+	</form>{$js}
 <script type="text/javascript">
 $(function(){
 	$("#form").Validform({
@@ -520,6 +493,7 @@ php;
 	}
 	public static function tmp_wfback($info,$flowinfo)
 	{
+		$js = self::commonjs();
 		$preprocess = Process::GetPreProcessInfo($flowinfo['run_process']);
 		$op ='';
 		foreach($preprocess as $k=>$v){
@@ -563,11 +537,7 @@ php;
 			</tr>
 		</table>
 </form>
-</div>
-<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
-<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
-<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
-<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+</div>{$js}
 <script type="text/javascript">
 $(function(){
 	$("#wfform").Validform({
@@ -597,6 +567,7 @@ php;
 	}
 	public static function tmp_wfsign($info,$flowinfo,$sing)
 	{
+		$js = self::commonjs();
 		$UserDb = User::GetUser();
 		$op ='';
 		foreach($UserDb as $k=>$v){
@@ -639,11 +610,7 @@ php;
 			</td></tr>
 		</table>
 </form>
-</div>
-<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script>
-<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
-<script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script>
-<script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>
+</div>{$js}
 <script type="text/javascript">
 $(function(){
 	$("#wfform").Validform({
@@ -670,6 +637,34 @@ $(function(){
 </body>
 </html>
 php;
+}
+public static function tmp_index($url,$data,$html){
+	$js = self::commonjs();
+	return <<<php
+<title>Tpflow V4.0 管理列表</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
+<body>
+<div class="page-container">
+<div style='float: left;width:10%'>
+	<a onclick="layer_open('添加工作流','{$url}','550','400')" class="button ">添加</a> <a onclick="location.reload();" class="button ">刷新</a><hr/>
+	<b style='font-size: 16px;'>工作流类别</b>
+	<ul id="art">
+	{$html}
+	</ul>
+</div>
+<div style='float: left;width:90%'>
+<table class="table" ><tr><th>ID</th><th>流程名称</th><th>流程类型</th><th>添加时间</th><th>状态</th><th>操作</th></tr>
+	{$data}
+</table>
+</div>
+</div>{$js}
+</body>
+</html>
+php;
+}
+static function commonjs(){
+	return '<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js" ></script><script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script><script type="text/javascript" src="/static/work/workflow-common.3.0.js" ></script><script type="text/javascript" src="/static/work/lib/Validform/5.3.2/Validform.min.js" ></script>';	
 }
 	
 }
