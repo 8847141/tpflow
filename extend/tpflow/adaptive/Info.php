@@ -36,12 +36,10 @@ class Info{
 	public static function addWorkflowRun($wf_id,$wf_process,$wf_fid,$wf_type,$uid)
 	{
 		$data = array(
-            'pid'=>0,
             'uid'=>$uid,
             'flow_id'=>$wf_id,
 			'from_table'=>$wf_type,
             'from_id'=>$wf_fid,
-            'run_name'=>$wf_fid,
             'run_flow_id'=>$wf_id,
             'run_flow_process'=>$wf_process,
             'dateline'=>time(),
@@ -139,26 +137,22 @@ class Info{
 	 * @param $wf_type 业务表名
 	 */
 	public static function workflowInfo($wf_fid,$wf_type,$userinfo) {
-		
 		$workflow = [];
 		//根据表信息，判断当前流程是否还在运行  
 		$findwhere = [['from_id','=',$wf_fid],['from_table','=',$wf_type],['is_del','=',0],['status','=',0]];
-		$count = Run::SearchRun($findwhere);
+		$count = Run::SearchRun($findwhere);//查询运行的流程
 		if(count($count) > 0){
-			
+			//查询运行中的步骤信息
 			$result = $count[0];
 			$info_list = Run::SearchRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
-			
-			
 			if(count($info_list)==0){
 				$info_list[0]= Run::FindRunProcess([['run_id','=',$result['id']],['run_flow_process','=',$result['run_flow_process']],['status','=',0]]);
 			}
-			
 			/*
 			 * 2019年1月27日
 			 *1、先计算当前流程下有几个步骤 2、如果有多个步骤，判定为同步模式，（特别注意，同步模式下最后一个步骤，也会认定会是单一步骤） 3、根据多个步骤进行循环，找出当前登入用户对应的步骤 4、将对应的步骤设置为当前审批步骤 5、修改下一步骤处理模式 6、修改提醒模式
 			 */
-			//如果有两个以上的运行步骤，则认定为师同步模式
+			//如果有两个以上的运行步骤，则认定为是同步模式
 			if(count($info_list)<2){
 				$info = $info_list[0];
 				$workflow ['wf_mode'] = 0;//wf_mode
@@ -183,21 +177,17 @@ class Info{
 					return -1;
 				}
 			}
-			/*
-			*4.0版本新增查找是否有代理审核人员，并给与权限，权限转换
-			*/
+
+			//4.0版本新增查找是否有代理审核人员，并给与权限，权限转换
 			$info = Entrust::change($info);
+			//拼接返回数据
 			if ($result) {
-					$workflow ['sing_st'] = 0;
-					$workflow ['flow_id'] = $result['flow_id'];
+					$workflow ['sing_st'] = 0;//会签模式 
 					$workflow ['run_id'] = $result['id'];
 					$workflow ['status'] = $info;
-					$workflow ['flow_process'] = $info['run_flow_process'];
-					$workflow ['run_process'] = $info['id'];
-					$workflow ['process'] = Process::GetProcessInfo($info['run_flow_process'],$result['id']);//flow_process获取步骤信息
-					$workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$info['run_flow_process'],$result['id'],$workflow ['wf_mode']);//获取下一个步骤
-					//$workflow ['preprocess'] = Process::GetPreProcessInfo($info['id']);//获取前几个步骤信息，用于步骤回退
-					//$workflow ['singuser'] = User::GetUser();//获取所有会签人员
+					$workflow ['flow_process'] = $info['run_flow_process'];//运行的flow_processid
+					$workflow ['process'] = Process::GetProcessInfo($info['run_flow_process'],$result['id']);//读取当前原设计步骤的详细信息
+					$workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$info['run_flow_process'],$result['id'],$workflow ['wf_mode']);//获取当前原设计下一个步骤
 					if($result['is_sing']==1){
 					   $info = Run::FindRunProcess([['run_id','=',$result['id']],['run_flow','=',$result['flow_id']],['run_flow_process','=',$result['run_flow_process']]]);
 					   $workflow ['sing_st'] = 1;
@@ -207,22 +197,14 @@ class Info{
 					   $workflow ['status']['wf_action'] = $process['wf_action'];
 					   $workflow ['nexprocess'] = Process::GetNexProcessInfo($wf_type,$wf_fid,$result['run_flow_process'],$result['id']);
 					   $workflow ['process'] = $process;
-					   $workflow ['run_process'] = $info['id'];
 					   $workflow ['sing_info'] =Run::FindRunSign([['id','=',$result['sing_id']]]); 
 					}
-					$workflow ['npi'] = unit::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);
-					
-			} else {
-				$workflow ['bill_check'] = '';
-				$workflow ['bill_time'] = '';
+					$workflow['run_process'] = $info['id'];//运行的run_process步骤ID
+					$workflow['npi'] = unit::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);//显示下一步骤的信息
 			}
-		}else{
-			$workflow ['bill_check'] = '';
-			$workflow ['bill_time'] = '';
 		}
 		return $workflow;
 	}
-	
 	
 	/**
 	 * 根据单据ID，单据表 获取流程信息

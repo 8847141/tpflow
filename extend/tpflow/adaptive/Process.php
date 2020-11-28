@@ -69,7 +69,7 @@ class Process{
 		if($info['auto_person']==5){ //办理角色
 			$info['todo'] = $info['auto_role_text'];
 		}
-		if($info['auto_person']==6){ //办理角色
+		if($info['auto_person']==6){ //事务接收者
 				$wf  =  Run::FindRunId($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$info['todo']= User::GetUserName($user_id);
@@ -95,7 +95,7 @@ class Process{
 			if($v['auto_person']==5){ //办理角色
 				$info[$k]['todo'] = $v['auto_role_text'];
 			}
-			if($v['auto_person']==6){ //办理角色
+			if($v['auto_person']==6){ //事务接收者
 				$wf  =   Run::FindRunId($run_id);
 				$user_id = Bill::getbillvalue($wf['from_table'],$wf['from_id'],$wf_process['work_text']);
 				$user_info = User::GetUserInfo($user_id);

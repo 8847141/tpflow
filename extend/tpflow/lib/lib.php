@@ -53,7 +53,7 @@ class lib
 						if($flowinfo['sing_info']['uid']==$thisuser['thisuid']){
 							  $st = 1;
 						}else{
-							   $user_name =$flowinfo['sing_info']['uid'];
+							  $user_name =$flowinfo['sing_info']['uid'];
 						}
 					}
 				}else{
@@ -529,12 +529,9 @@ php;
 	return <<<php
 		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 		<form action="{$info['tpflow_back']}" method="post" name="form" id="wfform">
-		<input type="hidden" value="{$info['wf_fid']}" name="wf_fid">
-		<input type="hidden" value="{$info['wf_type']}" name="wf_type">
 		<input type="hidden" value="{$flowinfo['run_id']}" name="run_id" id='run_id'>
 		<input type="hidden" value="{$sup}" name="sup">
 		<input type="hidden" value="{$flowinfo['run_process']}" name="run_process">
-		<input  name='sing_st' value='{$flowinfo['sing_st']}' type='hidden'>
 		<table class="table table-border table-bordered table-bg" style='width:98%'>
 			<thead>
 			<tr>
@@ -609,13 +606,9 @@ php;
 	return <<<php
 		<link rel="stylesheet" type="text/css" href="/static/work/workflow-common.css"/>
 		<form action="{$info['tpflow_sign']}" method="post" name="form" id="wfform">
-		<input type="hidden" value="{$info['wf_fid']}" name="wf_fid">
-		<input type="hidden" value="{$info['wf_type']}" name="wf_type">
 		<input type="hidden" value="{$flowinfo['run_id']}" name="run_id" id='run_id'>
-		<input type="hidden" value="{$flowinfo['flow_id']}" name="flow_id">
 		<input type="hidden" value="{$sup}" name="sup">
 		<input type="hidden" value="{$flowinfo['run_process']}" name="run_process">
-		<input  name='sing_st' value='{$flowinfo['sing_st']}' type='hidden'>
 		<table class="table table-border table-bordered table-bg" style='width:98%'>
 			<thead>
 			<tr>
@@ -643,9 +636,7 @@ php;
 				</td>
 				</tr>
 				</table>
-			</td>
-			
-			</tr>
+			</td></tr>
 		</table>
 </form>
 </div>
@@ -679,6 +670,6 @@ $(function(){
 </body>
 </html>
 php;
-	}
+}
 	
 }

@@ -110,6 +110,27 @@ use tpflow\msg\mail;
 		       	throw new \Exception ( "config参数信息不全！" );
 			}
 			$taskService = new TaskService();//工作流服务
+
+		/*
+		 * 获取下一步骤信息
+		 *
+		 * @param  $run_id 运行的run表ID
+		 * @param  $wf_mode 运行的模式，普通或者同步
+		 * @param  $submit_to_save 提交模式
+		 * @param  $sup 超级管理员模式
+		 * @param  $run_process 当前运行步骤的ID
+		 * @param  $art 上传的附件信息
+		 * @param  $check_con  审批意见
+		 **/
+			
+			
+			$run = Run::FindRunId($config['run_id']);//根据运行步骤找出相对应的运行信息
+			
+			$config['flow_id'] = $run['flow_id'];//带出流程id
+			$config['wf_fid'] = $run['from_id'];//带出业务ID
+			$config['wf_type'] = $run['from_table'];//带出业务表名
+			$config['sing_st'] = $run['is_sing'];//业务是否为会签模式
+			
 			$wf_actionid = $config['submit_to_save'];
 			$sing_st = $config['sing_st'];
 			if($sing_st == 0){

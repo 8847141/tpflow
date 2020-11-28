@@ -1,19 +1,19 @@
 <link rel="stylesheet" type="text/css" href="__Flow__/workflow-common.css"/>
 <div class="page-container" style='width:98%'>
 <form action="{:url($int_url.'/wf/do_check_save')}" method="post" name="form" id="wfform">
-<input type="hidden" value="{$info.wf_fid}" name="wf_fid">
-<input type="hidden" value="{$info.wf_type}" name="wf_type">
-<input type="hidden" value="{$flowinfo.flow_id}" name="flow_id">
+
 <input type="hidden" value="{$flowinfo.flow_process}" name="flow_process">
-<input type="hidden" value="{$flowinfo.run_id}" name="run_id" id='run_id'>
-<input type="hidden" value="{$flowinfo.run_process}" name="run_process">
 {if condition='$flowinfo.status.wf_mode != 2'}
 <input type="hidden" value="{$flowinfo['nexprocess']['id']}" name="npid">
 {else/}
 <input type="hidden" value="{$flowinfo.process.process_to}" name="npid">
 {/if}
-<input type="hidden" value="{$flowinfo.wf_mode}" name="wf_mode">
-<input type="hidden" value="{$_GET['sup'] ?? ''}" name="sup">
+<input type="hidden" value="{$flowinfo.run_id}" name="run_id"><!--运行步骤-->
+<input type="hidden" value="{$flowinfo.wf_mode}" name="wf_mode"><!--运行模式-->
+<input type="hidden" value="{$_GET['sup'] ?? ''}" name="sup"><!--超级接口-->
+<input id='submit_to_save' name='submit_to_save' value='' type='hidden'><!--审核模式-->
+<input type="hidden" value="{$flowinfo.run_process}" name="run_process"><!--当前运行步骤的ID-->
+<input id='upload' name='art' value='' type='hidden'>
 		<table class="table table-border table-bordered table-bg" style='width:98%'>
 			<thead>
 			<tr>
@@ -37,9 +37,7 @@
 				</tr>
 				<tr>
 				<td colspan=2 class='text-c'>
-				<input id='submit_to_save' name='submit_to_save' value='' type='hidden'>
-				<input id='upload' name='art' value='' type='hidden'>
-				<input  name='sing_st' value='{$flowinfo.sing_st}' type='hidden'>
+				
 				{if condition='$flowinfo.sing_st == 0'}
 					<a class="button" id='nexbton' onclick='tpflow_tj("ok")' >提交</a> 
 					{if condition='$flowinfo.status.is_back != 2'}
