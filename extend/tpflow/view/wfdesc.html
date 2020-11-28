@@ -7,12 +7,12 @@
       <div class="panel-header">功能栏</div>
 	  <div class="panel-body" style='text-align:center'>
 		 欢迎使用流程设计器~<br/><br/>
-		  <button class="btn btn-info" type="button" id="wfSave">保存设计</button><br/><br/>
-		  <button class="btn btn-info" type="button" id="wfAdd">新增步骤</button><br/><br/>
-		  <button class="btn btn-info" type="button" id="wfCheck">逻辑检查</button><br/><br/>
-		  <button class="btn btn-info" type="button" id="wfCleam">清空步骤</button><br/><br/>
-		  <button class="btn btn-info" type="button" id="wfHelp">设计帮助</button><br/><br/>
-		  <button class="btn btn-info" type="button" id="wfRefresh">刷新设计</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("save")'>保存设计</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("add")'>新增步骤</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("check")'>逻辑检查</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("delAll")'>清空步骤</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("Help")'>设计帮助</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("Refresh")'>刷新设计</button><br/><br/>
       </div></div> 
    </div>
   </div> 
@@ -40,46 +40,11 @@
 <script type="text/javascript" src="__Flow__/workflow.4.0.js" ></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow-common.3.0.js" ></script>
-
 <script type="text/javascript">
 var the_flow_id ='{$one.id}';
+var Server_Url ="{$url['Api']}";
+var _this = $('#flowdesign_canvas');
 $(function(){
-	Tpflow.Init($('#flowdesign_canvas'),{$process_data|raw});
-	console.log('page no load star fun ~');
-	
-		
-	$("#wfSave").bind('click',function(){
-		   try{
-              var aProcessData = {};
-              $("#wf_process_info input[type=hidden]").each(function(i){
-                  var processVal = $(this).val().split(",");
-                  if(processVal.length==2)
-                  {
-                    if(!aProcessData[processVal[0]])
-                    {
-                        aProcessData[processVal[0]] = {"top":0,"left":0,"process_to":[]};
-                    }
-                    aProcessData[processVal[0]]["process_to"].push(processVal[1]);
-                  }
-              })
-              _canvas.find("div.process-step").each(function(i){ //生成Json字符串，发送到服务器解析
-                      if($(this).attr('id')){
-                          var pId = $(this).attr('process_id');
-                          var pLeft = parseInt($(this).css('left'));
-                          var pTop = parseInt($(this).css('top'));
-                         if(!aProcessData[pId])
-                          {
-                              aProcessData[pId] = {"top":0,"left":0,"process_to":[]};
-                          }
-                          aProcessData[pId]["top"] =pTop;
-                          aProcessData[pId]["left"] =pLeft;
-                      }
-                  })
-            console.log(JSON.stringify(aProcessData));
-          }catch(e){
-              return '';
-          }
-	});
-
+	Tpflow.Init({$process_data|raw});
 });
 </script>

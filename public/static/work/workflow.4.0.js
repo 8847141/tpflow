@@ -1,17 +1,42 @@
 /*!
- * SFDP 表单设计器---公用方法库
+ * Tpflow Design 流程设计器 V4.0
  * http://cojz8.com
  *
  * 
- * Released under the MIT license
+ * Auth:Guoguo(632522043@qq.com)
  * http://cojz8.com
  *
- * Date: 2020年3月4日23:34:39
+ * Date: 2020年11月28日21:12:20
  */
 var Tpflow = {
-	Init : function(_this,processData) {
+	Init : function(processData) {
 		_this.append('<input type="hidden" id="wf_active_id" value="0"/>');
 		_this.append('<div id="wf_process_info"></div>');
+		  var aConnections = [];
+		  var setConnections = function(conn, remove) {
+			  if (!remove) aConnections.push(conn);
+			  else {
+				  var idx = -1;
+				  for (var i = 0; i < aConnections.length; i++) {
+					  if (aConnections[i] == conn) {
+						  idx = i; break;
+					  }
+				  }
+				  if (idx != -1) aConnections.splice(idx, 1);
+			  }
+			  if (aConnections.length > 0) {
+				  var s = "";
+				  for ( var j = 0; j < aConnections.length; j++ ) {
+					  var from = $('#'+aConnections[j].sourceId).attr('process_id');
+					  var target = $('#'+aConnections[j].targetId).attr('process_id');
+					  s = s + "<input type='hidden' value=\"" + from + "," + target + "\">";
+				  }
+				  $('#wf_process_info').html(s);
+			  } else {
+				  $('#wf_process_info').html('');
+			  }
+			  jsPlumb.repaintEverything();//重画
+		  };
 		var initEndPoints = function(){
 		  $(".process-flag").each(function(i,e) {
 			  var p = $(e).parent();
@@ -59,23 +84,25 @@ var Tpflow = {
         });
 	 var timeout = null;
     //点击或双击事件,这里进行了一个单击事件延迟，因为同时绑定了双击事件
-    $(".process-step").live('click',function(){
+	$(".process-step").live('click',function(){
         _this.find('#wf_active_id').val($(this).attr("process_id")),
         clearTimeout(timeout);
         var obj = this;
-        timeout = setTimeout(defaults.fnClick,300);
+        timeout = setTimeout(Tpflow.Click(),300);
     }).live('dblclick',function(){
         clearTimeout(timeout);
-        defaults.fnDbClick();
+		Tpflow.DelJProcessData();
     });
+	
+  
 	 jsPlumb.draggable(jsPlumb.getSelector(".process-step"),{containment: 'parent'});//允许拖动
 	 initEndPoints();
 	 jsPlumb.bind("jsPlumbConnection", function(info) {
-        Tpflow.LinkInfo(info.connection)
+        setConnections(info.connection)
     });
     //绑定删除connection事件
     jsPlumb.bind("jsPlumbConnectionDetached", function(info) {
-        Tpflow.LinkInfo(info.connection, true);
+       setConnections(info.connection, true);
     });
     //绑定删除确认操作
     jsPlumb.bind("click", function(c) {
@@ -141,31 +168,107 @@ var Tpflow = {
 			
         });
 	},
-	LinkInfo : function(conn, remove) {
-	   var aConnections = [];
-       if (!remove) aConnections.push(conn);
-		  else {
-			  var idx = -1;
-			  for (var i = 0; i < aConnections.length; i++) {
-				  if (aConnections[i] == conn) {
-					  idx = i; break;
-				  }
-			  }
-			  if (idx != -1) aConnections.splice(idx, 1);
-		  }
-		  if (aConnections.length > 0) {
-			  var s = "";
-			  for ( var j = 0; j < aConnections.length; j++ ) {
-				  var from = $('#'+aConnections[j].sourceId).attr('process_id');
-				  var target = $('#'+aConnections[j].targetId).attr('process_id');
-				  s = s + "<input type='hidden' value=\"" + from + "," + target + "\">";
-			  }
-			  $('#wf_process_info').html(s);
-		  } else {
-			  $('#wf_process_info').html('');
-		  }
-		  jsPlumb.repaintEverything();//重画
-
+	Api : function(Action) {
+		var reload = false;
+		switch(Action) {    
+			case 'save':
+				var PostData = {"flow_id":the_flow_id,"process_info":Tpflow.GetJProcessData()};//获取到步骤信息
+				break;
+			case 'delAll':
+				var PostData = {"flow_id":the_flow_id};
+				reload = true;
+				break;
+			case 'del':
+				
+				break;
+			case 'add':
+				var PostData = {"flow_id":the_flow_id};
+				reload = true;
+				break;
+			case 'check':
+				var PostData = {"fid":the_flow_id};
+				break;
+			case 'Refresh':
+				location.reload();
+				break;
+			case 'Help':
+				layer.open({
+					  type: 2,
+					  title: '工作流官网',
+					  shadeClose: true,
+					  shade: false,
+					  maxmin: true, //开启最大化最小化按钮
+					  area: ['893px', '600px'],
+					  content: '//cojz8.com/'
+				});
+				break;
+			 default:
+				
+		} 
+		var Url = Server_Url+'?act='+Action;
+		Tpflow.sPost(Url,PostData,reload);
+	},
+	sPost : function(Post_Url,PostData,reload=true) {
+		$.post(Post_Url,PostData,function(data){
+			if(data.status==1){
+				layer.msg(data.msg,{icon:1,time: 1500},function(){
+					if(reload){
+						location.reload();
+					}
+				}); 
+			}else{
+				 layer.alert(data.msg, {title: "错误信息", icon: 2});
+			}
+		},'json');
+	},
+	DelJProcessData : function(){
+		if(confirm("你确定删除步骤吗？")){
+			var activeId = _this.find("#wf_active_id").val();//右键当前的ID
+			$.post(Server_Url+'?act=del',{"flow_id":the_flow_id,"process_id":activeId},function(data){
+				if(data.status==1){
+					 if(activeId>0){
+						$("#window"+activeId).remove();
+					 }
+					Tpflow.Api('save');
+				}
+				layer.msg(data.msg);
+			},'json');
+		 }
+	},
+	Click : function(){
+		return 123;
+	},
+	GetJProcessData : function(){
+		try{
+              var aProcessData = {};
+              $("#wf_process_info input[type=hidden]").each(function(i){
+                  var processVal = $(this).val().split(",");
+                  if(processVal.length==2)
+                  {
+                    if(!aProcessData[processVal[0]])
+                    {
+                        aProcessData[processVal[0]] = {"top":0,"left":0,"process_to":[]};
+                    }
+                    aProcessData[processVal[0]]["process_to"].push(processVal[1]);
+                  }
+              })
+              _this.find("div.process-step").each(function(i){ //生成Json字符串，发送到服务器解析
+                      if($(this).attr('id')){
+                          var pId = $(this).attr('process_id');
+                          var pLeft = parseInt($(this).css('left'));
+                          var pTop = parseInt($(this).css('top'));
+                         if(!aProcessData[pId])
+                          {
+                              aProcessData[pId] = {"top":0,"left":0,"process_to":[]};
+                          }
+                          aProcessData[pId]["top"] =pTop;
+                          aProcessData[pId]["left"] =pLeft;
+                      }
+                  })
+            return JSON.stringify(aProcessData);
+          }catch(e){
+              return '';
+          }
 	},
 	SetHeight : function() {
 		var ifm= document.getElementById("iframepage");   

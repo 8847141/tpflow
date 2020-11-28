@@ -255,30 +255,37 @@ use think\facade\Request;
 		//Url转换地址
 		$urls = [
 			'welcome'=>url(unit::gconfig('int_url').'/wf/welcome'),
-			'add_process'=>url(unit::gconfig('int_url').'/wf/add_process'),
-			'Checkflow'=>url(unit::gconfig('int_url').'/wf/Checkflow'),
-			'save_canvas'=>url(unit::gconfig('int_url').'/wf/save_canvas'),
-			'del_allprocess'=>url(unit::gconfig('int_url').'/wf/del_allprocess'),
-			'delete_process'=>url(unit::gconfig('int_url').'/wf/delete_process'),
+			'Api'=>url(unit::gconfig('int_url').'/wf/designapi'),
 			'wfatt'=>url(unit::gconfig('int_url').'/wf/wfatt')
 		];
 		return view($this->patch.'/wfdesc.html',['url'=>$urls,'one'=>$one,'process_data'=>$this->ProcessApi('All',$flow_id)]);
     }
-	public function Checkflow($fid){
-		return $this->SuperApi('CheckFlow',$fid);
+	public function designapi($act){
+		if($act=='save'){
+			return json($this->ProcessApi('ProcessLink',input('flow_id'),input('process_info')));
+		}
+		if($act=='check'){
+			return $this->SuperApi('CheckFlow',input('fid'));
+		}
+		if($act=='add'){
+			$flow_id = input('flow_id');
+			$one = $this->FlowApi('GetFlowInfo',$flow_id);
+			if(!$one){
+			  return json(['status'=>0,'msg'=>'添加失败,未找到流程','info'=>'']);
+			}
+			return json($this->ProcessApi('ProcessAdd',$flow_id));
+		}
+		if($act=='delAll'){
+			return json($this->ProcessApi('ProcessDelAll',input('flow_id')));
+		}
+		if($act=='del'){
+			return json($this->ProcessApi('ProcessDel',input('flow_id'),input('process_id')));
+		}
+		
+		
+		
 	}
-	/**
-	 * 添加流程
-	 **/
-    public function add_process()
-    {
-        $flow_id = input('flow_id');
-        $one = $this->FlowApi('GetFlowInfo',$flow_id);
-        if(!$one){
-          return json(['status'=>0,'msg'=>'添加失败,未找到流程','info'=>'']);
-        }
-		return json($this->ProcessApi('ProcessAdd',$flow_id));
-    }
+
 	public function wfchange()
 	{
 		 if ($this->request::isGet()) {
@@ -291,13 +298,7 @@ use think\facade\Request;
 			}
 		 }
 	}
-	/**
-	 * 保存布局
-	 **/
-    public function save_canvas()
-    {
-		return json($this->ProcessApi('ProcessLink',input('flow_id'),input('process_info')));
-    }
+	
 	public function save_attribute()
     {
 	    $data = input('post.');
@@ -309,17 +310,6 @@ use think\facade\Request;
 	    $info = $this->ProcessApi('ProcessAttView',input('id'));
 		return view($this->patch.'/wfatt.html',['int_url'=>unit::gconfig('int_url'),'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
     }
-	/**
-	 * 删除流程
-	 **/
-   public function delete_process()
-    {
-		return json($this->ProcessApi('ProcessDel',input('flow_id'),input('process_id')));
-    }
-	public function del_allprocess()
-	{
-		return json($this->ProcessApi('ProcessDelAll',input('flow_id')));
-	}
 	public function wfgl()
     {
         return view($this->patch.'/wfgl.html',['int_url'=>unit::gconfig('int_url'),'list'=>Entrust::lists()]);
