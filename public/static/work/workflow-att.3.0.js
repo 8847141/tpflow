@@ -59,7 +59,6 @@
         }
         oObj.options[current].value = sValue;
         oObj.options[current].text = sText;
-       // $('#conList_'+id+' option').eq(current).text(sText)
        $('#conList_'+id).append('<option value="( ">( </option>');
 
     }

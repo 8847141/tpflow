@@ -252,15 +252,12 @@ use think\facade\Request;
         if(!$one){
             $this->error('未找到数据，请返回重试!');
         }
-		//Url转换地址
-		$urls = [
-			'welcome'=>url(unit::gconfig('int_url').'/wf/welcome'),
-			'Api'=>url(unit::gconfig('int_url').'/wf/designapi'),
-			'wfatt'=>url(unit::gconfig('int_url').'/wf/wfatt')
-		];
-		return view($this->patch.'/wfdesc.html',['url'=>$urls,'one'=>$one,'process_data'=>$this->ProcessApi('All',$flow_id)]);
+		return view($this->patch.'/wfdesc.html',['urlApi'=>url(unit::gconfig('int_url').'/wf/designapi'),'one'=>$one,'process_data'=>$this->ProcessApi('All',$flow_id)]);
     }
 	public function designapi($act){
+		if($act=='welcome'){
+			return $this->welcome();
+		}
 		if($act=='save'){
 			return json($this->ProcessApi('ProcessLink',input('flow_id'),input('process_info')));
 		}
@@ -281,9 +278,15 @@ use think\facade\Request;
 		if($act=='del'){
 			return json($this->ProcessApi('ProcessDel',input('flow_id'),input('process_id')));
 		}
-		
-		
-		
+		if($act=='saveatt'){
+			var_dump(input('post.'));
+			exit;
+			return json($this->ProcessApi('ProcessAttSave',$data['process_id'],input('post.')));
+		}
+		if($act=='att'){
+			$info = $this->ProcessApi('ProcessAttView',input('id'));
+			return view($this->patch.'/wfatt.html',['int_url'=>unit::gconfig('int_url'),'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
+		}
 	}
 
 	public function wfchange()
@@ -298,18 +301,6 @@ use think\facade\Request;
 			}
 		 }
 	}
-	
-	public function save_attribute()
-    {
-	    $data = input('post.');
-		return json($this->ProcessApi('ProcessAttSave',$data['process_id'],$data));
-    }
-	//步骤属性
-    public function wfatt()
-    {
-	    $info = $this->ProcessApi('ProcessAttView',input('id'));
-		return view($this->patch.'/wfatt.html',['int_url'=>unit::gconfig('int_url'),'op'=>$info['show'],'one'=>$info['info'],'from'=>$info['from'],'process_to_list'=>$info['process_to_list'],'child_flow_list'=>$info['child_flow_list']]);
-    }
 	public function wfgl()
     {
         return view($this->patch.'/wfgl.html',['int_url'=>unit::gconfig('int_url'),'list'=>Entrust::lists()]);

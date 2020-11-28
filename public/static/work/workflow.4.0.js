@@ -88,13 +88,12 @@ var Tpflow = {
         _this.find('#wf_active_id').val($(this).attr("process_id")),
         clearTimeout(timeout);
         var obj = this;
+		Tpflow.DClick($(this).attr("process_id"));
         timeout = setTimeout(Tpflow.Click(),300);
     }).live('dblclick',function(){
         clearTimeout(timeout);
 		Tpflow.DelJProcessData();
     });
-	
-  
 	 jsPlumb.draggable(jsPlumb.getSelector(".process-step"),{containment: 'parent'});//允许拖动
 	 initEndPoints();
 	 jsPlumb.bind("jsPlumbConnection", function(info) {
@@ -168,6 +167,11 @@ var Tpflow = {
 			
         });
 	},
+	
+	DClick : function(id) {
+		var url = Server_Url+"?id="+id+"&act=att";
+		$('#iframepage').attr('src',url);
+	},
 	Api : function(Action) {
 		var reload = false;
 		switch(Action) {    
@@ -178,8 +182,9 @@ var Tpflow = {
 				var PostData = {"flow_id":the_flow_id};
 				reload = true;
 				break;
-			case 'del':
+			case 'att':
 				
+				return ;
 				break;
 			case 'add':
 				var PostData = {"flow_id":the_flow_id};

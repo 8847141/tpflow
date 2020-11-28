@@ -12,7 +12,6 @@ use think\facade\Route;
 
 //Tpflow 4.0工作流引擎路由配置
 Route::group('wf', function () {
-        Route::rule('welcome', '\tpflow\Api@welcome');
         Route::rule('wfindex', '\tpflow\Api@wfindex');
 		Route::rule('designapi', '\tpflow\Api@designapi');//设计统一接口API
 		Route::get('wfjk','\tpflow\Api@wfjk');
@@ -23,7 +22,6 @@ Route::group('wf', function () {
 		Route::get('wfdesc','\tpflow\Api@wfdesc'); //设计界面
 		Route::get('wfchange','\tpflow\Api@wfchange');//工作流启用关闭
 		//步骤属性设计
-		Route::get('wfatt','\tpflow\Api@wfatt'); //设计界面
 		Route::post('save_attribute','\tpflow\Api@save_attribute'); //步骤属性保存
 		//流程启动  
 		Route::rule('wfcheck','\tpflow\Api@wfcheck'); //工作流审核
