@@ -157,42 +157,11 @@
 <td>
     <table class="table table-condensed">
     <tbody>
-      <tr>
-        <td>
-            <select id="field_{$k.id}" class="smalls">
-              <option value="">选择字段</option>
-			  {volist name='from' id='v'}
-			  <option value="{$key}">{$v}</option>
-			  {/volist}
-            </select>
-            <select id="condition_{$k.id}" class="smalls" style="width: 60px;">
-				<option value="=">=</option>
-				<option value="&lt;&gt;"><></option>
-				<option value="&gt;">></option>
-				<option value="&lt;"><</option>
-				<option value="&gt;=">>=</option>
-				<option value="&lt;="><=</option>
-            </select>
-            <input type="text" id="item_value_{$k.id}" class="smalls" style="width: 40px;">
-            <select id="relation_{$k.id}" class="smalls" style="width: 40px;"><option value="AND">AND</option><option value="OR">OR</option>
-            </select>
-        </td>
-        <td>
-			<button type="button" class="wf_btn" onclick="fnAddLeftParenthesis('{$k.id}')">（</button>
-			<button type="button" class="wf_btn" onclick="fnAddRightParenthesis('{$k.id}')">）</button>
-			<button type="button" onclick="fnAddConditions('{$k.id}')" class="wf_btn">新增</button>
-        </td>
-       </tr>
+
        <tr>
         <td>
-            <select id="conList_{$k.id}" multiple="" style="width: 100%;height: 80px;">
-			{$k.condition|raw}
-			</select>
-        </td>
-        <td>
-        <button type="button" onclick="fnDelCon('{$k.id}')" class="wf_btn">删行</button>
-        <button type="button" onclick="fnClearCon('{$k.id}')" class="wf_btn">清空</button>
-           <input name="process_in_set_{$k.id}" id="process_in_set_{$k.id}" type="hidden">
+			<textarea name='process_in_set_{$k.id}'  type="text/plain" style="width:100%;height:100px;">{$k.condition|raw}</textarea>
+			Tip:填写必须符合SQL语句规范 详见：AdapteeBill::checkbill Where
         </td>
       </tr>
      
@@ -250,7 +219,6 @@
 </div>
 </form>
 <script type="text/javascript" src="__Flow__/jquery-ui-1.9.2-min.js?" ></script>
-<script type="text/javascript" src="__Flow__/workflow-att.3.0.js"></script>
 <script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow-common.3.0.js" ></script>
@@ -268,9 +236,43 @@ $(function(){
                 ajax_progress(ret);
             }
         });
-});
-var wf_mode = "{:isset($one.wf_mode)?$one.wf_mode:'0'}";
-if(wf_mode ==1){
-	check_from();	
-}
+		  $("#auto_person_id").on('change',function(){
+			  var apid = $(this).val();
+			  if(apid==3){
+				  $("#auto_person_3").show();//指定用户
+			  }else{
+				  $("#auto_person_3").hide();
+			  }
+			  if(apid==4){
+				  $("#auto_person_4").show();//指定用户
+			  }else{
+				  $("#auto_person_4").hide();
+			  }
+			  if(apid==5){
+				  $("#auto_person_5").show();//指定角色
+			  }else{
+				  $("#auto_person_5").hide();
+			  }
+			  if(apid==6){
+				  $("#auto_person_6").show();//指定角色
+			  }else{
+				  $("#auto_person_6").hide();
+			  }
+		  });
+    $("#wf_mode_id").on('change',function(){
+			  var apid = $(this).val();
+			  if(apid==0){
+				  $("#wf_mode_2").hide();//单一转出模式
+			  }
+			  if(apid==2){
+				 $("#wf_mode_2").hide();//转出模式
+			  }
+			  if(apid==1){
+				  $("#wf_mode_2").show();//同步模式
+			  }else{
+				  $("#wf_mode_2").hide();
+			  }
+		  });
+	});
+
 </script>
