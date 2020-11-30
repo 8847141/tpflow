@@ -275,6 +275,25 @@ var Tpflow = {
               return '';
           }
 	},
+	tabchange : function(obj,value) {
+		$(obj).attr("class","choice")
+		$(obj).siblings().attr("class","")
+		$("#box").find("div:eq("+value+")").attr("class","show")
+		$("#box").find("div:eq("+value+")").siblings().attr("class","tab-item")
+	},
+	onchange : function(obj,type) {
+		var apid = $(obj).val();
+		if(type=='auto_person'){
+			$(".auto_person").hide();
+			$("#auto_person_"+apid).show();
+		}else{
+			if(apid==1){
+				$("#wf_mode_2").show();
+			}else{
+				$("#wf_mode_2").hide();
+			}
+		}
+	},
 	SetHeight : function() {
 		var ifm= document.getElementById("iframepage");   
 		var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
