@@ -30,7 +30,22 @@ Class Work{
 	 **/
 	static function WorkApi($config)
 	{
-		return (new Work())->mode->WorkApi($config);
+		$sql_return = 'null';
+		$msg_return = 'null';
+		//取出当前运行的步骤ID
+		$run_process = Run::FindRunProcessId($config['run_process']);
+		//获取当前步骤版本ID，对应的所有信息
+		$flow_process_info = Process::find($run_process['run_flow_process']);;
+		if(!$flow_process_info){
+			return 'flow_process_info err!';
+		}
+		if($flow_process_info['work_sql'] <> ''){
+			$sql_return = self::WorkSql($config,$flow_process_info);
+		}
+		if($flow_process_info['work_msg'] <> ''){
+			$msg_return= self::WorkMsg($config,$flow_process_info);
+		}
+		return 'work_sql:'.$sql_return.'|work_msg:'.$msg_return;
 	}
 	/**
 	 * 审批事务执行处理

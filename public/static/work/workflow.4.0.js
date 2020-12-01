@@ -9,6 +9,68 @@
  * Date: 2020年11月28日21:12:20
  */
 var Tpflow = {
+	sing_post : function(value) {
+			if(value =='sback'){
+			$('#nex_process').hide();//
+			$('#nexbton').hide();
+			$('#singbton').hide();
+			$('#backbton').html('确认回退');
+			$('#back_process').show();
+			var select = $('#backflow option:selected').val();
+			$("#singflow").removeAttr("datatype");
+			if(select==''){
+				layer.msg('请选择回退步骤');
+				return false;
+			}
+		}
+		if(value =='sok'){
+			$("#backflow").removeAttr("datatype");
+			$("#singflow").removeAttr("datatype");
+		}
+		$('#submit_to_save').val(value);
+		$('#wfform').submit();
+	},
+	check_post : function(value) {
+		if(value =='ok'){
+			$("#backflow").removeAttr("datatype");
+			$("#singflow").removeAttr("datatype");
+		}
+		$('#submit_to_save').val(value);
+		$('#wfform').submit();
+	},
+	lopen : function(title,url,w,h) {
+		if (title == null || title == '') {
+				title=false;
+			};
+			if (w == null || w == '') {
+				w=($(window).width() - 50);
+			};
+			if (h == null || h == '') {
+				h=($(window).height() - 50);
+			};
+			layer.open({
+				type: 2,
+				area: [w, h],
+				fix: false, //不固定
+				maxmin: true,
+				shade:0.4,
+				title: title,
+				content: url
+			});
+	},
+	lclose : function(title,url,w,h) {
+		var index = parent.layer.getFrameIndex(window.name);
+		parent.layer.close(index);
+	},
+	common_return : function(data) {
+		if (data.code == 0) {
+			layer.msg(data.msg,{icon:1,time: 1500},function(){
+					parent.location.reload(); // 父页面刷新
+			});          
+		} else {
+		   layer.alert(data.msg, {title: "错误信息", icon: 2});
+		}
+	},
 	Init : function(processData) {
 		_this.append('<input type="hidden" id="wf_active_id" value="0"/>');
 		_this.append('<div id="wf_process_info"></div>');

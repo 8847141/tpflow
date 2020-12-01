@@ -143,7 +143,7 @@ use think\facade\Request;
 			   if($v['edit']==''){
 				   $url_edit = url(unit::gconfig('int_url').'/wf/wfadd',['id'=>$v['id']]);
 				   $url_desc = url(unit::gconfig('int_url').'/wf/wfdesc',['flow_id'=>$v['id']]);
-				   $btn ="<a class='button' onclick=layer_open('修改','".$url_edit."','550','400')> 修改</a> <a class='button' onclick=layer_open('流程设计','".$url_desc."')> 设计流程</a> ";
+				   $btn ="<a class='button' onclick=Tpflow.lopen('修改','".$url_edit."','550','400')> 修改</a> <a class='button' onclick=Tpflow.lopen('流程设计','".$url_desc."')> 设计流程</a> ";
 			   }else{
 				   $btn ="<a class='btn  radius size-S'> 运行中....</a>";
 			   }
@@ -279,9 +279,8 @@ use think\facade\Request;
 			return json($this->ProcessApi('ProcessDel',input('flow_id'),input('process_id')));
 		}
 		if($act=='saveatt'){
-			var_dump(input('post.'));
-			exit;
-			return json($this->ProcessApi('ProcessAttSave',$data['process_id'],input('post.')));
+			
+			return json($this->ProcessApi('ProcessAttSave',input('process_id'),input('post.')));
 		}
 		if($act=='att'){
 			$info = $this->ProcessApi('ProcessAttView',input('id'));

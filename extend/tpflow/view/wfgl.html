@@ -2,11 +2,11 @@
 <head>
 <title>Tpflow V4.0 代理列表</title>
 </head>
-<link rel="stylesheet" type="text/css" href="__Flow__/workflow-common.css"/>
+<link rel="stylesheet" type="text/css" href="__Flow__/workflow.4.0.css"/>
 <body>
 <div class="page-container">
 <div style='float: left;width:6%'>
-	<a onclick="layer_open('添加委托授权','{:url($int_url.'/wf/entrust')}','750','400')" class="button ">委托代理</a> <hr/>
+	<a onclick="Tpflow.lopen('添加委托授权','{:url($int_url.'/wf/entrust')}','750','400')" class="button ">委托代理</a> <hr/>
 	<a onclick="location.reload();" class="button ">刷新页面</a>
 
 </div>
@@ -34,7 +34,7 @@
 		<td>{$vo.old_name}=>{$vo.entrust_name}</td>
 		<td>{$vo.entrust_stime|date='Y-m-d H:i:s'}~{$vo.entrust_etime|date='Y-m-d H:i:s'}</td>
 		<td>{$vo.entrust_con}</td>
-      <td> <a class='button' onclick="layer_open('修改','{:url($int_url.'/wf/entrust',['id'=>$vo.id])}','750','400')"> 修改</a>
+      <td> <a class='button' onclick="Tpflow.lopen('修改','{:url($int_url.'/wf/entrust',['id'=>$vo.id])}','750','400')"> 修改</a>
 	   </td>
     </tr>
     {/volist}
@@ -44,6 +44,6 @@
 </div>
 <script type="text/javascript" src="__Flow__/jquery-1.7.2.min.js" ></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
-<script type="text/javascript" src="__Flow__/workflow-common.3.0.js" ></script>
+<script type="text/javascript" src="__Flow__/workflow.4.0.js" ></script>
 </body>
 </html>

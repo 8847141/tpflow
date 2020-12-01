@@ -1,6 +1,5 @@
-<link rel="stylesheet" type="text/css" href="__Flow__/workflow.3.0.css"/>
-<link rel="stylesheet" type="text/css" href="__Flow__/workflow-common.css"/>
-<form  class="form-horizontal" action="{:url($int_url.'/wf/designapi?act=saveatt')}" method="post" name="form" id="form">
+<link rel="stylesheet" type="text/css" href="__Flow__/workflow.4.0.css"/>
+<form  class="form-horizontal" action="{:url($int_url.'/wf/designapi')}?act=saveatt" method="post" name="form" id="form">
 </head>
 <body>
    <ul id='wfatt' style='height: 30px;width: 600px;padding: 0;margin: 0;'>
@@ -20,32 +19,33 @@
 			<tr><td>步骤尺寸</td><td><input type="text" class="smalls" name="style_width" value="{$one.style.width}" style='width:60px'> X <input type="text" class="smalls" name="style_height" value="{$one.style.height}" readonly style='width:60px'></td></tr>
 		</table>
 	   
-	   </div>
+	   </div> 
        <div class="tab-item">
 	   <table class="tables">
 	   <tr><td>步骤类型</td><td><input type="radio" name="process_type" value="is_step" {if condition="$one.process_type eq 'is_step'"}checked="checked"{/if}>正常步骤
                 <input type="radio" name="process_type" value="is_one" {if condition="$one.process_type eq 'is_one'"}checked="checked"{/if}>第一步</td></tr>
 		<tr><td>调用方法</td><td><input type="text" class="smalls" name="wf_action"  value="{$one.wf_action ?? 'view'}"></td></tr>	
 <tr><td>会签方式</td><td><select name="is_sing" >
-              <option value="1" {if condition="$one.is_sing eq 1"}selected="selected"{/if}>允许会签</option>
-              <option value="2" {if condition="$one.is_sing eq 2"}selected="selected"{/if}>禁止会签</option>
+              <option value="1" >允许会签</option>
+              <option value="2" >禁止会签</option>
             </select></td></tr>	
 <tr><td>回退方式</td><td><select name="is_back" >
-              <option value="1" {if condition="$one.is_back eq 1"}selected="selected"{/if}>允许回退</option>
-              <option value="2" {if condition="$one.is_back eq 2"}selected="selected"{/if}>不允许</option>
+              <option value="1" >允许回退</option>
+              <option value="2" >不允许</option>
             </select></td></tr>			
 		
 	   </table></div>
        <div class="tab-item"> <table class="tables">
 	   <tr><td>办理人员</td><td colspan='3'><select name="auto_person" id="auto_person_id" datatype="*" nullmsg="请选择办理人员或者角色！" onchange="Tpflow.onchange(this,'auto_person');">
                 <option value="">请选择</option>
-				 {if condition="$one.process_type neq 'is_one'"}<option value="3" {if condition="$one['auto_person'] eq 3"}selected="selected"{/if}>自由选择</option>{/if}
-				 <option value="4" {if condition="$one['auto_person'] eq 4"}selected="selected"{/if}>指定人员</option>
-                <option value="5" {if condition="$one['auto_person'] eq 5"}selected="selected"{/if}>指定角色</option>
-				<option value="6" {if condition="$one['auto_person'] eq 6"}selected="selected"{/if}>事务接受</option>
+				 {if condition="$one.process_type neq 'is_one'"}<option value="3">自由选择</option>{/if}
+				 <option value="4" >指定人员</option>
+                <option value="5" >指定角色</option>
+				<option value="6" >事务接受</option>
               </select></td></tr> 
+			 
 			<tr class='auto_person {if condition="$one['auto_person'] neq 3"}hide{/if}' id="auto_person_3" ><td>自由选择</br>
-			<a class="button" onclick="layer_open('办理人','{:url($int_url.'/wf/super_user',['kid'=>'range_user','type_mode'=>'user'])}','350','500')">选择</a>
+			<a class="button" onclick="Tpflow.lopen('办理人','{:url($int_url.'/wf/super_user',['kid'=>'range_user','type_mode'=>'user'])}','350','500')">选择</a>
 			</td><td> 
 				<input type="hidden" name="range_user_ids" id="range_user_ids" value="{$one.range_user_ids}">
                     <input class="input-xlarge" readonly="readonly" type="hidden" placeholder="选择办理人范围" name="range_user_text" id="range_user_text" value="{$one.range_user_text ?? ''}"> 
@@ -64,7 +64,7 @@
 					</td>	
 			</tr>
 			<tr class='auto_person {if condition="$one['auto_person'] neq 4"}hide{/if}' id="auto_person_4" ><td>指定人员
-			</br/><a class="button" onclick="layer_open('办理人','{:url($int_url.'/wf/super_user',['kid'=>'auto_sponsor','type_mode'=>'user'])}','350','500')">选择</a></td><td> 
+			</br/><a class="button" onclick="Tpflow.lopen('办理人','{:url($int_url.'/wf/super_user',['kid'=>'auto_sponsor','type_mode'=>'user'])}','350','500')">选择</a></td><td> 
 			
 			<input type="hidden" name="auto_sponsor_ids" id="auto_sponsor_ids" value="{$one.auto_sponsor_ids}">
              <input class="input-xlarge" readonly="readonly" type="hidden" placeholder="指定办理人" name="auto_sponsor_text" id="auto_sponsor_text" value="{$one.auto_sponsor_text ?? ''}"> 
@@ -79,7 +79,7 @@
 					</span>	
 					</td>	
 			</tr>
-			<tr class='auto_person {if condition="$one['auto_person'] neq 5"}hide{/if}' id="auto_person_5" ><td>指定角色<br/><a class="button" onclick="layer_open('办理角色','{:url($int_url.'/wf/super_user',['kid'=>'','type_mode'=>'role'])}','350','500')">选择</a></td><td> 
+			<tr class='auto_person {if condition="$one['auto_person'] neq 5"}hide{/if}' id="auto_person_5" ><td>指定角色<br/><a class="button" onclick="Tpflow.lopen('办理角色','{:url($int_url.'/wf/super_user',['kid'=>'','type_mode'=>'role'])}','350','500')">选择</a></td><td> 
 			<input type="hidden" name="auto_role_ids" id="auto_role_value" value="{$one.auto_role_ids}" >
 			
 			<span id='auto_role_html'>
@@ -97,32 +97,43 @@
             <input class="input-xlarge" readonly="readonly" type="hidden" placeholder="指定角色" name="auto_role_text" id="auto_role_text" value="{$one.auto_role_text ?? ''}">
 			</td>	
 			</tr>
+			
 			<tr class='auto_person {if condition="$one['auto_person'] neq 6"}hide{/if}' id="auto_person_6" ><td>事务接受</td><td> 
 				取业务表<select   class="smalls" name='work_text'>
               <option value="">选择字段</option>
 			  {volist name='from' id='v'}
-			  <option value="{$key}" {if condition='$key eq $one["work_text"]'}selected{/if}>{$v}</option>
+			  <option value="{$key}">{$v}</option>
 			  {/volist}
             </select>的 
 			<select name="work_ids"  nullmsg="人员">
-				<option value="1" {if condition='1 eq $one["work_ids"]'}selected{/if}>制单人员</option>
+				<option value="1">制单人员</option>
 			</select>
+			
 			</td>	
 			</tr>
 			</table>
 	   </div>
 	   <div class="tab-item">
 	    <table class="tables">
+				<!--<tr><td>单据操作</td><td  colspan='3'>
+					<select name="wf_mode" id="wf_mode_id" datatype="*" nullmsg="请选择单据操作" onchange="Tpflow.onchange(this,'wf_mode');">
+						<option value="0">不执行操作</option>
+						<option value="before">审批前</option>
+						<option value="after">审批后</option> 
+					</select>
+				</td>
+				</tr>-->	
 				<tr><td>步骤模式</td><td  colspan='3'>
 					<select name="wf_mode" id="wf_mode_id" datatype="*" nullmsg="请选择步骤模式" onchange="Tpflow.onchange(this,'wf_mode');">
 					<option value="">请选择步骤模式</option>
 					{if condition='count($one.process_to)>1'}
-					 <option value="1" {if condition="$one['wf_mode'] eq 1"}selected="selected"{/if}>转出模式（符合执行）</option>
-					 <option value="2" {if condition="$one['wf_mode'] eq 2"}selected="selected"{/if}>同步模式（均需办理）</option>
+					 <option value="1">转出模式（符合执行）</option>
+					 <option value="2">同步模式（均需办理）</option>
 					 {else/}
-					 <option value="0" {if condition="$one['wf_mode'] eq 0"}selected="selected"{/if}>单线模式（流程为直线型单一办理模式）</option>
+					 <option value="0">单线模式（流程为直线型单一办理模式）</option>
 					{/if}
 				  </select>
+				  
 				</td></tr>	
 <!--重新设计，带转出模式-->
 <tr id='wf_mode_2' {if condition="$one['wf_mode'] neq 1"}class="hide"{/if}>
@@ -174,9 +185,6 @@
    <table>
    <tr><td style='text-align: center;'><button  class="button" type="submit">保存</button></td></tr>	
     </table>
-   
-   
-  
 <input type="hidden" name="process_condition" id="process_condition" value='{$one.process_tos}'>
 
 <div>
@@ -189,19 +197,26 @@
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow-common.3.0.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow.4.0.js" ></script>
+		
 <script type="text/javascript">
+$("[name='auto_person']").find("[value='{$one['auto_person']}']").attr("selected",true);
+$("[name='is_sing']").find("[value='{$one['is_sing']}']").attr("selected",true);
+$("[name='is_back']").find("[value='{$one['is_back']}']").attr("selected",true);
+$("[name='work_text']").find("[value='{$one['work_text']}']").attr("selected",true);
+$("[name='work_ids']").find("[value='{$one['work_ids']}']").attr("selected",true);
+$("[name='wf_mode']").find("[value='{$one['wf_mode']}']").attr("selected",true);
 $(function(){
 	$("#form").Validform({
-           tiptype:function(msg,o,cssctl){
-					if (o.type == 3){
-						layer.msg(msg, {time: 800}); 
-					}
-			},
-            ajaxPost:true,
-            showAllError:true,
-            callback:function(ret){
-                ajax_progress(ret);
-            }
-        });
+	   tiptype:function(msg,o,cssctl){
+			if (o.type == 3){
+				layer.msg(msg, {time: 800}); 
+			}
+		},
+		ajaxPost:true,
+		showAllError:true,
+		callback:function(ret){
+			Tpflow.common_return(ret);
+		}
+	});
 });
 </script>
