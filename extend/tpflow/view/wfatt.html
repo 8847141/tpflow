@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="__Flow__/workflow.4.0.css"/>
 <form  class="form-horizontal" action="{:url($int_url.'/wf/designapi')}?act=saveatt" method="post" name="form" id="form">
+
 </head>
 <body>
    <ul id='wfatt' style='height: 30px;width: 600px;padding: 0;margin: 0;'>
@@ -13,17 +14,21 @@
        <div class="tab-item show">
 	   <input type="hidden" name="flow_id" value="{$one.flow_id}"/>
 	<input type="hidden" name="process_id" value="{$one.id}"/>
+	<input type="hidden" name="process_condition" id="process_condition" value='{$one.process_tos}'>
 		<table class="tables">
 			<tr><td>节点ID</td><td>{$one.id}</td></tr>
 			<tr><td>步骤名称</td><td><input type="text" class="smalls" name="process_name" value="{$one.process_name}"></td></tr>
-			<tr><td>步骤尺寸</td><td><input type="text" class="smalls" name="style_width" value="{$one.style.width}" style='width:60px'> X <input type="text" class="smalls" name="style_height" value="{$one.style.height}" readonly style='width:60px'></td></tr>
+			<tr><td>步骤尺寸</td><td><input type="text" class="smalls" name="style_width" value="{$one.style.width}" style='width:60px'> X {$one.style.height}</td></tr>
 		</table>
 	   
 	   </div> 
        <div class="tab-item">
 	   <table class="tables">
-	   <tr><td>步骤类型</td><td><input type="radio" name="process_type" value="is_step" {if condition="$one.process_type eq 'is_step'"}checked="checked"{/if}>正常步骤
-                <input type="radio" name="process_type" value="is_one" {if condition="$one.process_type eq 'is_one'"}checked="checked"{/if}>第一步</td></tr>
+	   <tr><td>步骤类型</td><td>
+		<select name="process_type" >
+              <option value="is_step" >正常步骤</option>
+              <option value="is_one" >第一步</option>
+            </select></td></tr>
 		<tr><td>调用方法</td><td><input type="text" class="smalls" name="wf_action"  value="{$one.wf_action ?? 'view'}"></td></tr>	
 <tr><td>会签方式</td><td><select name="is_sing" >
               <option value="1" >允许会签</option>
@@ -44,15 +49,16 @@
 				<option value="6" >事务接受</option>
               </select></td></tr> 
 			 
-			<tr class='auto_person {if condition="$one['auto_person'] neq 3"}hide{/if}' id="auto_person_3" ><td>自由选择</br>
-			<a class="button" onclick="Tpflow.lopen('办理人','{:url($int_url.'/wf/super_user',['kid'=>'range_user','type_mode'=>'user'])}','350','500')">选择</a>
+			<tr class='auto_person hide' id="auto_person_3" ><td>
+		
+			<input type="button" value="自由选择" onclick="Tpflow.lopen('办理人','{:url($int_url.'/wf/super_user',['kid'=>'range_user','type_mode'=>'user'])}','400','500')">
 			</td><td> 
 				<input type="hidden" name="range_user_ids" id="range_user_ids" value="{$one.range_user_ids}">
                     <input class="input-xlarge" readonly="readonly" type="hidden" placeholder="选择办理人范围" name="range_user_text" id="range_user_text" value="{$one.range_user_text ?? ''}"> 
 					
 					<span id='range_user_html'>
 					{if condition='count(explode(",",$one.range_user_text)) egt 1'}
-					<table class='tables'><tr><td>序号</td><td>名称</td></tr>
+						<table class='tables'><tr><td>序号</td><td>名称</td></tr>
 						{volist name=':explode(",",$one.range_user_text)' id="vo"  }
 							<tr><td>{$key}</td><td>{$vo}</td></tr>
 						{/volist}
@@ -63,8 +69,9 @@
 					
 					</td>	
 			</tr>
-			<tr class='auto_person {if condition="$one['auto_person'] neq 4"}hide{/if}' id="auto_person_4" ><td>指定人员
-			</br/><a class="button" onclick="Tpflow.lopen('办理人','{:url($int_url.'/wf/super_user',['kid'=>'auto_sponsor','type_mode'=>'user'])}','350','500')">选择</a></td><td> 
+			<tr class='auto_person hide' id="auto_person_4" ><td>
+			<input type="button" value="指定人员" onclick="Tpflow.lopen('办理人','{:url($int_url.'/wf/super_user',['kid'=>'auto_sponsor','type_mode'=>'user'])}','400','500')">
+			</td><td> 
 			
 			<input type="hidden" name="auto_sponsor_ids" id="auto_sponsor_ids" value="{$one.auto_sponsor_ids}">
              <input class="input-xlarge" readonly="readonly" type="hidden" placeholder="指定办理人" name="auto_sponsor_text" id="auto_sponsor_text" value="{$one.auto_sponsor_text ?? ''}"> 
@@ -79,7 +86,9 @@
 					</span>	
 					</td>	
 			</tr>
-			<tr class='auto_person {if condition="$one['auto_person'] neq 5"}hide{/if}' id="auto_person_5" ><td>指定角色<br/><a class="button" onclick="Tpflow.lopen('办理角色','{:url($int_url.'/wf/super_user',['kid'=>'','type_mode'=>'role'])}','350','500')">选择</a></td><td> 
+			<tr class='auto_person hide' id="auto_person_5" ><td>
+			<input type="button" value="指定角色" onclick="Tpflow.lopen('指定角色','{:url($int_url.'/wf/super_user',['kid'=>'','type_mode'=>'role'])}','400','500')">
+			</td><td> 
 			<input type="hidden" name="auto_role_ids" id="auto_role_value" value="{$one.auto_role_ids}" >
 			
 			<span id='auto_role_html'>
@@ -98,7 +107,7 @@
 			</td>	
 			</tr>
 			
-			<tr class='auto_person {if condition="$one['auto_person'] neq 6"}hide{/if}' id="auto_person_6" ><td>事务接受</td><td> 
+			<tr class='auto_person hide' id="auto_person_6" ><td>事务接受</td><td> 
 				取业务表<select   class="smalls" name='work_text'>
               <option value="">选择字段</option>
 			  {volist name='from' id='v'}
@@ -185,7 +194,7 @@
    <table>
    <tr><td style='text-align: center;'><button  class="button" type="submit">保存</button></td></tr>	
     </table>
-<input type="hidden" name="process_condition" id="process_condition" value='{$one.process_tos}'>
+
 
 <div>
 </div>
@@ -195,16 +204,17 @@
 <script type="text/javascript" src="__Flow__/jquery-ui-1.9.2-min.js?" ></script>
 <script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
-<script type="text/javascript" src="__Flow__/workflow-common.3.0.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow.4.0.js" ></script>
 		
 <script type="text/javascript">
+$("#auto_person_{$one['auto_person']}").show();
 $("[name='auto_person']").find("[value='{$one['auto_person']}']").attr("selected",true);
 $("[name='is_sing']").find("[value='{$one['is_sing']}']").attr("selected",true);
 $("[name='is_back']").find("[value='{$one['is_back']}']").attr("selected",true);
 $("[name='work_text']").find("[value='{$one['work_text']}']").attr("selected",true);
 $("[name='work_ids']").find("[value='{$one['work_ids']}']").attr("selected",true);
 $("[name='wf_mode']").find("[value='{$one['wf_mode']}']").attr("selected",true);
+$("[name='process_type']").find("[value='{$one['process_type']}']").attr("selected",true);
 $(function(){
 	$("#form").Validform({
 	   tiptype:function(msg,o,cssctl){

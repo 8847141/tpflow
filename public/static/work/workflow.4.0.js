@@ -256,7 +256,7 @@ var Tpflow = {
 				var PostData = {"fid":the_flow_id};
 				break;
 			case 'Refresh':
-				location.reload();
+				location.reload();return;
 				break;
 			case 'Help':
 				layer.open({

@@ -332,14 +332,14 @@ class Flow
             'auto_role_text' => $datas['auto_role_text'],
             'range_user_ids' => $datas['range_user_ids'],
             'range_user_text' => $datas['range_user_text'],
-			'work_text' => $datas['work_text'],//新增事务功能
+			'work_text' => $datas['work_text'],//新增事务功能  style_height
             'work_ids' => $datas['work_ids'],  //新增事务功能
 			'work_msg' => $datas['work_msg'],  //新增事务MSG
 			'work_sql' => $datas['work_sql'],  //新增事务SQL
             'is_sing' => $datas['is_sing'],
             'is_back' => $datas['is_back'],
             'out_condition' => json_encode($out_condition),
-            'style' => json_encode(['width' => $datas['style_width'], 'height' => $datas['style_height'], 'color' => '#0e76a8'])
+            'style' => json_encode(['width' => $datas['style_width'], 'height' => 'auto', 'color' => '#0e76a8'])
         ];
         if (isset($datas["process_to"])) {
             $data['process_to'] = unit::ids_parse($datas['process_to']);
