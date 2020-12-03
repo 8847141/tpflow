@@ -199,6 +199,12 @@ class Info{
 					   $workflow ['process'] = $process;
 					   $workflow ['sing_info'] =Run::FindRunSign([['id','=',$result['sing_id']]]); 
 					}
+					if($workflow['status']['wf_mode']!=2){
+						$workflow['nexid'] = $workflow ['nexprocess']['id'];//下一步骤
+						}else{
+						$workflow['nexid'] = $workflow ['process']['process_to'];//下一步骤
+					}
+					
 					$workflow['run_process'] = $info['id'];//运行的run_process步骤ID
 					$workflow['npi'] = unit::nexnexprocessinfo($workflow['status']['wf_mode'],$workflow['nexprocess']);//显示下一步骤的信息
 			}

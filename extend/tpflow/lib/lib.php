@@ -26,7 +26,7 @@ class lib
 		switch ($status)
 		{
 		case 0:
-		  return '<span class="btn  radius size-S" onclick=Tpflow.lopen(\'发起工作流\',"'.$url['url_star'].'","450","350")>发起工作流</span>';
+		  return '<span class="btn  radius size-S" onclick=Tpflow.lopen(\'发起工作流\',"'.$url['url_star'].'",350,250)>发起工作流</span>';
 		  break;
 		case 1:
 			$st = 0;
