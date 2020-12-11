@@ -43,10 +43,10 @@ var Tpflow = {
 				title=false;
 			};
 			if (w == null || w == '') {
-				w=($(window).width() - 50);
+				w=($(window).width());
 			};
 			if (h == null || h == '') {
-				h=($(window).height() - 50);
+				h=($(window).height());
 			};
 			layer.open({
 				type: 2,

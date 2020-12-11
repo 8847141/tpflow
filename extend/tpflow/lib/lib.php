@@ -60,7 +60,7 @@ class lib
 					 return '<span class="btn  radius size-S">无权限</span>';
 				}	
 				if($st == 1){
-					 return '<span class="btn  radius size-S" onclick=Tpflow.lopen(\'审核\',"'.$url['url'].'","850","650")>审核('.$user_name.')</span>';
+					 return '<span class="btn  radius size-S" onclick=Tpflow.lopen(\'审核单据信息：'.$wf_fid.'\',"'.$url['url'].'")>审核('.$user_name.')</span>';
 					}else{
 					 return '<span class="btn  radius size-S">无权限('.$user_name.')</span>';
 				}

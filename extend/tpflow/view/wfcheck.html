@@ -1,97 +1,34 @@
 <link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>
-<div class="page-container" style='width:98%'>
-<form action="{:url($int_url.'/wf/do_check_save')}" method="post" name="form" id="wfform">
-
-<input type="hidden" value="{$flowinfo.flow_process}" name="flow_process">
-<input type="hidden" value="{$flowinfo.nexid}" name="npid"><!--下一步骤ID-->
-<input type="hidden" value="{$flowinfo.run_id}" name="run_id"><!--运行步骤-->
-<input type="hidden" value="{$flowinfo.wf_mode}" name="wf_mode"><!--运行模式-->
-<input type="hidden" value="{$_GET['sup'] ?? ''}" name="sup"><!--超级接口-->
-<input id='submit_to_save' name='submit_to_save' value='' type='hidden'><!--审核模式-->
-<input type="hidden" value="{$flowinfo.run_process}" name="run_process"><!--当前运行步骤的ID-->
-<input id='upload' name='art' value='' type='hidden'>
-处理业务
-		<table class="table table-border table-bordered table-bg" style='width:98%'>
-			<thead>
-			<tr>
-			<td  colspan='2'>
-				{if condition='$flowinfo.sing_st == 0'}
-					<a class="button" id='nexbton' onclick='Tpflow.check_post("ok")' >提交</a> 
-					{if condition='$flowinfo.status.is_back != 2'}
-					<a class="button" id='backbton' onclick='tpflow_back()'value='back' >回退</a> 
-					{/if}
-					{if condition='$flowinfo.status.is_sing != 2'}
-					<a class="button" id='singbton' onclick='tpflow_sing_send("sing")' >会签</a>
-					{/if}
-					<a class="button" id='bupload'onclick="Tpflow.lopen('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">附件</a> 
-				{else/}
-					<a class="button" id='nexbton' onclick='Tpflow.sing_post("sok")'>会签提交</a> 
-					<a class="button" id='backbton' onclick='Tpflow.sing_post("sback")'>会签回退</a> 
-					<a class="button" id='singbton' onclick='tpflow_sing_send("ssing")'>再会签</a>
-				{/if}
-			</td>
-			
-			</tr>
-			<tr>
-			</thead>
-			<td style='height:50px'>
-				<table class="table table-border table-bordered table-bg">
-				<tr>
-				<td style='width:40px'>
-				{if condition='$flowinfo.sing_st == 0'}审批{else/}会签{/if}意见</td>
-				<td><textarea name='check_con'  datatype="*" style="width:100%;height:55px;"></textarea> </td>
-				</tr>
-				<tr id='nex_process'>
-				<td style='width:40px' >下一步骤</td>
-				<td>
-					{$flowinfo.npi|raw}
-				</td>
-				</tr>
-				
-				</table>
-			</td>
-			<td valign="top" >
-				<div style='width:98%;overflow-y:scroll; height:100px'>
-					{:\\tpflow\\Api::wflogs($info.wf_fid,$info.wf_type);}
-				</div>
-			</td>
-			</tr>
-		</table>
-</form>		
-		<table class="table table-border table-bordered mt-20" style='width:98%'>
-		<tr><td>
-		<div id='bill_data'style='width:100%;overflow-y:scroll; height:200px'></div>
-		
-		</td></tr>
-		</table>
+<div class="page-container" style='width:100%;padding: 0px;'>
+<div class='TpflowController'>
+{if condition='$flowinfo.sing_st == 0'}
+	<a class="button" id='nexbton' onclick='Tpflow.check_post("ok")' style="background-color: #19be6b">√ 同意</a> 
+	{if condition='$flowinfo.status.is_back != 2'}
+	<a class="button" id='backbton' onclick="Tpflow.lopen('工作流回退','{$info.tpflow_back}',500,300)" style='background-color: #c9302c;'>↺ 驳回</a> 
+	{/if}
+	{if condition='$flowinfo.status.is_sing != 2'}
+	<a class="button" onclick="Tpflow.lopen('工作流会签','{$info.tpflow_sign}&ssing=sing',500,300)" style='background-color: #f37b1d;'>⇅ 会签</a>
+	{/if}
+	<a class="button" onclick="Tpflow.lopen('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">♗ 附件</a> 
+{else/}
+	<a class="button" onclick='Tpflow.sing_post("sok")'>↷ 会签提交</a> 
+	<a class="button" onclick='Tpflow.sing_post("sback")'>↶ 会签回退</a> 
+	<a class="button" onclick="Tpflow.lopen('工作流会签','{$info.tpflow_sign}&ssing=ssing',500,300)">⇅ 再会签</a>
+{/if}
+	<a class="button" onclick="Tpflow.lopen('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">✤ 审批历史</a> 
+	<a class="button" onclick="Tpflow.lopen('上传','{:url($int_url.'/wf/wfup', ['id' => 'upload'])}','180','180')">≋ 流程图</a> 
 </div>
+<div class='TpflowForm' >
+	<div class='TpflowHead'>单据信息</div>
+	<div style='width:100%;overflow-y:scroll; height:100%;'>
+		<iframe src="{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="Tpflow.SetHeight()"></iframe>
+	</div>
+		
+</div>
+
 <script type="text/javascript" src="__Flow__/jquery-1.7.2.min.js" ></script>
 <script type="text/javascript" src="__Flow__/lib/layer/2.4/layer.js" ></script>
 <script type="text/javascript" src="__Flow__/workflow.4.0.js" ></script>
-<script type="text/javascript" src="__Flow__/lib/Validform/5.3.2/Validform.min.js" ></script>
-<script type="text/javascript">
-$(function(){
-$("#wfform").Validform({
-		tiptype:function(msg,o,cssctl){
-			if (o.type == 3){
-				layer.msg(msg, {time: 800}); 
-			}
-		},
-		ajaxPost:true,
-		showAllError:true,
-		callback:function(ret){
-			Tpflow.common_return(ret);
-		}
-	});	
-	//$("#bill_data").load('{:url($int_url.'/'.$info.wf_type.'/'.$flowinfo.status.wf_action,['id'=>$info.wf_fid])}');
-});
-function tpflow_back(){
-	Tpflow.lopen('工作流回退','{$info.tpflow_back}',500,300);
-}
-function tpflow_sing_send(ssing){
-	Tpflow.lopen('工作流会签','{$info.tpflow_sign}&ssing='+ssing,500,300);
-}
 
-</script>
 </body>
 </html>
