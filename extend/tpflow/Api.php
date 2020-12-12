@@ -252,8 +252,11 @@ use think\facade\Request;
         if(!$one){
             $this->error('未找到数据，请返回重试!');
         }
-		return view($this->patch.'/wfdesc.html',['urlApi'=>url(unit::gconfig('int_url').'/wf/designapi'),'one'=>$one,'process_data'=>$this->ProcessApi('All',$flow_id)]);
+		return lib::tmp_wfdesc($one['id'],$this->ProcessApi('All',$flow_id),url(unit::gconfig('int_url').'/wf/designapi'));
     }
+	/*
+	设计接口
+	*/
 	public function designapi($act){
 		if($act=='welcome'){
 			return $this->welcome();

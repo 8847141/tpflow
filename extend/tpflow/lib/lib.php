@@ -522,6 +522,56 @@ $(function(){
 </html>
 php;
 	}
+	public static function tmp_wfdesc($id,$process_data,$urlApi)
+	{
+		return <<<php
+	<link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>
+ <body  style="height: 100%; overflow: hidden;margin: 0px; padding: 0px;"> 
+  <div class="panel layout-panel panel-west split-west" style="left: 0px; width:145px; cursor: default;">
+   <div class="panel-body"> <div class="panel" style="width: 140px;"><div class="panel-header">功能栏</div>
+	  <div class="panel-body" style='text-align:center'>
+		 欢迎使用流程设计器~<br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("save")'>保存设计</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("add")'>新增步骤</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("check")'>逻辑检查</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("delAll")'>清空步骤</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("Help")'>设计帮助</button><br/><br/>
+		  <button class="btn btn-info" type="button" onclick='Tpflow.Api("Refresh")'>刷新设计</button><br/><br/>
+      </div></div> 
+   </div>
+  </div> 
+  <div class="panel layout-panel split-center" style="left:150px;  width:calc(100% - 645px); cursor: default;" > 
+	<div  class="panel-body">
+     <div class="panel"><div class="panel-header">流程设计栏</div>
+	  <div class="panel-body" style="width:100%; height: 800px;" id="flowdesign_canvas"></div> 
+     </div></div>
+  </div> 
+  <div class="panel layout-panel panel-west split-east split-west" style="left: calc(100% - 500px);  width:500px; cursor: default;">
+    <div  class="panel-body"> 
+     <div class="panel" >
+      <div class="panel-header">属性控制栏</div>
+	  <div class="panel-body" style='height: 800px;'>
+		<iframe src="{$urlApi}?act=welcome" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="Tpflow.SetHeight()"></iframe>
+	  </div></div> 
+   </div>
+  </div> 
+ </body>
+</html>
+<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/work/jquery-ui-1.9.2-min.js?" ></script>
+<script type="text/javascript" src="/static/work/jsPlumb-1.3.16-all-min.js"></script>
+<script type="text/javascript" src="/static/work/workflow.4.0.js" ></script>
+<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript">
+var the_flow_id ='{$id}';
+var Server_Url ="{$urlApi}";
+var _this = $('#flowdesign_canvas');
+$(function(){
+	Tpflow.Init({$process_data});
+});
+</script>	
+php;
+	}
 	public static function tmp_wfsign($info,$flowinfo,$sing)
 	{
 		$js = self::commonjs();
