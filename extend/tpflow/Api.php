@@ -78,14 +78,33 @@ use think\facade\Request;
 		return lib::tmp_wfstart(url(unit::gconfig('int_url').'/wf/wfstart'),$info,$op);
 	}
 	
-	public function wfcheck($wf_fid,$wf_type,$wf_mode='check',$ssing='sing')
+	public function wfcheck($wf_fid,$wf_type,$wf_op='check',$ssing='sing')
 	{
 		$sup = $_GET['sup'] ?? '';
-		$info = ['wf_fid'=>$wf_fid,'wf_type'=>$wf_type,'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'back','sup'=>$sup]),'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_mode'=>'sign','sup'=>$sup])];
-		if($wf_mode=='check'){
+		$info = [
+			'wf_fid'=>$wf_fid,
+			'wf_type'=>$wf_type,
+			'tpflow_ok'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'ok','sup'=>$sup]),
+			'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'back','sup'=>$sup]),
+			'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'sign','sup'=>$sup])
+			
+			];
+		if($wf_op=='check'){
 			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo())]);
 		}
-		if($wf_mode=='back'){
+		if($wf_op=='ok'){
+			 if ($this->request::isPost()) {
+				$data = input('post.');
+				$flowinfo =  $this->workdoaction($data,unit::getuserinfo('uid'));
+				if($flowinfo['code']=='0'){
+					return unit::msg_return('Success!');
+					}else{
+					return unit::msg_return($flowinfo['msg'],1);
+				}
+			 }
+			return lib::tmp_wfok($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()));
+		}
+		if($wf_op=='back'){
 			 if ($this->request::isPost()) {
 				$data = input('post.');
 				$data['btodo'] = $this->getprocessinfo($data['wf_backflow'],$data['run_id']);
@@ -98,7 +117,7 @@ use think\facade\Request;
 			 }
 			return lib::tmp_wfback($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()));
 		}
-		if($wf_mode=='sign'){
+		if($wf_op=='sign'){
 			 if ($this->request::isPost()) {
 				$data = input('post.');
 				$flowinfo =  $this->workdoaction($data,unit::getuserinfo('uid'));

@@ -2,7 +2,7 @@
 <div class="page-container" style='width:100%;padding: 0px;'>
 <div class='TpflowController'>
 {if condition='$flowinfo.sing_st == 0'}
-	<a class="button" id='nexbton' onclick='Tpflow.check_post("ok")' style="background-color: #19be6b">√ 同意</a> 
+	<a class="button" id='nexbton' onclick="Tpflow.lopen('提交工作流','{$info.tpflow_ok}',500,300)" style="background-color: #19be6b">√ 同意</a> 
 	{if condition='$flowinfo.status.is_back != 2'}
 	<a class="button" id='backbton' onclick="Tpflow.lopen('工作流回退','{$info.tpflow_back}',500,300)" style='background-color: #c9302c;'>↺ 驳回</a> 
 	{/if}

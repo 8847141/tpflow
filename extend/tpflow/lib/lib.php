@@ -448,6 +448,79 @@ php;
 </html>	
 php;
 	}
+	public static function tmp_wfok($info,$flowinfo)
+	{
+		$js = self::commonjs();
+		$sup = $_GET['sup'] ?? '';
+	return <<<php
+		<link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>
+		<form action="{$info['tpflow_ok']}" method="post" name="form" id="wfform">
+		<input id='upload' name='art' value='' type='hidden'>
+		<input type="hidden" value="{$flowinfo['wf_mode']}" name="wf_mode" >
+		<input type="hidden" value="{$flowinfo['nexid']}" name="npid" >
+		<input type="hidden" value="{$flowinfo['run_id']}" name="run_id" id='run_id'>
+		<input type="hidden" value="{$sup}" name="sup">
+		<input type="hidden" value="{$flowinfo['run_process']}" name="run_process">
+		<input type="hidden" value="{$flowinfo['flow_process']}" name="flow_process">
+		<table class="table table-border table-bordered table-bg" style='width:98%'>
+			<thead>
+			<tr>
+			<th style='width:98%' class='text-c'>单据审批</th>
+			</tr>
+			<tr>
+			</thead>
+			<td style='height:80px'>
+				<table class="table table-border table-bordered table-bg">
+				<tr>
+				<td style='width:70px'>审批意见</td>
+				<td><textarea name='check_con'  datatype="*" style="width:100%;height:55px;"></textarea> </td>
+				</tr>
+				<tr><td>下一步骤</td>
+				<td style="text-align:left">
+					{$flowinfo['npi']}
+				</td>
+				</tr>
+				<tr>
+				<td colspan=2 class='text-c'>
+						<input id='submit_to_save' name='submit_to_save' value='ok' type='hidden'>
+						<button  class="button" type="submit"> 提交同意</button>
+						<a class="button" id='backbton' onclick='Tpflow.lclose()'>取消</a> 
+				</td>
+				</tr>
+				</table>
+			</td>
+			
+			</tr>
+		</table>
+</form>
+</div>{$js}
+<script type="text/javascript">
+$(function(){
+	$("#wfform").Validform({
+            tiptype:function(msg,o,cssctl){
+				if (o.type == 3){
+					layer.msg(msg, {time: 800}); 
+				}
+			},
+            ajaxPost:true,
+            showAllError:true,
+            callback:function(ret){
+                  if (ret.code == 0) {
+						layer.msg(ret.msg,{icon:1,time: 1500},function(){
+							window.parent.parent.location.reload(); //关闭所有弹出层
+							layer.closeAll();
+						});          
+					} else {
+					   layer.alert(ret.msg, {title: "错误信息", icon: 2});
+					}
+            }
+        });
+});
+</script>
+</body>
+</html>
+php;
+	}
 	public static function tmp_wfback($info,$flowinfo)
 	{
 		$js = self::commonjs();
