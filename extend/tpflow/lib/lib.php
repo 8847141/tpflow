@@ -718,7 +718,7 @@ $(function(){
 </html>
 php;
 }
-public static function tmp_wfflow($id,$process_data)
+public static function tmp_wfflow($process_data)
 	{
 		return <<<php
 	<link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>

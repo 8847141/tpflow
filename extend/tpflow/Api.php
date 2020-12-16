@@ -132,11 +132,8 @@ use think\facade\Request;
 			return lib::tmp_wfsign($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()),$ssing);
 		}
 		if($wf_op=='flow'){
-			
 			$flowinfo = $this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo());
-			
 			$run_info = Run::FindRunId($flowinfo['run_id']);
-			
 			$flow_id = intval($run_info['flow_id']);
 			if($flow_id<=0){
 				$this->error('参数有误，请返回重试!');
@@ -145,7 +142,7 @@ use think\facade\Request;
 			if(!$one){
 				$this->error('未找到数据，请返回重试!');
 			}
-			return lib::tmp_wfflow($one['id'],$this->ProcessApi('All',$flow_id),url(unit::gconfig('int_url').'/wf/designapi'));
+			return lib::tmp_wfflow($this->ProcessApi('All',$flow_id));
 		}
 		
 	}
