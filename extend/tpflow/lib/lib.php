@@ -718,6 +718,32 @@ $(function(){
 </html>
 php;
 }
+public static function tmp_wfflow($id,$process_data)
+	{
+		return <<<php
+	<link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>
+ <body  style="height: 100%; overflow: hidden;margin: 0px; padding: 0px;"> 
+ 
+  <div class="panel layout-panel split-center" style="width:100%; cursor: default;" > 
+	<div  class="panel-body">
+	  <div class="panel-body" style="width:100%; height: 800px;" id="flowdesign_canvas"></div> 
+     </div></div>
+  </div> 
+ </body>
+</html>
+<script type="text/javascript" src="/static/work/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/work/jquery-ui-1.9.2-min.js?" ></script>
+<script type="text/javascript" src="/static/work/jsPlumb-1.3.16-all-min.js"></script>
+<script type="text/javascript" src="/static/work/workflow.4.0.js" ></script>
+<script type="text/javascript" src="/static/work/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript">
+var _this = $('#flowdesign_canvas');
+$(function(){
+	Tpflow.show({$process_data});
+});
+</script>	
+php;
+	}
 public static function tmp_index($url,$data,$html){
 	$js = self::commonjs();
 	return <<<php

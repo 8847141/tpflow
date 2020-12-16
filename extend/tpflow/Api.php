@@ -22,6 +22,7 @@ use tpflow\adaptive\Control;
 use tpflow\lib\lib;
 use tpflow\lib\unit;
 use tpflow\adaptive\Bill;
+use tpflow\adaptive\Run;
 
 use think\facade\Request;
 
@@ -86,7 +87,8 @@ use think\facade\Request;
 			'wf_type'=>$wf_type,
 			'tpflow_ok'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'ok','sup'=>$sup]),
 			'tpflow_back'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'back','sup'=>$sup]),
-			'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'sign','sup'=>$sup])
+			'tpflow_sign'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'sign','sup'=>$sup]),
+			'tpflow_flow'=>url(unit::gconfig('int_url')."/wf/wfcheck/",["wf_type"=>$wf_type,'wf_fid'=>$wf_fid,'wf_op'=>'flow','sup'=>$sup])
 			
 			];
 		if($wf_op=='check'){
@@ -128,6 +130,22 @@ use think\facade\Request;
 				}
 			 }
 			return lib::tmp_wfsign($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()),$ssing);
+		}
+		if($wf_op=='flow'){
+			
+			$flowinfo = $this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo());
+			
+			$run_info = Run::FindRunId($flowinfo['run_id']);
+			
+			$flow_id = intval($run_info['flow_id']);
+			if($flow_id<=0){
+				$this->error('参数有误，请返回重试!');
+			}
+			$one = $this->FlowApi('GetFlowInfo',$flow_id);
+			if(!$one){
+				$this->error('未找到数据，请返回重试!');
+			}
+			return lib::tmp_wfflow($one['id'],$this->ProcessApi('All',$flow_id),url(unit::gconfig('int_url').'/wf/designapi'));
 		}
 		
 	}

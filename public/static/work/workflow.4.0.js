@@ -229,6 +229,86 @@ var Tpflow = {
 			
         });
 	},
+	show : function(processData) {
+		_this.append('<input type="hidden" id="wf_active_id" value="0"/>');
+		_this.append('<div id="wf_process_info"></div>');
+		 
+		var initEndPoints = function(){
+		  $(".process-flag").each(function(i,e) {
+			  var p = $(e).parent();
+			  jsPlumb.makeSource($(e), {
+				  parent:p,
+				  anchor:"Continuous",
+				  endpoint:[ "Dot", { radius:1 } ],
+				  connector:[ "Flowchart", { stub:[5, 5] } ],
+				  connectorStyle:{lineWidth:3,strokeStyle:"#49afcd",joinstyle:"round"},
+				  hoverPaintStyle:{lineWidth:3,strokeStyle:"#da4f49"},
+				  dragOptions:{},
+				  maxConnections:-1
+			  });
+		  });
+		}
+		jsPlumb.importDefaults({
+            DragOptions : { cursor: 'pointer'},
+            EndpointStyle : { fillStyle:'#225588' },
+            Endpoint : [ "Dot", {radius:1} ],
+            ConnectionOverlays : [
+                [ "Arrow", { location:1 } ],
+                [ "Label", {location:0.1,id:"label",cssClass:"aLabel"}]
+            ],
+            Anchor : 'Continuous',
+            ConnectorZIndex:5,
+            HoverPaintStyle:{lineWidth:3,strokeStyle:"#da4f49"}
+        });
+        if( $.browser.msie && $.browser.version < '9.0' ){ //ie9以下，用VML画图
+            jsPlumb.setRenderMode(jsPlumb.VML);
+        } else { //其他浏览器用SVG
+            jsPlumb.setRenderMode(jsPlumb.SVG);
+        }
+	 var lastProcessId=0;
+	 $.each(processData.list, function(i,row) {
+            var nodeDiv = document.createElement('div');
+			 var nodeId = "window" + row.id;
+            $(nodeDiv).attr("id",nodeId)
+            .attr("style",row.style +'text-align: left;')
+            .attr("process_to",row.process_to)
+            .attr("process_id",row.id)
+            .addClass("process-step wf_btn")
+            .html('<span class="process-flag" style="text-align: left;"><img src="'+Tpflow.Ico()+'" width=18px></span>&nbsp;' +row.process_name + '<br/><img src="'+Tpflow.Ico(1)+'" width=18px>&nbsp;' +row.mode + '<br/><img src="'+Tpflow.Ico(2)+'" width=18px>&nbsp;' +row.name + '' );
+            _this.append(nodeDiv);
+            lastProcessId = row.id;
+        });
+		initEndPoints();
+	$('.process-step').each(function(i){
+            var sourceId = $(this).attr('process_id');
+            var prcsto = $(this).attr('process_to');
+            var toArr = prcsto.split(",");
+            $.each(toArr,function(j,targetId){
+                if(targetId!='' && targetId!=0){
+                    //检查 source 和 target是否存在
+                    var is_source = false,is_target = false;
+                    $.each(processData.list, function(i,row){
+                        if(row.id == sourceId){
+                            is_source = true;
+                        }else if(row.id == targetId){
+                            is_target = true;
+                        }
+                        if(is_source && is_target)
+                            return true;
+                    });
+                    if(is_source && is_target){
+                        jsPlumb.connect({
+                            source:"window"+sourceId, 
+                            target:"window"+targetId,
+							overlays: [["Label", {cssClass: "component label",label: sourceId+" - "+targetId,}],"Arrow"]
+                        });
+                        return ;
+                    }
+                }
+            })
+			
+        });
+	},
 	
 	DClick : function(id) {
 		var url = Server_Url+"?id="+id+"&act=att";
