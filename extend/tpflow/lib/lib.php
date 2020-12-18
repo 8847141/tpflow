@@ -845,7 +845,6 @@ $url = url(unit::gconfig('int_url').'/'.$info['wf_type'].'/'.$flowinfo['status']
 	return <<<php
 
 	
-	
 
 </body>
 </html>
