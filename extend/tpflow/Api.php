@@ -92,7 +92,7 @@ use think\facade\Request;
 			
 			];
 		if($wf_op=='check'){
-			return view($this->patch.'/wfcheck.html',['int_url'=>unit::gconfig('int_url'),'info'=>$info,'flowinfo'=>$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo())]);
+			return lib::tmp_check($info,$this->workflowInfo($wf_fid,$wf_type,unit::getuserinfo()));
 		}
 		if($wf_op=='ok'){
 			 if ($this->request::isPost()) {
@@ -339,7 +339,20 @@ use think\facade\Request;
 	}
 	public function wfgl()
     {
-        return view($this->patch.'/wfgl.html',['int_url'=>unit::gconfig('int_url'),'list'=>Entrust::lists()]);
+		$data = Entrust::lists();
+		$tr = '';
+		foreach($data as $k=>$v){
+			   $status = ['正常','禁用'];
+			   $url_edit = url(unit::gconfig('int_url').'/wf/entrust',['id'=>$v['id']]);
+			   $btn ="<a class='button' onclick=Tpflow.lopen('修改','".$url_edit."','550','400')> 修改</a> ";
+			   if($v['flow_id']==0){
+				   $sq="全局授权";
+			   }else{
+				   $sq="步骤授权";
+			   }
+			   $tr .='<tr><td>'.$v['id'].'</td><td><span>'.$v['entrust_title'].'</span></td><td><span>'.$sq.'</span></td><td>'.$v['old_name'].'=>'.$v['entrust_name'].'</td><td>'.date('Y/m/d H:i',$v['entrust_stime']).'~'.date('Y/m/d H:i',$v['entrust_etime']).'</td><td>'.$v['entrust_con'].'</td><td>'.$btn.'</td></tr>';	
+		  }
+		return lib::tmp_wfgl(url(unit::gconfig('int_url').'/wf/entrust'),$tr);
     }
 	/*委托授权审核*/
 	public function entrust(){

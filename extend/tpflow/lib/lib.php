@@ -769,6 +769,88 @@ public static function tmp_index($url,$data,$html){
 </html>
 php;
 }
+public static function tmp_wfgl($url,$data){
+	$js = self::commonjs();
+	return <<<php
+<title>Tpflow V4.0 管理列表</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>
+<body>
+<div class="page-container">
+<div style='float: left;width:6%'>
+	<a onclick="Tpflow.lopen('添加委托授权','{$url}','750','400')" class="button ">委托代理</a> <hr/>
+	<a onclick="location.reload();" class="button ">刷新页面</a>
+
+</div>
+<div style='float: left;width:90%'>
+<table class="table" ><tr><th>ID</th><th>授权名称</th> <th>委托类型</th><th>授权关系</th><th>起止时间</th><th>委托备注</th><th>操作</th></tr>
+	{$data}
+</table>
+</div>
+</div>{$js}
+</body>
+</html>
+php;
+}
+public static function tmp_check($info,$flowinfo){
+	$js = self::commonjs();
+$url = url(unit::gconfig('int_url').'/'.$info['wf_type'].'/'.$flowinfo['status']['wf_action'],['id'=>$info['wf_fid']]);
+	if($flowinfo['sing_st']==0){
+		$html ='<a class="button" onclick=Tpflow.lopen("提交工作流","'.$info['tpflow_ok'].'",500,300) style="background-color: #19be6b">√ 同意</a> ';
+		if($flowinfo['status']['is_back']!=2){
+			$html .= '<a class="button"  onclick=Tpflow.lopen("工作流回退","'.$info['tpflow_back'].'",500,300) style="background-color: #c9302c;">↺ 驳回</a> ';
+		}
+		if($flowinfo['status']['is_sing']!=2){
+			$html .= '<a class="button" onclick=Tpflow.lopen("工作流会签","'.$info['tpflow_sign'].'&ssing=sing",500,300) style="background-color: #f37b1d;">⇅ 会签</a>';
+		}
+	}else{
+		$html ='<a class="button" onclick=Tpflow.sing_post("sok")>↷ 会签提交</a> <a class="button" onclick=Tpflow.sing_post("sback")>↶ 会签回退</a> <a class="button" onclick=Tpflow.lopen("工作流会签","'.$info['tpflow_sign'].'&ssing=ssing",500,300)>⇅ 再会签</a>';
+	}
+	$html .=' <a class="button" onclick=Tpflow.lopen("审批历史","",180,180)>✤ 审批历史</a> <a class="button" onclick=Tpflow.lopen("流程图","'.$info['tpflow_flow'].'")>≋ 流程图</a> ';
+	return <<<php
+<link rel="stylesheet" type="text/css" href="/static/work/workflow.4.0.css"/>
+<div class="page-container" style='width:100%;padding: 0px;'>
+<div class='TpflowController'>
+{$html}
+</div>
+<div class='TpflowForm' >
+	<div class='TpflowHead'>单据信息</div>
+	<div style='width:100%;overflow-y:scroll; height:100%;'>
+		<iframe src="{$url}" id="iframepage" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="Tpflow.SetHeight()"></iframe>
+	</div>
+		
+</div>
+{$js}
+
+</body>
+</html>
+php;
+}
+
+public static function tmp_wfatt($info,$flowinfo){
+	$js = self::commonjs();
+$url = url(unit::gconfig('int_url').'/'.$info['wf_type'].'/'.$flowinfo['status']['wf_action'],['id'=>$info['wf_fid']]);
+	if($flowinfo['sing_st']==0){
+		$html ='<a class="button" onclick=Tpflow.lopen("提交工作流","'.$info['tpflow_ok'].'",500,300) style="background-color: #19be6b">√ 同意</a> ';
+		if($flowinfo['status']['is_back']!=2){
+			$html .= '<a class="button"  onclick=Tpflow.lopen("工作流回退","'.$info['tpflow_back'].'",500,300) style="background-color: #c9302c;">↺ 驳回</a> ';
+		}
+		if($flowinfo['status']['is_sing']!=2){
+			$html .= '<a class="button" onclick=Tpflow.lopen("工作流会签","'.$info['tpflow_sign'].'&ssing=sing",500,300) style="background-color: #f37b1d;">⇅ 会签</a>';
+		}
+	}else{
+		$html ='<a class="button" onclick=Tpflow.sing_post("sok")>↷ 会签提交</a> <a class="button" onclick=Tpflow.sing_post("sback")>↶ 会签回退</a> <a class="button" onclick=Tpflow.lopen("工作流会签","'.$info['tpflow_sign'].'&ssing=ssing",500,300)>⇅ 再会签</a>';
+	}
+	$html .=' <a class="button" onclick=Tpflow.lopen("审批历史","",180,180)>✤ 审批历史</a> <a class="button" onclick=Tpflow.lopen("流程图","'.$info['tpflow_flow'].'")>≋ 流程图</a> ';
+	return <<<php
+
+	
+	
+
+</body>
+</html>
+php;
+}
 static function commonjs($form = 0){
 	if($form==0){
 		$js ='';
